@@ -42,12 +42,11 @@ CREATE TABLE session_participant
  ************************/
 
 INSERT INTO account (username) VALUES
-    ('BenDover'),
-    ('Maja123'),
-    ('Minii❤'),
-    ('xdxd_2fast4u_xdxd');
+                                   ('BenDover'),
+                                   ('Maja123'),
+                                   ('Minii❤'),
+                                   ('xdxd_2fast4u_xdxd');
 
 INSERT INTO game(name) VALUES
-    ('TicTacToe'),
-    ('Stratego');
-
+                           ('TicTacToe'),
+                           ('Stratego');

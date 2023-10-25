@@ -1,5 +1,7 @@
 package boardgames.persistence;
 
+import java.util.List;
+
 import boardgames.shared.Account;
 import boardgames.shared.Game;
 import boardgames.shared.Session;
@@ -12,14 +14,21 @@ import java.sql.*;
 public class PersistenceApplication {
 
     public static void main(String[] args) {
-        SqlDatabase database = new SqlDatabase();
-        Account maja = database.getAccount("Maja123");
-
+        SqlDatabase db = new SqlDatabase();
+        Account maja = db.getAccount("Maja123");
+        Account julie = db.getAccount("BenDover");
 
         Game game = new Game();
         game.setGameId(1);
         game.setName("TicTacToe");
 
-        Session session = database.createSession(game);
+        Session session = db.createSession(game);
+
+        db.addAccountToSession(session, maja);
+        db.addAccountToSession(session, julie);
+
+        List<Account> accs = db.getAccountsInSession(session);
+
+        db.updateSessionState(session, "Donatello");
     }
 }
