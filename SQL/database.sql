@@ -14,7 +14,7 @@ SET SEARCH_PATH = "boardgames";
 CREATE TABLE account
 (
     account_id      serial  NOT NULL PRIMARY KEY ,
-    name            varchar NOT NULL UNIQUE
+    username        varchar NOT NULL UNIQUE
 );
 
 CREATE TABLE game
@@ -41,7 +41,7 @@ CREATE TABLE session_participant
  * test data
  ************************/
 
-INSERT INTO account (name) VALUES
+INSERT INTO account (username) VALUES
     ('BenDover'),
     ('Maja123'),
     ('Minii❤'),
@@ -50,6 +50,4 @@ INSERT INTO account (name) VALUES
 INSERT INTO game(name) VALUES
     ('TicTacToe'),
     ('Stratego');
-
-
 
