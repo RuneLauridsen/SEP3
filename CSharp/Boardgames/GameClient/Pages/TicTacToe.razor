@@ -1,0 +1,44 @@
+﻿@page "/tictactoe"
+@using GameClient.Data
+@using Microsoft.AspNetCore.Mvc.ApplicationModels
+@inject IGameService GameService
+
+<PageTitle>TicTacToe</PageTitle>
+
+<h1>Counter</h1>
+
+<textarea style="font-family: monospace;
+                 font-size: 50px;
+                 white-space: pre-line;
+                 line-height: 1em;
+                 letter-spacing: 1em;
+                 height: 3.5em;
+                 text-transform: uppercase;"
+          @bind="inputText"/>
+
+<button class="btn btn-primary" @onclick="OnSubmitClicked">Submit</button>
+
+@if (errorText != "")
+{
+    <div class="alert alert-danger">ErrorText: @errorText</div>
+}
+
+@code {
+    private string inputText = ".XO\nXOX\nX O";
+    private string errorText = "";
+
+    private async void OnSubmitClicked()
+    {
+        inputText = inputText.ToUpper();
+
+        TicTacToeState prevState = new();
+        prevState.Pieces = inputText.ToUpper().Trim();
+
+        TicTacToeState nextState = await GameService.PlayAsync(prevState);
+        errorText = nextState.Error;
+        if (errorText == "")
+        {
+            inputText = nextState.Pieces;
+        }
+    }
+}
