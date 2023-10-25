@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="admin" />
-        <module name="persistence" />
         <module name="shared" />
+        <module name="persistence" />
         <module name="game" />
       </profile>
     </annotationProcessing>

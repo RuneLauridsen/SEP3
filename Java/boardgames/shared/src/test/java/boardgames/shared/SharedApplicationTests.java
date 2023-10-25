@@ -1,4 +1,4 @@
-package com.example.shared;
+package boardgames.shared;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
