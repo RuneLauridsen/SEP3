@@ -1,8 +1,16 @@
-package boardgames.shared;
+package boardgames.shared.dto;
 
 public class Game {
     private int gameId;
     private String name;
+
+    public Game() {
+    }
+
+    public Game(int gameId, String name) {
+        this.gameId = gameId;
+        this.name = name;
+    }
 
     public int getGameId() {
         return gameId;

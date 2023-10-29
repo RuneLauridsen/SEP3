@@ -23,30 +23,42 @@ CREATE TABLE game
     name            varchar NOT NULL
 );
 
-CREATE TABLE session
+CREATE TABLE match
 (
-    session_id      serial  NOT NULL PRIMARY KEY ,
+    match_id        serial  NOT NULL PRIMARY KEY ,
     state           varchar NOT NULL ,
+    owner_id        int     NOT NULL REFERENCES account(account_id),
     game_id         int     NOT NULL REFERENCES game(game_id)
 );
 
-CREATE TABLE session_participant
+CREATE TABLE participant
 (
-    session_participant_id  serial  NOT NULL PRIMARY KEY ,
-    session_id              int     NOT NULL REFERENCES session(session_id),
-    account_id              int     NOT NULL REFERENCES account(account_id)
+    participant_id  serial  NOT NULL PRIMARY KEY ,
+    match_id        int     NOT NULL REFERENCES match(match_id),
+    account_id      int     NOT NULL REFERENCES account(account_id),
+    accepted        bool    NOT NULL,
+    rejected        bool    NOT NULL
 );
 
 /************************
  * test data
  ************************/
 
-INSERT INTO account (username) VALUES
-                                   ('BenDover'),
-                                   ('Maja123'),
-                                   ('Minii❤'),
-                                   ('xdxd_2fast4u_xdxd');
+INSERT INTO account
+    (username)
+VALUES
+    ('BenDover'),
+    ('Maja123'),
+    ('Minii❤'),
+    ('xdxd_2fast4u_xdxd');
 
-INSERT INTO game(name) VALUES
-                           ('TicTacToe'),
-                           ('Stratego');
+INSERT INTO game
+    (name)
+VALUES
+    ('TicTacToe'),
+    ('Stratego');
+
+INSERT INTO match
+    (state, owner_id, game_id)
+VALUES
+    ('.........', 4, 1)

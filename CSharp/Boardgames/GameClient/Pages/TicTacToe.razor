@@ -1,11 +1,12 @@
 ﻿@page "/tictactoe"
 @using GameClient.Data
-@using Microsoft.AspNetCore.Mvc.ApplicationModels
+@using GameClient.DTO
+@using static GameClient.Data.Messages;
 @inject IGameService GameService
 
 <PageTitle>TicTacToe</PageTitle>
 
-<h1>Counter</h1>
+<h1>TicTacToe</h1>
 
 <textarea style="font-family: monospace;
                  font-size: 50px;
@@ -14,31 +15,70 @@
                  letter-spacing: 1em;
                  height: 3.5em;
                  text-transform: uppercase;"
-          @bind="inputText"/>
+          @bind="displayGameState"/>
 
-<button class="btn btn-primary" @onclick="OnSubmitClicked">Submit</button>
+<p>
+    <button class="btn btn-primary" @onclick="OnRefreshClicked">Refresh</button>
+    <button class="btn btn-primary" @onclick="OnSubmitClicked">Submit</button>
+</p>
 
-@if (errorText != "")
-{
-    <div class="alert alert-danger">ErrorText: @errorText</div>
+@if (displayStatus != "") {
+    <div class="alert alert-info">@displayStatus</div>
+}
+
+@if (displayException != "") {
+    <div class="alert alert-danger">Exception: @displayException</div>
 }
 
 @code {
-    private string inputText = ".XO\nXOX\nX O";
-    private string errorText = "";
+    private string displayGameState = "";
+    private string displayStatus = "";
+    private string displayException = "";
 
-    private async void OnSubmitClicked()
-    {
-        inputText = inputText.ToUpper();
+    protected override void OnInitialized() {
+        base.OnInitialized();
+        DoMove("");
+    }
 
-        TicTacToeState prevState = new();
-        prevState.Pieces = inputText.ToUpper().Trim();
+    private void OnSubmitClicked() {
+        DoMove(displayGameState);
+    }
 
-        TicTacToeState nextState = await GameService.PlayAsync(prevState);
-        errorText = nextState.Error;
-        if (errorText == "")
-        {
-            inputText = nextState.Pieces;
+    private void OnRefreshClicked() {
+        DoMove("");
+    }
+
+    // TODO(rune): Meget jank, kun til test.
+    private void DoMove(string submitGameState) {
+        var now = DateTime.Now.ToString("HH:mm:ss");
+        try {
+            submitGameState = submitGameState
+                .ToUpper()
+                .Replace("\n", "")
+                .Replace("\r", "")
+                .Trim();
+
+            var getMatchesResponse = GameService.GetMatches(new());
+            var match = getMatchesResponse.matches[0];
+
+            var moveResponse = GameService.Move(new(match.MatchId, submitGameState));
+            var newGameState = string.Join("\n", moveResponse.gameState.Chunk(3).Select(x => new string(x))); // NOTE(rune): Indsæt \n ved hver 3. char.
+            var invalidMoveText = moveResponse.invalidMoveText;
+
+
+            if (submitGameState == "") {
+                displayStatus = now + " - Refreshed";
+                displayGameState = newGameState;
+            } else if (invalidMoveText == "") {
+                displayStatus = now + " - Submitted";
+                displayGameState = newGameState;
+            } else {
+                displayStatus = now + " - " + invalidMoveText;
+            }
+        } catch (Exception e) {
+            displayStatus = now + " - Exception";
+            displayException = e.Message;
         }
     }
+
 }
