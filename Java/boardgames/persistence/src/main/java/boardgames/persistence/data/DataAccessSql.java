@@ -6,6 +6,11 @@ import boardgames.shared.dto.Match;
 import boardgames.shared.dto.Participant;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +32,11 @@ public class DataAccessSql implements DataAccess {
 
     public DataAccessSql() {
         try {
-            // TODO(rune): Hard-coded connection string.
-            String connString = "jdbc:postgresql://localhost:5432/postgres?user=postgres&password=asdasd&currentSchema=boardgames";
+
+            URI uri = getClass().getResource("/ConnectionString.txt").toURI();
+            String connString = Files.readString(Path.of(uri));
             conn = DriverManager.getConnection(connString);
-        } catch (SQLException e) {
+        } catch (SQLException | IOException | URISyntaxException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }
     }
