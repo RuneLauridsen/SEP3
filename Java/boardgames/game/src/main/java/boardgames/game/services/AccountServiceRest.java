@@ -2,6 +2,7 @@ package boardgames.game.services;
 
 import boardgames.shared.dto.Account;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,6 +42,8 @@ public class AccountServiceRest implements AccountService {
         try {
             ResponseEntity<Account> response = restTemplate.getForEntity(ulr + "/accounts?username=" + username + "&hashedPassword=" + hashedPassword, Account.class);
             return response.getBody(); // TODO(rune): Check status code.
+        } catch (HttpClientErrorException.NotFound e) {
+            return null;
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }

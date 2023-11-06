@@ -32,4 +32,8 @@ public final class Account {
     public String toString() {
         return username;
     }
+
+    public static Account empty() {
+        return new Account(0, "?");
+    }
 }
