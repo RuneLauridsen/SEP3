@@ -23,6 +23,7 @@ public interface DataAccess {
 
     public Account getAccount(int accountId);
     public Account getAccount(String username);
+    public Account getAccount(String username, String hashedPassword);
     // TODO(rune): updateAccount()
     // TODO(rune): deleteAccount()
 
