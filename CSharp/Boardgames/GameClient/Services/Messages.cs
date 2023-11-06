@@ -1,4 +1,5 @@
 ﻿global using static GameClient.Data.Messages;
+using System.Runtime.InteropServices.JavaScript;
 using GameClient.DTO;
 using boolean = System.Boolean;
 
@@ -13,7 +14,7 @@ public class Messages {
     public record RegisterRequest(String username, String firstName, String lastName, String email, String password);
 
    //Todo, lav response ordenlig
-    public record RegisterResponse(String response);
+    public record RegisterResponse(boolean response);
 
     public record MoveRequest(int matchId, String gameState, String jwt) { }
     public record MoveResponse(int matchId, String gameState, String invalidMoveText) { }
