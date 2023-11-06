@@ -4,28 +4,31 @@ using GameClient.DTO;
 
 namespace GameClient.Data;
 
-public class JwtAuthService : IAuthService
-{
-    private GameServiceSocket socket = new GameServiceSocket("localhost", 1234);
-    
+public class JwtAuthService : IAuthService {
+    private GameServiceSocket socket;
+
+    public JwtAuthService() {
+        socket = new GameServiceSocket("localhost", 1234);
+        socket.Connect();
+    }
+
     private readonly HttpClient client;
     public static string? Jwt { get; private set; } = "";
 
     public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; }
-    
+
     //Todo, async?
-    public  Task LoginAsync(string username,  string password)
+    public  Task<bool> LoginAsync(string username,  string password)
     {
         LoginResponse response = socket.SendAndReceive<LoginResponse>(new LoginRequest(username, password));
-        
-        
+
         Jwt = response.jwt;
-        
+
         ClaimsPrincipal principal = CreateClaimsPrincipal();
 
-        OnAuthStateChanged.Invoke(principal);
-        
-        return Task.CompletedTask;
+        OnAuthStateChanged?.Invoke(principal);
+
+        return Task.FromResult(response.loginSuccessful);
     }
 
     private ClaimsPrincipal CreateClaimsPrincipal()
@@ -34,7 +37,7 @@ public class JwtAuthService : IAuthService
         {
             return new ClaimsPrincipal();
         }
-        
+
         IEnumerable<Claim> claims = ParseClaimsFromJwt(Jwt);
 
         ClaimsIdentity identity = new(claims, "jwt");

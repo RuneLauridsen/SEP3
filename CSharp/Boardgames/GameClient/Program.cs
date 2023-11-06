@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<IGameService>(_ => new GameService());
+builder.Services.AddSingleton<IAuthService>(_ => new JwtAuthService());
 
 var app = builder.Build();
 
