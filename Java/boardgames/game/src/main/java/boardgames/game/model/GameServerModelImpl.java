@@ -28,7 +28,7 @@ public class GameServerModelImpl implements GameServerModel {
         // TODO(rune): Username/password check.
         Account account = accountService.get(request.username());
         String jwt = jwtService.create(account);
-        LoginResponse response = new LoginResponse(jwt, account);
+        LoginResponse response = new LoginResponse(account, jwt);
         return response;
     }
 
@@ -36,6 +36,8 @@ public class GameServerModelImpl implements GameServerModel {
     public MoveResponse move(MoveRequest request, Account account) {
         Match match = matchService.get(request.matchId());
 
+        // TODO(rune): JWT
+        String jwt = "";
         if (match == null) {
             return new MoveResponse(0, "", "No match found with id " + request.matchId());
         }
