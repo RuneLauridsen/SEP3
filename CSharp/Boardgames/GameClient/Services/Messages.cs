@@ -9,6 +9,11 @@ public class Messages {
     public record LoginRequest(String username, String password) { }
     public record LoginResponse(Account account, String jwt) { }
 
+    public record RegisterRequest(String username, String firstName, String lastName, String email, String password);
+
+   //Todo, lav response ordenlig
+    public record RegisterResponse(String response);
+
     public record MoveRequest(int matchId, String gameState, String jwt) { }
     public record MoveResponse(int matchId, String gameState, String invalidMoveText) { }
 

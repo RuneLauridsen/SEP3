@@ -68,11 +68,18 @@ public class JwtAuthService : IAuthService
 
     public Task LogoutAsync()
     {
-        throw new NotImplementedException();
+        Jwt = null;
+        ClaimsPrincipal principal = new();
+        OnAuthStateChanged.Invoke(principal);
+        return Task.CompletedTask;
     }
 
     public Task RegisterAsync(string userName, string firstName, string lastName, string email, string password)
     {
-        throw new NotImplementedException();
+        // Todo Gør ordenlig
+        RegisterResponse response =
+            socket.SendAndReceive<RegisterResponse>(new RegisterRequest(userName, firstName, lastName, email,
+                password));
+        return Task.CompletedTask;
     }
 }
