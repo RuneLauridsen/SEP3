@@ -15,10 +15,6 @@ import java.net.Socket;
 
 import static boardgames.game.messages.Messages.LoginRequest;
 
-// TODO(rune): Overvej WebSockets i stedet, ligesom Troels nævnte.
-// TODO(rune): Overvej WebSockets i stedet, ligesom Troels nævnte.
-// TODO(rune): Overvej WebSockets i stedet, ligesom Troels nævnte.
-
 // NOTE(rune): Håndterer enkelt forbindelse til enkelt klient.
 public class GameServerSocketHandler implements Runnable {
     private final Socket socket;

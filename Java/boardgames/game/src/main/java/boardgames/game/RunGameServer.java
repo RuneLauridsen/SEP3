@@ -17,6 +17,7 @@ public class RunGameServer {
         GameService gamePersistence = new GameServiceRest(ulr);
         MatchService matchService = new MatchServiceRest(ulr);
         ParticipantService participantService = new ParticipantServiceRest(ulr);
+        JwtService jwtService = new JwtServiceAuth0();
 
         //
         // NOTE(rune): Poor man's unit test.
@@ -46,7 +47,7 @@ public class RunGameServer {
         // NOTE(rune): Åbn socket
         //
 
-        GameServerModel model = new GameServerModelImpl(accountService, matchService, gamePersistence, participantService);
+        GameServerModel model = new GameServerModelImpl(accountService, matchService, gamePersistence, participantService, jwtService);
         GameServer server = new GameServerSocket(model, 1234);
         server.run();
     }
