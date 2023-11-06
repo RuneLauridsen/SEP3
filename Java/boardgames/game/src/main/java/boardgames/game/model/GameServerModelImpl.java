@@ -25,12 +25,14 @@ public class GameServerModelImpl implements GameServerModel {
 
     @Override
     public LoginResponse login(LoginRequest request) {
-        // TODO(rune): Username/password check.
         String hashedPassword = PasswordHashing.hash(request.password());
         Account account = accountService.get(request.username(), hashedPassword);
-        String jwt = jwtService.create(account);
-        LoginResponse response = new LoginResponse(account, jwt);
-        return response;
+        if (account != null) {
+            String jwt = jwtService.create(account);
+            return new LoginResponse(true, account, jwt);
+        } else {
+            return new LoginResponse(false, Account.empty(), "");
+        }
     }
 
     @Override

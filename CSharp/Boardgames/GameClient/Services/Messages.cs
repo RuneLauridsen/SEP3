@@ -1,5 +1,6 @@
 ﻿global using static GameClient.Data.Messages;
 using GameClient.DTO;
+using boolean = System.Boolean;
 
 namespace GameClient.Data;
 
@@ -7,7 +8,7 @@ namespace GameClient.Data;
 // copy paste nedenstående kode mellem Message.java og Message.cs.
 public class Messages {
     public record LoginRequest(String username, String password) { }
-    public record LoginResponse(Account account, String jwt) { }
+    public record LoginResponse(boolean loginSuccessful, Account account, String jwt) { }
 
     public record MoveRequest(int matchId, String gameState, String jwt) { }
     public record MoveResponse(int matchId, String gameState, String invalidMoveText) { }
