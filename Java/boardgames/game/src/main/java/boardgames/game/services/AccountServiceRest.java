@@ -18,7 +18,7 @@ public class AccountServiceRest implements AccountService {
     @Override
     public Account get(int accountId) {
         try {
-            ResponseEntity<Account> response = restTemplate.getForEntity(ulr + "/accounts/" + accountId , Account.class);
+            ResponseEntity<Account> response = restTemplate.getForEntity(ulr + "/accounts/" + accountId, Account.class);
             return response.getBody(); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -29,6 +29,17 @@ public class AccountServiceRest implements AccountService {
     public Account get(String username) {
         try {
             ResponseEntity<Account> response = restTemplate.getForEntity(ulr + "/accounts?username=" + username, Account.class);
+            return response.getBody(); // TODO(rune): Check status code.
+        } catch (RestClientException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        }
+    }
+
+    @Override
+    public Account get(String username, String hashedPassword) {
+        // TODO(rune): url escape username
+        try {
+            ResponseEntity<Account> response = restTemplate.getForEntity(ulr + "/accounts?username=" + username + "&hashedPassword=" + hashedPassword, Account.class);
             return response.getBody(); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.

@@ -2,6 +2,7 @@ package boardgames.game;
 
 import boardgames.game.model.GameServerModel;
 import boardgames.game.model.GameServerModelImpl;
+import boardgames.game.model.PasswordHashing;
 import boardgames.game.networking.GameServer;
 import boardgames.game.networking.GameServerSocket;
 import boardgames.game.services.*;
@@ -11,6 +12,12 @@ import java.util.List;
 
 public class RunGameServer {
     public static void main(String[] args) {
+
+        System.out.println(PasswordHashing.hash("julie"));
+        System.out.println(PasswordHashing.hash("maja"));
+        System.out.println(PasswordHashing.hash("simon"));
+        System.out.println(PasswordHashing.hash("rune"));
+
         // TODO(rune): Hardcoded url til persistence server.
         String ulr = "http://localhost:8080";
         AccountService accountService = new AccountServiceRest(ulr);
@@ -23,7 +30,7 @@ public class RunGameServer {
         // NOTE(rune): Poor man's unit test.
         //
 
-        if (false) {
+        if (true) {
 
             // TODO(rune): Rigtige unit tests.
 
@@ -41,6 +48,8 @@ public class RunGameServer {
             List<Participant> participants = participantService.get(match.getMatchId());
             participantService.update(participant);
             participantService.delete(participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId(), true)).getParticipantId());
+
+            Account account1 = accountService.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
         }
 
         //

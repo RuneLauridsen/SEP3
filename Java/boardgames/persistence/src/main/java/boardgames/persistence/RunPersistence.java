@@ -28,7 +28,7 @@ public class RunPersistence {
         Account account = db.getAccount(2);
         account = db.getAccount("Minii❤");
 
-        Match match =  db.createMatch(account, game);
+        Match match = db.createMatch(account, game);
         match = db.getMatch(match.getMatchId());
         db.updateMatch(match);
         db.deleteMatch(db.createMatch(account, game).getMatchId());
@@ -37,5 +37,7 @@ public class RunPersistence {
         List<Participant> participants = db.getParticipants(match);
         db.updateParticipant(participant);
         db.deleteParticipant(db.createParticipant(account, match, true, false).getParticipantId());
+
+        Account account1 = db.getAccount("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
     }
 }

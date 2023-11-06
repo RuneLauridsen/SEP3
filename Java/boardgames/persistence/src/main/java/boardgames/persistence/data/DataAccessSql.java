@@ -32,7 +32,6 @@ public class DataAccessSql implements DataAccess {
 
     public DataAccessSql() {
         try {
-
             URI uri = getClass().getResource("/ConnectionString.txt").toURI();
             String connString = Files.readString(Path.of(uri));
             conn = DriverManager.getConnection(connString);
@@ -101,6 +100,33 @@ public class DataAccessSql implements DataAccess {
         try {
             stmt = conn.prepareStatement("SELECT * FROM account WHERE username = ?");
             stmt.setString(1, username);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                Account account = new Account(
+                    rs.getInt("account_id"),
+                    rs.getString("username")
+                );
+                return account;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        } finally {
+            close(rs);
+            close(stmt);
+        }
+
+        return null; // TODO(rune): Error handling
+    }
+
+    @Override
+    public Account getAccount(String username, String hashedPassword) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = conn.prepareStatement("SELECT * FROM account WHERE username = ? AND hashed_password = ?");
+            stmt.setString(1, username);
+            stmt.setString(2, hashedPassword);
             rs = stmt.executeQuery();
             if (rs.next()) {
                 Account account = new Account(
