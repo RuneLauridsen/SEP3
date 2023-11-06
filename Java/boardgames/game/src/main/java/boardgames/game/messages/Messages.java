@@ -9,7 +9,12 @@ import boardgames.shared.dto.Match;
 // copy paste nedenstående kode mellem Messages.java og Messages.cs.
 public class Messages {
     public record LoginRequest(String username, String password) {}
-    public record LoginResponse(boolean loginSuccesful, Account account, String jwt) {}
+    public record LoginResponse(boolean loginSuccessful, Account account, String jwt) {}
+
+    public record RegisterRequest(String username, String firstName, String lastName, String email, String password) {}
+
+    //Todo, lav response ordenlig
+    public record RegisterResponse(boolean response) {}
 
     public record MoveRequest(int matchId, String gameState, String jwt) {}
     public record MoveResponse(int matchId, String gameState, String invalidMoveText) {}
