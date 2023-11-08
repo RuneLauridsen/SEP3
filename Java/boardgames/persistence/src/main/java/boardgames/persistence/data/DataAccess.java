@@ -42,7 +42,7 @@ public interface DataAccess {
     //
 
     public List<Participant> getParticipants(Match match);
-    public Participant createParticipant(Account account, Match match, boolean accepted, boolean rejected);
+    public Participant createParticipant(Account account, Match match, int participantStatus);
     public int updateParticipant(Participant participant);
     public int deleteParticipant(int participantId);
 }
