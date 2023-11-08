@@ -15,6 +15,8 @@ public interface DataAccess {
     //
 
     public Game getGame(int gameId);
+    public List<Game> getGames();
+
     // TODO(rune): Behøver vel ikke nogen create osv. da vi kun har et fast katalog?
 
     //
@@ -42,7 +44,7 @@ public interface DataAccess {
     //
 
     public List<Participant> getParticipants(Match match);
-    public Participant createParticipant(Account account, Match match, boolean accepted, boolean rejected);
+    public Participant createParticipant(Account account, Match match, int participantStatus);
     public int updateParticipant(Participant participant);
     public int deleteParticipant(int participantId);
 }

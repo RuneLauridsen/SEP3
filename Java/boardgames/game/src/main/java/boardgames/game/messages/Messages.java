@@ -3,6 +3,7 @@ package boardgames.game.messages;
 import java.util.List;
 
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
 
 // NOTE(rune): Syntax i Java og C# er tæt nok på hinanden til, at vi bare kan
@@ -21,4 +22,12 @@ public class Messages {
 
     public record GetMatchesRequest(String jwt) {}
     public record GetMatchesResponse(List<Match> matches) {}
+
+    public record CreateMatchRequest(String jwt, int gameId) {}
+    public record CreateMatchResponse(Match match) {}
+
+    public record GetGamesRequest(String jwt) {}
+    public record GetGamesResponse(List<Game> games) {}
+
+    public record NotAuthorizedResponse() {}
 }

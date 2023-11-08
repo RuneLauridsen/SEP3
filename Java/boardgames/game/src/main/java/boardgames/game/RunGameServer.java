@@ -21,7 +21,7 @@ public class RunGameServer {
         // TODO(rune): Hardcoded url til persistence server.
         String ulr = "http://localhost:8080";
         AccountService accountService = new AccountServiceRest(ulr);
-        GameService gamePersistence = new GameServiceRest(ulr);
+        GameService gameService = new GameServiceRest(ulr);
         MatchService matchService = new MatchServiceRest(ulr);
         ParticipantService participantService = new ParticipantServiceRest(ulr);
         JwtService jwtService = new JwtServiceAuth0();
@@ -50,13 +50,15 @@ public class RunGameServer {
             participantService.delete(participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId(), true)).getParticipantId());
 
             Account account1 = accountService.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
+
+            List<Game> games1 = gameService.getGames();
         }
 
         //
         // NOTE(rune): Åbn socket
         //
 
-        GameServerModel model = new GameServerModelImpl(accountService, matchService, gamePersistence, participantService, jwtService);
+        GameServerModel model = new GameServerModelImpl(accountService, matchService, gameService, participantService, jwtService);
         GameServer server = new GameServerSocket(model, 1234);
         server.run();
     }

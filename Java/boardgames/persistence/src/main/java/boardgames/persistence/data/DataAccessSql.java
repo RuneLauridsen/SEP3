@@ -67,6 +67,32 @@ public class DataAccessSql implements DataAccess {
     }
 
     @Override
+    public List<Game> getGames() {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Game> ret = new ArrayList<>();
+
+        try {
+            stmt = conn.prepareStatement("SELECT * FROM game");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Game game = new Game(
+                    rs.getInt("game_id"),
+                    rs.getString("name")
+                );
+                ret.add(game);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        } finally {
+            close(rs);
+            close(stmt);
+        }
+
+        return ret;
+    }
+
+    @Override
     public Account getAccount(int accountId) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -78,7 +104,8 @@ public class DataAccessSql implements DataAccess {
             if (rs.next()) {
                 Account account = new Account(
                     rs.getInt("account_id"),
-                    rs.getString("username")
+                    rs.getString("username"),
+                    rs.getInt("account_status")
                 );
                 return account;
             }
@@ -104,7 +131,8 @@ public class DataAccessSql implements DataAccess {
             if (rs.next()) {
                 Account account = new Account(
                     rs.getInt("account_id"),
-                    rs.getString("username")
+                    rs.getString("username"),
+                    rs.getInt("account_status")
                 );
                 return account;
             }
@@ -131,7 +159,8 @@ public class DataAccessSql implements DataAccess {
             if (rs.next()) {
                 Account account = new Account(
                     rs.getInt("account_id"),
-                    rs.getString("username")
+                    rs.getString("username"),
+                    rs.getInt("account_status")
                 );
                 return account;
             }
@@ -268,7 +297,7 @@ public class DataAccessSql implements DataAccess {
 
         try {
             stmt = conn.prepareStatement("""
-                SELECT DISTINCT m.* 
+                SELECT DISTINCT m.*
                 FROM match m
                 LEFT OUTER JOIN participant p ON p.match_id = m.match_id
                 WHERE m.owner_id = ? OR p.account_id = ? 
@@ -299,16 +328,16 @@ public class DataAccessSql implements DataAccess {
     }
 
     @Override
-    public Participant createParticipant(Account account, Match match, boolean accepted, boolean rejected) {
+    public Participant createParticipant(Account account, Match match, int participantStatus) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO participant
-                    (participant_id, match_id, account_id, accepted, rejected)
+                    (participant_id, match_id, account_id, participant_status)
                 VALUES
-                    (DEFAULT, ?, ?, ?, ?)
+                    (DEFAULT, ?, ?, ?)
                 RETURNING
                     participant_id
                 """
@@ -316,16 +345,15 @@ public class DataAccessSql implements DataAccess {
 
             stmt.setInt(1, match.getMatchId());
             stmt.setInt(2, account.getAccountId());
-            stmt.setBoolean(3, accepted);
-            stmt.setBoolean(4, rejected);
+            stmt.setInt(3, participantStatus);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
                 Participant participant = new Participant(
                     rs.getInt("participant_id"),
                     account,
-                    accepted,
-                    rejected);
+                    participantStatus
+                );
                 return participant;
             }
         } catch (SQLException e) {
@@ -358,8 +386,7 @@ public class DataAccessSql implements DataAccess {
                 Participant participant = new Participant(
                     rs.getInt("participant_id"),
                     getAccount(rs.getInt("account_id")),
-                    rs.getBoolean("accepted"),
-                    rs.getBoolean("rejected")
+                    rs.getInt("participant_status")
                 );
                 list.add(participant);
             }
@@ -379,17 +406,16 @@ public class DataAccessSql implements DataAccess {
         ResultSet rs = null;
 
         try {
-            // NOTE(m2dx): Opdaterer kun accepted og rejected, da det ikke mening
+            // NOTE(m2dx): Opdaterer kun status, da det giver ikke mening
             // at opdatere match eller account (brug createParticipant() i stedet).
             stmt = conn.prepareStatement("""
                 UPDATE participant
-                SET accepted = ?, rejected = ?
+                SET participant_status = ?
                 WHERE participant_id = ?
                 """);
 
-            stmt.setBoolean(1, participant.isAccepted());
-            stmt.setBoolean(2, participant.isRejected());
-            stmt.setInt(3, participant.getParticipantId());
+            stmt.setInt(1, participant.getParticipantStatus());
+            stmt.setInt(2, participant.getParticipantId());
             int ret = stmt.executeUpdate();
             return ret;
 

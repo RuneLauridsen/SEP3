@@ -4,6 +4,8 @@ using static GameClient.Data.Messages;
 
 namespace GameClient.Data;
 
+// TODO(rune): Måske gøre JWT til en del af protokolonne, så alle request typerne
+// ikke behøver at construct'es med en JWT?
 public class GameServiceSocket {
     private readonly string _url;
     private readonly int _port;
@@ -62,6 +64,7 @@ public class GameServiceSocket {
                 throw new Exception("Invalid response header from game server (header was '" + head + "').");
             }
             object ret = JsonUtil.FromJson(body, messageType);
+
             return ret;
         }
         else {
@@ -71,6 +74,14 @@ public class GameServiceSocket {
 
     public T SendAndReceive<T>(object request) {
         SendMessage(request);
-        return (T)ReadMessage();
+
+        object response = ReadMessage();
+        if (response is NotAuthorizedResponse) {
+            throw new NotAuthorizedException();
+        }
+
+        // TODO(rune): if (reponse is not T) { throw ... }
+
+        return (T)response;
     }
 }

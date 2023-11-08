@@ -6,15 +6,16 @@ DROP SCHEMA IF EXISTS boardgames CASCADE;
 CREATE SCHEMA boardgames;
 SET SEARCH_PATH = "boardgames";
 
-/************************
- * tabeller
- ************************/
+--------------------------------
+-- tabeller
+--------------------------------
 
 CREATE TABLE account
 (
     account_id      serial  NOT NULL PRIMARY KEY ,
     username        varchar NOT NULL UNIQUE ,
-    hashed_password varchar NOT NULL
+    hashed_password varchar NOT NULL ,
+    account_status  int     NOT NULL CHECK (account_status IN (0, 1, 2)) -- NOTE(rune): Se konstanter i Account.java
 );
 
 CREATE TABLE game
@@ -33,24 +34,23 @@ CREATE TABLE match
 
 CREATE TABLE participant
 (
-    participant_id  serial  NOT NULL PRIMARY KEY ,
-    match_id        int     NOT NULL REFERENCES match(match_id),
-    account_id      int     NOT NULL REFERENCES account(account_id),
-    accepted        bool    NOT NULL,
-    rejected        bool    NOT NULL
+    participant_id      serial  NOT NULL PRIMARY KEY ,
+    match_id            int     NOT NULL REFERENCES match(match_id),
+    account_id          int     NOT NULL REFERENCES account(account_id),
+    participant_status  int     NOT NULL CHECK (participant_status IN (0, 1, 2)) -- NOTE(rune): Se konstanter i Particpant.java
 );
 
-/************************
- * test data
- ************************/
+--------------------------------
+-- test data
+--------------------------------
 
 INSERT INTO account
-    (username, hashed_password)
+    (username, hashed_password, account_status)
 VALUES
-    ('BenDover',            'b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43'),    -- password = 'julie'
-    ('Maja123',             'f29e94153eb385ba00ebb23aca2deaa24222e449584d1d91af4ff2ccc92c8ba5'),    -- password = 'maja'
-    ('Minii❤',             '0a5d17d3b19f82f8340d3977609aa9e86b4ad8b9bd71bd9eced9271f1d5b2e4a'),    -- password = 'simon'
-    ('xdxd_2fast4u_xdxd',   'dcd69bed70a827d5fdda1d28272d508c795fb32cebab243d5208ec9ef89f6453');    -- password = 'rune'
+    ('BenDover',            'b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43', 1),    -- password = 'julie'
+    ('Maja123',             'f29e94153eb385ba00ebb23aca2deaa24222e449584d1d91af4ff2ccc92c8ba5', 1),    -- password = 'maja'
+    ('Minii❤',              '0a5d17d3b19f82f8340d3977609aa9e86b4ad8b9bd71bd9eced9271f1d5b2e4a', 1),    -- password = 'simon'
+    ('xdxd_2fast4u_xdxd',   'dcd69bed70a827d5fdda1d28272d508c795fb32cebab243d5208ec9ef89f6453', 1);    -- password = 'rune'
 
 INSERT INTO game
     (name)
@@ -61,4 +61,4 @@ VALUES
 INSERT INTO match
     (state, owner_id, game_id)
 VALUES
-    ('.........', 4, 1)
+    ('.........', 4, 1);

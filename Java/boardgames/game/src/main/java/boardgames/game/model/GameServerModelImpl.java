@@ -4,6 +4,8 @@ import boardgames.game.services.*;
 import boardgames.game.messages.Messages.*;
 import boardgames.game.tictactoe.TicTacToe;
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.CreateMatchParam;
+import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
 
 import java.util.List;
@@ -70,5 +72,21 @@ public class GameServerModelImpl implements GameServerModel {
         }
 
         return new GetMatchesResponse(matches);
+    }
+
+    @Override
+    public CreateMatchResponse createMatch(CreateMatchRequest req) {
+        JwtClaims claims = jwtService.verify(req.jwt());
+
+        CreateMatchParam param = new CreateMatchParam(claims.accountId, req.gameId());
+        Match match = matchService.create(param);
+        return new CreateMatchResponse(match);
+    }
+
+    @Override
+    public GetGamesResponse getGames(GetGamesRequest req) {
+        JwtClaims claims = jwtService.verify(req.jwt());
+        List<Game> games = gameService.getGames();
+        return new GetGamesResponse(games);
     }
 }
