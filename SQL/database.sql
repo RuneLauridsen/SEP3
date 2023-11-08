@@ -61,4 +61,4 @@ VALUES
 INSERT INTO match
     (state, owner_id, game_id)
 VALUES
-    ('.........', 4, 1)
+    ('.........', 4, 1);

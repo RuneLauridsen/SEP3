@@ -15,6 +15,8 @@ public interface DataAccess {
     //
 
     public Game getGame(int gameId);
+    public List<Game> getGames();
+
     // TODO(rune): Behøver vel ikke nogen create osv. da vi kun har et fast katalog?
 
     //

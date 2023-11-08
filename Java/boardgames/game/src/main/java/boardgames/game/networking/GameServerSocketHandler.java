@@ -53,20 +53,30 @@ public class GameServerSocketHandler implements Runnable {
         // TODO(rune): Anti-solid genopstår \o/, men vi kan godt lave noget ulækkert
         // refelection i stedet, eller bare et map der oversætter T -> Consumer<T>.
 
-        if (request instanceof LoginRequest loginRequest) {
-            LoginResponse response = model.login(loginRequest);
-            account = response.account();
-            return response;
+        if (request instanceof LoginRequest req) {
+            LoginResponse res = model.login(req);
+            account = res.account();
+            return res;
         }
 
-        if (request instanceof MoveRequest moveRequest) {
-            MoveResponse response = model.move(moveRequest, account);
-            return response;
+        if (request instanceof MoveRequest req) {
+            MoveResponse res = model.move(req, account);
+            return res;
         }
 
-        if (request instanceof GetMatchesRequest getMatchesRequest) {
-            GetMatchesResponse response = model.getMatches(getMatchesRequest, account);
-            return response;
+        if (request instanceof GetMatchesRequest req) {
+            GetMatchesResponse res = model.getMatches(req, account);
+            return res;
+        }
+
+        if (request instanceof GetGamesRequest req) {
+            GetGamesResponse res = model.getGames(req);
+            return res;
+        }
+
+        if (request instanceof CreateMatchRequest req) {
+            CreateMatchResponse res = model.createMatch(req);
+            return res;
         }
 
         return null;

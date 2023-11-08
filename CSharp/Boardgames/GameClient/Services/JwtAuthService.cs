@@ -85,4 +85,8 @@ public class JwtAuthService : IAuthService {
                 password));
         return Task.CompletedTask;
     }
+
+    public string GetJwt() {
+        return Jwt ?? "";
+    }
 }

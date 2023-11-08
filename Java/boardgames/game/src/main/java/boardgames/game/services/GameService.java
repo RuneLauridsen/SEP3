@@ -1,5 +1,9 @@
 package boardgames.game.services;
 
+import boardgames.shared.dto.Game;
+
+import java.util.List;
+
 public interface GameService {
-    // TODO(rune): List<Game> getGames()
+    public List<Game> getGames();
 }

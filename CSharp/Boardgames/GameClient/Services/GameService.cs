@@ -24,4 +24,12 @@ public class GameService : IGameService {
     public GetMatchesResponse GetMatches(GetMatchesRequest request) {
         return _socket.SendAndReceive<GetMatchesResponse>(request);
     }
+
+    public CreateMatchResponse CreateMatch(CreateMatchRequest request) {
+        return _socket.SendAndReceive<CreateMatchResponse>(request);
+    }
+
+    public GetGamesResponse GetGames(GetGamesRequest request) {
+        return _socket.SendAndReceive<GetGamesResponse>(request);
+    }
 }

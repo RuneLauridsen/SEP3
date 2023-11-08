@@ -67,6 +67,32 @@ public class DataAccessSql implements DataAccess {
     }
 
     @Override
+    public List<Game> getGames() {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Game> ret = new ArrayList<>();
+
+        try {
+            stmt = conn.prepareStatement("SELECT * FROM game");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Game game = new Game(
+                    rs.getInt("game_id"),
+                    rs.getString("name")
+                );
+                ret.add(game);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        } finally {
+            close(rs);
+            close(stmt);
+        }
+
+        return ret;
+    }
+
+    @Override
     public Account getAccount(int accountId) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
