@@ -1,0 +1,86 @@
+﻿@page "/ConfirmRegistrations"
+@using AdminClient.DTO
+@inject NavigationManager navMgr
+@using System.Collections
+
+<PageTitle>Applicants for registration:</PageTitle>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #aaaaaa;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Register Date</th>
+        <th>Confirm</th>
+    </tr>
+    @foreach (Member member in applicants)
+    {
+        <tr>
+            <td>@(member.Username)</td>
+            <td>@(member.FirstName) @(member.LastName)</td>
+            <td>@(member.Email)</td>
+            <td>@(member.RegisterDateTime)</td>
+            <td>
+                <button style="background-color: #84e387" width:5px height:5px @onclick="() => ApplicantAccept(member)">Accept</button>
+                <button style="background-color: #f25555" width:5px height:5px @onclick="() => ApplicantReject(member)">Reject</button>
+            </td>
+        </tr>
+    }
+</table>
+
+
+@code {
+    List<Member> applicants = new List<Member>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        applicants.Add(new Member()
+        {
+            Email = "BobEmail",
+            FirstName = "Bob",
+            LastName = "Hansen",
+            Username = "BobbyH",
+            RegisterDateTime = new DateTime(2023,2,23,13,30,20)
+            
+        });
+        applicants.Add(new Member()
+        {
+            Email = "JegHarEnLangEmail12345.hotmail.com",
+            FirstName = "Marry",
+            LastName = "Nelsen",
+            Username = "Marrrrrrry",
+            RegisterDateTime = new DateTime(2023,2,23,13,30,20)
+            
+        });
+    }
+
+    private void ApplicantAccept(Member member )
+    {
+        navMgr.NavigateTo("/ConfirmRegistrations");
+    }
+    private void ApplicantReject(Member member )
+    {
+        
+    }
+    
+}
