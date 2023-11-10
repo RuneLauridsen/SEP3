@@ -72,7 +72,7 @@ public class ParticipantServiceRest implements ParticipantService {
     @Override
     public void delete(int participantId) {
         try {
-            restTemplate.delete(ulr + "/matches/" + participantId);
+            restTemplate.delete(ulr + "/participants/" + participantId);
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }

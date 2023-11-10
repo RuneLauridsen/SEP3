@@ -2,7 +2,7 @@ package boardgames.persistence;
 
 import java.util.List;
 
-import boardgames.persistence.data.DataAccessSql;
+import boardgames.persistence.data.*;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
@@ -22,22 +22,26 @@ public class RunPersistence {
         //
 
         // TODO(rune): Rigtige unit tests.
-        DataAccessSql db = new DataAccessSql();
-        Game game = db.getGame(2);
+        GameData gameData = new GameDataSql();
+        AccountData accountData = new AccountDataSql();
+        MatchData matchData = new MatchDataSql();
+        ParticipantData participantData = new ParticipantDataSql();
 
-        Account account = db.getAccount(2);
-        account = db.getAccount("Minii❤");
+        Game game = gameData.get(2);
 
-        Match match = db.createMatch(account, game);
-        match = db.getMatch(match.getMatchId());
-        db.updateMatch(match);
-        db.deleteMatch(db.createMatch(account, game).getMatchId());
+        Account account = accountData.get(2);
+        account = accountData.get("Minii❤");
 
-        Participant participant = db.createParticipant(account, match, 0);
-        List<Participant> participants = db.getParticipants(match.getMatchId(), -1, -1);
-        db.updateParticipant(participant);
-        db.deleteParticipant(db.createParticipant(account, match, 0).getParticipantId());
+        Match match = matchData.create(account, game);
+        match = matchData.get(match.getMatchId());
+        matchData.update(match);
+        matchData.delete(matchData.create(account, game).getMatchId());
 
-        Account account1 = db.getAccount("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
+        Participant participant = participantData.create(account, match, 0);
+        List<Participant> participants = participantData.getAll(match.getMatchId(), -1, -1);
+        participantData.update(participant);
+        participantData.delete(participantData.create(account, match, 0).getParticipantId());
+
+        Account account1 = accountData.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
     }
 }

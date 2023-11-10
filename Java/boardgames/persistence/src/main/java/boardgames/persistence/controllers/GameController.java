@@ -1,28 +1,23 @@
 package boardgames.persistence.controllers;
 
-import boardgames.persistence.data.DataAccess;
-import boardgames.shared.dto.Account;
+import boardgames.persistence.data.GameData;
 import boardgames.shared.dto.Game;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static boardgames.persistence.controllers.ControllerUtil.*;
-
 @RestController
 public class GameController {
-    private final DataAccess dataAccess;
+    private final GameData gameData;
 
-    public GameController(DataAccess dataAccess) {
-        this.dataAccess = dataAccess;
+    public GameController(GameData gameData) {
+        this.gameData = gameData;
     }
 
     @GetMapping("games")
     public List<Game> get() {
-        List<Game> game = dataAccess.getGames();
+        List<Game> game = gameData.getAll();
         return game;
     }
 }
