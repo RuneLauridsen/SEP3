@@ -1,5 +1,6 @@
 package boardgames.game.services;
 
+import boardgames.game.model.NotAuthorizedException;
 import boardgames.shared.dto.Account;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -43,7 +44,7 @@ public class JwtServiceAuth0 implements JwtService {
     }
 
     @Override
-    public JwtClaims verify(String jwt) {
+    public JwtClaims verify(String jwt) throws NotAuthorizedException {
         try {
             DecodedJWT decoded = decrypter.verify(jwt);
             JwtClaims claims = new JwtClaims(
@@ -52,7 +53,7 @@ public class JwtServiceAuth0 implements JwtService {
             );
             return claims;
         } catch (JWTVerificationException e) {
-            return null;
+            throw new NotAuthorizedException("Could not verify JWT token.");
         }
     }
 }

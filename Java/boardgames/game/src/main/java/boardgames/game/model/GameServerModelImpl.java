@@ -43,7 +43,7 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest) {
+    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(getMatchesRequest.jwt());
         List<Match> matches = List.of();
 
@@ -55,7 +55,7 @@ public class GameServerModelImpl implements GameServerModel {
     }
 
     @Override
-    public CreateMatchResponse createMatch(CreateMatchRequest req) {
+    public CreateMatchResponse createMatch(CreateMatchRequest req) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(req.jwt());
 
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());
@@ -68,7 +68,7 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public GetGamesResponse getGames(GetGamesRequest req) {
+    public GetGamesResponse getGames(GetGamesRequest req) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(req.jwt());
         List<Game> games = gameService.getGames();
         return new GetGamesResponse(games);
@@ -90,14 +90,14 @@ public class GameServerModelImpl implements GameServerModel {
     }
 
     @Override
-    public GetParticipantsRes getParticipants(GetParticipantsReq req) {
+    public GetParticipantsRes getParticipants(GetParticipantsReq req) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(req.jwt());
         List<Participant> participants = participantService.getByMatch(req.matchId());
         return new GetParticipantsRes(participants);
     }
 
     @Override
-    public GetPendingRes getPending(GetPendingReq req) {
+    public GetPendingRes getPending(GetPendingReq req) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(req.jwt());
         List<Participant> pending = participantService.getByAccountAndStatus(claims.accountId(), Participant.PARTICIPANT_STATUS_PENDING);
         return new GetPendingRes(pending);
@@ -126,7 +126,7 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public MoveResponse move(MoveRequest request) {
+    public MoveResponse move(MoveRequest request) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(request.jwt());
         Account account = accountService.get(claims.accountId());
         Match match = matchService.get(request.matchId());

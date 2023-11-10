@@ -14,27 +14,27 @@ public interface GameServerModel {
     // Spilkataolog
     //
 
-    public GetGamesResponse getGames(GetGamesRequest req);
+    public GetGamesResponse getGames(GetGamesRequest req) throws NotAuthorizedException;
 
     //
     // Matches
     //
 
-    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest);
-    public CreateMatchResponse createMatch(CreateMatchRequest req);
+    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest) throws NotAuthorizedException;
+    public CreateMatchResponse createMatch(CreateMatchRequest req) throws NotAuthorizedException;
 
     //
     // Participants
     //
 
     public AddParticipantRes addParticipant(AddParticipantReq req) throws NotAuthorizedException;
-    public GetParticipantsRes getParticipants(GetParticipantsReq req);
-    public GetPendingRes getPending(GetPendingReq req);
+    public GetParticipantsRes getParticipants(GetParticipantsReq req) throws NotAuthorizedException;
+    public GetPendingRes getPending(GetPendingReq req) throws NotAuthorizedException;
     public DecidePendingRes decidePending(DecidePendingReq req) throws NotAuthorizedException;
 
     //
     // Move
     //
 
-    public MoveResponse move(MoveRequest request);
+    public MoveResponse move(MoveRequest request) throws NotAuthorizedException;
 }
