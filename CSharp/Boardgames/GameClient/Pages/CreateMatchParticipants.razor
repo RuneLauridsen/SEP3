@@ -9,12 +9,20 @@
 
 <PageTitle>Create match participants</PageTitle>
 
+<h1>Accounts</h1>
+
+@foreach (var a in _accounts) {
+    <p>@(a.Username) <button>Invite</button></p>
+}
+
 @code {
     [Parameter]
     public string MatchId { get; set; } = "";
 
     private int _matchId = 0;
     private Match _match = Match.Empty();
+
+    public IEnumerable<Account> _accounts = Enumerable.Empty<Account>();
 
     protected override void OnInitialized() {
         _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
@@ -23,19 +31,11 @@
             var res = GameService.GetMatch(req);
             _match = res.match;
         }
-    }
 
-    private void OnCreateClicked(Game selectedGame) {
-        try {
-            var req = new CreateMatchRequest(AuthService.GetJwt(), selectedGame.GameId);
-            var res = GameService.CreateMatch(req);
-
-            res = res;
-
-
-        } catch (NotAuthorizedException) {
-            // TODO(rune): Error handling.
+        {
+            var req = new GetAccountsReq(AuthService.GetJwt());
+            var res = GameService.GetAccounts(req);
+            _accounts = res.accounts;
         }
     }
-
 }
