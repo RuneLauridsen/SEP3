@@ -1,7 +1,9 @@
 ﻿@page "/creatematchparticipants/{matchid}"
 @using GameClient.Data
 @using GameClient.DTO
-@using static GameClient.Data.Messages;
+@using GameClient.Services
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
 @inject IGameService GameService
 @inject IAuthService AuthService
 
