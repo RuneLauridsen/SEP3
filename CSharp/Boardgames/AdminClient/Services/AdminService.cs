@@ -1,21 +1,27 @@
 ﻿using Shared.Data;
-
+using static Shared.Data.Messages;
 namespace AdminClient.Services;
 
 public class AdminService : IAdminService
 {
-    public Messages.ApproveUserResponse AcceptMember(Messages.ApproveUserRequest request)
+    private readonly ServiceSocket _socket;
+
+    public AdminService() {
+        _socket = new ServiceSocket("localhost", 1234);
+        _socket.Connect();
+    }
+    public ApproveUserResponse AcceptMember(ApproveUserRequest request)
     {
-        throw new NotImplementedException();
+        return _socket.SendAndReceive<ApproveUserResponse>(request);
     }
 
-    public Messages.RejectUserResponse RejectMember(Messages.RejectUserRequest request)
+    public RejectUserResponse RejectMember(RejectUserRequest request)
     {
-        throw new NotImplementedException();
+        return _socket.SendAndReceive<RejectUserResponse>(request);
     }
 
-    public Messages.GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(Messages.GetUsersWaitingForApprovalRequest request)
+    public GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(GetUsersWaitingForApprovalRequest request)
     {
-        throw new NotImplementedException();
+        return _socket.SendAndReceive<GetUsersWaitingForApprovalResponse>(request);
     }
 }

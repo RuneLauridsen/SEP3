@@ -1,11 +1,12 @@
 ﻿using Shared.Data;
+using static Shared.Data.Messages;
 
 namespace AdminClient.Services;
 
 public interface IAdminService
 {
-    public Messages.ApproveUserResponse AcceptMember(Messages.ApproveUserRequest request);
-    public Messages.RejectUserResponse RejectMember(Messages.RejectUserRequest request);
+    public ApproveUserResponse AcceptMember(ApproveUserRequest request);
+    public RejectUserResponse RejectMember(RejectUserRequest request);
 
-    public Messages.GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(Messages.GetUsersWaitingForApprovalRequest request);
+    public GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(GetUsersWaitingForApprovalRequest request);
 }

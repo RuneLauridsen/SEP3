@@ -3,6 +3,7 @@ using System.Text.Json;
 using GameClient.Data;
 using GameClient.DTO;
 using Shared.Data;
+using static Shared.Data.Messages;
 
 namespace GameClient.Services;
 
@@ -82,8 +83,8 @@ public class JwtAuthService : IAuthService {
     public Task RegisterAsync(string userName, string firstName, string lastName, string email, string password)
     {
         // Todo Gør ordenlig
-        Messages.RegisterResponse response =
-            socket.SendAndReceive<Messages.RegisterResponse>(new Messages.RegisterRequest(userName, firstName, lastName, email,
+        RegisterResponse response =
+            socket.SendAndReceive<RegisterResponse>(new RegisterRequest(userName, firstName, lastName, email,
                 password));
         return Task.CompletedTask;
     }
