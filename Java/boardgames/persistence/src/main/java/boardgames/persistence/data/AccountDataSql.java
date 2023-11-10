@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,10 @@ public class AccountDataSql implements AccountData {
                 Account account = new Account(
                     rs.getInt("account_id"),
                     rs.getString("username"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("email"),
+                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
                     rs.getInt("account_status")
                 );
                 return account;
@@ -62,6 +67,10 @@ public class AccountDataSql implements AccountData {
                 Account account = new Account(
                     rs.getInt("account_id"),
                     rs.getString("username"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("email"),
+                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
                     rs.getInt("account_status")
                 );
                 return account;
@@ -90,6 +99,10 @@ public class AccountDataSql implements AccountData {
                 Account account = new Account(
                     rs.getInt("account_id"),
                     rs.getString("username"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("email"),
+                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
                     rs.getInt("account_status")
                 );
                 return account;
@@ -117,6 +130,10 @@ public class AccountDataSql implements AccountData {
                 Account account = new Account(
                     rs.getInt("account_id"),
                     rs.getString("username"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("email"),
+                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
                     rs.getInt("account_status")
                 );
                 list.add(account);

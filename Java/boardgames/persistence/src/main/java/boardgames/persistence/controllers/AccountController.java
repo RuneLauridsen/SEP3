@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static boardgames.persistence.controllers.ControllerUtil.*;
@@ -27,18 +28,19 @@ public class AccountController {
     }
 
     @GetMapping("/accounts")
-    public Account get(@RequestParam(required = true) String username, @RequestParam(required = false) String hashedPassword) {
-        Account account = null;
-        if (hashedPassword == null) {
-            account = accountData.get(username);
+    public List<Account> get(@RequestParam(required = false) String username, @RequestParam(required = false) String hashedPassword) {
+        List<Account> accounts = new ArrayList<>();
+        if (username == null && hashedPassword == null) {
+            accounts.addAll(getAll());
+        } else if (hashedPassword == null) {
+            accounts.add(accountData.get(username));
         } else {
-            account = accountData.get(username, hashedPassword);
+            accounts.add(accountData.get(username, hashedPassword));
         }
-        throwIfNotFound(username, account);
-        return account;
+
+        return accounts;
     }
 
-    @GetMapping("/accounts")
     public List<Account> getAll() {
         List<Account> accounts = accountData.getAll();
         return accounts;
