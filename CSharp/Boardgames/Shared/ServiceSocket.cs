@@ -1,5 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Text;
+using GameClient;
+using GameClient.Data;
 
 
 namespace Shared.Data;
