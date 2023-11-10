@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClient", "GameClient\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminClient", "AdminClient\AdminClient.csproj", "{293AE4FB-09F0-47F9-918D-A5B6AF908C0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{5DCAD7E2-930B-484A-88A4-C250C392B96D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{293AE4FB-09F0-47F9-918D-A5B6AF908C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{293AE4FB-09F0-47F9-918D-A5B6AF908C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{293AE4FB-09F0-47F9-918D-A5B6AF908C0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DCAD7E2-930B-484A-88A4-C250C392B96D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DCAD7E2-930B-484A-88A4-C250C392B96D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DCAD7E2-930B-484A-88A4-C250C392B96D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DCAD7E2-930B-484A-88A4-C250C392B96D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
