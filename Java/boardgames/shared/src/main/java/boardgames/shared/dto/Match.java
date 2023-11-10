@@ -52,4 +52,8 @@ public class Match {
     public String toString() {
         return "#" + matchId;
     }
+
+    public static Match empty() {
+        return new Match(0, "?", 0, 0);
+    }
 }

@@ -6,6 +6,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 public class AccountServiceRest implements AccountService {
 
     private final String ulr;
@@ -44,6 +46,16 @@ public class AccountServiceRest implements AccountService {
             return response.getBody(); // TODO(rune): Check status code.
         } catch (HttpClientErrorException.NotFound e) {
             return null;
+        } catch (RestClientException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        }
+    }
+
+    @Override
+    public List<Account> get() {
+        try {
+            ResponseEntity<Account[]> response = restTemplate.getForEntity(ulr + "/accounts", Account[].class);
+            return List.of(response.getBody()); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }

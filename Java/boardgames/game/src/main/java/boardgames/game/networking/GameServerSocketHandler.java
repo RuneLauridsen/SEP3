@@ -61,6 +61,11 @@ public class GameServerSocketHandler implements Runnable {
                 return res;
             }
 
+            if (request instanceof GetMatchReq req) {
+                GetMatchRes res = model.getMatch(req);
+                return res;
+            }
+
             if (request instanceof GetMatchesRequest req) {
                 GetMatchesResponse res = model.getMatches(req);
                 return res;
@@ -68,6 +73,11 @@ public class GameServerSocketHandler implements Runnable {
 
             if (request instanceof GetGamesRequest req) {
                 GetGamesResponse res = model.getGames(req);
+                return res;
+            }
+
+            if (request instanceof GetAccountsReq req) {
+                GetAccountsRes res = model.getAccounts(req);
                 return res;
             }
 

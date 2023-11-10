@@ -60,7 +60,7 @@ public class GameServerModelImpl implements GameServerModel {
 
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());
         Match match = matchService.create(param);
-        return new CreateMatchResponse(match);
+        return new CreateMatchResponse("", match);
     }
 
     //
@@ -72,6 +72,16 @@ public class GameServerModelImpl implements GameServerModel {
         JwtClaims claims = jwtService.verify(req.jwt());
         List<Game> games = gameService.getGames();
         return new GetGamesResponse(games);
+    }
+
+    @Override
+    public GetMatchRes getMatch(GetMatchReq req) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(req.jwt());
+        Match match = matchService.get(req.matchId());
+        if (match == null) {
+            match = Match.empty();
+        }
+        return new GetMatchRes(match);
     }
 
     //
@@ -153,6 +163,13 @@ public class GameServerModelImpl implements GameServerModel {
                 return new MoveResponse(match.getMatchId(), "", "Unknown game id " + match.getMatchId());
             }
         }
+    }
+
+    @Override
+    public GetAccountsRes getAccounts(GetAccountsReq req) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(req.jwt());
+        List<Account> accounts = accountService.get();
+        return new GetAccountsRes(accounts);
     }
 
 }

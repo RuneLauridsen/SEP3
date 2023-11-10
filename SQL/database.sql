@@ -20,24 +20,27 @@ CREATE TABLE account
 
 CREATE TABLE game
 (
-    game_id         serial  NOT NULL PRIMARY KEY ,
-    name            varchar NOT NULL
+    game_id         serial      NOT NULL PRIMARY KEY ,
+    name            varchar     NOT NULL ,
+    created_on      timestamp   NOT NULL DEFAULT now()
 );
 
 CREATE TABLE match
 (
-    match_id        serial  NOT NULL PRIMARY KEY ,
-    state           varchar NOT NULL ,
-    owner_id        int     NOT NULL REFERENCES account(account_id),
-    game_id         int     NOT NULL REFERENCES game(game_id)
+    match_id        serial      NOT NULL PRIMARY KEY ,
+    state           varchar     NOT NULL ,
+    owner_id        int         NOT NULL REFERENCES account(account_id),
+    game_id         int         NOT NULL REFERENCES game(game_id) ,
+    created_on      timestamp   NOT NULL DEFAULT now()
 );
 
 CREATE TABLE participant
 (
     participant_id      serial  NOT NULL PRIMARY KEY ,
-    match_id            int     NOT NULL REFERENCES match(match_id),
-    account_id          int     NOT NULL REFERENCES account(account_id),
-    participant_status  int     NOT NULL CHECK (participant_status IN (0, 1, 2)) -- NOTE(rune): Se konstanter i Particpant.java
+    match_id            int     NOT NULL REFERENCES match(match_id) ,
+    account_id          int     NOT NULL REFERENCES account(account_id) ,
+    participant_status  int     NOT NULL CHECK (participant_status IN (0, 1, 2)) , -- NOTE(rune): Se konstanter i Particpant.java
+    created_on      timestamp   NOT NULL DEFAULT now()
 );
 
 --------------------------------
@@ -62,3 +65,6 @@ INSERT INTO match
     (state, owner_id, game_id)
 VALUES
     ('.........', 4, 1);
+
+
+SELECT * FROM match

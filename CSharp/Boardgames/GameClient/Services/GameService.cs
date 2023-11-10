@@ -1,4 +1,5 @@
-﻿using static GameClient.Data.Messages;
+﻿using GameClient.DTO;
+using static GameClient.Data.Messages;
 
 namespace GameClient.Data;
 
@@ -25,6 +26,10 @@ public class GameService : IGameService {
         return _socket.SendAndReceive<MoveResponse>(request);
     }
 
+    public GetMatchRes GetMatch(GetMatchReq req) {
+        return _socket.SendAndReceive<GetMatchRes>(req);
+    }
+
     public GetMatchesResponse GetMatches(GetMatchesRequest request) {
         return _socket.SendAndReceive<GetMatchesResponse>(request);
     }
@@ -35,6 +40,10 @@ public class GameService : IGameService {
 
     public GetGamesResponse GetGames(GetGamesRequest request) {
         return _socket.SendAndReceive<GetGamesResponse>(request);
+    }
+
+    public GetAccountsRes GetAccounts(GetAccountsReq req) {
+        return _socket.SendAndReceive<GetAccountsRes>(req);
     }
 
     public AddParticipantRes AddParticipant(AddParticipantReq req) {

@@ -20,6 +20,7 @@ public interface GameServerModel {
     // Matches
     //
 
+    public GetMatchRes getMatch(GetMatchReq req) throws NotAuthorizedException;
     public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest) throws NotAuthorizedException;
     public CreateMatchResponse createMatch(CreateMatchRequest req) throws NotAuthorizedException;
 
@@ -37,4 +38,5 @@ public interface GameServerModel {
     //
 
     public MoveResponse move(MoveRequest request) throws NotAuthorizedException;
+    public GetAccountsRes getAccounts(GetAccountsReq req) throws NotAuthorizedException;
 }

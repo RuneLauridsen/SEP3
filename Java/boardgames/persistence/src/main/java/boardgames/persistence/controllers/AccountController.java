@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 import static boardgames.persistence.controllers.ControllerUtil.*;
 
 @RestController
@@ -34,5 +36,11 @@ public class AccountController {
         }
         throwIfNotFound(username, account);
         return account;
+    }
+
+    @GetMapping("/accounts")
+    public List<Account> getAll() {
+        List<Account> accounts = accountData.getAll();
+        return accounts;
     }
 }

@@ -31,11 +31,14 @@ public class Messages {
     // Matches
     //
 
+    public record GetMatchReq(int matchId, String jwt) {}
+    public record GetMatchRes(Match match) {}
+
     public record GetMatchesRequest(String jwt) {}
     public record GetMatchesResponse(List<Match> matches) {}
 
     public record CreateMatchRequest(String jwt, int gameId) {}
-    public record CreateMatchResponse(Match match) {}
+    public record CreateMatchResponse(String errorReason, Match match) {}
 
     //
     // Participants
@@ -52,6 +55,16 @@ public class Messages {
 
     public record DecidePendingReq(int participantId, int status, String jwt) {}
     public record DecidePendingRes(String errorReason) {}
+
+    //
+    // Accounts
+    //
+
+    // TODO(rune): Paging?
+    // TODO(rune): Kun hent venner?
+    // TODO(rune): Kun hent online?
+    public record GetAccountsReq(String jwt) {}
+    public record GetAccountsRes(List<Account> accounts) {}
 
     //
     // Move

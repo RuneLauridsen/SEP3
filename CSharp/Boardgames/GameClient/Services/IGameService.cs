@@ -1,4 +1,5 @@
-﻿using static GameClient.Data.Messages;
+﻿using GameClient.DTO;
+using static GameClient.Data.Messages;
 
 namespace GameClient.Data;
 
@@ -12,9 +13,11 @@ namespace GameClient.Data;
 public interface IGameService {
     public LoginResponse Login(LoginRequest request);
     public MoveResponse Move(MoveRequest request);
+    public GetMatchRes GetMatch(GetMatchReq req);
     public GetMatchesResponse GetMatches(GetMatchesRequest request);
     public CreateMatchResponse CreateMatch(CreateMatchRequest request);
     public GetGamesResponse GetGames(GetGamesRequest request);
+    public GetAccountsRes GetAccounts(GetAccountsReq req);
 
     public AddParticipantRes AddParticipant(AddParticipantReq req);
     public GetParticipantsRes GetParticipants(GetParticipantsReq req);

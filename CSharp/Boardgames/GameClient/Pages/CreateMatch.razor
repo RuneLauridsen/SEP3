@@ -4,12 +4,16 @@
 @using static GameClient.Data.Messages;
 @inject IGameService GameService
 @inject IAuthService AuthService
+@inject NavigationManager navMgr
 
 <PageTitle>Create match</PageTitle>
 
 @foreach (var game in _availableGames) {
     <h1>@game.Name</h1>
-    <button @onclick="@(e => OnCreateClicked(game))">Create</button>
+    <div style="width: 400px; height: 300px; background-color: #dddddd;">[indsæt billede her]</div>
+    <p>
+    <button @onclick="@(e => OnCreateClicked(game))">Create match</button>
+    </p>
 }
 
 @code {
@@ -27,9 +31,11 @@
             var req = new CreateMatchRequest(AuthService.GetJwt(), selectedGame.GameId);
             var res = GameService.CreateMatch(req);
 
-            res = res;
-
-
+            if (res.errorReason == "") {
+                navMgr.NavigateTo("/creatematchparticipants/" + res.match.MatchId);
+            } else {
+                // TODO(rune): Show error reason.
+            }
         } catch (NotAuthorizedException) {
             // TODO(rune): Error handling.
         }

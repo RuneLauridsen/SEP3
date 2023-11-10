@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static boardgames.persistence.data.SqlUtil.close;
 import static boardgames.persistence.data.SqlUtil.openConnection;
@@ -102,4 +104,30 @@ public class AccountDataSql implements AccountData {
         return null; // TODO(rune): Error handling
     }
 
+    @Override
+    public List<Account> getAll() {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Account> list = new ArrayList<>();
+
+        try {
+            stmt = conn.prepareStatement("SELECT * FROM account ");
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Account account = new Account(
+                    rs.getInt("account_id"),
+                    rs.getString("username"),
+                    rs.getInt("account_status")
+                );
+                list.add(account);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        } finally {
+            close(rs);
+            close(stmt);
+        }
+
+        return list;
+    }
 }
