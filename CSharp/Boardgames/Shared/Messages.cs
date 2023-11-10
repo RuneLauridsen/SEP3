@@ -1,11 +1,11 @@
-﻿global using static GameClient.Data.Messages;
+﻿global using static Shared.Data.Messages;
 using System.Runtime.InteropServices.JavaScript;
 using GameClient.DTO;
 
 // NOTE(rune): Så vi kan copy-paste fra Java.
 using boolean = System.Boolean;
 
-namespace GameClient.Data;
+namespace Shared.Data;
 
 // TODO(rune): Måske gøre JWT til en del af protokolonne, så alle request typerne ikke behøver at construct'es med en JWT?
 // TODO(rune): Måske gøre JWT til en del af protokolonne, så alle request typerne ikke behøver at construct'es med en JWT?
@@ -86,4 +86,17 @@ public class Messages {
     //
 
     public record NotAuthorizedResponse() {}
+    
+    
+    
+    //ADMIN
+    public record ApproveUserRequest(Account Account);
+
+    public record ApproveUserResponse(boolean b);
+    public record RejectUserRequest(Account Account);
+
+    public record RejectUserResponse(boolean b);
+
+    public record GetUsersWaitingForApprovalRequest();
+    public record GetUsersWaitingForApprovalResponse(List<Account> Members);
 }

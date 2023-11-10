@@ -1,14 +1,17 @@
 ﻿using System.Security.Claims;
 using System.Text.Json;
+using GameClient.Data;
 using GameClient.DTO;
+using Shared.Data;
+using static Shared.Data.Messages;
 
-namespace GameClient.Data;
+namespace GameClient.Services;
 
 public class JwtAuthService : IAuthService {
-    private GameServiceSocket socket;
+    private ServiceSocket socket;
 
     public JwtAuthService() {
-        socket = new GameServiceSocket("localhost", 1234);
+        socket = new ServiceSocket("localhost", 1234);
         socket.Connect();
     }
 
@@ -20,7 +23,7 @@ public class JwtAuthService : IAuthService {
     //Todo, async?
     public  Task<bool> LoginAsync(string username,  string password)
     {
-        LoginResponse response = socket.SendAndReceive<LoginResponse>(new LoginRequest(username, password));
+        Messages.LoginResponse response = socket.SendAndReceive<Messages.LoginResponse>(new Messages.LoginRequest(username, password));
 
         Jwt = response.jwt;
 

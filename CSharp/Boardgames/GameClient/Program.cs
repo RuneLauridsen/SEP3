@@ -1,5 +1,6 @@
 using GameClient;
-using GameClient.Data;
+
+using GameClient.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

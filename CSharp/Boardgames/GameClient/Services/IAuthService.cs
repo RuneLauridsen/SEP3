@@ -1,4 +1,4 @@
-﻿namespace GameClient.Data;
+﻿namespace GameClient.Services;
 
 public interface IAuthService
 {
