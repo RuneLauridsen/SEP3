@@ -1,9 +1,11 @@
-﻿namespace AdminClient.Services;
+﻿using Shared.Data;
+
+namespace AdminClient.Services;
 
 public interface IAdminService
 {
-    public ApproveUserResponse AcceptMember(ApproveUserRequest request);
-    public RejectUserResponse RejectMember(RejectUserRequest request);
+    public Messages.ApproveUserResponse AcceptMember(Messages.ApproveUserRequest request);
+    public Messages.RejectUserResponse RejectMember(Messages.RejectUserRequest request);
 
-    public GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(GetUsersWaitingForApprovalRequest request);
+    public Messages.GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(Messages.GetUsersWaitingForApprovalRequest request);
 }

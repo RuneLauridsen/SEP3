@@ -1,6 +1,7 @@
-﻿using static GameClient.Data.Messages;
+﻿using Shared.Data;
+using static Shared.Data.Messages;
 
-namespace GameClient.Data;
+namespace GameClient.Services;
 
 //
 // TODO(rune):
@@ -10,10 +11,10 @@ namespace GameClient.Data;
 //
 
 public class GameService : IGameService {
-    private readonly GameServiceSocket _socket;
+    private readonly ServiceSocket _socket;
 
     public GameService() {
-        _socket = new GameServiceSocket("localhost", 1234);
+        _socket = new ServiceSocket("localhost", 1234);
         _socket.Connect();
     }
 

@@ -1,18 +1,20 @@
-﻿namespace AdminClient.Services;
+﻿using Shared.Data;
+
+namespace AdminClient.Services;
 
 public class AdminService : IAdminService
 {
-    public ApproveUserResponse AcceptMember(ApproveUserRequest request)
+    public Messages.ApproveUserResponse AcceptMember(Messages.ApproveUserRequest request)
     {
         throw new NotImplementedException();
     }
 
-    public RejectUserResponse RejectMember(RejectUserRequest request)
+    public Messages.RejectUserResponse RejectMember(Messages.RejectUserRequest request)
     {
         throw new NotImplementedException();
     }
 
-    public GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(GetUsersWaitingForApprovalRequest request)
+    public Messages.GetUsersWaitingForApprovalResponse GetUsersWaitingForApproval(Messages.GetUsersWaitingForApprovalRequest request)
     {
         throw new NotImplementedException();
     }

@@ -1,8 +1,9 @@
 ﻿@page "/ConfirmRegistrations"
-@using AdminClient.DTO
 @inject NavigationManager navMgr
 @using System.Collections
 @using AdminClient.Services
+@using GameClient.DTO
+@using global::Shared.Data
 @inject IAdminService adminService
 
 <PageTitle>Applicants for registration:</PageTitle>
@@ -33,7 +34,7 @@ tr:nth-child(even) {
         <th>Register Date</th>
         <th>Confirm</th>
     </tr>
-    @foreach (Member member in applicants)
+    @foreach (Account member in applicants)
     {
         <tr>
             <td>@(member.Username)</td>
@@ -51,22 +52,22 @@ tr:nth-child(even) {
 
 @code {
     AdminService Service;
-    List<Member> applicants = new List<Member>();
+    List<Account> applicants = new List<Account>();
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        applicants.AddRange(adminService.GetUsersWaitingForApproval(new GetUsersWaitingForApprovalRequest()).Members);
+        applicants.AddRange(adminService.GetUsersWaitingForApproval(new Messages.GetUsersWaitingForApprovalRequest()).Members);
     }
 
-    private void ApplicantAccept(Member member )
+    private void ApplicantAccept(Account account )
     {
-        adminService.AcceptMember(new ApproveUserRequest(member));
+        adminService.AcceptMember(new Messages.ApproveUserRequest(account));
         navMgr.NavigateTo("/ConfirmRegistrations");
     }
-    private void ApplicantReject(Member member )
+    private void ApplicantReject(Account account )
     {
-        adminService.RejectMember(new RejectUserRequest(member));
+        adminService.RejectMember(new Messages.RejectUserRequest(account));
         navMgr.NavigateTo("/ConfirmRegistrations");
     }
     

@@ -1,7 +1,8 @@
 ﻿@page "/creatematch"
 @using GameClient.Data
 @using GameClient.DTO
-@using static GameClient.Data.Messages;
+@using GameClient.Services
+@using global::Shared.Data
 @inject IGameService GameService
 @inject IAuthService AuthService
 
@@ -16,7 +17,7 @@
     private IEnumerable<Game> _availableGames = Enumerable.Empty<Game>();
 
     protected override Task OnInitializedAsync() {
-        var req = new GetGamesRequest(AuthService.GetJwt());
+        var req = new Messages.GetGamesRequest(AuthService.GetJwt());
         var res = GameService.GetGames(req);
         _availableGames = res.games;
         return base.OnInitializedAsync();
@@ -24,7 +25,7 @@
 
     private void OnCreateClicked(Game selectedGame) {
         try {
-            var req = new CreateMatchRequest(AuthService.GetJwt(), selectedGame.GameId);
+            var req = new Messages.CreateMatchRequest(AuthService.GetJwt(), selectedGame.GameId);
             var res = GameService.CreateMatch(req);
 
             res = res;

@@ -1,12 +1,12 @@
 ﻿using System.Net.Sockets;
 using System.Text;
-using static GameClient.Data.Messages;
 
-namespace GameClient.Data;
+
+namespace Shared.Data;
 
 // TODO(rune): Måske gøre JWT til en del af protokollen, så alle request typerne
 // ikke behøver at construct'es med en JWT?
-public class GameServiceSocket {
+public class ServiceSocket {
     private readonly string _url;
     private readonly int _port;
     private readonly Socket _socket;
@@ -14,7 +14,7 @@ public class GameServiceSocket {
     private BinaryWriter _writer = null!;
     private BinaryReader _reader = null!;
 
-    public GameServiceSocket(string url, int port) {
+    public ServiceSocket(string url, int port) {
         _url = url;
         _port = port;
         _socket = new Socket(SocketType.Stream, ProtocolType.Tcp);

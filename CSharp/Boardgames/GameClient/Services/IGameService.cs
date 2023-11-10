@@ -1,6 +1,6 @@
-﻿using static GameClient.Data.Messages;
+﻿using static Shared.Data.Messages;
 
-namespace GameClient.Data;
+namespace GameClient.Services;
 
 //
 // TODO(rune):
