@@ -57,17 +57,17 @@ tr:nth-child(even) {
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        applicants.AddRange(adminService.GetUsersWaitingForApproval(new Messages.GetUsersWaitingForApprovalRequest()).Members);
+        applicants.AddRange(adminService.GetUsersWaitingForApproval());
     }
 
     private void ApplicantAccept(Account account )
     {
-        adminService.AcceptMember(new Messages.ApproveUserRequest(account));
+        adminService.AcceptMember(account);
         navMgr.NavigateTo("/ConfirmRegistrations");
     }
     private void ApplicantReject(Account account )
     {
-        adminService.RejectMember(new Messages.RejectUserRequest(account));
+        adminService.RejectMember(account);
         navMgr.NavigateTo("/ConfirmRegistrations");
     }
     
