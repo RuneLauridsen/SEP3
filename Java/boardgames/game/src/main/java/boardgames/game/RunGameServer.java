@@ -44,10 +44,10 @@ public class RunGameServer {
             matchService.update(match);
             matchService.delete(matchService.create(new CreateMatchParam(account.getAccountId(), game.getGameId())).getMatchId());
 
-            Participant participant = participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId(), true));
-            List<Participant> participants = participantService.get(match.getMatchId());
+            Participant participant = participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId()));
+            List<Participant> participants = participantService.getByMatch(match.getMatchId());
             participantService.update(participant);
-            participantService.delete(participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId(), true)).getParticipantId());
+            participantService.delete(participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId())).getParticipantId());
 
             Account account1 = accountService.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
 

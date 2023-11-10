@@ -1,6 +1,8 @@
 package boardgames.persistence.controllers;
 
-import boardgames.persistence.data.DataAccess;
+import boardgames.persistence.data.AccountData;
+import boardgames.persistence.data.GameData;
+import boardgames.persistence.data.MatchData;
 import boardgames.shared.dto.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,10 +12,14 @@ import static boardgames.persistence.controllers.ControllerUtil.*;
 
 @RestController
 public class MatchController {
-    private final DataAccess dataAccess;
+    private final MatchData matchData;
+    private final AccountData accountData;
+    private final GameData gameData;
 
-    public MatchController(DataAccess dataAccess) {
-        this.dataAccess = dataAccess;
+    public MatchController(MatchData matchData, AccountData accountData, GameData gameData) {
+        this.matchData = matchData;
+        this.accountData = accountData;
+        this.gameData = gameData;
     }
 
     @PostMapping("matches")
@@ -21,19 +27,19 @@ public class MatchController {
         int ownerId = param.getOwnerId();
         int gameId = param.getGameId();
 
-        Account owner = dataAccess.getAccount(ownerId);
-        Game game = dataAccess.getGame(gameId);
+        Account owner = accountData.get(ownerId);
+        Game game = gameData.get(gameId);
 
         throwIfNotFound(ownerId, owner);
         throwIfNotFound(gameId, game);
 
-        Match match = dataAccess.createMatch(owner, game);
+        Match match = matchData.create(owner, game);
         return match;
     }
 
     @GetMapping("matches/{matchId}")
     public Match get(@PathVariable int matchId) {
-        Match match = dataAccess.getMatch(matchId);
+        Match match = matchData.get(matchId);
 
         throwIfNotFound(matchId, match);
 
@@ -43,19 +49,19 @@ public class MatchController {
     @PutMapping("matches/{matchId}")
     public void update(@PathVariable int matchId, @RequestBody Match match) {
         throwIfMismatched(matchId, match);
-        dataAccess.updateMatch(match);
+        matchData.update(match);
     }
 
     @DeleteMapping("matches/{matchId}")
     public void delete(@PathVariable int matchId) {
-        dataAccess.deleteParticipant(matchId);
+        matchData.delete(matchId);
     }
 
     @GetMapping("matches")
     public List<Match> getByAccount(int accountId) {
-        Account account = dataAccess.getAccount(accountId);
+        Account account = accountData.get(accountId);
         throwIfNotFound(accountId, account);
-        List<Match> matches = dataAccess.getMatchesByAccount(account);
+        List<Match> matches = matchData.getByAccount(account);
         return matches;
     }
 }

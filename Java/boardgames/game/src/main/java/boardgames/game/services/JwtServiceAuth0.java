@@ -1,5 +1,6 @@
 package boardgames.game.services;
 
+import boardgames.game.model.NotAuthorizedException;
 import boardgames.shared.dto.Account;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -16,12 +17,12 @@ public class JwtServiceAuth0 implements JwtService {
     private static final String SECRET = "voresdatabaseergod";
     private static final String ISSUER = "VIA Boardgames";
 
-    private static Algorithm algorithm;
-    private static JWTVerifier verifier;
+    private static Algorithm encrypter;
+    private static JWTVerifier decrypter;
 
     public JwtServiceAuth0() {
-        algorithm = Algorithm.HMAC256(SECRET);
-        verifier = JWT.require(algorithm)
+        encrypter = Algorithm.HMAC256(SECRET);
+        decrypter = JWT.require(encrypter)
             .withIssuer("VIA Boardgames")
             .build();
     }
@@ -37,22 +38,22 @@ public class JwtServiceAuth0 implements JwtService {
             .withExpiresAt(new Date(System.currentTimeMillis() + 1000L * 60L * 20L)) // NOTE(rune): 20 minutter.
             .withJWTId(UUID.randomUUID().toString())
             //.withNotBefore(new Date(System.currentTimeMillis() + 1000L))
-            .sign(algorithm);
+            .sign(encrypter);
 
         return token;
     }
 
     @Override
-    public JwtClaims verify(String jwt) {
+    public JwtClaims verify(String jwt) throws NotAuthorizedException {
         try {
-            DecodedJWT decoded = verifier.verify(jwt);
+            DecodedJWT decoded = decrypter.verify(jwt);
             JwtClaims claims = new JwtClaims(
                 decoded.getClaim("userId").asInt(),
                 decoded.getClaim("username").asString()
             );
             return claims;
         } catch (JWTVerificationException e) {
-            return null;
+            throw new NotAuthorizedException("Could not verify JWT token.");
         }
     }
 }

@@ -1,18 +1,40 @@
 package boardgames.game.model;
 
-import boardgames.game.messages.Messages;
 import boardgames.shared.dto.Account;
 import boardgames.game.messages.Messages.*;
-import boardgames.shared.dto.Game;
-import boardgames.shared.dto.Match;
-
-import java.util.List;
 
 public interface GameServerModel {
-    public LoginResponse login(LoginRequest request);
-    public MoveResponse move(MoveRequest request, Account account);
-    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest, Account account); // TODO(rune): Fjern account param, hvis bruger jwt nu.
+    //
+    // Authorization
+    //
 
-    public CreateMatchResponse createMatch(CreateMatchRequest req);
-    public GetGamesResponse getGames(GetGamesRequest req);
+    public LoginResponse login(LoginRequest request);
+
+    //
+    // Spilkataolog
+    //
+
+    public GetGamesResponse getGames(GetGamesRequest req) throws NotAuthorizedException;
+
+    //
+    // Matches
+    //
+
+    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest) throws NotAuthorizedException;
+    public CreateMatchResponse createMatch(CreateMatchRequest req) throws NotAuthorizedException;
+
+    //
+    // Participants
+    //
+
+    public AddParticipantRes addParticipant(AddParticipantReq req) throws NotAuthorizedException;
+    public GetParticipantsRes getParticipants(GetParticipantsReq req) throws NotAuthorizedException;
+    public GetPendingRes getPending(GetPendingReq req) throws NotAuthorizedException;
+    public DecidePendingRes decidePending(DecidePendingReq req) throws NotAuthorizedException;
+
+    //
+    // Move
+    //
+
+    public MoveResponse move(MoveRequest request) throws NotAuthorizedException;
 }

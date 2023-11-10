@@ -21,9 +21,29 @@ public class ParticipantServiceRest implements ParticipantService {
     }
 
     @Override
-    public List<Participant> get(int matchId) {
+    public Participant get(int participantId) {
         try {
-            ResponseEntity<Participant[]> response = restTemplate.getForEntity(ulr + "/matches/" + matchId + "/participants", Participant[].class);
+            ResponseEntity<Participant> response = restTemplate.getForEntity(ulr + "/participants/" + participantId, Participant.class);
+            return response.getBody(); // TODO(rune): Check status code.
+        } catch (RestClientException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        }
+    }
+
+    @Override
+    public List<Participant> getByMatch(int matchId) {
+        try {
+            ResponseEntity<Participant[]> response = restTemplate.getForEntity(ulr + "/participants?matchId=" + matchId, Participant[].class);
+            return Arrays.asList(response.getBody()); // TODO(rune): Check status code.
+        } catch (RestClientException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        }
+    }
+
+    @Override
+    public List<Participant> getByAccountAndStatus(int accountId, int participantStatus) {
+        try {
+            ResponseEntity<Participant[]> response = restTemplate.getForEntity(ulr + "/participants?accountId=" + accountId + "&participantStatus=" + participantStatus, Participant[].class);
             return Arrays.asList(response.getBody()); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -52,7 +72,7 @@ public class ParticipantServiceRest implements ParticipantService {
     @Override
     public void delete(int participantId) {
         try {
-            restTemplate.delete(ulr + "/matches/" + participantId);
+            restTemplate.delete(ulr + "/participants/" + participantId);
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }

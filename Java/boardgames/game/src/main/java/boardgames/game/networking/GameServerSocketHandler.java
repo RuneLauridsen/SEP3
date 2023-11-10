@@ -3,10 +3,10 @@ package boardgames.game.networking;
 import boardgames.game.messages.Messages;
 import boardgames.game.messages.Messages.*;
 import boardgames.game.model.GameServerModel;
+import boardgames.game.model.NotAuthorizedException;
 import boardgames.shared.dto.Account;
 import boardgames.shared.util.JsonUtil;
 import com.google.gson.JsonSyntaxException;
-import org.yaml.snakeyaml.reader.StreamReader;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -21,9 +21,6 @@ public class GameServerSocketHandler implements Runnable {
     private final GameServerModel model;
     private final DataInputStream inFromClient;
     private final DataOutputStream outToClient;
-
-    // NOTE(m2dx): Så længe activeAccount er null er bruger ikke logget ind.
-    private Account account;
 
     public GameServerSocketHandler(Socket socket, GameServerModel model) throws IOException {
         this.socket = socket;
@@ -52,31 +49,56 @@ public class GameServerSocketHandler implements Runnable {
     private Object getResponseForRequest(Object request) {
         // TODO(rune): Anti-solid genopstår \o/, men vi kan godt lave noget ulækkert
         // refelection i stedet, eller bare et map der oversætter T -> Consumer<T>.
+        try {
 
-        if (request instanceof LoginRequest req) {
-            LoginResponse res = model.login(req);
-            account = res.account();
-            return res;
-        }
+            if (request instanceof LoginRequest req) {
+                LoginResponse res = model.login(req);
+                return res;
+            }
 
-        if (request instanceof MoveRequest req) {
-            MoveResponse res = model.move(req, account);
-            return res;
-        }
+            if (request instanceof MoveRequest req) {
+                MoveResponse res = model.move(req);
+                return res;
+            }
 
-        if (request instanceof GetMatchesRequest req) {
-            GetMatchesResponse res = model.getMatches(req, account);
-            return res;
-        }
+            if (request instanceof GetMatchesRequest req) {
+                GetMatchesResponse res = model.getMatches(req);
+                return res;
+            }
 
-        if (request instanceof GetGamesRequest req) {
-            GetGamesResponse res = model.getGames(req);
-            return res;
-        }
+            if (request instanceof GetGamesRequest req) {
+                GetGamesResponse res = model.getGames(req);
+                return res;
+            }
 
-        if (request instanceof CreateMatchRequest req) {
-            CreateMatchResponse res = model.createMatch(req);
-            return res;
+            if (request instanceof CreateMatchRequest req) {
+                CreateMatchResponse res = model.createMatch(req);
+                return res;
+            }
+
+            if (request instanceof AddParticipantReq req) {
+                AddParticipantRes res = model.addParticipant(req);
+                return res;
+            }
+
+            if (request instanceof GetParticipantsReq req) {
+                GetParticipantsRes res = model.getParticipants(req);
+                return res;
+
+            }
+            if (request instanceof GetPendingReq req) {
+                GetPendingRes res = model.getPending(req);
+                return res;
+
+            }
+
+            if (request instanceof DecidePendingReq req) {
+                DecidePendingRes res = model.decidePending(req);
+                return res;
+            }
+
+        } catch (NotAuthorizedException e) {
+            return new NotAuthorizedResponse();
         }
 
         return null;
