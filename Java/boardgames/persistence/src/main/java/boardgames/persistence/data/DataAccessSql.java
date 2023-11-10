@@ -339,7 +339,7 @@ public class DataAccessSql implements DataAccess {
                 VALUES
                     (DEFAULT, ?, ?, ?)
                 RETURNING
-                    participant_id
+                    participant_id, match_id, account_id, participant_status
                 """
             );
 
@@ -351,9 +351,11 @@ public class DataAccessSql implements DataAccess {
             if (rs.next()) {
                 Participant participant = new Participant(
                     rs.getInt("participant_id"),
-                    account,
-                    participantStatus
+                    rs.getInt("participant_status"),
+                    rs.getInt("match_id"),
+                    rs.getInt("account_id")
                 );
+
                 return participant;
             }
         } catch (SQLException e) {
@@ -367,7 +369,40 @@ public class DataAccessSql implements DataAccess {
     }
 
     @Override
-    public List<Participant> getParticipants(Match match) {
+    public Participant getParticipant(int participantId) {
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = conn.prepareStatement("""
+                SELECT p.*
+                FROM participant p
+                WHERE p.participant_id = ?
+                """);
+
+            stmt.setInt(1, participantId);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new Participant(
+                    rs.getInt("participant_id"),
+                    rs.getInt("participant_status"),
+                    rs.getInt("match_id"),
+                    rs.getInt("account_id")
+                );
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        } finally {
+            close(rs);
+            close(stmt);
+        }
+
+        return null;
+    }
+
+    @Override
+    public List<Participant> getParticipants(int matchId, int accountId, int participantStatus) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Participant> list = new ArrayList<>();
@@ -376,17 +411,25 @@ public class DataAccessSql implements DataAccess {
             stmt = conn.prepareStatement("""
                 SELECT p.*
                 FROM participant p
-                WHERE p.match_id = ?
+                WHERE (? = -1 OR p.match_id = ?)
+                AND   (? = -1 OR p.account_id = ?)
+                AND   (? = -1 OR p.participant_status = ?) 
                 """);
 
-            stmt.setInt(1, match.getMatchId());
+            stmt.setInt(1, matchId);
+            stmt.setInt(2, matchId);
+            stmt.setInt(3, accountId);
+            stmt.setInt(4, accountId);
+            stmt.setInt(5, participantStatus);
+            stmt.setInt(6, participantStatus);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Participant participant = new Participant(
                     rs.getInt("participant_id"),
-                    getAccount(rs.getInt("account_id")),
-                    rs.getInt("participant_status")
+                    rs.getInt("participant_status"),
+                    rs.getInt("match_id"),
+                    rs.getInt("account_id")
                 );
                 list.add(participant);
             }

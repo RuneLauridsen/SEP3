@@ -21,14 +21,26 @@ public class ParticipantController {
         this.dataAccess = dataAccess;
     }
 
-    @GetMapping("matches/{matchId}/participants")
-    public List<Participant> get(@PathVariable int matchId) {
-        Match match = dataAccess.getMatch(matchId);
+    @GetMapping("participants/{participantId}")
+    public Participant get(@PathVariable int participantId) {
+        Participant participant = dataAccess.getParticipant(participantId);
+        throwIfNotFound(participantId, participant);
+        return participant;
+    }
 
-        throwIfNotFound(matchId, match);
+    @GetMapping("participants")
+    public List<Participant> get(@RequestParam(defaultValue = "-1") int matchId,
+                                 @RequestParam(defaultValue = "-1") int accountId,
+                                 @RequestParam(defaultValue = "-1") int participantStatus) {
+        if ((matchId != -1) ||
+            (accountId != -1) ||
+            (participantStatus != -1)) {
+            List<Participant> participants = dataAccess.getParticipants(matchId, accountId, participantStatus);
+            return participants;
 
-        List<Participant> participants = dataAccess.getParticipants(match);
-        return participants;
+        } else {
+            return List.of();
+        }
     }
 
     @PostMapping("matches/{matchId}/participants")

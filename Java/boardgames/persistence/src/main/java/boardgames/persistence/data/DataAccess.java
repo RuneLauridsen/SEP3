@@ -8,6 +8,7 @@ import boardgames.shared.dto.Participant;
 import java.util.List;
 
 // TODO(rune): Er DataAccess det rigtige term?
+// TODO(rune): Interface segregation?
 public interface DataAccess {
 
     //
@@ -43,7 +44,8 @@ public interface DataAccess {
     // Participants
     //
 
-    public List<Participant> getParticipants(Match match);
+    public Participant getParticipant(int participantId);
+    public List<Participant> getParticipants(int matchId, int accountId, int participantStatus); // NOTE(rune): -1 hvis filter skal ignorers.
     public Participant createParticipant(Account account, Match match, int participantStatus);
     public int updateParticipant(Participant participant);
     public int deleteParticipant(int participantId);

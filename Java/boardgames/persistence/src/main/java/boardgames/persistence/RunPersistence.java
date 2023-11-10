@@ -34,7 +34,7 @@ public class RunPersistence {
         db.deleteMatch(db.createMatch(account, game).getMatchId());
 
         Participant participant = db.createParticipant(account, match, 0);
-        List<Participant> participants = db.getParticipants(match);
+        List<Participant> participants = db.getParticipants(match.getMatchId(), -1, -1);
         db.updateParticipant(participant);
         db.deleteParticipant(db.createParticipant(account, match, 0).getParticipantId());
 
