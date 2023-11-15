@@ -28,3 +28,4 @@ bin
 Java/boardgames/persistence/src/main/resources/ConnectionString.txt
 
 *.user
+.mvn

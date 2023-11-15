@@ -8,12 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="shared" />
         <module name="persistence" />
-        <module name="game" />
+        <module name="logic" />
         <module name="both" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="admin" target="17" />
+      <module name="game" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -21,6 +22,7 @@
       <module name="admin" options="-parameters" />
       <module name="both" options="-parameters" />
       <module name="game" options="-parameters" />
+      <module name="logic" options="-parameters" />
       <module name="persistence" options="-parameters" />
       <module name="shared" options="-parameters" />
     </option>

@@ -9,11 +9,13 @@
         <option value="$PROJECT_DIR$/shared/pom.xml" />
         <option value="$PROJECT_DIR$/persistence/pom.xml" />
         <option value="$PROJECT_DIR$/both/pom.xml" />
+        <option value="$PROJECT_DIR$/logic/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/admin/pom.xml" />
+        <option value="$PROJECT_DIR$/game/pom.xml" />
       </set>
     </option>
   </component>

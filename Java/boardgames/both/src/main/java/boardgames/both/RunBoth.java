@@ -1,16 +1,14 @@
 package boardgames.both;
 
-import boardgames.game.RunGameServer;
+import boardgames.logic.RunLogicServer;
 import boardgames.persistence.RunPersistence;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // NOTE(rune): Kun til debug. Starter både "game" og "persistence" serverne,
 // så man ikke skal rundt i nær så mange IntelliJ menuer.
 public class RunBoth {
     public static void main(String[] args) throws InterruptedException {
         Thread thread0 = new Thread(() -> RunPersistence.main(args));
-        Thread thread1 = new Thread(() -> RunGameServer.main(args));
+        Thread thread1 = new Thread(() -> RunLogicServer.main(args));
 
         thread0.start();
         Thread.sleep(10000); // NOTE(rune): Spring startup tid med  margin. Hvad mon Spring bruger 5000 ms på?
