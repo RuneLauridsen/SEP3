@@ -13,16 +13,18 @@ public final class Account {
     public String lastName;
     public String email;
     public LocalDateTime registerDateTime;
+    public LocalDateTime createdOn;
     private int accountStatus;
 
-    public static final int ACCOUNT_STATUS_PENDING = 0;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
-    public static final int ACCOUNT_STATUS_ACCEPTED = 1; // NOTE(rune): Bruger er godkendt af admin.
-    public static final int ACCOUNT_STATUS_DELETED = 2;  // NOTE(rune): Bruger er fjernet af admin.
+    public static final int ACCOUNT_STATUS_NONE = 0;
+    public static final int ACCOUNT_STATUS_PENDING = 1;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
+    public static final int ACCOUNT_STATUS_ACCEPTED = 2; // NOTE(rune): Bruger er godkendt af admin.
+    public static final int ACCOUNT_STATUS_DELETED = 3;  // NOTE(rune): Bruger er fjernet af admin.
 
     public Account() {
     }
 
-    public Account(int accountId, String username, String firstName, String lastName, String email, LocalDateTime registerDateTime, int accountStatus) {
+    public Account(int accountId, String username, String firstName, String lastName, String email, LocalDateTime registerDateTime, int accountStatus, LocalDateTime createdOn) {
         this.accountId = accountId;
         this.username = username;
         this.firstName = firstName;
@@ -30,6 +32,7 @@ public final class Account {
         this.email = email;
         this.registerDateTime = registerDateTime;
         this.accountStatus = accountStatus;
+        this.createdOn = createdOn;
     }
 
     public int accountId() {
@@ -88,12 +91,20 @@ public final class Account {
         this.accountStatus = accountStatus;
     }
 
+    public LocalDateTime createdOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
     @Override
     public String toString() {
         return username;
     }
 
     public static Account empty() {
-        return new Account(0, "?", "?", "?", "?", LocalDateTime.of(1, 1, 1, 1, 1), ACCOUNT_STATUS_PENDING);
+        return new Account(0, "?", "?", "?", "?", LocalDateTime.of(1, 1, 1, 1, 1), ACCOUNT_STATUS_PENDING, LocalDateTime.of(1, 1, 1, 1, 1));
     }
 }

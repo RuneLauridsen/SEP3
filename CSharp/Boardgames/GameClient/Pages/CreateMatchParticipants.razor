@@ -36,7 +36,7 @@
     public string MatchId { get; set; } = "";
 
     private int _matchId = 0;
-    private Match _match = Match.Empty();
+    private Match _match = Empty.Match();
 
     private string _errorReason = "";
 
@@ -44,6 +44,7 @@
 
     protected override void OnInitialized() {
         Refresh();
+        base.OnInitialized();
     }
 
     private bool IsAlreadyInvited(Account a) {
@@ -80,5 +81,4 @@
             }
         }
     }
-
 }

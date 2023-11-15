@@ -17,7 +17,7 @@ CREATE TABLE account
     last_name               varchar NOT NULL ,
     email                   varchar NOT NULL ,
     registration_datetime   timestamp NOT NULL ,
-    account_status          int     NOT NULL CHECK (account_status IN (0, 1, 2)) , -- NOTE(rune): Se konstanter i Account.java
+    account_status          int     NOT NULL CHECK (account_status IN (0, 1, 2, 3, 4)) , -- NOTE(rune): Se konstanter i Account.java
     hashed_password         varchar NOT NULL,
     created_on              timestamp NOT NULL DEFAULT now()
 );
@@ -43,7 +43,7 @@ CREATE TABLE participant
     participant_id      serial  NOT NULL PRIMARY KEY ,
     match_id            int     NOT NULL REFERENCES match(match_id) ,
     account_id          int     NOT NULL REFERENCES account(account_id) ,
-    participant_status  int     NOT NULL CHECK (participant_status IN (0, 1, 2)) , -- NOTE(rune): Se konstanter i Particpant.java
+    participant_status  int     NOT NULL CHECK (participant_status IN (0, 1, 2, 3)) , -- NOTE(rune): Se konstanter i Particpant.java
     created_on      timestamp   NOT NULL DEFAULT now()
 );
 
@@ -73,3 +73,5 @@ VALUES
 
 SELECT * FROM participant
 SELECT * FROM account
+
+UPDATE participant SET participant_status = 1

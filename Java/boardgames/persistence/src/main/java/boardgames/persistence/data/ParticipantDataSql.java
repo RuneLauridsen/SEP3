@@ -31,11 +31,11 @@ public class ParticipantDataSql implements ParticipantData {
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO participant
-                    (participant_id, match_id, account_id, participant_status)
+                    (participant_id, match_id, account_id, participant_status, created_on)
                 VALUES
-                    (DEFAULT, ?, ?, ?)
+                    (DEFAULT, ?, ?, ?, DEFAULT)
                 RETURNING
-                    participant_id, match_id, account_id, participant_status
+                    participant_id, match_id, account_id, participant_status, created_on
                 """
             );
 
@@ -49,7 +49,8 @@ public class ParticipantDataSql implements ParticipantData {
                     rs.getInt("participant_id"),
                     rs.getInt("participant_status"),
                     rs.getInt("match_id"),
-                    rs.getInt("account_id")
+                    rs.getInt("account_id"),
+                    rs.getTimestamp("created_on").toLocalDateTime()
                 );
 
                 return participant;
@@ -84,7 +85,8 @@ public class ParticipantDataSql implements ParticipantData {
                     rs.getInt("participant_id"),
                     rs.getInt("participant_status"),
                     rs.getInt("match_id"),
-                    rs.getInt("account_id")
+                    rs.getInt("account_id"),
+                    rs.getTimestamp("created_on").toLocalDateTime()
                 );
             }
         } catch (SQLException e) {
@@ -109,7 +111,7 @@ public class ParticipantDataSql implements ParticipantData {
                 FROM participant p
                 WHERE (? = -1 OR p.match_id = ?)
                 AND   (? = -1 OR p.account_id = ?)
-                AND   (? = -1 OR p.participant_status = ?) 
+                AND   (? = -1 OR p.participant_status = ?)
                 """);
 
             stmt.setInt(1, matchId);
@@ -125,7 +127,8 @@ public class ParticipantDataSql implements ParticipantData {
                     rs.getInt("participant_id"),
                     rs.getInt("participant_status"),
                     rs.getInt("match_id"),
-                    rs.getInt("account_id")
+                    rs.getInt("account_id"),
+                    rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 list.add(participant);
             }

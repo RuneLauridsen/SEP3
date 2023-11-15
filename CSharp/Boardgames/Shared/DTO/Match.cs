@@ -5,15 +5,9 @@ public class Match {
     public required String State { get; set; }
     public required int OwnerId { get; set; }
     public required int GameId { get; set; }
+    public required DateTime CreatedOn { get; set; }
 
-    public List<Participant> Participants { get; set; } = new();
-
-    public static Match Empty() {
-        return new Match {
-            MatchId = 0,
-            State = "?",
-            OwnerId = 0,
-            GameId = 0,
-        };
-    }
+    public List<Participant> Participants { get; set; } = Empty.List<Participant>();
+    public Account Owner { get; set; } = Empty.Account();
+    public Game Game { get; set; } = Empty.Game();
 }

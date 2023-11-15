@@ -109,7 +109,7 @@ public class GameServerModelImpl implements GameServerModel {
     @Override
     public GetPendingRes getPending(GetPendingReq req, String jwt) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(jwt);
-        List<Participant> pending = participantService.getByAccountAndStatus(claims.accountId(), Participant.PARTICIPANT_STATUS_PENDING);
+        List<Participant> pending = participantService.getByAccountAndStatus(claims.accountId(), Participant.STATUS_PENDING);
         return new GetPendingRes(pending);
     }
 
@@ -121,8 +121,8 @@ public class GameServerModelImpl implements GameServerModel {
             throw new NotAuthorizedException();
         }
 
-        if (req.status() == Participant.PARTICIPANT_STATUS_ACCEPTED ||
-            req.status() == Participant.PARTICIPANT_STATUS_REJECTED) {
+        if (req.status() == Participant.STATUS_ACCEPTED ||
+            req.status() == Participant.STATUS_REJECTED) {
             participant.setParticipantStatus(req.status());
             participantService.update(participant);
             return new DecidePendingRes("");

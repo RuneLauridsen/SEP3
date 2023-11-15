@@ -31,11 +31,11 @@ public class MatchDataSql implements MatchData {
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO match
-                    (match_id, state, owner_id, game_id)
+                    (match_id, state, owner_id, game_id, created_on)
                 VALUES
-                    (DEFAULT, '', ?, ?)
+                    (DEFAULT, '', ?, ?, DEFAULT)
                 RETURNING
-                    match_id;
+                    match_id, state, owner_id, game_id, created_on;
                 """);
 
             stmt.setInt(1, owner.accountId());
@@ -45,9 +45,10 @@ public class MatchDataSql implements MatchData {
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
-                    "",
-                    owner.accountId(),
-                    game.gameId()
+                    rs.getString("state"),
+                    rs.getInt("owner_id"),
+                    rs.getInt("game_id"),
+                    rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 return match;
             }
@@ -123,7 +124,8 @@ public class MatchDataSql implements MatchData {
                     rs.getInt("match_id"),
                     rs.getString("state"),
                     rs.getInt("owner_id"),
-                    rs.getInt("game_id")
+                    rs.getInt("game_id"),
+                    rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 return match;
             }
@@ -149,7 +151,7 @@ public class MatchDataSql implements MatchData {
                 SELECT DISTINCT m.*
                 FROM match m
                 LEFT OUTER JOIN participant p ON p.match_id = m.match_id
-                WHERE m.owner_id = ? OR p.account_id = ? 
+                WHERE m.owner_id = ? OR p.account_id = ?
                 """);
 
             stmt.setInt(1, account.accountId());
@@ -161,7 +163,8 @@ public class MatchDataSql implements MatchData {
                     rs.getInt("match_id"),
                     rs.getString("state"),
                     rs.getInt("owner_id"),
-                    rs.getInt("game_id")
+                    rs.getInt("game_id"),
+                    rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 matches.add(match);
             }

@@ -2,6 +2,7 @@ package boardgames.shared.dto;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 // NOTE(rune): https://stackoverflow.com/a/76747813
@@ -11,16 +12,21 @@ public class Match {
     private String state;
     private int ownerId;
     private int gameId;
+    private LocalDateTime createdOn;
+
     private List<Participant> participants = List.of();
+    private Account owner;
+    private Game game;
 
     public Match() {
     }
 
-    public Match(int matchId, String state, int ownerId, int gameId) {
+    public Match(int matchId, String state, int ownerId, int gameId, LocalDateTime createdOn) {
         this.matchId = matchId;
         this.state = state;
         this.gameId = gameId;
         this.ownerId = ownerId;
+        this.createdOn = createdOn;
     }
 
     public int matchId() {
@@ -63,12 +69,36 @@ public class Match {
         this.participants = participants;
     }
 
+    public Account owner() {
+        return owner;
+    }
+
+    public void setOwner(Account owner) {
+        this.owner = owner;
+    }
+
+    public Game game() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public LocalDateTime createdOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
     @Override
     public String toString() {
         return "#" + matchId;
     }
 
     public static Match empty() {
-        return new Match(0, "?", 0, 0);
+        return new Match(0, "?", 0, 0, LocalDateTime.of(1, 1, 1, 1, 1));
     }
 }

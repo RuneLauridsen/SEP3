@@ -1,0 +1,86 @@
+﻿@page "/pendinginvites"
+@using GameClient.Data
+@using GameClient.DTO
+@using GameClient.Services
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
+@inject IGameService GameService
+@inject NavigationManager navMgr
+
+<PageTitle>Pending invites</PageTitle>
+
+<style>
+    .rejected {
+        color: #cc9999;
+    }
+
+    .accepted {
+       color: #99cc99;
+    }
+
+    .pending {
+
+    }
+</style>
+
+<h1>Pending</h1>
+
+@foreach (var p in _pendingInvites) {
+    string styleClass = GetStyleClass(p);
+    bool isDisabled = p.ParticipantStatus != Participant.STATUS_PENDING;
+
+    <div class="@(GetStyleClass(p))">
+        <h3>Match id = @(p.MatchId)</h3>
+        <p>Invitation created on = @(p.CreatedOn)</p>
+        <p>Match created on = @(p.Match.CreatedOn)</p>
+        <p><button @onclick="() => OnAcceptClicked(p)" disabled="@isDisabled">Accept</button></p>
+        <p><button @onclick="() => OnRejectClicked(p)" disabled="@isDisabled">Reject</button></p>
+    </div>
+}
+
+@if (_errorReason != "") {
+    <div class="alert alert-danger">@_errorReason</div>
+}
+
+@code {
+    private IEnumerable<Participant> _pendingInvites = Enumerable.Empty<Participant>();
+    private string _errorReason = "";
+
+    protected override Task OnInitializedAsync() {
+        Refresh();
+        return base.OnInitializedAsync();
+    }
+
+    private void OnAcceptClicked(Participant participant) {
+        DecidePending(participant, Participant.STATUS_ACCEPTED);
+    }
+
+    private void OnRejectClicked(Participant participant) {
+        DecidePending(participant, Participant.STATUS_REJECTED);
+    }
+
+    private void Refresh() {
+        var req = new GetPendingReq();
+        var res = GameService.GetPending(req);
+        _pendingInvites = res.participants;
+    }
+
+    private void DecidePending(Participant participant, int status) {
+        var req = new DecidePendingReq(participant.ParticipantId, Participant.STATUS_ACCEPTED);
+        var res = GameService.DecidePending(req);
+        _errorReason = res.errorReason;
+        if (_errorReason == "") {
+            participant.ParticipantStatus = status;
+        }
+    }
+
+    private string GetStyleClass(Participant p) {
+        return p.ParticipantStatus switch {
+            Participant.STATUS_ACCEPTED => "accepted",
+            Participant.STATUS_PENDING => "pending",
+            Participant.STATUS_REJECTED => "rejected",
+            _ => ""
+
+            };
+    }
+}
