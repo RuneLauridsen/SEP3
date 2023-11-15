@@ -18,6 +18,7 @@ public static class Empty {
     public static Match Match() {
         return new Match {
             MatchId = 0,
+            Status = 0,
             State = "?",
             OwnerId = 0,
             GameId = 0,
@@ -48,5 +49,9 @@ public static class Empty {
 
     public static List<T> List<T>() {
         return new List<T>();
+    }
+
+    public static IEnumerable<T> Enumerable<T>() {
+        return System.Linq.Enumerable.Empty<T>();
     }
 }

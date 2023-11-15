@@ -5,6 +5,7 @@ import boardgames.logic.services.*;
 import boardgames.logic.tictactoe.TicTacToe;
 import boardgames.shared.dto.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameServerModelImpl implements GameServerModel {
@@ -43,23 +44,30 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public GetMatchesResponse getMatches(GetMatchesRequest req, String jwt) throws NotAuthorizedException {
+    public GetMyMatchesResponse getMyMatches(GetMyMatchesRequest req, String jwt) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(jwt);
-        List<Match> matches = List.of();
+        List<Match> matches = new ArrayList<>();
 
-        if (claims.accountId() != 0) {
-            matches = matchService.getByAccount(claims.accountId());
-        }
+        matches.addAll(matchService.getAll(claims.accountId(), Match.STATUS_PENDING));
+        matches.addAll(matchService.getAll(claims.accountId(), Match.STATUS_ONGOING));
 
-        return new GetMatchesResponse(matches);
+        return new GetMyMatchesResponse(matches);
     }
 
     @Override
     public CreateMatchResponse createMatch(CreateMatchRequest req, String jwt) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(jwt);
 
+        // Create
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());
         Match match = matchService.create(param);
+
+        // Owner accepts automatically.
+        AddParticipantReq addReq = new AddParticipantReq(match.matchId(), claims.accountId());
+        AddParticipantRes addRes = addParticipant(addReq, jwt);
+        DecidePendingReq decideReq = new DecidePendingReq(addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
+        DecidePendingRes decideRes = decidePending(decideReq, jwt);
+
         return new CreateMatchResponse("", match);
     }
 
@@ -95,8 +103,8 @@ public class GameServerModelImpl implements GameServerModel {
         if (match.ownerId() != claims.accountId()) {
             throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
         }
-        participantService.create(new CreateParticipantParam(req.accountId(), req.matchId()));
-        return new AddParticipantRes("");
+        Participant created = participantService.create(new CreateParticipantParam(req.accountId(), req.matchId()));
+        return new AddParticipantRes(created, "");
     }
 
     @Override

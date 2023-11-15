@@ -35,6 +35,7 @@ CREATE TABLE match
     state           varchar     NOT NULL ,
     owner_id        int         NOT NULL REFERENCES account(account_id),
     game_id         int         NOT NULL REFERENCES game(game_id) ,
+    match_status    int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
     created_on      timestamp   NOT NULL DEFAULT now()
 );
 
@@ -65,13 +66,19 @@ VALUES
     ('TicTacToe'),
     ('Stratego');
 
-INSERT INTO match
-    (state, owner_id, game_id)
-VALUES
-    ('.........', 4, 1);
-
 
 SELECT * FROM participant
 SELECT * FROM account
+    SELECT * FROM match
 
 UPDATE participant SET participant_status = 1
+
+UPDATE match SET match_status = 1
+
+SELECT * FROM participant WHERE match_id = 9
+
+SELECT DISTINCT m.*
+FROM match m
+         LEFT OUTER JOIN participant p ON p.match_id = m.match_id
+WHERE (4 = -1 OR m.owner_id = 4 OR p.account_id = 4)
+  AND   (1 = -1 OR m.match_status = 1)

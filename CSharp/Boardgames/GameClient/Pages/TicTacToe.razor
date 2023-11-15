@@ -58,7 +58,7 @@
                 .Replace("\r", "")
                 .Trim();
 
-            var getMatchesResponse = GameService.GetMatches(new());
+            var getMatchesResponse = GameService.GetMyMatches(new());
             var match = getMatchesResponse.matches[0];
 
             var moveResponse = GameService.Move(new(match.MatchId, submitGameState));

@@ -20,7 +20,7 @@ public interface GameServerModel {
     //
 
     public GetMatchRes getMatch(GetMatchReq req, String jwt) throws NotAuthorizedException;
-    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest, String jwt) throws NotAuthorizedException;
+    public GetMyMatchesResponse getMyMatches(GetMyMatchesRequest getMatchesRequest, String jwt) throws NotAuthorizedException;
     public CreateMatchResponse createMatch(CreateMatchRequest req, String jwt) throws NotAuthorizedException;
 
     //

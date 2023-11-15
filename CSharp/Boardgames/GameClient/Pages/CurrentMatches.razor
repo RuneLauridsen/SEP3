@@ -1,0 +1,36 @@
+﻿@page "/currentmatches"
+@using GameClient.Data
+@using GameClient.DTO
+@using GameClient.Services
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
+@inject IGameService GameService
+@inject NavigationManager navMgr
+
+<PageTitle>Current matches</PageTitle>
+
+<h1>Current matches</h1>
+
+@foreach (var m in _matches) {
+    <h3>Match id = @(m.MatchId)</h3>
+}
+
+@if (_errorReason != "") {
+    <div class="alert alert-danger">@_errorReason</div>
+}
+
+@code {
+    private IEnumerable<Match> _matches = Empty.Enumerable<Match>();
+    private string _errorReason = "";
+
+    protected override Task OnInitializedAsync() {
+        Refresh();
+        return base.OnInitializedAsync();
+    }
+
+    private void Refresh() {
+        var req = new GetMyMatchesRequest();
+        var res = GameService.GetMyMatches(req);
+        _matches = res.matches;
+    }
+}

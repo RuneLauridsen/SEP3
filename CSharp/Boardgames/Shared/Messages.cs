@@ -43,8 +43,8 @@ public class Messages {
     public record GetMatchReq(int matchId) {}
     public record GetMatchRes(Match match) {}
 
-    public record GetMatchesRequest() {}
-    public record GetMatchesResponse(List<Match> matches) {}
+    public record GetMyMatchesRequest() {}
+    public record GetMyMatchesResponse(List<Match> matches) {}
 
     public record CreateMatchRequest(int gameId) {}
     public record CreateMatchResponse(String errorReason, Match match) {}
@@ -54,7 +54,7 @@ public class Messages {
     //
 
     public record AddParticipantReq(int matchId, int accountId) {} // NOTE(rune): AddParticipant = Send invitatoin.
-    public record AddParticipantRes(String errorReason) {}
+    public record AddParticipantRes(Participant participant, String errorReason) {}
 
     public record GetParticipantsReq(int matchId) {}
     public record GetParticipantsRes(List<Participant> participants) {}
@@ -87,15 +87,4 @@ public class Messages {
     //
 
     public record NotAuthorizedResponse() {}
-
-    //ADMIN
-    public record ApproveUserRequest(Account Account);
-
-    public record ApproveUserResponse(boolean b);
-    public record RejectUserRequest(Account Account);
-
-    public record RejectUserResponse(boolean b);
-
-    public record GetUsersWaitingForApprovalRequest();
-    public record GetUsersWaitingForApprovalResponse(List<Account> Members);
 }

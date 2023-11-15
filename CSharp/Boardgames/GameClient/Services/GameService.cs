@@ -33,8 +33,8 @@ public class GameService : IGameService {
         return _socket.SendAndReceive<GetMatchRes>(req);
     }
 
-    public GetMatchesResponse GetMatches(GetMatchesRequest request) {
-        return _socket.SendAndReceive<GetMatchesResponse>(request);
+    public GetMyMatchesResponse GetMyMatches(GetMyMatchesRequest request) {
+        return _socket.SendAndReceive<GetMyMatchesResponse>(request);
     }
 
     public CreateMatchResponse CreateMatch(CreateMatchRequest request) {

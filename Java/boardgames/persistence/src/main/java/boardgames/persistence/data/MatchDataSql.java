@@ -31,11 +31,11 @@ public class MatchDataSql implements MatchData {
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO match
-                    (match_id, state, owner_id, game_id, created_on)
+                    (match_id, match_status, state, owner_id, game_id, created_on)
                 VALUES
-                    (DEFAULT, '', ?, ?, DEFAULT)
+                    (DEFAULT, 1, '', ?, ?, DEFAULT)
                 RETURNING
-                    match_id, state, owner_id, game_id, created_on;
+                    match_id, match_status, state, owner_id, game_id, created_on;
                 """);
 
             stmt.setInt(1, owner.accountId());
@@ -45,6 +45,7 @@ public class MatchDataSql implements MatchData {
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
+                    rs.getInt("match_status"),
                     rs.getString("state"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
@@ -122,6 +123,7 @@ public class MatchDataSql implements MatchData {
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
+                    rs.getInt("match_status"),
                     rs.getString("state"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
@@ -141,7 +143,7 @@ public class MatchDataSql implements MatchData {
     }
 
     @Override
-    public List<Match> getByAccount(Account account) {
+    public List<Match> getAll(int accountId, int status) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Match> matches = new ArrayList<>();
@@ -151,16 +153,21 @@ public class MatchDataSql implements MatchData {
                 SELECT DISTINCT m.*
                 FROM match m
                 LEFT OUTER JOIN participant p ON p.match_id = m.match_id
-                WHERE m.owner_id = ? OR p.account_id = ?
+                WHERE (? = -1 OR m.owner_id = ? OR p.account_id = ?)
+                AND   (? = -1 OR m.match_status = ?)
                 """);
 
-            stmt.setInt(1, account.accountId());
-            stmt.setInt(2, account.accountId());
+            stmt.setInt(1, accountId);
+            stmt.setInt(2, accountId);
+            stmt.setInt(3, accountId);
+            stmt.setInt(4, status);
+            stmt.setInt(5, status);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
+                    rs.getInt("match_status"),
                     rs.getString("state"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),

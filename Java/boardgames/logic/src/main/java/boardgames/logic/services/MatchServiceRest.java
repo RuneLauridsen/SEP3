@@ -53,9 +53,9 @@ public class MatchServiceRest implements MatchService {
     }
 
     @Override
-    public List<Match> getByAccount(int accountId) {
+    public List<Match> getAll(int accountId, int status) {
         try {
-            ResponseEntity<Match[]> response = restTemplate.getForEntity(ulr + "/matches?accountId=" + accountId, Match[].class);
+            ResponseEntity<Match[]> response = restTemplate.getForEntity(ulr + "/matches?accountId=" + accountId + "&status=" + status, Match[].class);
             return List.of(response.getBody()); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.

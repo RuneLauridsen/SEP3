@@ -5,6 +5,7 @@ import boardgames.persistence.data.GameData;
 import boardgames.persistence.data.MatchData;
 import boardgames.persistence.data.ParticipantData;
 import boardgames.shared.dto.*;
+import org.postgresql.jdbc.PreferQueryMode;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -61,10 +62,9 @@ public class MatchController {
     }
 
     @GetMapping("matches")
-    public List<Match> getByAccount(int accountId) {
-        Account account = accountData.get(accountId);
-        throwIfNotFound(accountId, account);
-        List<Match> matches = matchData.getByAccount(account);
+    public List<Match> getAll(@RequestParam(defaultValue = "-1") int accountId,
+                              @RequestParam(defaultValue = "-1") int status) {
+        List<Match> matches = matchData.getAll(accountId, status);
         return matches;
     }
 }

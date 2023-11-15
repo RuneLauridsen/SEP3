@@ -10,6 +10,7 @@ import java.util.List;
 public class Match {
     private int matchId;
     private String state;
+    private int status;
     private int ownerId;
     private int gameId;
     private LocalDateTime createdOn;
@@ -18,11 +19,17 @@ public class Match {
     private Account owner;
     private Game game;
 
+    public static final int STATUS_NONE = 0;
+    public static final int STATUS_PENDING = 1;
+    public static final int STATUS_ONGOING = 2;
+    public static final int STATUS_FINISHED = 3;
+
     public Match() {
     }
 
-    public Match(int matchId, String state, int ownerId, int gameId, LocalDateTime createdOn) {
+    public Match(int matchId, int status, String state, int ownerId, int gameId, LocalDateTime createdOn) {
         this.matchId = matchId;
+        this.status = status;
         this.state = state;
         this.gameId = gameId;
         this.ownerId = ownerId;
@@ -35,6 +42,14 @@ public class Match {
 
     public void setMatchId(int matchId) {
         this.matchId = matchId;
+    }
+
+    public int status() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String state() {
