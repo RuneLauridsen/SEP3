@@ -26,3 +26,5 @@ replay_pid*
 obj
 bin
 Java/boardgames/persistence/src/main/resources/ConnectionString.txt
+
+*.user

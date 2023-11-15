@@ -10,12 +10,14 @@
         <module name="shared" />
         <module name="persistence" />
         <module name="game" />
+        <module name="both" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="admin" options="-parameters" />
+      <module name="both" options="-parameters" />
       <module name="game" options="-parameters" />
       <module name="persistence" options="-parameters" />
       <module name="shared" options="-parameters" />

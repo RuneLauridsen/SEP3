@@ -1,7 +1,11 @@
 package boardgames.shared.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import java.time.LocalDateTime;
 
+// NOTE(rune): https://stackoverflow.com/a/76747813
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public final class Account {
     private int accountId;
     private String username;
@@ -28,7 +32,7 @@ public final class Account {
         this.accountStatus = accountStatus;
     }
 
-    public int getAccountId() {
+    public int accountId() {
         return accountId;
     }
 
@@ -36,7 +40,7 @@ public final class Account {
         this.accountId = accountId;
     }
 
-    public String getUsername() {
+    public String username() {
         return username;
     }
 
@@ -44,7 +48,7 @@ public final class Account {
         this.username = username;
     }
 
-    public String getFirstName() {
+    public String firstName() {
         return firstName;
     }
 
@@ -52,7 +56,7 @@ public final class Account {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String lastName() {
         return lastName;
     }
 
@@ -60,7 +64,7 @@ public final class Account {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
+    public String email() {
         return email;
     }
 
@@ -68,7 +72,7 @@ public final class Account {
         this.email = email;
     }
 
-    public LocalDateTime getRegisterDateTime() {
+    public LocalDateTime registerDateTime() {
         return registerDateTime;
     }
 
@@ -76,7 +80,7 @@ public final class Account {
         this.registerDateTime = registerDateTime;
     }
 
-    public int getAccountStatus() {
+    public int accountStatus() {
         return accountStatus;
     }
 
@@ -90,6 +94,6 @@ public final class Account {
     }
 
     public static Account empty() {
-        return new Account(0, "?", "?", "?", "?", LocalDateTime.MIN, ACCOUNT_STATUS_PENDING);
+        return new Account(0, "?", "?", "?", "?", LocalDateTime.of(1, 1, 1, 1, 1), ACCOUNT_STATUS_PENDING);
     }
 }

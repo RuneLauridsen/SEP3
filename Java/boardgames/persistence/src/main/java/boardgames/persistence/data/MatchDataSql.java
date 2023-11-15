@@ -38,16 +38,16 @@ public class MatchDataSql implements MatchData {
                     match_id;
                 """);
 
-            stmt.setInt(1, owner.getAccountId());
-            stmt.setInt(2, game.getGameId());
+            stmt.setInt(1, owner.accountId());
+            stmt.setInt(2, game.gameId());
             rs = stmt.executeQuery();
 
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
                     "",
-                    owner.getAccountId(),
-                    game.getGameId()
+                    owner.accountId(),
+                    game.gameId()
                 );
                 return match;
             }
@@ -75,9 +75,9 @@ public class MatchDataSql implements MatchData {
                 WHERE match_id = ?
                 """);
 
-            stmt.setString(1, match.getState());
-            stmt.setInt(2, match.getOwnerId());
-            stmt.setInt(3, match.getMatchId());
+            stmt.setString(1, match.state());
+            stmt.setInt(2, match.ownerId());
+            stmt.setInt(3, match.matchId());
             int ret = stmt.executeUpdate();
             return ret;
 
@@ -152,8 +152,8 @@ public class MatchDataSql implements MatchData {
                 WHERE m.owner_id = ? OR p.account_id = ? 
                 """);
 
-            stmt.setInt(1, account.getAccountId());
-            stmt.setInt(2, account.getAccountId());
+            stmt.setInt(1, account.accountId());
+            stmt.setInt(2, account.accountId());
             rs = stmt.executeQuery();
 
             while (rs.next()) {

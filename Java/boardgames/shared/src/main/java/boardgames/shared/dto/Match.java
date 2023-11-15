@@ -1,10 +1,17 @@
 package boardgames.shared.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+import java.util.List;
+
+// NOTE(rune): https://stackoverflow.com/a/76747813
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Match {
     private int matchId;
     private String state;
     private int ownerId;
     private int gameId;
+    private List<Participant> participants = List.of();
 
     public Match() {
     }
@@ -16,7 +23,7 @@ public class Match {
         this.ownerId = ownerId;
     }
 
-    public int getMatchId() {
+    public int matchId() {
         return matchId;
     }
 
@@ -24,7 +31,7 @@ public class Match {
         this.matchId = matchId;
     }
 
-    public String getState() {
+    public String state() {
         return state;
     }
 
@@ -32,7 +39,7 @@ public class Match {
         this.state = state;
     }
 
-    public int getOwnerId() {
+    public int ownerId() {
         return ownerId;
     }
 
@@ -40,12 +47,20 @@ public class Match {
         this.ownerId = ownerId;
     }
 
-    public int getGameId() {
+    public int gameId() {
         return gameId;
     }
 
     public void setGameId(int gameId) {
         this.gameId = gameId;
+    }
+
+    public List<Participant> participants() {
+        return participants;
+    }
+
+    public void setParticipants(List<Participant> participants) {
+        this.participants = participants;
     }
 
     @Override

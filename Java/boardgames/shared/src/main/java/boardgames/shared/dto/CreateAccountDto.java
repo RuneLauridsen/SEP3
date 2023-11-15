@@ -1,5 +1,9 @@
 package boardgames.shared.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+// NOTE(rune): https://stackoverflow.com/a/76747813
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class CreateAccountDto {
     private String username;
     private String hashedPassword;
@@ -9,7 +13,7 @@ public class CreateAccountDto {
         this.hashedPassword = hashedPassword;
     }
 
-    public String getUsername() {
+    public String username() {
         return username;
     }
 
@@ -17,7 +21,7 @@ public class CreateAccountDto {
         this.username = username;
     }
 
-    public String getHashedPassword() {
+    public String hashedPassword() {
         return hashedPassword;
     }
 

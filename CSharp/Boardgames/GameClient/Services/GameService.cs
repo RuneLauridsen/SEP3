@@ -12,10 +12,13 @@ namespace GameClient.Services;
 
 public class GameService : IGameService {
     private readonly ServiceSocket _socket;
+    private readonly IAuthService _authService;
 
-    public GameService() {
+    public GameService(IAuthService authService) {
+        _authService = authService;
         _socket = new ServiceSocket("localhost", 1234);
         _socket.Connect();
+        _socket._getJwtFunc = () => _authService.GetJwt();
     }
 
     public LoginResponse Login(LoginRequest request) {

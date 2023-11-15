@@ -6,6 +6,8 @@ public class Match {
     public required int OwnerId { get; set; }
     public required int GameId { get; set; }
 
+    public List<Participant> Participants { get; set; } = new();
+
     public static Match Empty() {
         return new Match {
             MatchId = 0,

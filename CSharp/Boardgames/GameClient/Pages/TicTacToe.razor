@@ -58,12 +58,10 @@
                 .Replace("\r", "")
                 .Trim();
 
-            var jwt = ""; // TODO(rune): JWT.
-
-            var getMatchesResponse = GameService.GetMatches(new(jwt));
+            var getMatchesResponse = GameService.GetMatches(new());
             var match = getMatchesResponse.matches[0];
 
-            var moveResponse = GameService.Move(new(match.MatchId, submitGameState, jwt));
+            var moveResponse = GameService.Move(new(match.MatchId, submitGameState));
             var newGameState = string.Join("\n", moveResponse.gameState.Chunk(3).Select(x => new string(x))); // NOTE(rune): Indsæt \n ved hver 3. char.
             var invalidMoveText = moveResponse.invalidMoveText;
 

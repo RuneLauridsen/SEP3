@@ -1,5 +1,9 @@
 package boardgames.shared.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+// NOTE(rune): https://stackoverflow.com/a/76747813
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Participant {
     private int participantId;
     private int participantStatus;
@@ -23,7 +27,7 @@ public class Participant {
         this.participantStatus = participantStatus;
     }
 
-    public int getParticipantId() {
+    public int participantId() {
         return participantId;
     }
 
@@ -31,7 +35,7 @@ public class Participant {
         this.participantId = participantId;
     }
 
-    public int getMatchId() {
+    public int matchId() {
         return matchId;
     }
 
@@ -39,7 +43,7 @@ public class Participant {
         this.matchId = matchId;
     }
 
-    public int getAccountId() {
+    public int accountId() {
         return accountId;
     }
 
@@ -47,7 +51,7 @@ public class Participant {
         this.accountId = accountId;
     }
 
-    public Match getMatch() {
+    public Match match() {
         return match;
     }
 
@@ -55,7 +59,7 @@ public class Participant {
         this.match = match;
     }
 
-    public Account getAccount() {
+    public Account account() {
         return account;
     }
 
@@ -63,7 +67,7 @@ public class Participant {
         this.account = account;
     }
 
-    public int getParticipantStatus() {
+    public int participantStatus() {
         return participantStatus;
     }
 

@@ -32,8 +32,8 @@ public class JwtServiceAuth0 implements JwtService {
         String token = JWT.create()
             .withIssuer(ISSUER)
             //.withSubject("Baeldung Details")
-            .withClaim("userId", account.getAccountId())
-            .withClaim("username", account.getUsername())
+            .withClaim("userId", account.accountId())
+            .withClaim("username", account.username())
             .withIssuedAt(new Date())
             .withExpiresAt(new Date(System.currentTimeMillis() + 1000L * 60L * 20L)) // NOTE(rune): 20 minutter.
             .withJWTId(UUID.randomUUID().toString())

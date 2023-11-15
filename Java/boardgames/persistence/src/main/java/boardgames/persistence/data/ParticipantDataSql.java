@@ -39,8 +39,8 @@ public class ParticipantDataSql implements ParticipantData {
                 """
             );
 
-            stmt.setInt(1, match.getMatchId());
-            stmt.setInt(2, account.getAccountId());
+            stmt.setInt(1, match.matchId());
+            stmt.setInt(2, account.accountId());
             stmt.setInt(3, participantStatus);
             rs = stmt.executeQuery();
 
@@ -153,8 +153,8 @@ public class ParticipantDataSql implements ParticipantData {
                 WHERE participant_id = ?
                 """);
 
-            stmt.setInt(1, participant.getParticipantStatus());
-            stmt.setInt(2, participant.getParticipantId());
+            stmt.setInt(1, participant.participantStatus());
+            stmt.setInt(2, participant.participantId());
             int ret = stmt.executeUpdate();
             return ret;
 

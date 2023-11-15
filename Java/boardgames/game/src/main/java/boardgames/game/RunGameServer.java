@@ -2,7 +2,6 @@ package boardgames.game;
 
 import boardgames.game.model.GameServerModel;
 import boardgames.game.model.GameServerModelImpl;
-import boardgames.game.model.PasswordHashing;
 import boardgames.game.networking.GameServer;
 import boardgames.game.networking.GameServerSocket;
 import boardgames.game.services.*;
@@ -12,12 +11,6 @@ import java.util.List;
 
 public class RunGameServer {
     public static void main(String[] args) {
-
-        System.out.println(PasswordHashing.hash("julie"));
-        System.out.println(PasswordHashing.hash("maja"));
-        System.out.println(PasswordHashing.hash("simon"));
-        System.out.println(PasswordHashing.hash("rune"));
-
         // TODO(rune): Hardcoded url til persistence server.
         String ulr = "http://localhost:8080";
         AccountService accountService = new AccountServiceRest(ulr);
@@ -39,15 +32,15 @@ public class RunGameServer {
             Account account = accountService.get(2);
             account = accountService.get("Minii❤");
 
-            Match match = matchService.create(new CreateMatchParam(account.getAccountId(), game.getGameId()));
-            match = matchService.get(match.getMatchId());
+            Match match = matchService.create(new CreateMatchParam(account.accountId(), game.gameId()));
+            match = matchService.get(match.matchId());
             matchService.update(match);
-            matchService.delete(matchService.create(new CreateMatchParam(account.getAccountId(), game.getGameId())).getMatchId());
+            matchService.delete(matchService.create(new CreateMatchParam(account.accountId(), game.gameId())).matchId());
 
-            Participant participant = participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId()));
-            List<Participant> participants = participantService.getByMatch(match.getMatchId());
+            Participant participant = participantService.create(new CreateParticipantParam(account.accountId(), match.matchId()));
+            List<Participant> participants = participantService.getByMatch(match.matchId());
             participantService.update(participant);
-            participantService.delete(participantService.create(new CreateParticipantParam(account.getAccountId(), match.getMatchId())).getParticipantId());
+            participantService.delete(participantService.create(new CreateParticipantParam(account.accountId(), match.matchId())).participantId());
 
             Account account1 = accountService.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
 

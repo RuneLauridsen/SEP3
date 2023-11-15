@@ -1,11 +1,8 @@
 package boardgames.game.services;
 
-import boardgames.shared.dto.Account;
 import boardgames.shared.dto.CreateMatchParam;
-import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -41,7 +38,7 @@ public class MatchServiceRest implements MatchService {
 
     public void update(Match match) {
         try {
-            restTemplate.put(ulr + "/matches/" + match.getMatchId(), match);
+            restTemplate.put(ulr + "/matches/" + match.matchId(), match);
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }

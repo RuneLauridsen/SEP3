@@ -51,13 +51,13 @@ public class ParticipantController {
 
     @PostMapping("matches/{matchId}/participants")
     public Participant create(@PathVariable int matchId, @RequestBody CreateParticipantParam param) {
-        if (matchId != param.getMatchId()) {
+        if (matchId != param.matchId()) {
             throw new BadRequestException("Match id in path (" + matchId + ") does not match id in body (" + matchId + ").");
         }
 
-        int accountId = param.getAccountId();
+        int accountId = param.accountId();
         Match match = matchData.get(matchId);
-        Account account = accountData.get(param.getAccountId());
+        Account account = accountData.get(param.accountId());
 
         throwIfNotFound(matchId, match);
         throwIfNotFound(accountId, account);

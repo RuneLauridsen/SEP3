@@ -3,6 +3,7 @@ package boardgames.persistence.controllers;
 import boardgames.persistence.data.AccountData;
 import boardgames.persistence.data.GameData;
 import boardgames.persistence.data.MatchData;
+import boardgames.persistence.data.ParticipantData;
 import boardgames.shared.dto.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,17 +16,19 @@ public class MatchController {
     private final MatchData matchData;
     private final AccountData accountData;
     private final GameData gameData;
+    private final ParticipantData participantData;
 
-    public MatchController(MatchData matchData, AccountData accountData, GameData gameData) {
+    public MatchController(MatchData matchData, AccountData accountData, GameData gameData, ParticipantData participantData) {
         this.matchData = matchData;
         this.accountData = accountData;
         this.gameData = gameData;
+        this.participantData = participantData;
     }
 
     @PostMapping("matches")
     public Match create(@RequestBody CreateMatchParam param) {
-        int ownerId = param.getOwnerId();
-        int gameId = param.getGameId();
+        int ownerId = param.ownerId();
+        int gameId = param.gameId();
 
         Account owner = accountData.get(ownerId);
         Game game = gameData.get(gameId);
@@ -40,9 +43,9 @@ public class MatchController {
     @GetMapping("matches/{matchId}")
     public Match get(@PathVariable int matchId) {
         Match match = matchData.get(matchId);
-
         throwIfNotFound(matchId, match);
-
+        List<Participant> participants = participantData.getAll(matchId, -1, -1);
+        match.setParticipants(participants);
         return match;
     }
 

@@ -1,5 +1,9 @@
 package boardgames.shared.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+// NOTE(rune): https://stackoverflow.com/a/76747813
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Game {
     private int gameId;
     private String name;
@@ -12,7 +16,7 @@ public class Game {
         this.name = name;
     }
 
-    public int getGameId() {
+    public int gameId() {
         return gameId;
     }
 
@@ -20,7 +24,7 @@ public class Game {
         this.gameId = gameId;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 

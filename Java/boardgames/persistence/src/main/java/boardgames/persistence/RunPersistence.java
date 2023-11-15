@@ -33,14 +33,14 @@ public class RunPersistence {
         account = accountData.get("Minii❤");
 
         Match match = matchData.create(account, game);
-        match = matchData.get(match.getMatchId());
+        match = matchData.get(match.matchId());
         matchData.update(match);
-        matchData.delete(matchData.create(account, game).getMatchId());
+        matchData.delete(matchData.create(account, game).matchId());
 
         Participant participant = participantData.create(account, match, 0);
-        List<Participant> participants = participantData.getAll(match.getMatchId(), -1, -1);
+        List<Participant> participants = participantData.getAll(match.matchId(), -1, -1);
         participantData.update(participant);
-        participantData.delete(participantData.create(account, match, 0).getParticipantId());
+        participantData.delete(participantData.create(account, match, 0).participantId());
 
         Account account1 = accountData.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
     }

@@ -1,5 +1,9 @@
 package boardgames.shared.dto;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+// NOTE(rune): https://stackoverflow.com/a/76747813
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class CreateParticipantParam {
     private int matchId;
     private int accountId;
@@ -12,11 +16,11 @@ public class CreateParticipantParam {
         this.accountId = accountId;
     }
 
-    public int getMatchId() {
+    public int matchId() {
         return matchId;
     }
 
-    public int getAccountId() {
+    public int accountId() {
         return accountId;
     }
 }

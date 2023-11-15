@@ -1,5 +1,6 @@
 package boardgames.game.networking;
 
+import boardgames.game.messages.Message;
 import boardgames.game.messages.Messages;
 import boardgames.game.messages.Messages.*;
 import boardgames.game.model.GameServerModel;
@@ -34,10 +35,15 @@ public class GameServerSocketHandler implements Runnable {
     public void run() {
         try {
             while (true) {
-                Object request = readMessage();
-                Object response = getResponseForRequest(request);
+                Message incomingMessage = readMessage();
+                long nanoBegin = System.nanoTime();
+                Object response = getResponseForRequest(incomingMessage);
+                long nanoEnd = System.nanoTime();
+                long nanoDiff = nanoEnd - nanoBegin;
+                double elapsedMillis = (double) nanoDiff / (1000.0 * 1000.0);
+
                 // TODO(rune): reponse null check -> getResponseForRequest() giver null, hvis client sender invalid data.
-                sendMessage(response);
+                sendMessage(response, elapsedMillis);
             }
         } catch (IOException e) {
             // NOTE(rune): Når server er ved at lukke smider readObject() en IOException
@@ -46,64 +52,66 @@ public class GameServerSocketHandler implements Runnable {
         }
     }
 
-    private Object getResponseForRequest(Object request) {
+    private Object getResponseForRequest(Message msg) {
         // TODO(rune): Anti-solid genopstår \o/, men vi kan godt lave noget ulækkert
         // refelection i stedet, eller bare et map der oversætter T -> Consumer<T>.
-        try {
+        String jwt = msg.head().jwt();
+        Object body = msg.body();
 
-            if (request instanceof LoginRequest req) {
+        try {
+            if (body instanceof LoginRequest req) {
                 LoginResponse res = model.login(req);
                 return res;
             }
 
-            if (request instanceof MoveRequest req) {
-                MoveResponse res = model.move(req);
+            if (body instanceof MoveRequest req) {
+                MoveResponse res = model.move(req, jwt);
                 return res;
             }
 
-            if (request instanceof GetMatchReq req) {
-                GetMatchRes res = model.getMatch(req);
+            if (body instanceof GetMatchReq req) {
+                GetMatchRes res = model.getMatch(req, jwt);
                 return res;
             }
 
-            if (request instanceof GetMatchesRequest req) {
-                GetMatchesResponse res = model.getMatches(req);
+            if (body instanceof GetMatchesRequest req) {
+                GetMatchesResponse res = model.getMatches(req, jwt);
                 return res;
             }
 
-            if (request instanceof GetGamesRequest req) {
-                GetGamesResponse res = model.getGames(req);
+            if (body instanceof GetGamesRequest req) {
+                GetGamesResponse res = model.getGames(req, jwt);
                 return res;
             }
 
-            if (request instanceof GetAccountsReq req) {
-                GetAccountsRes res = model.getAccounts(req);
+            if (body instanceof GetAccountsReq req) {
+                GetAccountsRes res = model.getAccounts(req, jwt);
                 return res;
             }
 
-            if (request instanceof CreateMatchRequest req) {
-                CreateMatchResponse res = model.createMatch(req);
+            if (body instanceof CreateMatchRequest req) {
+                CreateMatchResponse res = model.createMatch(req, jwt);
                 return res;
             }
 
-            if (request instanceof AddParticipantReq req) {
-                AddParticipantRes res = model.addParticipant(req);
+            if (body instanceof AddParticipantReq req) {
+                AddParticipantRes res = model.addParticipant(req, jwt);
                 return res;
             }
 
-            if (request instanceof GetParticipantsReq req) {
-                GetParticipantsRes res = model.getParticipants(req);
+            if (body instanceof GetParticipantsReq req) {
+                GetParticipantsRes res = model.getParticipants(req, jwt);
                 return res;
 
             }
-            if (request instanceof GetPendingReq req) {
-                GetPendingRes res = model.getPending(req);
+            if (body instanceof GetPendingReq req) {
+                GetPendingRes res = model.getPending(req, jwt);
                 return res;
 
             }
 
-            if (request instanceof DecidePendingReq req) {
-                DecidePendingRes res = model.decidePending(req);
+            if (body instanceof DecidePendingReq req) {
+                DecidePendingRes res = model.decidePending(req, jwt);
                 return res;
             }
 
@@ -124,19 +132,19 @@ public class GameServerSocketHandler implements Runnable {
         return s;
     }
 
-    private Object readMessage() throws IOException {
+    private Message readMessage() throws IOException {
         String full = readString();
         int idx = full.indexOf('|');
         if (idx > 0 && idx < full.length() - 1) {
-            String head = full.substring(0, idx);
-            String body = full.substring(idx + 1);
+            String headString = full.substring(0, idx);
+            String bodyString = full.substring(idx + 1);
 
             try {
-                String expected = LoginRequest.class.getName();
-                String messageTypeName = Messages.class.getName() + "$" + head; // NOTE(rune): "$" betyder nested class.
-                Class<?> messageType = Class.forName(messageTypeName);
-                Object ret = JsonUtil.fromJson(body, messageType);
-                return ret;
+                Head head = JsonUtil.fromJson(headString, Head.class);
+                String bodyTypeName = Messages.class.getName() + "$" + head.bodyType(); // NOTE(rune): "$" betyder nested class.
+                Class<?> bodyType = Class.forName(bodyTypeName);
+                Object body = JsonUtil.fromJson(bodyString, bodyType);
+                return new Message(head, body);
             } catch (JsonSyntaxException e) {
                 // TODO(rune): Logging.
                 return null;
@@ -150,10 +158,12 @@ public class GameServerSocketHandler implements Runnable {
         }
     }
 
-    private void sendMessage(Object object) throws IOException {
-        String head = object.getClass().getSimpleName();
-        String body = JsonUtil.toJson(object);
-        String full = head + "|" + body;
+    private void sendMessage(Object body, double elapsedMillis) throws IOException {
+        String bodyTypeName = body.getClass().getSimpleName();
+        Head head = new Head(bodyTypeName, "", elapsedMillis);
+        String headString = JsonUtil.toJson(head);
+        String bodyString = JsonUtil.toJson(body);
+        String full = headString + "|" + bodyString;
         sendString(full);
     }
 

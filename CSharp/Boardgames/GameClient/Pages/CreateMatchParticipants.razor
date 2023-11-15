@@ -5,37 +5,80 @@
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
-@inject IAuthService AuthService
+@inject NavigationManager navMgr
 
 <PageTitle>Create match participants</PageTitle>
 
-<h1>Accounts</h1>
+<h1>Not already invited</h1>
 
-@foreach (var a in _accounts) {
-    <p>@(a.Username) <button>Invite</button></p>
+@foreach (var a in _allAccounts.Where(NotAlreadyInvited)) {
+    <p>
+        <button @onclick="() => OnInviteClicked(a)">Invite</button>
+        <span>@(a.Username)</span>
+    </p>
+}
+
+<h1>Already invited</h1>
+
+@foreach (var a in _allAccounts.Where(IsAlreadyInvited)) {
+    <p>
+        <span>@(a.Username)</span>
+    </p>
+}
+
+@if (_errorReason != "") {
+    <div class="alert alert-danger">@_errorReason</div>
 }
 
 @code {
+
     [Parameter]
     public string MatchId { get; set; } = "";
 
     private int _matchId = 0;
     private Match _match = Match.Empty();
 
-    public IEnumerable<Account> _accounts = Enumerable.Empty<Account>();
+    private string _errorReason = "";
+
+    private IEnumerable<Account> _allAccounts = Enumerable.Empty<Account>();
 
     protected override void OnInitialized() {
+        Refresh();
+    }
+
+    private bool IsAlreadyInvited(Account a) {
+        bool ret = _match.Participants.Any(x => x.AccountId == a.AccountId);
+        return ret;
+    }
+
+    private bool NotAlreadyInvited(Account a) {
+        return !IsAlreadyInvited(a);
+    }
+
+    private void Refresh() {
         _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
         if (_matchId != 0) {
-            var req = new GetMatchReq(_matchId, AuthService.GetJwt());
+            var req = new GetMatchReq(_matchId);
             var res = GameService.GetMatch(req);
             _match = res.match;
         }
 
         {
-            var req = new GetAccountsReq(AuthService.GetJwt());
+            var req = new GetAccountsReq();
             var res = GameService.GetAccounts(req);
-            _accounts = res.accounts;
+            _allAccounts = res.accounts;
         }
     }
+
+    private void OnInviteClicked(Account accountToInvite) {
+        if (_matchId != 0) {
+            var req = new AddParticipantReq(_matchId, accountToInvite.AccountId);
+            var res = GameService.AddParticipant(req);
+            _errorReason = res.errorReason;
+            if (_errorReason == "") {
+                Refresh();
+            }
+        }
+    }
+
 }

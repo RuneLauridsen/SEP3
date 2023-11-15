@@ -27,9 +27,9 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public LoginResponse login(LoginRequest request) {
-        String hashedPassword = PasswordHashing.hash(request.password());
-        Account account = accountService.get(request.username(), hashedPassword);
+    public LoginResponse login(LoginRequest req) {
+        String hashedPassword = PasswordHashing.hash(req.password());
+        Account account = accountService.get(req.username(), hashedPassword);
         if (account != null) {
             String jwt = jwtService.create(account);
             return new LoginResponse(true, account, jwt);
@@ -43,8 +43,8 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public GetMatchesResponse getMatches(GetMatchesRequest getMatchesRequest) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(getMatchesRequest.jwt());
+    public GetMatchesResponse getMatches(GetMatchesRequest req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         List<Match> matches = List.of();
 
         if (claims.accountId() != 0) {
@@ -55,8 +55,8 @@ public class GameServerModelImpl implements GameServerModel {
     }
 
     @Override
-    public CreateMatchResponse createMatch(CreateMatchRequest req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public CreateMatchResponse createMatch(CreateMatchRequest req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
 
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());
         Match match = matchService.create(param);
@@ -68,15 +68,15 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public GetGamesResponse getGames(GetGamesRequest req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public GetGamesResponse getGames(GetGamesRequest req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         List<Game> games = gameService.getGames();
         return new GetGamesResponse(games);
     }
 
     @Override
-    public GetMatchRes getMatch(GetMatchReq req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public GetMatchRes getMatch(GetMatchReq req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
         if (match == null) {
             match = Match.empty();
@@ -89,35 +89,35 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public AddParticipantRes addParticipant(AddParticipantReq req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public AddParticipantRes addParticipant(AddParticipantReq req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
-        if (match.getOwnerId() != claims.accountId()) {
-            throw new NotAuthorizedException();
+        if (match.ownerId() != claims.accountId()) {
+            throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
         }
         participantService.create(new CreateParticipantParam(req.accountId(), req.matchId()));
         return new AddParticipantRes("");
     }
 
     @Override
-    public GetParticipantsRes getParticipants(GetParticipantsReq req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public GetParticipantsRes getParticipants(GetParticipantsReq req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         List<Participant> participants = participantService.getByMatch(req.matchId());
         return new GetParticipantsRes(participants);
     }
 
     @Override
-    public GetPendingRes getPending(GetPendingReq req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public GetPendingRes getPending(GetPendingReq req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         List<Participant> pending = participantService.getByAccountAndStatus(claims.accountId(), Participant.PARTICIPANT_STATUS_PENDING);
         return new GetPendingRes(pending);
     }
 
     @Override
-    public DecidePendingRes decidePending(DecidePendingReq req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public DecidePendingRes decidePending(DecidePendingReq req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         Participant participant = participantService.get(req.participantId());
-        if (participant.getAccountId() != claims.accountId()) {
+        if (participant.accountId() != claims.accountId()) {
             throw new NotAuthorizedException();
         }
 
@@ -136,38 +136,38 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public MoveResponse move(MoveRequest request) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(request.jwt());
+    public MoveResponse move(MoveRequest req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         Account account = accountService.get(claims.accountId());
-        Match match = matchService.get(request.matchId());
+        Match match = matchService.get(req.matchId());
 
         if (account == null) {
             return new MoveResponse(0, "", "No account found with id " + claims.accountId());
         }
 
         if (match == null) {
-            return new MoveResponse(0, "", "No match found with id " + request.matchId());
+            return new MoveResponse(0, "", "No match found with id " + req.matchId());
         }
 
-        switch (match.getGameId()) {
+        switch (match.gameId()) {
             case TicTacToe.TAC_TAC_TOE_GAME_ID -> {
-                String check = TicTacToe.checkMove(account, match.getState(), request.gameState());
+                String check = TicTacToe.checkMove(account, match.state(), req.gameState());
                 if (check.isEmpty()) {
-                    match.setState(request.gameState());
+                    match.setState(req.gameState());
                     matchService.update(match);
                 }
-                return new MoveResponse(match.getMatchId(), match.getState(), check);
+                return new MoveResponse(match.matchId(), match.state(), check);
             }
 
             default -> {
-                return new MoveResponse(match.getMatchId(), "", "Unknown game id " + match.getMatchId());
+                return new MoveResponse(match.matchId(), "", "Unknown game id " + match.matchId());
             }
         }
     }
 
     @Override
-    public GetAccountsRes getAccounts(GetAccountsReq req) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(req.jwt());
+    public GetAccountsRes getAccounts(GetAccountsReq req, String jwt) throws NotAuthorizedException {
+        JwtClaims claims = jwtService.verify(jwt);
         List<Account> accounts = accountService.get();
         return new GetAccountsRes(accounts);
     }

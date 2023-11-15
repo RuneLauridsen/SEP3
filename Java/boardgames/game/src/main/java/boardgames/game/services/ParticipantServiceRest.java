@@ -1,14 +1,12 @@
 package boardgames.game.services;
 
 import boardgames.shared.dto.CreateParticipantParam;
-import boardgames.shared.dto.Match;
 import boardgames.shared.dto.Participant;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class ParticipantServiceRest implements ParticipantService {
@@ -53,7 +51,7 @@ public class ParticipantServiceRest implements ParticipantService {
     @Override
     public Participant create(CreateParticipantParam param) {
         try {
-            ResponseEntity<Participant> response = restTemplate.postForEntity(ulr + "/matches/" + param.getMatchId() + "/participants", param, Participant.class);
+            ResponseEntity<Participant> response = restTemplate.postForEntity(ulr + "/matches/" + param.matchId() + "/participants", param, Participant.class);
             return response.getBody(); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -63,7 +61,7 @@ public class ParticipantServiceRest implements ParticipantService {
     @Override
     public void update(Participant participant) {
         try {
-            restTemplate.put(ulr + "/participants/" + participant.getParticipantId(), participant);
+            restTemplate.put(ulr + "/participants/" + participant.participantId(), participant);
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }

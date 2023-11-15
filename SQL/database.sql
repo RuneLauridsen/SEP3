@@ -57,7 +57,7 @@ VALUES
     ('BenDover',            'Julie', 'Bramsen', 'julie@juliemail.dk',   now(), 'b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43', 1),    -- password = 'julie'
     ('Maja123',             'Maja', 'Brixen', 'maja@majamail.dk',       now(),'f29e94153eb385ba00ebb23aca2deaa24222e449584d1d91af4ff2ccc92c8ba5', 1),    -- password = 'maja'
     ('Minii❤',              'Simon', 'Banh', 'simon@simonmail.dk',      now(),'0a5d17d3b19f82f8340d3977609aa9e86b4ad8b9bd71bd9eced9271f1d5b2e4a', 1),    -- password = 'simon'
-    ('xdxd_2fast4u_xdxd',    'Rune', 'Lauridsen', 'rune@runemail.dk',   now(),'dcd69bed70a827d5fdda1d28272d508c795fb32cebab243d5208ec9ef89f6453', 1);    -- password = 'rune'
+    ('rune',                'Rune', 'Lauridsen', 'rune@runemail.dk',   now(),'bab432c8f61b2be04113e49c595cc29a0ed57179a105fa098c270cf0dff3ddee', 1);    -- password = 'runerune'
 
 INSERT INTO game
     (name)
@@ -71,4 +71,5 @@ VALUES
     ('.........', 4, 1);
 
 
-SELECT * FROM match
+SELECT * FROM participant
+SELECT * FROM account
