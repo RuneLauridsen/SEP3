@@ -34,7 +34,7 @@ public class GameServerModelImpl implements GameServerModel {
             String jwt = jwtService.create(account);
             return new LoginResponse(true, account, jwt);
         } else {
-            return new LoginResponse(false, Account.empty(), "");
+            return new LoginResponse(false, Empty.account(), "");
         }
     }
 
@@ -79,7 +79,7 @@ public class GameServerModelImpl implements GameServerModel {
         JwtClaims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
         if (match == null) {
-            match = Match.empty();
+            match = Empty.match();
         }
         return new GetMatchRes(match);
     }

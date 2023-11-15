@@ -103,8 +103,4 @@ public final class Account {
     public String toString() {
         return username;
     }
-
-    public static Account empty() {
-        return new Account(0, "?", "?", "?", "?", LocalDateTime.of(1, 1, 1, 1, 1), ACCOUNT_STATUS_PENDING, LocalDateTime.of(1, 1, 1, 1, 1));
-    }
 }
