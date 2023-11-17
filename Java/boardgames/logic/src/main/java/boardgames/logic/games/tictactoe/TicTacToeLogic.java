@@ -8,7 +8,7 @@ import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
 import boardgames.shared.util.JsonUtil;
-import boardgames.shared.util.ResourcesUtil;
+import boardgames.shared.util.ResourceUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class TicTacToeLogic implements GameLogic {
     private final GameSpec spec;
 
     public TicTacToeLogic() {
-        String raw = ResourcesUtil.readResourceAsString(TicTacToeLogic.class, "/TicTacToeWinPatterns.txt");
+        String raw = ResourceUtil.readResourceAsString(TicTacToeLogic.class, "/TicTacToeWinPatterns.txt");
         String withoutWhitespace = raw.replaceAll("\\s", "");
         winPatterns = new ArrayList<>();
         for (int i = 0; i < withoutWhitespace.length(); i += NUM_SQUARES) {

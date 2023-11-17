@@ -3,7 +3,7 @@ package boardgames.shared.util;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ResourcesUtil {
+public class ResourceUtil {
 
     // TODO(rune): Der må være en bedre måde...
     public static String readResourceAsString(Class<?> c, String resourceName) {

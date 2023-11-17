@@ -1,11 +1,12 @@
 package boardgames.persistence.data;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.sql.*;
+import boardgames.shared.util.ResourceUtil;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 //
 // TODO(rune): Hvis du en dag har lyst til at forbedre verdenssituationen og/eller
@@ -22,11 +23,10 @@ import java.sql.*;
 public class SqlUtil {
     public static Connection openConnection() {
         try {
-            URI uri = SqlUtil.class.getResource("/ConnectionString.txt").toURI();
-            String connString = Files.readString(Path.of(uri));
+            String connString = ResourceUtil.readResourceAsString(SqlUtil.class, "/ConnectionString.txt");
             Connection conn = DriverManager.getConnection(connString);
             return conn;
-        } catch (SQLException | IOException | URISyntaxException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }
     }
