@@ -32,7 +32,7 @@ CREATE TABLE game
 CREATE TABLE match
 (
     match_id        serial      NOT NULL PRIMARY KEY ,
-    state           varchar     NOT NULL ,
+    data            varchar     NOT NULL ,
     owner_id        int         NOT NULL REFERENCES account(account_id),
     game_id         int         NOT NULL REFERENCES game(game_id) ,
     match_status    int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
@@ -66,19 +66,6 @@ VALUES
     ('TicTacToe'),
     ('Stratego');
 
+SELECT * FROM match
+INNER JOIN participant p on match.match_id = p.match_id
 
-SELECT * FROM participant
-SELECT * FROM account
-    SELECT * FROM match
-
-UPDATE participant SET participant_status = 1
-
-UPDATE match SET match_status = 1
-
-SELECT * FROM participant WHERE match_id = 9
-
-SELECT DISTINCT m.*
-FROM match m
-         LEFT OUTER JOIN participant p ON p.match_id = m.match_id
-WHERE (4 = -1 OR m.owner_id = 4 OR p.account_id = 4)
-  AND   (1 = -1 OR m.match_status = 1)

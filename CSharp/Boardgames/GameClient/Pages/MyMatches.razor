@@ -1,4 +1,4 @@
-﻿@page "/currentmatches"
+﻿@page "/mymatches"
 @using GameClient.Data
 @using GameClient.DTO
 @using GameClient.Services
@@ -7,12 +7,12 @@
 @inject IGameService GameService
 @inject NavigationManager navMgr
 
-<PageTitle>Current matches</PageTitle>
+<PageTitle>Match</PageTitle>
 
 <h1>Current matches</h1>
 
 @foreach (var m in _matches) {
-    <h3>Match id = @(m.MatchId)</h3>
+    <h3><a href="mymatches/@m.MatchId">ShowMatch id = @(m.MatchId)</a></h3>
 }
 
 @if (_errorReason != "") {

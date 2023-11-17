@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.time.LocalDateTime;
 import java.util.List;
 
-// NOTE(rune): https://stackoverflow.com/a/76747813
+// WARNING(rune): Navne skal matche mellem Java og C#.
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Match {
     private int matchId;
-    private String state;
+    private String data;
     private int status;
     private int ownerId;
     private int gameId;
@@ -27,10 +27,10 @@ public class Match {
     public Match() {
     }
 
-    public Match(int matchId, int status, String state, int ownerId, int gameId, LocalDateTime createdOn) {
+    public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn) {
         this.matchId = matchId;
         this.status = status;
-        this.state = state;
+        this.data = data;
         this.gameId = gameId;
         this.ownerId = ownerId;
         this.createdOn = createdOn;
@@ -52,12 +52,12 @@ public class Match {
         this.status = status;
     }
 
-    public String state() {
-        return state;
+    public String data() {
+        return data;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setData(String data) {
+        this.data = data;
     }
 
     public int ownerId() {

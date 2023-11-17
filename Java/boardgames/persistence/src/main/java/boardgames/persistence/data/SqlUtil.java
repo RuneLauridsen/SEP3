@@ -7,11 +7,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.*;
 
-/*
-   TODO(rune): Meget gentaget kode i alle XyzDataSql -> factor til samlet funktion for:
-    - Try-catch-finally blocks, med conn.prepareStatement() osv.
-    - Mappe resultSet til DTO objekter, Account, Game osv.
- */
+//
+// TODO(rune): Hvis du en dag har lyst til at forbedre verdenssituationen og/eller
+// livet generalt, ville det være rart med en Wrapper til PreparedStatement:
+//
+// - Gør det mere fail-safe at tilføje parametre.
+// - Ikke brug for nogen seperator setNull()
+// - Håndtere LocalDateTime mere pålideligt, clamp i stedet for overflow osv.
+// - Ikke brug for setInt, setString osv(), bare brug overloads.
+// - Overvej om vi kan bruge @Argument i stedet for '?' indices (hvis ikke det kan lade sig gøre,
+//   så lav, så Wrapperen selv holder styr på en auto-increment index.)
+//
+
+//
+// TODO(rune): Meget gentaget kode i alle XyzDataSql -> factor til samlet funktion for:
+//
+// - Try-catch-finally blocks, med conn.prepareStatement() osv.
+// - Mappe resultSet til DTO objekter, Account, Game osv.
+//
 
 public class SqlUtil {
     public static Connection openConnection() {

@@ -11,7 +11,7 @@ namespace GameClient.Services;
 
 public interface IGameService {
     public LoginResponse Login(LoginRequest request);
-    public MoveResponse Move(MoveRequest request);
+    public MoveRes Move(MoveReq req);
     public GetMatchRes GetMatch(GetMatchReq req);
     public GetMyMatchesResponse GetMyMatches(GetMyMatchesRequest request);
     public CreateMatchResponse CreateMatch(CreateMatchRequest request);

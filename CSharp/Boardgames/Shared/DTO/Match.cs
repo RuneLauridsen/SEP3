@@ -1,9 +1,10 @@
 ﻿namespace GameClient.DTO;
 
+// WARNING(rune): Navne skal matche mellem Java og C#.
 public class Match {
     public required int MatchId { get; set; }
     public required int Status { get; set; }
-    public required String State { get; set; }
+    public required String Data { get; set; }
     public required int OwnerId { get; set; }
     public required int GameId { get; set; }
     public required DateTime CreatedOn { get; set; }

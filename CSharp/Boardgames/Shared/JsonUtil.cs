@@ -5,7 +5,8 @@ namespace GameClient;
 
 public static class JsonUtil {
     private static readonly JsonSerializerOptions options = new() {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
     };
 
     public static string ToJson<T>(T t) {

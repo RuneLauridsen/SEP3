@@ -25,8 +25,8 @@ public class GameService : IGameService {
         return _socket.SendAndReceive<LoginResponse>(request);
     }
 
-    public MoveResponse Move(MoveRequest request) {
-        return _socket.SendAndReceive<MoveResponse>(request);
+    public MoveRes Move(MoveReq req) {
+        return _socket.SendAndReceive<MoveRes>(req);
     }
 
     public GetMatchRes GetMatch(GetMatchReq req) {

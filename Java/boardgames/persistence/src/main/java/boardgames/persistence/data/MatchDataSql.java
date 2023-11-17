@@ -24,29 +24,30 @@ public class MatchDataSql implements MatchData {
     }
 
     @Override
-    public Match create(Account owner, Game game) {
+    public Match create(Account owner, Game game, String data) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO match
-                    (match_id, match_status, state, owner_id, game_id, created_on)
+                    (match_id, match_status, data, owner_id, game_id, created_on)
                 VALUES
-                    (DEFAULT, 1, '', ?, ?, DEFAULT)
+                    (DEFAULT, 1, ?, ?, ?, DEFAULT)
                 RETURNING
-                    match_id, match_status, state, owner_id, game_id, created_on;
+                    match_id, match_status, data, owner_id, game_id, created_on;
                 """);
 
-            stmt.setInt(1, owner.accountId());
-            stmt.setInt(2, game.gameId());
+            stmt.setString(1, data);
+            stmt.setInt(2, owner.accountId());
+            stmt.setInt(3, game.gameId());
             rs = stmt.executeQuery();
 
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
                     rs.getInt("match_status"),
-                    rs.getString("state"),
+                    rs.getString("data"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
                     rs.getTimestamp("created_on").toLocalDateTime()
@@ -69,15 +70,15 @@ public class MatchDataSql implements MatchData {
         PreparedStatement stmt = null;
 
         try {
-            // NOTE(m2dx): Opdaterer kun state og owner, da det ikke mening
+            // NOTE(m2dx): Opdaterer kun data og owner, da det ikke mening
             // at opdatere game (brug createMatch() i stedet).
             stmt = conn.prepareStatement("""
                 UPDATE match
-                SET state = ?, owner_id = ?
+                SET data = ?, owner_id = ?
                 WHERE match_id = ?
                 """);
 
-            stmt.setString(1, match.state());
+            stmt.setString(1, match.data());
             stmt.setInt(2, match.ownerId());
             stmt.setInt(3, match.matchId());
             int ret = stmt.executeUpdate();
@@ -124,7 +125,7 @@ public class MatchDataSql implements MatchData {
                 Match match = new Match(
                     rs.getInt("match_id"),
                     rs.getInt("match_status"),
-                    rs.getString("state"),
+                    rs.getString("data"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
                     rs.getTimestamp("created_on").toLocalDateTime()
@@ -168,7 +169,7 @@ public class MatchDataSql implements MatchData {
                 Match match = new Match(
                     rs.getInt("match_id"),
                     rs.getInt("match_status"),
-                    rs.getString("state"),
+                    rs.getString("data"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
                     rs.getTimestamp("created_on").toLocalDateTime()

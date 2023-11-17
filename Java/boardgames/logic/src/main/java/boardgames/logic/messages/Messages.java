@@ -7,6 +7,7 @@ import boardgames.shared.dto.Participant;
 
 import java.util.List;
 
+// WARNING(rune): Navne skal matche mellem Java og C#.
 // NOTE(rune): Syntax i Java og C# er tæt nok på hinanden til, at vi bare kan
 // copy paste nedenstående kode mellem Messages.java og Messages.cs.
 public class Messages {
@@ -60,7 +61,7 @@ public class Messages {
     public record GetPendingReq() {}
     public record GetPendingRes(List<Participant> participants) {}
 
-    public record DecidePendingReq(int participantId, int status) {}
+    public record DecidePendingReq(int matchId, int participantId, int status) {}
     public record DecidePendingRes(String errorReason) {}
 
     //
@@ -77,8 +78,8 @@ public class Messages {
     // Move
     //
 
-    public record MoveRequest(int matchId, String gameState) {}
-    public record MoveResponse(int matchId, String gameState, String invalidMoveText) {}
+    public record MoveReq(int matchId, String moveData) {}
+    public record MoveRes(int matchId, String gameData, String invalidMoveText) {}
 
     //
     // Fejlkoder

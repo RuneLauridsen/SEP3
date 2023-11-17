@@ -1,12 +1,18 @@
 package boardgames.both;
 
 import boardgames.logic.RunLogicServer;
+import boardgames.logic.games.tictactoe.TicTacToe;
+import boardgames.logic.games.tictactoe.TicTacToeMove;
 import boardgames.persistence.RunPersistence;
+import boardgames.shared.util.JsonUtil;
 
 // NOTE(rune): Kun til debug. Starter både "game" og "persistence" serverne,
 // så man ikke skal rundt i nær så mange IntelliJ menuer.
 public class RunBoth {
     public static void main(String[] args) throws InterruptedException {
+        String s = "{\"placeOnIndex\":9,\"takeFromIndex\":0}";
+        TicTacToeMove m = JsonUtil.fromJson(s, TicTacToeMove.class);
+
         Thread thread0 = new Thread(() -> RunPersistence.main(args));
         Thread thread1 = new Thread(() -> RunLogicServer.main(args));
 
@@ -25,5 +31,6 @@ public class RunBoth {
 
         thread0.join();
         thread1.join();
+
     }
 }

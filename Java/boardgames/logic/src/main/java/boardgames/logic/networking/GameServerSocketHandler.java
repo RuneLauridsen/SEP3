@@ -63,8 +63,8 @@ public class GameServerSocketHandler implements Runnable {
                 return res;
             }
 
-            if (body instanceof MoveRequest req) {
-                MoveResponse res = model.move(req, jwt);
+            if (body instanceof MoveReq req) {
+                MoveRes res = model.move(req, jwt);
                 return res;
             }
 

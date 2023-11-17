@@ -1,5 +1,6 @@
 ﻿namespace GameClient.DTO;
 
+// WARNING(rune): Navne skal matche mellem Java og C#.
 public class Participant {
     public required int ParticipantId { get; set;}
     public required int ParticipantStatus { get; set;}

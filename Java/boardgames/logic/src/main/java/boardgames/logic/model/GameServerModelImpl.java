@@ -1,8 +1,8 @@
 package boardgames.logic.model;
 
+import boardgames.logic.games.tictactoe.TicTacToe;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.services.*;
-import boardgames.logic.tictactoe.TicTacToe;
 import boardgames.shared.dto.*;
 
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class GameServerModelImpl implements GameServerModel {
         // Owner accepts automatically.
         AddParticipantReq addReq = new AddParticipantReq(match.matchId(), claims.accountId());
         AddParticipantRes addRes = addParticipant(addReq, jwt);
-        DecidePendingReq decideReq = new DecidePendingReq(addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
+        DecidePendingReq decideReq = new DecidePendingReq(match.matchId(), addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
         DecidePendingRes decideRes = decidePending(decideReq, jwt);
 
         return new CreateMatchResponse("", match);
@@ -124,7 +124,12 @@ public class GameServerModelImpl implements GameServerModel {
     @Override
     public DecidePendingRes decidePending(DecidePendingReq req, String jwt) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(jwt);
-        Participant participant = participantService.get(req.participantId());
+
+        Match match = matchService.get(req.matchId());
+
+        Participant participant = Participants.getById(match.participants(), req.participantId());
+        assert participant != null;         // TODO(rune): If participant == null then throw ...
+
         if (participant.accountId() != claims.accountId()) {
             throw new NotAuthorizedException();
         }
@@ -133,6 +138,17 @@ public class GameServerModelImpl implements GameServerModel {
             req.status() == Participant.STATUS_REJECTED) {
             participant.setParticipantStatus(req.status());
             participantService.update(participant);
+
+            // Begin match if no participants are pending.
+            if (match.participants().size() > 1) {
+                int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
+                if (pendingCount == 0) {
+                    match.setStatus(Match.STATUS_ONGOING);
+                    match.setData(TicTacToe.initialData(match));
+                    matchService.update(match);
+                }
+            }
+
             return new DecidePendingRes("");
         } else {
             return new DecidePendingRes("Invalid participant status (was " + req.status() + " but must be ACCEPTED or REJECTED).");
@@ -144,33 +160,15 @@ public class GameServerModelImpl implements GameServerModel {
     //
 
     @Override
-    public MoveResponse move(MoveRequest req, String jwt) throws NotAuthorizedException {
+    public MoveRes move(MoveReq req, String jwt) throws NotAuthorizedException {
         JwtClaims claims = jwtService.verify(jwt);
         Account account = accountService.get(claims.accountId());
         Match match = matchService.get(req.matchId());
 
-        if (account == null) {
-            return new MoveResponse(0, "", "No account found with id " + claims.accountId());
-        }
-
-        if (match == null) {
-            return new MoveResponse(0, "", "No match found with id " + req.matchId());
-        }
-
-        switch (match.gameId()) {
-            case TicTacToe.TAC_TAC_TOE_GAME_ID -> {
-                String check = TicTacToe.checkMove(account, match.state(), req.gameState());
-                if (check.isEmpty()) {
-                    match.setState(req.gameState());
-                    matchService.update(match);
-                }
-                return new MoveResponse(match.matchId(), match.state(), check);
-            }
-
-            default -> {
-                return new MoveResponse(match.matchId(), "", "Unknown game id " + match.matchId());
-            }
-        }
+        // TODO(rune): Mere end ét spil.
+        MoveRes res = TicTacToe.getResponse(req, match, account);
+        matchService.update(match);
+        return res;
     }
 
     @Override

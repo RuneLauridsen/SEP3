@@ -36,6 +36,6 @@ public interface GameServerModel {
     // Move
     //
 
-    public MoveResponse move(MoveRequest req, String jwt) throws NotAuthorizedException;
+    public MoveRes move(MoveReq req, String jwt) throws NotAuthorizedException;
     public GetAccountsRes getAccounts(GetAccountsReq req, String jwt) throws NotAuthorizedException;
 }

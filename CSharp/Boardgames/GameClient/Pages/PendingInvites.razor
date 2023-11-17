@@ -7,7 +7,7 @@
 @inject IGameService GameService
 @inject NavigationManager navMgr
 
-<PageTitle>Pending in// TODO(rune): Er det her Null-Object-Pattern???????????????vites</PageTitle>
+<PageTitle>Pending invites</PageTitle>
 
 <style>
     .rejected {
@@ -31,10 +31,13 @@
 
     <div class="@(GetStyleClass(p))">
         <h3>Match id = @(p.MatchId)</h3>
+        <p>Match owner @(JsonUtil.ToJson(p.Match.Owner))</p>
         <p>Invitation created on = @(p.CreatedOn)</p>
         <p>Match created on = @(p.Match.CreatedOn)</p>
-        <p><button @onclick="() => OnAcceptClicked(p)" disabled="@isDisabled">Accept</button></p>
-        <p><button @onclick="() => OnRejectClicked(p)" disabled="@isDisabled">Reject</button></p>
+        <p>
+            <button @onclick="() => OnAcceptClicked(p)" disabled="@isDisabled">Accept</button>
+            <button @onclick="() => OnRejectClicked(p)" disabled="@isDisabled">Reject</button>
+        </p>
     </div>
 }
 
@@ -65,12 +68,12 @@
         _pendingInvites = res.participants;
     }
 
-    private void DecidePending(Participant participant, int status) {
-        var req = new DecidePendingReq(participant.ParticipantId, Participant.STATUS_ACCEPTED);
+    private void DecidePending(Participant p, int status) {
+        var req = new DecidePendingReq(p.MatchId, p.ParticipantId, Participant.STATUS_ACCEPTED);
         var res = GameService.DecidePending(req);
         _errorReason = res.errorReason;
         if (_errorReason == "") {
-            participant.ParticipantStatus = status;
+            p.ParticipantStatus = status;
         }
     }
 

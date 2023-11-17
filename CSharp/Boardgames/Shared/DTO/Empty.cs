@@ -19,7 +19,7 @@ public static class Empty {
         return new Match {
             MatchId = 0,
             Status = 0,
-            State = "?",
+            Data = "?",
             OwnerId = 0,
             GameId = 0,
             CreatedOn = Empty.DateTime(),

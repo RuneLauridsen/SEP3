@@ -1,5 +1,6 @@
 ﻿namespace GameClient.DTO;
 
+// WARNING(rune): Navne skal matche mellem Java og C#.
 public class Account {
     public required int AccountId { get; set; }
     public required string Username { get; set; }

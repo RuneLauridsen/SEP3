@@ -37,7 +37,7 @@ public class MatchController {
         throwIfNotFound(ownerId, owner);
         throwIfNotFound(gameId, game);
 
-        Match match = matchData.create(owner, game);
+        Match match = matchData.create(owner, game, "");
         return match;
     }
 
@@ -45,8 +45,15 @@ public class MatchController {
     public Match get(@PathVariable int matchId) {
         Match match = matchData.get(matchId);
         throwIfNotFound(matchId, match);
+
         List<Participant> participants = participantData.getAll(matchId, -1, -1);
         match.setParticipants(participants);
+
+        for (Participant p : participants) {
+            Account a = accountData.get(p.accountId());
+            p.setAccount(a);
+        }
+
         return match;
     }
 

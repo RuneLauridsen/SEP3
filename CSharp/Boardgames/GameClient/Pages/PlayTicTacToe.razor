@@ -1,0 +1,92 @@
+﻿@page "/playtictactoe/{matchid}"
+@using GameClient.Data
+@using GameClient.DTO
+@using GameClient.Games
+@using GameClient.Services
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
+@inject IGameService GameService
+@inject NavigationManager navMgr
+
+<PageTitle>Play TicTacToe</PageTitle>
+
+<h1>Play TicTacToe</h1>
+
+<!-- NOTE(rune): https://www.w3schools.com/css/css_grid.asp -->
+<!-- TODO(rune): Auto scaling -->
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+        width: 300px;
+        height: 300px;
+    }
+    .grid-item {
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 30px;
+        text-align: center;
+        border: 1px black solid;
+    }
+</style>
+
+@if (_data != null) {
+    <div class="grid-container">
+        @for (var i = 0; i < _data.Squares.Length; i++) {
+            int squareIndex = i;
+            <div class="grid-item" @onclick="() => OnSquaredClicked(squareIndex)">@_data.Squares[i]</div>
+        }
+    </div>
+}
+
+<br/>
+
+@if (_errorReason != "") {
+    <div class="alert alert-danger">@_errorReason</div>
+}
+
+@code {
+
+    [Parameter]
+    public string MatchId { get; set; } = "";
+
+    private TicTacToeData? _data;
+    private int _matchId = 0;
+    private Match _match = Empty.Match();
+    private string _errorReason = "";
+
+    protected override Task OnInitializedAsync() {
+        Refresh();
+        return base.OnInitializedAsync();
+    }
+
+    private void Refresh() {
+        _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
+        if (_matchId != 0) {
+            var req = new GetMatchReq(_matchId);
+            var res = GameService.GetMatch(req);
+            _match = res.match;
+
+            _data = JsonUtil.FromJson<TicTacToeData>(_match.Data);
+        }
+    }
+
+    private Task OnSquaredClicked(int index) {
+        var move = new TicTacToeMove { PlaceOnIndex = index, TakeFromIndex = 0 }; // TODO(rune): TakeFromIndex
+        var moveJson = JsonUtil.ToJson(move);
+
+        var req = new MoveReq(_matchId, moveJson);
+        var res = GameService.Move(req);
+
+        if (res.invalidMoveText == "") {
+            _data = JsonUtil.FromJson<TicTacToeData>(res.gameData);
+            _errorReason = "";
+        } else {
+            _errorReason = res.invalidMoveText;
+        }
+
+        return Task.CompletedTask;
+    }
+}
