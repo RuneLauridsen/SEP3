@@ -40,7 +40,7 @@ public class AccountDataSql implements AccountData {
                     rs.getString("last_name"),
                     rs.getString("email"),
                     rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("account_status"),
+                    rs.getInt("status"),
                     rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 return account;
@@ -72,7 +72,7 @@ public class AccountDataSql implements AccountData {
                     rs.getString("last_name"),
                     rs.getString("email"),
                     rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("account_status"),
+                    rs.getInt("status"),
                     rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 return account;
@@ -105,7 +105,7 @@ public class AccountDataSql implements AccountData {
                     rs.getString("last_name"),
                     rs.getString("email"),
                     rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("account_status"),
+                    rs.getInt("status"),
                     rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 return account;
@@ -137,7 +137,7 @@ public class AccountDataSql implements AccountData {
                     rs.getString("last_name"),
                     rs.getString("email"),
                     rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("account_status"),
+                    rs.getInt("status"),
                     rs.getTimestamp("created_on").toLocalDateTime()
                 );
                 list.add(account);

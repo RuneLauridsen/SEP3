@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Participant {
     private int participantId;
-    private int participantStatus;
+    private int status;
     private int matchId;
     private int accountId;
     private LocalDateTime createdOn;
@@ -25,11 +25,11 @@ public class Participant {
     public Participant() {
     }
 
-    public Participant(int participantId, int participantStatus, int matchId, int accountId, LocalDateTime createdOn) {
+    public Participant(int participantId, int status, int matchId, int accountId, LocalDateTime createdOn) {
         this.participantId = participantId;
         this.matchId = matchId;
         this.accountId = accountId;
-        this.participantStatus = participantStatus;
+        this.status = status;
         this.createdOn = createdOn;
     }
 
@@ -73,12 +73,12 @@ public class Participant {
         this.account = account;
     }
 
-    public int participantStatus() {
-        return participantStatus;
+    public int status() {
+        return status;
     }
 
-    public void setParticipantStatus(int participantStatus) {
-        this.participantStatus = participantStatus;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public LocalDateTime createdOn() {

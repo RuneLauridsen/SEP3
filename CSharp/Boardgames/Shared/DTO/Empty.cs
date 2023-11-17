@@ -5,7 +5,7 @@ public static class Empty {
     public static Account Account() {
         return new Account {
             AccountId = 0,
-            AccountStatus = 0,
+            Status = 0,
             Username = "?",
             FirstName = "?",
             LastName = "?",
@@ -36,7 +36,7 @@ public static class Empty {
     public static Participant Participant() {
         return new Participant {
             ParticipantId = 0,
-            ParticipantStatus = 0,
+            Status = 0,
             MatchId = 0,
             AccountId = 0,
             CreatedOn = Empty.DateTime(),

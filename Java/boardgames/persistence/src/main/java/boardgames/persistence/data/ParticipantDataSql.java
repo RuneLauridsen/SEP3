@@ -24,30 +24,30 @@ public class ParticipantDataSql implements ParticipantData {
     }
 
     @Override
-    public Participant create(Account account, Match match, int participantStatus) {
+    public Participant create(Account account, Match match, int status) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO participant
-                    (participant_id, match_id, account_id, participant_status, created_on)
+                    (participant_id, match_id, account_id, status, created_on)
                 VALUES
                     (DEFAULT, ?, ?, ?, DEFAULT)
                 RETURNING
-                    participant_id, match_id, account_id, participant_status, created_on
+                    participant_id, match_id, account_id, status, created_on
                 """
             );
 
             stmt.setInt(1, match.matchId());
             stmt.setInt(2, account.accountId());
-            stmt.setInt(3, participantStatus);
+            stmt.setInt(3, status);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
                 Participant participant = new Participant(
                     rs.getInt("participant_id"),
-                    rs.getInt("participant_status"),
+                    rs.getInt("status"),
                     rs.getInt("match_id"),
                     rs.getInt("account_id"),
                     rs.getTimestamp("created_on").toLocalDateTime()
@@ -83,7 +83,7 @@ public class ParticipantDataSql implements ParticipantData {
             if (rs.next()) {
                 return new Participant(
                     rs.getInt("participant_id"),
-                    rs.getInt("participant_status"),
+                    rs.getInt("status"),
                     rs.getInt("match_id"),
                     rs.getInt("account_id"),
                     rs.getTimestamp("created_on").toLocalDateTime()
@@ -100,7 +100,7 @@ public class ParticipantDataSql implements ParticipantData {
     }
 
     @Override
-    public List<Participant> getAll(int matchId, int accountId, int participantStatus) {
+    public List<Participant> getAll(int matchId, int accountId, int status) {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Participant> list = new ArrayList<>();
@@ -111,21 +111,21 @@ public class ParticipantDataSql implements ParticipantData {
                 FROM participant p
                 WHERE (? = -1 OR p.match_id = ?)
                 AND   (? = -1 OR p.account_id = ?)
-                AND   (? = -1 OR p.participant_status = ?)
+                AND   (? = -1 OR p.status = ?)
                 """);
 
             stmt.setInt(1, matchId);
             stmt.setInt(2, matchId);
             stmt.setInt(3, accountId);
             stmt.setInt(4, accountId);
-            stmt.setInt(5, participantStatus);
-            stmt.setInt(6, participantStatus);
+            stmt.setInt(5, status);
+            stmt.setInt(6, status);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
                 Participant participant = new Participant(
                     rs.getInt("participant_id"),
-                    rs.getInt("participant_status"),
+                    rs.getInt("status"),
                     rs.getInt("match_id"),
                     rs.getInt("account_id"),
                     rs.getTimestamp("created_on").toLocalDateTime()
@@ -152,11 +152,11 @@ public class ParticipantDataSql implements ParticipantData {
             // at opdatere match eller account (brug createParticipant() i stedet).
             stmt = conn.prepareStatement("""
                 UPDATE participant
-                SET participant_status = ?
+                SET status = ?
                 WHERE participant_id = ?
                 """);
 
-            stmt.setInt(1, participant.participantStatus());
+            stmt.setInt(1, participant.status());
             stmt.setInt(2, participant.participantId());
             int ret = stmt.executeUpdate();
             return ret;

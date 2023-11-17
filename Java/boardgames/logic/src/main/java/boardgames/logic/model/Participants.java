@@ -17,7 +17,7 @@ public class Participants {
     public static int countByStatus(Iterable<Participant> p, int status) {
         int ret = 0;
         for (Participant it : p) {
-            if (it.participantStatus() == status) {
+            if (it.status() == status) {
                 ret++;
             }
         }

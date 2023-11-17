@@ -31,11 +31,11 @@ public class MatchDataSql implements MatchData {
         try {
             stmt = conn.prepareStatement("""
                 INSERT INTO match
-                    (match_id, match_status, data, owner_id, game_id, created_on)
+                    (match_id, status, data, owner_id, game_id, created_on)
                 VALUES
                     (DEFAULT, 1, ?, ?, ?, DEFAULT)
                 RETURNING
-                    match_id, match_status, data, owner_id, game_id, created_on;
+                    match_id, status, data, owner_id, game_id, created_on;
                 """);
 
             stmt.setString(1, data);
@@ -46,7 +46,7 @@ public class MatchDataSql implements MatchData {
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
-                    rs.getInt("match_status"),
+                    rs.getInt("status"),
                     rs.getString("data"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
@@ -124,7 +124,7 @@ public class MatchDataSql implements MatchData {
             if (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
-                    rs.getInt("match_status"),
+                    rs.getInt("status"),
                     rs.getString("data"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),
@@ -155,7 +155,7 @@ public class MatchDataSql implements MatchData {
                 FROM match m
                 LEFT OUTER JOIN participant p ON p.match_id = m.match_id
                 WHERE (? = -1 OR m.owner_id = ? OR p.account_id = ?)
-                AND   (? = -1 OR m.match_status = ?)
+                AND   (? = -1 OR m.status = ?)
                 """);
 
             stmt.setInt(1, accountId);
@@ -168,7 +168,7 @@ public class MatchDataSql implements MatchData {
             while (rs.next()) {
                 Match match = new Match(
                     rs.getInt("match_id"),
-                    rs.getInt("match_status"),
+                    rs.getInt("status"),
                     rs.getString("data"),
                     rs.getInt("owner_id"),
                     rs.getInt("game_id"),

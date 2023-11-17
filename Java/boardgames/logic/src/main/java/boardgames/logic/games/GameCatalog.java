@@ -1,6 +1,6 @@
 package boardgames.logic.games;
 
-import boardgames.logic.games.tictactoe.TicTacToe;
+import boardgames.logic.games.tictactoe.TicTacToeLogic;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ public class GameCatalog {
 
     static {
         map = new HashMap<>();
-        map.put(1, new TicTacToe());
+        map.put(1, new TicTacToeLogic());
         // TODO(rune): put(2, new Stratego());
         // TODO(rune): put(...);
         // TODO(rune): put(...);

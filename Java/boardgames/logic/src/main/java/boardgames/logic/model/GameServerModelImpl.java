@@ -137,7 +137,7 @@ public class GameServerModelImpl implements GameServerModel {
 
         if (req.status() == Participant.STATUS_ACCEPTED ||
             req.status() == Participant.STATUS_REJECTED) {
-            participant.setParticipantStatus(req.status());
+            participant.setStatus(req.status());
             participantService.update(participant);
 
             // Begin match if no participants are pending.
@@ -170,7 +170,11 @@ public class GameServerModelImpl implements GameServerModel {
         GameLogic gl = GameCatalog.get(match.gameId());
         MoveRes res = gl.validateMoveAndUpdateData(req, match, account);
 
-        if (res.invalidMoveText().isEmpty()) {
+        if (res.result().isWinning()) {
+            match.setStatus(Match.STATUS_FINISHED);
+        }
+
+        if (res.result().isInvalid()) {
             matchService.update(match);
         }
 

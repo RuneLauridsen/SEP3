@@ -14,24 +14,24 @@ public final class Account {
     public String email;
     public LocalDateTime registerDateTime;
     public LocalDateTime createdOn;
-    private int accountStatus;
+    private int status;
 
-    public static final int ACCOUNT_STATUS_NONE = 0;
-    public static final int ACCOUNT_STATUS_PENDING = 1;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
-    public static final int ACCOUNT_STATUS_ACCEPTED = 2; // NOTE(rune): Bruger er godkendt af admin.
-    public static final int ACCOUNT_STATUS_DELETED = 3;  // NOTE(rune): Bruger er fjernet af admin.
+    public static final int STATUS_NONE = 0;
+    public static final int STATUS_PENDING = 1;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
+    public static final int STATUS_ACCEPTED = 2; // NOTE(rune): Bruger er godkendt af admin.
+    public static final int STATUS_DELETED = 3;  // NOTE(rune): Bruger er fjernet af admin.
 
     public Account() {
     }
 
-    public Account(int accountId, String username, String firstName, String lastName, String email, LocalDateTime registerDateTime, int accountStatus, LocalDateTime createdOn) {
+    public Account(int accountId, String username, String firstName, String lastName, String email, LocalDateTime registerDateTime, int status, LocalDateTime createdOn) {
         this.accountId = accountId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.registerDateTime = registerDateTime;
-        this.accountStatus = accountStatus;
+        this.status = status;
         this.createdOn = createdOn;
     }
 
@@ -83,12 +83,12 @@ public final class Account {
         this.registerDateTime = registerDateTime;
     }
 
-    public int accountStatus() {
-        return accountStatus;
+    public int status() {
+        return status;
     }
 
-    public void setAccountStatus(int accountStatus) {
-        this.accountStatus = accountStatus;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public LocalDateTime createdOn() {

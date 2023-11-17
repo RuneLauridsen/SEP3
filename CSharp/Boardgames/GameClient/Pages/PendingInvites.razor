@@ -27,7 +27,7 @@
 
 @foreach (var p in _pendingInvites) {
     string styleClass = GetStyleClass(p);
-    bool isDisabled = p.ParticipantStatus != Participant.STATUS_PENDING;
+    bool isDisabled = p.Status != Participant.STATUS_PENDING;
 
     <div class="@(GetStyleClass(p))">
         <h3>Match id = @(p.MatchId)</h3>
@@ -73,12 +73,12 @@
         var res = GameService.DecidePending(req);
         _errorReason = res.errorReason;
         if (_errorReason == "") {
-            p.ParticipantStatus = status;
+            p.Status = status;
         }
     }
 
     private string GetStyleClass(Participant p) {
-        return p.ParticipantStatus switch {
+        return p.Status switch {
             Participant.STATUS_ACCEPTED => "accepted",
             Participant.STATUS_PENDING => "pending",
             Participant.STATUS_REJECTED => "rejected",

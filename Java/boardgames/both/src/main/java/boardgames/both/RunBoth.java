@@ -1,7 +1,6 @@
 package boardgames.both;
 
 import boardgames.logic.RunLogicServer;
-import boardgames.logic.games.tictactoe.TicTacToe;
 import boardgames.logic.games.tictactoe.TicTacToeMove;
 import boardgames.persistence.RunPersistence;
 import boardgames.shared.util.JsonUtil;

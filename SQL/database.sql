@@ -17,7 +17,7 @@ CREATE TABLE account
     last_name               varchar NOT NULL ,
     email                   varchar NOT NULL ,
     registration_datetime   timestamp NOT NULL ,
-    account_status          int     NOT NULL CHECK (account_status IN (0, 1, 2, 3, 4)) , -- NOTE(rune): Se konstanter i Account.java
+    status          int     NOT NULL CHECK (status IN (0, 1, 2, 3, 4)) , -- NOTE(rune): Se konstanter i Account.java
     hashed_password         varchar NOT NULL,
     created_on              timestamp NOT NULL DEFAULT now()
 );
@@ -35,7 +35,7 @@ CREATE TABLE match
     data            varchar     NOT NULL ,
     owner_id        int         NOT NULL REFERENCES account(account_id),
     game_id         int         NOT NULL REFERENCES game(game_id) ,
-    match_status    int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
+    status          int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
     created_on      timestamp   NOT NULL DEFAULT now()
 );
 
@@ -44,8 +44,8 @@ CREATE TABLE participant
     participant_id      serial  NOT NULL PRIMARY KEY ,
     match_id            int     NOT NULL REFERENCES match(match_id) ,
     account_id          int     NOT NULL REFERENCES account(account_id) ,
-    participant_status  int     NOT NULL CHECK (participant_status IN (0, 1, 2, 3)) , -- NOTE(rune): Se konstanter i Particpant.java
-    created_on      timestamp   NOT NULL DEFAULT now()
+    status              int     NOT NULL CHECK (status IN (0, 1, 2, 3)) , -- NOTE(rune): Se konstanter i Particpant.java
+    created_on          timestamp   NOT NULL DEFAULT now()
 );
 
 --------------------------------
@@ -53,7 +53,7 @@ CREATE TABLE participant
 --------------------------------
 
 INSERT INTO account
-    (username, first_name, last_name, email, registration_datetime, hashed_password, account_status)
+    (username, first_name, last_name, email, registration_datetime, hashed_password, status)
 VALUES
     ('BenDover',            'Julie', 'Bramsen', 'julie@juliemail.dk',   now(), 'b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43', 1),    -- password = 'julie'
     ('Maja123',             'Maja', 'Brixen', 'maja@majamail.dk',       now(),'f29e94153eb385ba00ebb23aca2deaa24222e449584d1d91af4ff2ccc92c8ba5', 1),    -- password = 'maja'
@@ -66,6 +66,4 @@ VALUES
     ('TicTacToe'),
     ('Stratego');
 
-SELECT * FROM match
-INNER JOIN participant p on match.match_id = p.match_id
 

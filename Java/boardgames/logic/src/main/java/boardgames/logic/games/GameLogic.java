@@ -4,6 +4,7 @@ import boardgames.logic.messages.Messages.*;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 
+// TODO(rune): Tænk lidt mere over hvordan vi abstracter scoring.
 public interface GameLogic {
     public GameSpec getSpec();
 
