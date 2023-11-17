@@ -2,6 +2,7 @@ package boardgames.logic.model;
 
 import boardgames.logic.games.GameCatalog;
 import boardgames.logic.games.GameLogic;
+import boardgames.logic.games.GameSpec;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
@@ -127,6 +128,8 @@ public class GameServerModelImpl implements GameServerModel {
         JwtClaims claims = jwtService.verify(jwt);
 
         Match match = matchService.get(req.matchId());
+        GameLogic gl = GameCatalog.get(match.gameId());
+        GameSpec spec = gl.getSpec();
 
         Participant participant = Participants.getById(match.participants(), req.participantId());
         assert participant != null;         // TODO(rune): If participant == null then throw ...
@@ -135,20 +138,17 @@ public class GameServerModelImpl implements GameServerModel {
             throw new NotAuthorizedException();
         }
 
-        if (req.status() == Participant.STATUS_ACCEPTED ||
-            req.status() == Participant.STATUS_REJECTED) {
+        if (req.status() == Participant.STATUS_ACCEPTED || req.status() == Participant.STATUS_REJECTED) {
             participant.setStatus(req.status());
             participantService.update(participant);
 
             // Begin match if no participants are pending.
-            if (match.participants().size() > 1) {
-                int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
-                if (pendingCount == 0) {
-                    GameLogic gl = GameCatalog.get(match.gameId());
-                    match.setData(gl.getInitialData(match));
-                    match.setStatus(Match.STATUS_ONGOING);
-                    matchService.update(match);
-                }
+            int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
+            int acceptedCount = Participants.countByStatus(match.participants(), Participant.STATUS_ACCEPTED);
+            if (pendingCount == 0 && acceptedCount == spec.needPlayerCount()) {
+                match.setData(gl.getInitialData(match));
+                match.setStatus(Match.STATUS_ONGOING);
+                matchService.update(match);
             }
 
             return new DecidePendingRes("");
@@ -174,7 +174,7 @@ public class GameServerModelImpl implements GameServerModel {
             match.setStatus(Match.STATUS_FINISHED);
         }
 
-        if (res.result().isInvalid()) {
+        if (res.result().isValid()) {
             matchService.update(match);
         }
 

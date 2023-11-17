@@ -15,4 +15,14 @@ public class Participant {
     public const int STATUS_REJECTED = 2;    // NOTE(rune): Invitation afvist.
     public const int STATUS_ACCEPTED = 3;    // NOTE(rune): Invitation godkendt.
     public const int STATUS_DONE = 4;        // NOTE(rune): Efter match er startet.
+
+    public string StatusName() {
+        return Status switch {
+            STATUS_NONE => "STATUS_NONE",
+            STATUS_PENDING => "STATUS_PENDING",
+            STATUS_REJECTED => "STATUS_REJECTED",
+            STATUS_ACCEPTED => "STATUS_ACCEPTED",
+            STATUS_DONE => "STATUS_DONE",
+        };
+    }
 }

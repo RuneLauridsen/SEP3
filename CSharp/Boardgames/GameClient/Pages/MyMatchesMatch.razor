@@ -21,12 +21,12 @@
 <h1>Match</h1>
 
 <h3>Match id = @(_matchId)</h3>
-<p>State: @(_match.Data)</p>
+<p>Status: @(_match.StatusName())</p>
 <p><a href="playtictactoe/@MatchId">Play</a></p>
 
 <h3>Participants</h3>
 @foreach (var p in _match.Participants) {
-    <p>🧍 @(p.Account.Username)</p>
+    <p>🧍 @(p.Account.Username) (@(p.StatusName()))</p>
 }
 
 @if (_errorReason != "") {

@@ -31,7 +31,7 @@ public class TicTacToeLogic implements GameLogic {
             char[] pattern = withoutWhitespace.substring(i, i + NUM_SQUARES).toCharArray();
             winPatterns.add(pattern);
         }
-        spec = new GameSpec("TicTacToe", 2, 2);
+        spec = new GameSpec("TicTacToe", 2);
     }
 
     @Override
@@ -51,9 +51,10 @@ public class TicTacToeLogic implements GameLogic {
         return res;
     }
 
-    // TODO(rune): Hvordan holder vi styr på korrekt antal spillere når man invitere?
     @Override
     public String getInitialData(Match match) {
+        // TODO(rune): Check participants.size() indenfor spec.min()/spec.max()
+
         TicTacToePlayer[] players = new TicTacToePlayer[NUM_PLAYERS];
         players[0] = new TicTacToePlayer(match.participants().get(0).accountId(), 'X', NUM_PIECES_PER_PLAYER);
         players[1] = new TicTacToePlayer(match.participants().get(1).accountId(), 'O', NUM_PIECES_PER_PLAYER);
@@ -108,7 +109,7 @@ public class TicTacToeLogic implements GameLogic {
         // Check for win state.
         for (char[] pattern : winPatterns) {
             if (matchesPattern(player.team(), data.squares(), pattern)) {
-                return MoveResult.winner("3 in a row.");
+                return MoveResult.winner("ez win");
             }
         }
 

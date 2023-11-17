@@ -17,4 +17,14 @@ public class Match {
     public const int STATUS_PENDING = 1;
     public const int STATUS_ONGOING = 2;
     public const int STATUS_FINISHED = 3;
+
+    public string StatusName() {
+        return Status switch {
+            STATUS_NONE => "STATUS_NONE",
+            STATUS_PENDING => "STATUS_PENDING",
+            STATUS_ONGOING => "STATUS_ONGOING",
+            STATUS_FINISHED => "STATUS_FINISHED",
+            _ => ""
+        };
+    }
 }

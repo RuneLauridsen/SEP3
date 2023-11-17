@@ -81,7 +81,7 @@ public class Messages {
     //
 
     public record MoveReq(int matchId, String moveData) {}
-    public record MoveRes(int matchId, String gameData, String invalidMoveText) {}
+    public record MoveRes(int matchId, String gameData, MoveResult result) {}
 
     //
     // Fejlkoder
