@@ -42,7 +42,7 @@ public class TicTacToe implements GameLogic {
         TicTacToeData data = JsonUtil.fromJson(match.data(), TicTacToeData.class);
         TicTacToeMove move = JsonUtil.fromJson(req.moveData(), TicTacToeMove.class);
         String invalidMoveText = validateMove(data, move, reqBy);
-        if (invalidMoveText == "") {
+        if (invalidMoveText.isEmpty()) {
             match.setData(JsonUtil.toJson(data));
         }
         MoveRes res = new MoveRes(match.matchId(), JsonUtil.toJson(data), invalidMoveText);

@@ -1,6 +1,7 @@
 package boardgames.logic.model;
 
-import boardgames.logic.games.tictactoe.TicTacToe;
+import boardgames.logic.games.GameCatalog;
+import boardgames.logic.games.GameLogic;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
@@ -143,8 +144,9 @@ public class GameServerModelImpl implements GameServerModel {
             if (match.participants().size() > 1) {
                 int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
                 if (pendingCount == 0) {
+                    GameLogic gl = GameCatalog.get(match.gameId());
+                    match.setData(gl.getInitialData(match));
                     match.setStatus(Match.STATUS_ONGOING);
-                    match.setData(TicTacToe.initialData(match));
                     matchService.update(match);
                 }
             }
@@ -165,9 +167,13 @@ public class GameServerModelImpl implements GameServerModel {
         Account account = accountService.get(claims.accountId());
         Match match = matchService.get(req.matchId());
 
-        // TODO(rune): Mere end ét spil.
-        MoveRes res = TicTacToe.getResponse(req, match, account);
-        matchService.update(match);
+        GameLogic gl = GameCatalog.get(match.gameId());
+        MoveRes res = gl.validateMoveAndUpdateData(req, match, account);
+
+        if (res.invalidMoveText().isEmpty()) {
+            matchService.update(match);
+        }
+
         return res;
     }
 

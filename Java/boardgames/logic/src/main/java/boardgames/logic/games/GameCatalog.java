@@ -6,22 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameCatalog {
-    private static final Map<String, GameLogic> map;
+    private static final Map<Integer, GameLogic> map; // NOTE(rune): Key = samme id som i database.
 
     static {
         map = new HashMap<>();
-        put(new TicTacToe());
-        // TODO(rune): put(new Stratego());
+        map.put(1, new TicTacToe());
+        // TODO(rune): put(2, new Stratego());
         // TODO(rune): put(...);
         // TODO(rune): put(...);
         // TODO(rune): put(...);
     }
 
-    private static void put(GameLogic g) {
-        GameCatalog.map.put(g.getSpec().identifier(), g);
-    }
-
-    public static GameLogic get(String identifier) {
-        return map.get(identifier);
+    public static GameLogic get(Integer gameId) {
+        return map.get(gameId);
     }
 }
