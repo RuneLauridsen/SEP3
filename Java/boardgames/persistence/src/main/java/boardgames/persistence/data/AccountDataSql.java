@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,17 +32,7 @@ public class AccountDataSql implements AccountData {
             stmt.setInt(1, accountId);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                Account account = new Account(
-                    rs.getInt("account_id"),
-                    rs.getString("username"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getString("email"),
-                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("status"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
-                return account;
+                return readAccount(rs);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -65,17 +54,7 @@ public class AccountDataSql implements AccountData {
             stmt.setString(1, username);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                Account account = new Account(
-                    rs.getInt("account_id"),
-                    rs.getString("username"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getString("email"),
-                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("status"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
-                return account;
+                return readAccount(rs);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -98,17 +77,7 @@ public class AccountDataSql implements AccountData {
             stmt.setString(2, hashedPassword);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                Account account = new Account(
-                    rs.getInt("account_id"),
-                    rs.getString("username"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getString("email"),
-                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("status"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
-                return account;
+                return readAccount(rs);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -130,17 +99,7 @@ public class AccountDataSql implements AccountData {
             stmt = conn.prepareStatement("SELECT * FROM account ");
             rs = stmt.executeQuery();
             while (rs.next()) {
-                Account account = new Account(
-                    rs.getInt("account_id"),
-                    rs.getString("username"),
-                    rs.getString("first_name"),
-                    rs.getString("last_name"),
-                    rs.getString("email"),
-                    rs.getTimestamp("registration_datetime").toLocalDateTime(),
-                    rs.getInt("status"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
-                list.add(account);
+                list.add(readAccount(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -150,5 +109,18 @@ public class AccountDataSql implements AccountData {
         }
 
         return list;
+    }
+
+    private Account readAccount(ResultSet rs) throws SQLException {
+        return new Account(
+            rs.getInt("account_id"),
+            rs.getString("username"),
+            rs.getString("first_name"),
+            rs.getString("last_name"),
+            rs.getString("email"),
+            rs.getTimestamp("registration_datetime").toLocalDateTime(),
+            rs.getInt("status"),
+            rs.getTimestamp("created_on").toLocalDateTime()
+        );
     }
 }

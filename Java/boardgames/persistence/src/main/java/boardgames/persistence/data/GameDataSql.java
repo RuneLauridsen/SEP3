@@ -31,11 +31,7 @@ public class GameDataSql implements GameData {
             stmt.setInt(1, gameId);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                Game game = new Game(
-                    rs.getInt("game_id"),
-                    rs.getString("name")
-                );
-                return game;
+                return readGame(rs);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -57,11 +53,7 @@ public class GameDataSql implements GameData {
             stmt = conn.prepareStatement("SELECT * FROM game");
             rs = stmt.executeQuery();
             while (rs.next()) {
-                Game game = new Game(
-                    rs.getInt("game_id"),
-                    rs.getString("name")
-                );
-                ret.add(game);
+                ret.add(readGame(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -73,4 +65,10 @@ public class GameDataSql implements GameData {
         return ret;
     }
 
+    private static Game readGame(ResultSet rs) throws SQLException {
+        return new Game(
+            rs.getInt("game_id"),
+            rs.getString("name")
+        );
+    }
 }

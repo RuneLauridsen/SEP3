@@ -19,13 +19,6 @@ import java.sql.*;
 //   så lav, så Wrapperen selv holder styr på en auto-increment index.)
 //
 
-//
-// TODO(rune): Meget gentaget kode i alle XyzDataSql -> factor til samlet funktion for:
-//
-// - Try-catch-finally blocks, med conn.prepareStatement() osv.
-// - Mappe resultSet til DTO objekter, Account, Game osv.
-//
-
 public class SqlUtil {
     public static Connection openConnection() {
         try {

@@ -44,14 +44,7 @@ public class MatchDataSql implements MatchData {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Match match = new Match(
-                    rs.getInt("match_id"),
-                    rs.getInt("status"),
-                    rs.getString("data"),
-                    rs.getInt("owner_id"),
-                    rs.getInt("game_id"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
+                Match match = readMatch(rs);
                 return match;
             }
 
@@ -122,14 +115,7 @@ public class MatchDataSql implements MatchData {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Match match = new Match(
-                    rs.getInt("match_id"),
-                    rs.getInt("status"),
-                    rs.getString("data"),
-                    rs.getInt("owner_id"),
-                    rs.getInt("game_id"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
+                Match match = readMatch(rs);
                 return match;
             }
 
@@ -166,14 +152,7 @@ public class MatchDataSql implements MatchData {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Match match = new Match(
-                    rs.getInt("match_id"),
-                    rs.getInt("status"),
-                    rs.getString("data"),
-                    rs.getInt("owner_id"),
-                    rs.getInt("game_id"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
+                Match match = readMatch(rs);
                 matches.add(match);
             }
 
@@ -187,4 +166,14 @@ public class MatchDataSql implements MatchData {
         return matches;
     }
 
+    private static Match readMatch(ResultSet rs) throws SQLException {
+        return new Match(
+            rs.getInt("match_id"),
+            rs.getInt("status"),
+            rs.getString("data"),
+            rs.getInt("owner_id"),
+            rs.getInt("game_id"),
+            rs.getTimestamp("created_on").toLocalDateTime()
+        );
+    }
 }

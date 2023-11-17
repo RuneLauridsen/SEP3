@@ -45,15 +45,7 @@ public class ParticipantDataSql implements ParticipantData {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Participant participant = new Participant(
-                    rs.getInt("participant_id"),
-                    rs.getInt("status"),
-                    rs.getInt("match_id"),
-                    rs.getInt("account_id"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
-
-                return participant;
+                return readParticipant(rs);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -81,13 +73,7 @@ public class ParticipantDataSql implements ParticipantData {
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return new Participant(
-                    rs.getInt("participant_id"),
-                    rs.getInt("status"),
-                    rs.getInt("match_id"),
-                    rs.getInt("account_id"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
+                return readParticipant(rs);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -123,14 +109,7 @@ public class ParticipantDataSql implements ParticipantData {
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Participant participant = new Participant(
-                    rs.getInt("participant_id"),
-                    rs.getInt("status"),
-                    rs.getInt("match_id"),
-                    rs.getInt("account_id"),
-                    rs.getTimestamp("created_on").toLocalDateTime()
-                );
-                list.add(participant);
+                list.add(readParticipant(rs));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -184,4 +163,15 @@ public class ParticipantDataSql implements ParticipantData {
             close(stmt);
         }
     }
+
+    private static Participant readParticipant(ResultSet rs) throws SQLException {
+        return new Participant(
+            rs.getInt("participant_id"),
+            rs.getInt("status"),
+            rs.getInt("match_id"),
+            rs.getInt("account_id"),
+            rs.getTimestamp("created_on").toLocalDateTime()
+        );
+    }
+
 }
