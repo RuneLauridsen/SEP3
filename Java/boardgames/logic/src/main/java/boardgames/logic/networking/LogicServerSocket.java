@@ -1,18 +1,18 @@
 package boardgames.logic.networking;
 
-import boardgames.logic.model.GameServerModel;
+import boardgames.logic.model.LogicServerModel;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class GameServerSocket implements GameServer {
-    private final GameServerModel model;
+public class LogicServerSocket implements LogicServer {
+    private final LogicServerModel model;
     private final int port;
     private ServerSocket serverSocket;
     private boolean quit;
 
-    public GameServerSocket(GameServerModel model, int port) {
+    public LogicServerSocket(LogicServerModel model, int port) {
         this.model = model;
         this.port = port;
     }
@@ -24,7 +24,7 @@ public class GameServerSocket implements GameServer {
 
             while (!quit) {
                 Socket socket = serverSocket.accept();
-                GameServerSocketHandler handler = new GameServerSocketHandler(socket, model);
+                LogicServerSocketHandler handler = new LogicServerSocketHandler(socket, model);
 
                 Thread thread = new Thread(handler);
                 thread.setDaemon(true);

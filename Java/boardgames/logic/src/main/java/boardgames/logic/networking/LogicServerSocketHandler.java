@@ -3,7 +3,7 @@ package boardgames.logic.networking;
 import boardgames.logic.messages.Message;
 import boardgames.logic.messages.Messages;
 import boardgames.logic.messages.Messages.*;
-import boardgames.logic.model.GameServerModel;
+import boardgames.logic.model.LogicServerModel;
 import boardgames.logic.model.NotAuthorizedException;
 import boardgames.shared.util.JsonUtil;
 import com.google.gson.JsonSyntaxException;
@@ -16,13 +16,13 @@ import java.net.Socket;
 import static boardgames.logic.messages.Messages.LoginRequest;
 
 // NOTE(rune): Håndterer enkelt forbindelse til enkelt klient.
-public class GameServerSocketHandler implements Runnable {
+public class LogicServerSocketHandler implements Runnable {
     private final Socket socket;
-    private final GameServerModel model;
+    private final LogicServerModel model;
     private final DataInputStream inFromClient;
     private final DataOutputStream outToClient;
 
-    public GameServerSocketHandler(Socket socket, GameServerModel model) throws IOException {
+    public LogicServerSocketHandler(Socket socket, LogicServerModel model) throws IOException {
         this.socket = socket;
         this.model = model;
 

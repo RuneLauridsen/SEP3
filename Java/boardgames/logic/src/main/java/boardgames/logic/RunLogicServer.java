@@ -1,9 +1,9 @@
 package boardgames.logic;
 
-import boardgames.logic.model.GameServerModel;
-import boardgames.logic.model.GameServerModelImpl;
-import boardgames.logic.networking.GameServer;
-import boardgames.logic.networking.GameServerSocket;
+import boardgames.logic.model.LogicServerModel;
+import boardgames.logic.model.LogicServerModelImpl;
+import boardgames.logic.networking.LogicServer;
+import boardgames.logic.networking.LogicServerSocket;
 import boardgames.logic.services.AccountService;
 import boardgames.logic.services.AccountServiceRest;
 import boardgames.logic.services.GameService;
@@ -65,8 +65,8 @@ public class RunLogicServer {
         // NOTE(rune): Åbn socket
         //
 
-        GameServerModel model = new GameServerModelImpl(accountService, matchService, gameService, participantService, jwtService);
-        GameServer server = new GameServerSocket(model, 1234);
+        LogicServerModel model = new LogicServerModelImpl(accountService, matchService, gameService, participantService, jwtService);
+        LogicServer server = new LogicServerSocket(model, 1234);
         server.run();
     }
 }

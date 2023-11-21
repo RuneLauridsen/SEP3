@@ -29,6 +29,22 @@ public class Messages {
     public record RegisterRequest(String username, String firstName, String lastName, String email, String password) {}
     public record RegisterResponse(boolean response) {}  //Todo, lav response ordenlig
 
+
+
+    //
+    // Admin Register stuff
+    //
+
+    public record ApproveUserRequest(Account Account){}
+
+    public record ApproveUserResponse(boolean b){}
+    public record RejectUserRequest(Account Account){}
+
+    public record RejectUserResponse(boolean b){}
+
+    public record GetUsersWaitingForApprovalRequest(){}
+    public record GetUsersWaitingForApprovalResponse(List<Account> Members){}
+
     //
     // Spilkataolog
     //
