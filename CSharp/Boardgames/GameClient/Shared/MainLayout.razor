@@ -1,7 +1,16 @@
 ﻿@inherits LayoutComponentBase
 
-<NavMenu />
+<NavMenu/>
 
 <main class="container">
-    @Body
+    <ErrorBoundary>
+        <ChildContent>
+            @Body
+        </ChildContent>
+        <ErrorContent Context="ex">
+            <!-- TODO(rune): Måske kun developer mode? -->
+            <h1>@ex.Message</h1>
+            <p style="white-space: pre-wrap; font-family: monospace">@ex.ToString()</p>
+        </ErrorContent>
+    </ErrorBoundary>
 </main>
