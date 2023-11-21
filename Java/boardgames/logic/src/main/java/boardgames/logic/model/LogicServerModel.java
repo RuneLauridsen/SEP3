@@ -2,7 +2,7 @@ package boardgames.logic.model;
 
 import boardgames.logic.messages.Messages.*;
 
-public interface GameServerModel {
+public interface LogicServerModel {
     //
     // Authorization
     //

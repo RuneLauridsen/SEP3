@@ -1,6 +1,6 @@
 package boardgames.logic.networking;
 
-public interface GameServer extends Runnable {
+public interface LogicServer extends Runnable {
     public void run();
     public void close();
 }

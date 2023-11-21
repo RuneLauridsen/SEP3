@@ -10,14 +10,14 @@ import boardgames.shared.dto.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameServerModelImpl implements GameServerModel {
+public class LogicServerModelImpl implements LogicServerModel {
     private final AccountService accountService;
     private final MatchService matchService;
     private final GameService gameService;
     private final ParticipantService participantService;
     private final JwtService jwtService;
 
-    public GameServerModelImpl(AccountService accountService, MatchService matchService, GameService gameService, ParticipantService participantService, JwtService jwtService) {
+    public LogicServerModelImpl(AccountService accountService, MatchService matchService, GameService gameService, ParticipantService participantService, JwtService jwtService) {
         this.accountService = accountService;
         this.matchService = matchService;
         this.gameService = gameService;
