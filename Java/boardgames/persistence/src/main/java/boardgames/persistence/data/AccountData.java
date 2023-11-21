@@ -9,7 +9,5 @@ public interface AccountData {
     public Account get(String username);
     public Account get(String username, String hashedPassword);
     public List<Account> getAll();
-    // TODO(rune): update()
-    // TODO(rune): delete()
-
+    public void update(Account account);
 }

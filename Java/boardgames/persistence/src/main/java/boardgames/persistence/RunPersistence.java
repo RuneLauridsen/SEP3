@@ -43,5 +43,6 @@ public class RunPersistence {
         participantData.delete(participantData.create(account, match, 0).participantId());
 
         Account account1 = accountData.get("BenDover", "b025079c90813d4669136b2ed07512204ee05522ba3e647935f1a88daf00fd43");
+        accountData.update(account1);
     }
 }

@@ -121,6 +121,46 @@ public class AccountDataSql implements AccountData {
         return list;
     }
 
+    @Override
+    public void update(Account account) {
+        Profiler.begin("AccountDataSql::update");
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Account> list = new ArrayList<>();
+
+        try {
+            stmt = conn.prepareStatement("""
+                UPDATE accounts
+                SET 
+                username = ?
+                first_name = ?
+                last_name = ?
+                email = ?
+                registration_datetime = ?
+                status = ?
+                """);
+
+            stmt.setString(1, account.username());
+            stmt.setString(2, account.firstName());
+            stmt.setString(3, account.lastName());
+            stmt.setString(4, account.email());
+            stmt.setTimestamp(5, java.sql.Timestamp.valueOf(account.registerDateTime()));
+            stmt.setInt(6, account.status());
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                list.add(readAccount(rs));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        } finally {
+            close(rs);
+            close(stmt);
+            Profiler.endAndPrint();
+        }
+    }
+
     private Account readAccount(ResultSet rs) throws SQLException {
         return new Account(
             rs.getInt("account_id"),
