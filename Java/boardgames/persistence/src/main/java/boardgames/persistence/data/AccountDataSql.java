@@ -126,19 +126,19 @@ public class AccountDataSql implements AccountData {
         Profiler.begin("AccountDataSql::update");
 
         PreparedStatement stmt = null;
-        ResultSet rs = null;
         List<Account> list = new ArrayList<>();
 
         try {
             stmt = conn.prepareStatement("""
-                UPDATE accounts
+                UPDATE account
                 SET 
-                username = ?
-                first_name = ?
-                last_name = ?
-                email = ?
-                registration_datetime = ?
+                username = ?,
+                first_name = ?,
+                last_name = ?,
+                email = ?,
+                registration_datetime = ?,
                 status = ?
+                WHERE account_id = ?
                 """);
 
             stmt.setString(1, account.username());
@@ -147,15 +147,11 @@ public class AccountDataSql implements AccountData {
             stmt.setString(4, account.email());
             stmt.setTimestamp(5, java.sql.Timestamp.valueOf(account.registerDateTime()));
             stmt.setInt(6, account.status());
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                list.add(readAccount(rs));
-            }
+            stmt.setInt(7, account.accountId());
+            stmt.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         } finally {
-            close(rs);
             close(stmt);
             Profiler.endAndPrint();
         }
