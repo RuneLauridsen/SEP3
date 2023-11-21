@@ -13,10 +13,11 @@ public class JwtAuthService : IAuthService {
     public JwtAuthService() {
         socket = new ServiceSocket("localhost", 1234);
         socket.Connect();
+        Console.WriteLine("Constructor!");
     }
 
     private readonly HttpClient client;
-    public static string? Jwt { get; private set; } = "";
+    public string? Jwt { get; private set; } = "";
 
     public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; }
 
