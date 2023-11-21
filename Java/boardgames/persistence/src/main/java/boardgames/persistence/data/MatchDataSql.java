@@ -3,6 +3,8 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
+import boardgames.shared.util.ProfileItem;
+import boardgames.shared.util.Profiler;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -25,6 +27,8 @@ public class MatchDataSql implements MatchData {
 
     @Override
     public Match create(Account owner, Game game, String data) {
+        Profiler.begin("MatchDataSql::create");
+
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -53,6 +57,7 @@ public class MatchDataSql implements MatchData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return null; // TODO(rune): Error handling
@@ -60,6 +65,7 @@ public class MatchDataSql implements MatchData {
 
     @Override
     public int update(Match match) {
+        Profiler.begin("MatchDataSql::update");
         PreparedStatement stmt = null;
 
         try {
@@ -81,11 +87,13 @@ public class MatchDataSql implements MatchData {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         } finally {
             close(stmt);
+            Profiler.endAndPrint();
         }
     }
 
     @Override
     public int delete(int matchId) {
+        Profiler.begin("MatchDataSql::delete");
         PreparedStatement stmt = null;
 
         try {
@@ -98,11 +106,13 @@ public class MatchDataSql implements MatchData {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         } finally {
             close(stmt);
+            Profiler.endAndPrint();
         }
     }
 
     @Override
     public Match get(int matchId) {
+        Profiler.begin("MatchDataSql::get");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -124,6 +134,7 @@ public class MatchDataSql implements MatchData {
         } finally {
             close(stmt);
             close(rs);
+            Profiler.endAndPrint();
         }
 
         return null; // TODO(rune): Error handling.
@@ -131,6 +142,7 @@ public class MatchDataSql implements MatchData {
 
     @Override
     public List<Match> getAll(int accountId, int status) {
+        Profiler.begin("MatchDataSql::getAll");
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Match> matches = new ArrayList<>();
@@ -161,6 +173,7 @@ public class MatchDataSql implements MatchData {
         } finally {
             close(stmt);
             close(rs);
+            Profiler.endAndPrint();
         }
 
         return matches;

@@ -1,6 +1,8 @@
 package boardgames.persistence.data;
 
 import boardgames.shared.dto.Account;
+import boardgames.shared.util.ProfileItem;
+import boardgames.shared.util.Profiler;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -24,6 +26,7 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public Account get(int accountId) {
+        Profiler.begin("AccountDataSql::get");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -39,6 +42,7 @@ public class AccountDataSql implements AccountData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return null; // TODO(rune): Error handling
@@ -46,6 +50,7 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public Account get(String username) {
+        Profiler.begin("get");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -61,6 +66,7 @@ public class AccountDataSql implements AccountData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return null; // TODO(rune): Error handling
@@ -68,6 +74,7 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public Account get(String username, String hashedPassword) {
+        Profiler.begin("AccountDataSql::get");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -84,6 +91,7 @@ public class AccountDataSql implements AccountData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return null; // TODO(rune): Error handling
@@ -91,6 +99,7 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public List<Account> getAll() {
+        Profiler.begin("AccountDataSql::getAll");
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Account> list = new ArrayList<>();
@@ -106,6 +115,7 @@ public class AccountDataSql implements AccountData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return list;

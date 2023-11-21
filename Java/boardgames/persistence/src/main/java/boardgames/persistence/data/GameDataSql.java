@@ -1,6 +1,7 @@
 package boardgames.persistence.data;
 
 import boardgames.shared.dto.Game;
+import boardgames.shared.util.Profiler;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -23,6 +24,7 @@ public class GameDataSql implements GameData {
 
     @Override
     public Game get(int gameId) {
+        Profiler.begin("GameDataSql::get");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -38,6 +40,7 @@ public class GameDataSql implements GameData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return null; // TODO(rune): Error handling
@@ -45,6 +48,7 @@ public class GameDataSql implements GameData {
 
     @Override
     public List<Game> getAll() {
+        Profiler.begin("GameDataSql::getAll");
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Game> ret = new ArrayList<>();
@@ -60,6 +64,7 @@ public class GameDataSql implements GameData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return ret;

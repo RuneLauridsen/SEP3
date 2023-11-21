@@ -3,6 +3,8 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.Participant;
+import boardgames.shared.util.ProfileItem;
+import boardgames.shared.util.Profiler;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -25,6 +27,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public Participant create(Account account, Match match, int status) {
+        Profiler.begin("ParticipantDataSql::create");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -52,6 +55,7 @@ public class ParticipantDataSql implements ParticipantData {
         } finally {
             close(stmt);
             close(rs);
+            Profiler.endAndPrint();
         }
 
         return null;
@@ -59,6 +63,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public Participant get(int participantId) {
+        Profiler.begin("ParticipantDataSql::get");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -80,6 +85,7 @@ public class ParticipantDataSql implements ParticipantData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return null;
@@ -87,6 +93,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public List<Participant> getAll(int matchId, int accountId, int status) {
+        Profiler.begin("ParticipantDataSql::getAll");
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Participant> list = new ArrayList<>();
@@ -116,6 +123,7 @@ public class ParticipantDataSql implements ParticipantData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
 
         return list;
@@ -123,6 +131,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public int update(Participant participant) {
+        Profiler.begin("ParticipantDataSql::update");
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
@@ -145,11 +154,13 @@ public class ParticipantDataSql implements ParticipantData {
         } finally {
             close(rs);
             close(stmt);
+            Profiler.endAndPrint();
         }
     }
 
     @Override
     public int delete(int participantId) {
+        Profiler.begin("ParticipantDataSql::delete");
         PreparedStatement stmt = null;
 
         try {
@@ -161,6 +172,7 @@ public class ParticipantDataSql implements ParticipantData {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         } finally {
             close(stmt);
+            Profiler.endAndPrint();
         }
     }
 
