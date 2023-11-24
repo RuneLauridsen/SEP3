@@ -45,6 +45,10 @@ public class GameService : IGameService {
         return _socket.SendAndReceive<GetGamesResponse>(request);
     }
 
+    public GetAccountRes GetAccount(GetAccountReq req) {
+        return _socket.SendAndReceive<GetAccountRes>(req);
+    }
+
     public GetAccountsRes GetAccounts(GetAccountsReq req) {
         return _socket.SendAndReceive<GetAccountsRes>(req);
     }

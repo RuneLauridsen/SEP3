@@ -83,6 +83,11 @@ public class LogicServerSocketHandler implements Runnable {
                 return res;
             }
 
+            if (body instanceof GetAccountReq req) {
+                GetAccountRes res = model.getAccount(req, jwt);
+                return res;
+            }
+
             if (body instanceof GetAccountsReq req) {
                 GetAccountsRes res = model.getAccounts(req, jwt);
                 return res;

@@ -180,6 +180,13 @@ public class LogicServerModelImpl implements LogicServerModel {
 
         return res;
     }
+    @Override
+    public GetAccountRes getAccount(GetAccountReq req, String jwt) throws NotAuthorizedException {
+        jwtService.verify(jwt);
+        Account account = accountService.get(req.accountId());
+        GetAccountRes res = new GetAccountRes(account);
+        return res;
+    }
 
     @Override
     public GetAccountsRes getAccounts(GetAccountsReq req, String jwt) throws NotAuthorizedException {

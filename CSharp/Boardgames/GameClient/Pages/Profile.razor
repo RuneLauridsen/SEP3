@@ -1,0 +1,21 @@
+﻿@page "/profile"
+@using GameClient.Data
+@using GameClient.DTO
+@using GameClient.Services
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
+@inject IGameService GameService
+@inject NavigationManager navMgr
+
+<PageTitle>Profile</PageTitle>
+
+@code {
+    private Account _account;
+
+    protected override Task OnInitializedAsync() {
+        var req = new GetAccountReq(1);
+        var res = GameService.GetAccount(req);
+
+        return Task.CompletedTask;
+    }
+}

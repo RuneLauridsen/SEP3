@@ -37,5 +37,11 @@ public interface LogicServerModel {
     //
 
     public MoveRes move(MoveReq req, String jwt) throws NotAuthorizedException;
+
+    //
+    // Account
+    //
+
+    public GetAccountRes getAccount(GetAccountReq req, String jwt) throws NotAuthorizedException;
     public GetAccountsRes getAccounts(GetAccountsReq req, String jwt) throws NotAuthorizedException;
 }
