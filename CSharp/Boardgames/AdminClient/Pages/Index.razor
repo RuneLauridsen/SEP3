@@ -1,9 +1,70 @@
 ﻿@page "/"
+@using GameClient.DTO
+@using AdminClient.Services
+@inject IAdminService adminService
+@inject NavigationManager navMgr
 
-<PageTitle>Index</PageTitle>
+@if (numberOfApplicants > 0)
+{
+  <h2>you have @numberOfApplicants applicants for registration</h2>
+  <button @onclick="GoToRegistrations">click here to see applicants</button>
+}
+else
+{
+  <h2>you have no applicants for registration</h2>
+}
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-<SurveyPrompt Title="How is Blazor working for you?"/>
+td, th {
+  border: 1px solid #aaaaaa;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Name</th>
+    <th>Email</th>
+  </tr>
+
+  @foreach (Account account in accounts)
+  {
+    <tr>
+      <td>@(account.Username)</td>
+      <td>@(account.FirstName) @(account.LastName)</td>
+      <td>@(account.Email)</td>
+    </tr>
+  }
+</table>
+
+@code{
+  int numberOfApplicants;
+  List<Account> accounts = new List<Account>();
+  
+  protected override async Task OnInitializedAsync()
+  {
+    await base.OnInitializedAsync();
+    numberOfApplicants = adminService.GetUsersWaitingForApproval().Count;
+    accounts.Clear();
+    accounts.AddRange(adminService.GetAllUsers());
+  }
+
+  private void GoToRegistrations()
+  {
+    navMgr.NavigateTo("/ConfirmRegistrations");
+  }
+
+}
