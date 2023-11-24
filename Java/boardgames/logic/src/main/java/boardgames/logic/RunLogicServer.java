@@ -44,7 +44,7 @@ public class RunLogicServer {
             Game game = new Game(1, "TicTacToe");
 
             Account account = accountService.get(2);
-            account = accountService.get("Minii❤");
+            account = accountService.get("Minii");
 
             Match match = matchService.create(new CreateMatchParam(account.accountId(), game.gameId()));
             match = matchService.get(match.matchId());

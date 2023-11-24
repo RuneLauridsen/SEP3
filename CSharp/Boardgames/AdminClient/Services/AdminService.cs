@@ -23,6 +23,15 @@ public class AdminService : IAdminService
 
     public List<Account> GetUsersWaitingForApproval()
     {
-        return _socket.SendAndReceive<GetUsersWaitingForApprovalResponse>(new GetUsersWaitingForApprovalRequest()).Members;
+        List<Account> allAccounts = _socket.SendAndReceive<GetAccountsRes>(new GetAccountsReq()).accounts;
+        List<Account> accountsWaitingForApproval = new List<Account>();
+        foreach (Account account in allAccounts)
+        {
+            if (account.Status == Account.STATUS_PENDING)
+            {
+                accountsWaitingForApproval.Add(account);
+            }
+        }
+        return accountsWaitingForApproval;
     }
 }

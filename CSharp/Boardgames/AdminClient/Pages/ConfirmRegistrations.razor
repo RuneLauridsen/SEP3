@@ -4,6 +4,7 @@
 @using AdminClient.Services
 @using GameClient.DTO
 @using global::Shared.Data
+@using Microsoft.AspNetCore.Mvc
 @inject IAdminService adminService
 
 <PageTitle>Applicants for registration:</PageTitle>
@@ -52,7 +53,7 @@ tr:nth-child(even) {
 
 @code {
     AdminService Service;
-    List<Account> applicants;
+    List<Account> applicants = new List<Account>();
 
     protected override async Task OnInitializedAsync()
     {

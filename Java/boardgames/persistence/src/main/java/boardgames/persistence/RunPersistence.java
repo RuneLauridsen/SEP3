@@ -30,7 +30,7 @@ public class RunPersistence {
         Game game = gameData.get(2);
 
         Account account = accountData.get(2);
-        account = accountData.get("Minii❤");
+        account = accountData.get("Minii");
 
         Match match = matchData.create(account, game, "INITIAL_STATE");
         match = matchData.get(match.matchId());
