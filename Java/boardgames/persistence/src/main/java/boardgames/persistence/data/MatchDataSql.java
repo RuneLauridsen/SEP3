@@ -3,8 +3,7 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
-import boardgames.shared.util.ProfileItem;
-import boardgames.shared.util.Profiler;
+import boardgames.shared.util.Timer;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -25,168 +24,78 @@ public class MatchDataSql implements MatchData {
         conn = openConnection();
     }
 
+    private Match readMatch(Sql sql) {
+        return new Match(
+            sql.readInt("match_id"),
+            sql.readInt("status"),
+            sql.readString("data"),
+            sql.readInt("owner_id"),
+            sql.readInt("game_id"),
+            sql.readDateTime("created_on")
+        );
+    }
+
     @Override
     public Match create(Account owner, Game game, String data) {
-        Profiler.begin("MatchDataSql::create");
+        Sql sql = new Sql(conn, """
+            INSERT INTO boardgames.match
+                (match_id, status, data, owner_id, game_id, created_on)
+            VALUES
+                (DEFAULT, 1, ?, ?, ?, DEFAULT)
+            RETURNING
+                match_id, status, data, owner_id, game_id, created_on;
+            """);
 
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = conn.prepareStatement("""
-                INSERT INTO match
-                    (match_id, status, data, owner_id, game_id, created_on)
-                VALUES
-                    (DEFAULT, 1, ?, ?, ?, DEFAULT)
-                RETURNING
-                    match_id, status, data, owner_id, game_id, created_on;
-                """);
-
-            stmt.setString(1, data);
-            stmt.setInt(2, owner.accountId());
-            stmt.setInt(3, game.gameId());
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                Match match = readMatch(rs);
-                return match;
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return null; // TODO(rune): Error handling
+        sql.set(data);
+        sql.set(owner.accountId());
+        sql.set(game.gameId());
+        return sql.querySingle(this::readMatch);
     }
 
     @Override
-    public int update(Match match) {
-        Profiler.begin("MatchDataSql::update");
-        PreparedStatement stmt = null;
+    public void update(Match match) {
+        Sql sql = new Sql(conn, """
+            UPDATE boardgames.match
+            SET data = ?, owner_id = ?, status = ?
+            WHERE match_id = ?
+            """);
 
-        try {
-            // NOTE(m2dx): Opdaterer kun data og owner, da det ikke mening
-            // at opdatere game (brug createMatch() i stedet).
-            stmt = conn.prepareStatement("""
-                UPDATE match
-                SET data = ?, owner_id = ?
-                WHERE match_id = ?
-                """);
-
-            stmt.setString(1, match.data());
-            stmt.setInt(2, match.ownerId());
-            stmt.setInt(3, match.matchId());
-            int ret = stmt.executeUpdate();
-            return ret;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            Profiler.endAndPrint();
-        }
+        sql.set(match.data());
+        sql.set(match.ownerId());
+        sql.set(match.status());
+        sql.set(match.matchId());
+        sql.execute();
     }
 
     @Override
-    public int delete(int matchId) {
-        Profiler.begin("MatchDataSql::delete");
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = conn.prepareStatement(" DELETE FROM match WHERE match_id = ? ");
-            stmt.setInt(1, matchId);
-            int ret = stmt.executeUpdate();
-            return ret;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            Profiler.endAndPrint();
-        }
+    public void delete(int matchId) {
+        Sql sql = new Sql(conn, "DELETE FROM boardgames.match WHERE match_id = ? ");
+        sql.set(matchId);
+        sql.execute();
     }
 
     @Override
     public Match get(int matchId) {
-        Profiler.begin("MatchDataSql::get");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = conn.prepareStatement("""
-                SELECT * FROM match WHERE match_id = ?
-                """);
-
-            stmt.setInt(1, matchId);
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                Match match = readMatch(rs);
-                return match;
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            close(rs);
-            Profiler.endAndPrint();
-        }
-
-        return null; // TODO(rune): Error handling.
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.match WHERE match_id = ?");
+        sql.set(matchId);
+        return sql.querySingle(this::readMatch);
     }
 
     @Override
     public List<Match> getAll(int accountId, int status) {
-        Profiler.begin("MatchDataSql::getAll");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Match> matches = new ArrayList<>();
+        Sql sql = new Sql(conn, """
+            SELECT DISTINCT m.*
+            FROM boardgames.match m
+            LEFT OUTER JOIN boardgames.participant p ON p.match_id = m.match_id
+            WHERE (? = -1 OR m.owner_id = ? OR p.account_id = ?)
+            AND   (? = -1 OR m.status = ?)
+            """);
 
-        try {
-            stmt = conn.prepareStatement("""
-                SELECT DISTINCT m.*
-                FROM match m
-                LEFT OUTER JOIN participant p ON p.match_id = m.match_id
-                WHERE (? = -1 OR m.owner_id = ? OR p.account_id = ?)
-                AND   (? = -1 OR m.status = ?)
-                """);
-
-            stmt.setInt(1, accountId);
-            stmt.setInt(2, accountId);
-            stmt.setInt(3, accountId);
-            stmt.setInt(4, status);
-            stmt.setInt(5, status);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Match match = readMatch(rs);
-                matches.add(match);
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            close(rs);
-            Profiler.endAndPrint();
-        }
-
-        return matches;
-    }
-
-    private static Match readMatch(ResultSet rs) throws SQLException {
-        return new Match(
-            rs.getInt("match_id"),
-            rs.getInt("status"),
-            rs.getString("data"),
-            rs.getInt("owner_id"),
-            rs.getInt("game_id"),
-            rs.getTimestamp("created_on").toLocalDateTime()
-        );
+        sql.set(accountId);
+        sql.set(accountId);
+        sql.set(accountId);
+        sql.set(status);
+        sql.set(status);
+        return sql.queryAll(this::readMatch);
     }
 }

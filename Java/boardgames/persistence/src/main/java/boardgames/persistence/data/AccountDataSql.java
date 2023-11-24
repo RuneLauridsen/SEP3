@@ -1,15 +1,10 @@
 package boardgames.persistence.data;
 
 import boardgames.shared.dto.Account;
-import boardgames.shared.util.ProfileItem;
-import boardgames.shared.util.Profiler;
+import boardgames.shared.util.Timer;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static boardgames.persistence.data.SqlUtil.close;
@@ -24,149 +19,67 @@ public class AccountDataSql implements AccountData {
         conn = openConnection();
     }
 
+    private Account readAccount(Sql sql) {
+        return new Account(
+            sql.readInt("account_id"),
+            sql.readString("username"),
+            sql.readString("first_name"),
+            sql.readString("last_name"),
+            sql.readString("email"),
+            sql.readDateTime("registration_datetime"),
+            sql.readInt("status"),
+            sql.readDateTime("created_on")
+        );
+    }
+
     @Override
     public Account get(int accountId) {
-        Profiler.begin("AccountDataSql::get");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = conn.prepareStatement("SELECT * FROM account WHERE account_id = ?");
-            stmt.setInt(1, accountId);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                return readAccount(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return null; // TODO(rune): Error handling
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE account_id = ?");
+        sql.set(accountId);
+        return sql.querySingle(this::readAccount);
     }
 
     @Override
     public Account get(String username) {
-        Profiler.begin("get");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = conn.prepareStatement("SELECT * FROM account WHERE username = ?");
-            stmt.setString(1, username);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                return readAccount(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return null; // TODO(rune): Error handling
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE username = ?");
+        sql.set(username);
+        return sql.querySingle(this::readAccount);
     }
 
     @Override
     public Account get(String username, String hashedPassword) {
-        Profiler.begin("AccountDataSql::get");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-
-        try {
-            stmt = conn.prepareStatement("SELECT * FROM account WHERE username = ? AND hashed_password = ?");
-            stmt.setString(1, username);
-            stmt.setString(2, hashedPassword);
-            rs = stmt.executeQuery();
-            if (rs.next()) {
-                return readAccount(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return null; // TODO(rune): Error handling
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE username = ? AND hashed_password = ?");
+        sql.set(username);
+        sql.set(hashedPassword);
+        return sql.querySingle(this::readAccount);
     }
 
     @Override
     public List<Account> getAll() {
-        Profiler.begin("AccountDataSql::getAll");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Account> list = new ArrayList<>();
-
-        try {
-            stmt = conn.prepareStatement("SELECT * FROM account ");
-            rs = stmt.executeQuery();
-            while (rs.next()) {
-                list.add(readAccount(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return list;
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account");
+        return sql.queryAll(this::readAccount);
     }
 
     @Override
     public void update(Account account) {
-        Profiler.begin("AccountDataSql::update");
-
-        PreparedStatement stmt = null;
-        List<Account> list = new ArrayList<>();
-
-        try {
-            stmt = conn.prepareStatement("""
-                UPDATE account
-                SET 
-                username = ?,
+        Sql sql = new Sql(conn, """
+            UPDATE boardgames.account
+            SET username = ?,
                 first_name = ?,
                 last_name = ?,
                 email = ?,
                 registration_datetime = ?,
                 status = ?
-                WHERE account_id = ?
-                """);
+            WHERE account_id = ?
+            """);
 
-            stmt.setString(1, account.username());
-            stmt.setString(2, account.firstName());
-            stmt.setString(3, account.lastName());
-            stmt.setString(4, account.email());
-            stmt.setTimestamp(5, java.sql.Timestamp.valueOf(account.registerDateTime()));
-            stmt.setInt(6, account.status());
-            stmt.setInt(7, account.accountId());
-            stmt.execute();
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-    }
-
-    private Account readAccount(ResultSet rs) throws SQLException {
-        return new Account(
-            rs.getInt("account_id"),
-            rs.getString("username"),
-            rs.getString("first_name"),
-            rs.getString("last_name"),
-            rs.getString("email"),
-            rs.getTimestamp("registration_datetime").toLocalDateTime(),
-            rs.getInt("status"),
-            rs.getTimestamp("created_on").toLocalDateTime()
-        );
+        sql.set(account.username());
+        sql.set(account.firstName());
+        sql.set(account.lastName());
+        sql.set(account.email());
+        sql.set(account.registerDateTime());
+        sql.set(account.status());
+        sql.set(account.accountId());
+        sql.execute();
     }
 }

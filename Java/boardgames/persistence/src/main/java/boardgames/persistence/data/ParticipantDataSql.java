@@ -3,8 +3,7 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.Participant;
-import boardgames.shared.util.ProfileItem;
-import boardgames.shared.util.Profiler;
+import boardgames.shared.util.Timer;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -25,165 +24,83 @@ public class ParticipantDataSql implements ParticipantData {
         conn = openConnection();
     }
 
+    private Participant readParticipant(Sql sql) {
+        return new Participant(
+            sql.readInt("participant_id"),
+            sql.readInt("status"),
+            sql.readInt("match_id"),
+            sql.readInt("account_id"),
+            sql.readDateTime("created_on")
+        );
+    }
+
     @Override
     public Participant create(Account account, Match match, int status) {
-        Profiler.begin("ParticipantDataSql::create");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        Sql sql = new Sql(conn, """
+            INSERT INTO boardgames.participant
+                (participant_id, match_id, account_id, status, created_on)
+            VALUES
+                (DEFAULT, ?, ?, ?, DEFAULT)
+            RETURNING
+                participant_id, match_id, account_id, status, created_on
+            """);
 
-        try {
-            stmt = conn.prepareStatement("""
-                INSERT INTO participant
-                    (participant_id, match_id, account_id, status, created_on)
-                VALUES
-                    (DEFAULT, ?, ?, ?, DEFAULT)
-                RETURNING
-                    participant_id, match_id, account_id, status, created_on
-                """
-            );
-
-            stmt.setInt(1, match.matchId());
-            stmt.setInt(2, account.accountId());
-            stmt.setInt(3, status);
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return readParticipant(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            close(rs);
-            Profiler.endAndPrint();
-        }
-
-        return null;
+        sql.set(match.matchId());
+        sql.set(account.accountId());
+        sql.set(status);
+        return sql.querySingle(this::readParticipant);
     }
 
     @Override
     public Participant get(int participantId) {
-        Profiler.begin("ParticipantDataSql::get");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+        Sql sql = new Sql(conn, """
+            SELECT p.*
+            FROM boardgames.participant p
+            WHERE p.participant_id = ?
+            """);
 
-        try {
-            stmt = conn.prepareStatement("""
-                SELECT p.*
-                FROM participant p
-                WHERE p.participant_id = ?
-                """);
-
-            stmt.setInt(1, participantId);
-            rs = stmt.executeQuery();
-
-            if (rs.next()) {
-                return readParticipant(rs);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return null;
+        sql.set(participantId);
+        return sql.querySingle(this::readParticipant);
     }
 
     @Override
     public List<Participant> getAll(int matchId, int accountId, int status) {
-        Profiler.begin("ParticipantDataSql::getAll");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Participant> list = new ArrayList<>();
+        Sql sql = new Sql(conn, """
+            SELECT p.*
+            FROM boardgames.participant p
+            WHERE (? = -1 OR p.match_id = ?)
+            AND   (? = -1 OR p.account_id = ?)
+            AND   (? = -1 OR p.status = ?)
+            """);
 
-        try {
-            stmt = conn.prepareStatement("""
-                SELECT p.*
-                FROM participant p
-                WHERE (? = -1 OR p.match_id = ?)
-                AND   (? = -1 OR p.account_id = ?)
-                AND   (? = -1 OR p.status = ?)
-                """);
-
-            stmt.setInt(1, matchId);
-            stmt.setInt(2, matchId);
-            stmt.setInt(3, accountId);
-            stmt.setInt(4, accountId);
-            stmt.setInt(5, status);
-            stmt.setInt(6, status);
-            rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                list.add(readParticipant(rs));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
-
-        return list;
+        sql.set(matchId);
+        sql.set(matchId);
+        sql.set(accountId);
+        sql.set(accountId);
+        sql.set(status);
+        sql.set(status);
+        return sql.queryAll(this::readParticipant);
     }
 
     @Override
-    public int update(Participant participant) {
-        Profiler.begin("ParticipantDataSql::update");
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
+    public void update(Participant participant) {
+        // NOTE(m2dx): Opdaterer kun status, da det giver ikke mening
+        // at opdatere match eller account (brug createParticipant() i stedet).
+        Sql sql = new Sql(conn, """
+            UPDATE boardgames.participant
+            SET status = ?
+            WHERE participant_id = ?
+            """);
 
-        try {
-            // NOTE(m2dx): Opdaterer kun status, da det giver ikke mening
-            // at opdatere match eller account (brug createParticipant() i stedet).
-            stmt = conn.prepareStatement("""
-                UPDATE participant
-                SET status = ?
-                WHERE participant_id = ?
-                """);
-
-            stmt.setInt(1, participant.status());
-            stmt.setInt(2, participant.participantId());
-            int ret = stmt.executeUpdate();
-            return ret;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(rs);
-            close(stmt);
-            Profiler.endAndPrint();
-        }
+        sql.set(participant.status());
+        sql.set(participant.participantId());
+        sql.execute();
     }
 
     @Override
-    public int delete(int participantId) {
-        Profiler.begin("ParticipantDataSql::delete");
-        PreparedStatement stmt = null;
-
-        try {
-            stmt = conn.prepareStatement("DELETE FROM participant WHERE participant_id = ?");
-            stmt.setInt(1, participantId);
-            int ret = stmt.executeUpdate();
-            return ret;
-        } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
-        } finally {
-            close(stmt);
-            Profiler.endAndPrint();
-        }
+    public void delete(int participantId) {
+        Sql sql = new Sql(conn, "DELETE FROM boardgames.participant WHERE participant_id = ?");
+        sql.set(participantId);
+        sql.execute();
     }
-
-    private static Participant readParticipant(ResultSet rs) throws SQLException {
-        return new Participant(
-            rs.getInt("participant_id"),
-            rs.getInt("status"),
-            rs.getInt("match_id"),
-            rs.getInt("account_id"),
-            rs.getTimestamp("created_on").toLocalDateTime()
-        );
-    }
-
 }

@@ -10,6 +10,6 @@ public interface MatchData {
     public Match get(int matchId);
     public List<Match> getAll(int accountId, int status);
     public Match create(Account owner, Game game, String data);
-    public int update(Match match);
-    public int delete(int matchId);
+    public void update(Match match);
+    public void delete(int matchId);
 }

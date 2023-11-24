@@ -29,3 +29,7 @@ Java/boardgames/persistence/src/main/resources/ConnectionString.txt
 
 *.user
 .mvn
+
+# Så længer vi alle bruger lokal database, er det nemmere at have hver sin data source config, 
+# fordi vi bruger forskellige passwords og port.
+dataSources.xml
