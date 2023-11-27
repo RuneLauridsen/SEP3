@@ -42,7 +42,7 @@ tr:nth-child(even) {
 
   @foreach (Account account in accounts)
   {
-    <tr>
+    <tr @onclick="() => AccountClick(account)">
       <td>@(account.Username)</td>
       <td>@(account.FirstName) @(account.LastName)</td>
       <td>@(account.Email)</td>
@@ -65,6 +65,13 @@ tr:nth-child(even) {
   private void GoToRegistrations()
   {
     navMgr.NavigateTo("/ConfirmRegistrations");
+  }
+
+  private void AccountClick(Account account)
+  {
+    //TODO vis profilside med clicket acount
+    Console.WriteLine(account.Username);
+    navMgr.NavigateTo("/MemberProfile");
   }
 
 }
