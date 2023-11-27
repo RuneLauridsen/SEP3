@@ -211,6 +211,11 @@ public class LogicServerModelImpl implements LogicServerModel {
         // TODO(rune): Username already taken.
         // TODO(rune): Følgende tjek gælder ikke for admin.
         Validation v = new Validation();
+
+        if (fromClient.accountId() != claims.accountId()) {
+            v.invalid(String.format("Tried to edit account id %s but jwt account id was %s.", fromClient.accountId(), claims.accountId()));
+        }
+
         v.mustBeEqual(fromClient, fromServer, Account::registerDateTime, "register date time");
         v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
         v.mustBeEqual(fromClient, fromServer, Account::status, "status");

@@ -1,4 +1,4 @@
-﻿@page "/profile"
+﻿@page "/account/{accountid}"
 @using GameClient.Data
 @using GameClient.DTO
 @using GameClient.Services
@@ -8,34 +8,34 @@
 @inject IAuthService AuthService;
 @inject NavigationManager navMgr
 
-<PageTitle>Profile</PageTitle>
+<PageTitle>@_account.Username</PageTitle>
 
-<h1>Profile</h1>
 
-<h2>@_account.Username</h2>
-
-            <!-- TODO(rune): Bedre GUI -->
-<div class="container">
-    <div class="row">
-        <div class="col-4"> <!-- TODO(rune): Responsive  -->
-            <p>AccountId: @_account.AccountId</p>
-            <p>Username: @_account.Username</p>
-            <p>FirstName: @_account.FirstName</p>
-            <p>LastName: @_account.LastName</p>
-            <p>Email: @_account.Email</p>
-            <p>Status: @_account.StatusName()</p>
-            <p>RegisterDateTime: @_account.RegisterDateTime</p>
-            <p>CreatedOn: @_account.CreatedOn</p>
-        </div>
-        <div class="col-4">
-            <img src="@_imgSrc" alt="Profile Picture"/>
+@if (!_isEditing) {
+    <h1>@_account.Username</h1>
+    <!-- TODO(rune): Bedre GUI -->
+    <div class="container">
+        <div class="row">
+            <div class="col-4"> <!-- TODO(rune): Responsive  -->
+                <p>AccountId: @_account.AccountId</p>
+                <p>Username: @_account.Username</p>
+                <p>FirstName: @_account.FirstName</p>
+                <p>LastName: @_account.LastName</p>
+                <p>Email: @_account.Email</p>
+                <p>Status: @_account.StatusName()</p>
+                <p>RegisterDateTime: @_account.RegisterDateTime</p>
+                <p>CreatedOn: @_account.CreatedOn</p>
+            </div>
+            <div class="col-4">
+                @if (_imgSrc != "") {
+                    <img src="@_imgSrc" alt="Profile Picture"/>
+                }
+            </div>
         </div>
     </div>
-</div>
 
-@if (_isEditing) {
-    <hr class="my-5">
-
+    <button @onclick=OnEditClicked>Edit</button>
+} else {
     <h1>Edit profile</h1>
 
     @if (_errorReason != "") {
@@ -44,19 +44,19 @@
 
     <p>
         <label>Username</label>
-        <input type="text" class="form-control" value="@_account.Username">
+        <input type="text" class="form-control" @bind="@_account.Username">
     </p>
     <p>
         <label>First name</label>
-        <input type="text" class="form-control" value="@_account.FirstName">
+        <input type="text" class="form-control" @bind="@_account.FirstName">
     </p>
     <p>
         <label>Last name</label>
-        <input type="text" class="form-control" value="@_account.LastName">
+        <input type="text" class="form-control" @bind="@_account.LastName">
     </p>
     <p>
         <label>Email</label>
-        <input type="text" class="form-control" value="@_account.Email">
+        <input type="text" class="form-control" @bind="@_account.Email">
     </p>
     <p>
         <label>Profilbillede.</label>
@@ -65,26 +65,27 @@
 
 
     <button @onclick=OnSaveClicked>Save</button>
-} else {
-    <button @onclick=OnEditClicked>Edit</button>
 }
 
-
 @code {
-    private Account _account = Empty.Account();
+    [Parameter]
+    public string AccountId { get; set; } = "";
+
+    private DTO.Account _account = Empty.Account();
     private bool _isEditing = false;
     private IBrowserFile? _uploadedProfilePicture = null;
     private string _imgSrc = "";
     private string _errorReason = "";
+    private bool _isOwnProfile = false;
 
     protected override Task OnInitializedAsync() {
-        string accountIdString = AuthService.GetClaims().GetOrDefault("userId", "");
-        int accountID = ParseUtil.ParseIntOrDefault(accountIdString, 0);
-        if (accountID != 0) {
-            var req = new GetAccountReq(accountID);
+        int claimAccountId = ParseUtil.ParseIntOrDefault(AuthService.GetClaims().GetOrDefault("userId", ""));
+        int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
+        if (routeAccountId != 0) {
+            _isOwnProfile = routeAccountId == claimAccountId;
+            var req = new GetAccountReq(routeAccountId);
             var res = GameService.GetAccount(req);
             _account = res.account;
-
             if (_account.ProfilePicture != null &&
                 _account.ProfilePictureType != null) {
                 _imgSrc = string.Format("data:{0};base64, {1}", _account.ProfilePictureType, _account.ProfilePicture);
