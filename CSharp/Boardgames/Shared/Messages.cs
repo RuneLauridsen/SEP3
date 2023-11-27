@@ -70,6 +70,9 @@ public class Messages {
     // Accounts
     //
 
+    public record GetAccountReq(int accountId) {}
+    public record GetAccountRes(Account account) {}
+
     // TODO(rune): Paging?
     // TODO(rune): Kun hent venner?
     // TODO(rune): Kun hent online?

@@ -16,52 +16,43 @@ public class JwtAuthService : IAuthService {
         Console.WriteLine("Constructor!");
     }
 
-    private readonly HttpClient client;
-    public string? Jwt { get; private set; } = "";
+    private string jwt = "";
+    private ClaimsPrincipal _claimsPrincipal = new ClaimsPrincipal();
 
-    public Action<ClaimsPrincipal> OnAuthStateChanged { get; set; }
-
-    //Todo, async?
-    public  Task<bool> LoginAsync(string username,  string password)
-    {
-        Messages.LoginResponse response = socket.SendAndReceive<Messages.LoginResponse>(new Messages.LoginRequest(username, password));
-
-        Jwt = response.jwt;
-
-        ClaimsPrincipal principal = CreateClaimsPrincipal();
-
-        OnAuthStateChanged?.Invoke(principal);
-
-        return Task.FromResult(response.loginSuccessful);
+    private ClaimsPrincipal ClaimsPrincipal {
+        get => _claimsPrincipal;
+        set => _claimsPrincipal = value;
     }
 
-    private ClaimsPrincipal CreateClaimsPrincipal()
-    {
-        if (string.IsNullOrEmpty(Jwt))
-        {
+    public Task<bool> LoginAsync(string username, string password) {
+        LoginRequest req = new LoginRequest(username, password);
+        LoginResponse res = socket.SendAndReceive<LoginResponse>(req);
+
+        jwt = res.jwt;
+        ClaimsPrincipal = ParseClaimsFromJwt(jwt);
+
+        //Todo, async?
+        return Task.FromResult(res.loginSuccessful);
+    }
+
+    private static ClaimsPrincipal ParseClaimsFromJwt(string jwt) {
+        if (string.IsNullOrEmpty(jwt)) {
             return new ClaimsPrincipal();
         }
 
-        IEnumerable<Claim> claims = ParseClaimsFromJwt(Jwt);
+        var payload = jwt.Split('.')[1];
+        var jsonBytes = ParseBase64WithoutPadding(payload);
 
-        ClaimsIdentity identity = new(claims, "jwt");
+        var kvps = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes)!;
+        var claims = kvps.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()!));
 
-        ClaimsPrincipal principal = new(identity);
+        var identity = new ClaimsIdentity(claims, "jwt");
+        var principal = new ClaimsPrincipal(identity);
         return principal;
     }
 
-    private IEnumerable<Claim> ParseClaimsFromJwt(string jwt)
-    {
-        string payload = jwt.Split('.')[1];
-        byte[] jsonBytes = ParseBase64WithoutPadding(payload);
-        Dictionary<string, object>? keyValuePairs = JsonSerializer.Deserialize<Dictionary<string, object>>(jsonBytes);
-        return keyValuePairs!.Select(kvp => new Claim(kvp.Key, kvp.Value.ToString()!));
-    }
-
-    private byte[] ParseBase64WithoutPadding(string base64)
-    {
-        switch (base64.Length % 4)
-        {
+    private static byte[] ParseBase64WithoutPadding(string base64) {
+        switch (base64.Length % 4) {
             case 2:
                 base64 += "==";
                 break;
@@ -73,24 +64,24 @@ public class JwtAuthService : IAuthService {
         return Convert.FromBase64String(base64);
     }
 
-    public Task LogoutAsync()
-    {
-        Jwt = null;
-        ClaimsPrincipal principal = new();
-        OnAuthStateChanged.Invoke(principal);
+    public Task LogoutAsync() {
+        jwt = "";
+        ClaimsPrincipal = new ClaimsPrincipal();
         return Task.CompletedTask;
     }
 
-    public Task RegisterAsync(string userName, string firstName, string lastName, string email, string password)
-    {
+    public Task RegisterAsync(string userName, string firstName, string lastName, string email, string password) {
         // Todo Gør ordenlig
-        RegisterResponse response =
-            socket.SendAndReceive<RegisterResponse>(new RegisterRequest(userName, firstName, lastName, email,
-                password));
+        RegisterRequest req = new RegisterRequest(userName, firstName, lastName, email, password);
+        RegisterResponse res = socket.SendAndReceive<RegisterResponse>(req);
         return Task.CompletedTask;
     }
 
     public string GetJwt() {
-        return Jwt ?? "";
+        return jwt ?? "";
+    }
+
+    public ClaimsPrincipal GetClaims() {
+        return ClaimsPrincipal;
     }
 }

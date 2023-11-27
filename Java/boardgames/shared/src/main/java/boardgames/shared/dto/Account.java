@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 public final class Account {
     private int accountId;
     private String username;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public LocalDateTime registerDateTime;
-    public LocalDateTime createdOn;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private LocalDateTime registerDateTime;
+    private LocalDateTime createdOn;
     private int status;
 
     public static final int STATUS_NONE = 0;

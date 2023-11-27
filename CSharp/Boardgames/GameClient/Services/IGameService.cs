@@ -16,6 +16,7 @@ public interface IGameService {
     public GetMyMatchesResponse GetMyMatches(GetMyMatchesRequest request);
     public CreateMatchResponse CreateMatch(CreateMatchRequest request);
     public GetGamesResponse GetGames(GetGamesRequest request);
+    public GetAccountRes GetAccount(GetAccountReq req);
     public GetAccountsRes GetAccounts(GetAccountsReq req);
 
     public AddParticipantRes AddParticipant(AddParticipantReq req);
