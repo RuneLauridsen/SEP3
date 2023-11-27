@@ -16,7 +16,8 @@
     <!-- TODO(rune): Bedre GUI -->
     <div class="container">
         <div class="row">
-            <div class="col-4"> <!-- TODO(rune): Responsive  -->
+            <div class="col-4">
+                <!-- TODO(rune): Responsive  -->
                 <p>AccountId: @_account.AccountId</p>
                 <p>Username: @_account.Username</p>
                 <p>FirstName: @_account.FirstName</p>
@@ -68,6 +69,7 @@
 }
 
 @code {
+
     [Parameter]
     public string AccountId { get; set; } = "";
 
@@ -86,10 +88,7 @@
             var req = new GetAccountReq(routeAccountId);
             var res = GameService.GetAccount(req);
             _account = res.account;
-            if (_account.ProfilePicture != null &&
-                _account.ProfilePictureType != null) {
-                _imgSrc = string.Format("data:{0};base64, {1}", _account.ProfilePictureType, _account.ProfilePicture);
-            }
+            _imgSrc = HtmlUtil.ToImgSrcString(_account.ProfilePicture, _account.ProfilePictureType);
         }
 
         return Task.CompletedTask;
@@ -103,11 +102,11 @@
         if (_uploadedProfilePicture == null) {
             _account.ProfilePicture = null;
         } else {
-            // NOTE(rune):
-            // Lidt spild at læse det hele ind i en temp buffers, når det alligevel bare
-            // bliver proxyet til socket, men vi har få brugere so who cares ¯\_(ツ)_/¯.
-            // Der er alligevel _mange_ andre problemer at løse, hvis vi skulle lave et
-            // effektivt system.
+    // NOTE(rune):
+    // Lidt spild at læse det hele ind i en temp buffers, når det alligevel bare
+    // bliver proxyet til socket, men vi har få brugere so who cares ¯\_(ツ)_/¯.
+    // Der er alligevel _mange_ andre problemer at løse, hvis vi skulle lave et
+    // effektivt system.
             await using var stream = _uploadedProfilePicture.OpenReadStream();
             var bytes = await ReadAllBytesAsync(stream);
             var base64 = Convert.ToBase64String(bytes);
@@ -118,7 +117,7 @@
         var req = new UpdateAccountReq(_account);
         var res = GameService.UpdateAccount(req);
 
-        // TODO(rune): Show errorReason
+    // TODO(rune): Show errorReason
         _errorReason = res.errorReason;
         if (_errorReason == "") {
             navMgr.ReloadCurrentPage();
@@ -135,4 +134,5 @@
         await input.CopyToAsync(ms);
         return ms.ToArray();
     }
+
 }

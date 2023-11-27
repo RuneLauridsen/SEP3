@@ -1,5 +1,7 @@
 ﻿@using GameClient.Services
+@using GameClient.DTO
 @inject IAuthService authService;
+@inject IGameService gameService;
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
@@ -58,12 +60,14 @@
             </ul>
 
             <form class="form-inline my-2 my-lg-0 d-flex align-items-center text-muted">
-                @if (username == "") {
+                @if (account.AccountId == 0) {
                     <span>Not logged in</span>
                 } else {
-                    <span>@username</span>
+                    <span>@account.Username</span>
                     <span style="width: 20px"></span>
-                    <img class="img-thumbnail rounded-circle    " style="width: 50px; height: 50px;" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg">
+                    @if (imgSrc != "") {
+                        <img class="img-thumbnail rounded-circle    " style="width: 50px; height: 50px;" src="@imgSrc">
+                    }
                 }
             </form>
         </div>
@@ -74,7 +78,8 @@
     private bool collapseNavMenu = true;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
-    private string username = "";
+    private Account account = Empty.Account();
+    private string imgSrc = "";
 
     private void ToggleNavMenu() {
         collapseNavMenu = !collapseNavMenu;
@@ -83,6 +88,15 @@
     // TODO(rune): Første kan man bliver redirected til index efter login,
     // bliver username / profilbillede ikke vist før en refresh.
     protected override void OnInitialized() {
-        username = authService.GetClaims().GetOrDefault("username", "");
+    // TODO(rune): Måske gem brugerens eget Account object globalt,
+    // så vi ikke skal hent den hele tiden.
+        int accountId = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
+        if (accountId != 0) {
+            var req = new GetAccountReq(accountId);
+            var res = gameService.GetAccount(req);
+            account = res.account;
+            imgSrc = HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
+        }
     }
+
 }
