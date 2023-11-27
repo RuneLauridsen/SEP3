@@ -119,6 +119,11 @@ public class LogicServerSocketHandler implements Runnable {
                 return res;
             }
 
+            if (body instanceof UpdateUserStatusRequest req){
+                UpdateUserStatusResponse res = model.approveUserReg(req, jwt);
+                return res;
+            }
+
         } catch (NotAuthorizedException e) {
             return new NotAuthorizedResponse();
         }

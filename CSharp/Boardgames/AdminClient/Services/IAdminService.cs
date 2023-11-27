@@ -6,8 +6,8 @@ namespace AdminClient.Services;
 
 public interface IAdminService
 {
-    public ApproveUserResponse AcceptMember(Account account);
-    public RejectUserResponse RejectMember(Account account);
+    public UpdateUserStatusResponse UpdateUserStatus(Account account, int newStatus);
 
     public List<Account> GetUsersWaitingForApproval();
+    List<Account> GetAllUsers();
 }

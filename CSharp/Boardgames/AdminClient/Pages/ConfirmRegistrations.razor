@@ -4,6 +4,7 @@
 @using AdminClient.Services
 @using GameClient.DTO
 @using global::Shared.Data
+@using Microsoft.AspNetCore.Mvc
 @inject IAdminService adminService
 
 <PageTitle>Applicants for registration:</PageTitle>
@@ -52,23 +53,26 @@ tr:nth-child(even) {
 
 @code {
     AdminService Service;
-    List<Account> applicants;
+    List<Account> applicants = new List<Account>();
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
+        applicants.Clear();
         applicants.AddRange(adminService.GetUsersWaitingForApproval());
     }
 
-    private void ApplicantAccept(Account account )
+    private async Task ApplicantAccept(Account account )
     {
-        adminService.AcceptMember(account);
+        adminService.UpdateUserStatus(account, Account.STATUS_ACCEPTED);
         navMgr.NavigateTo("/ConfirmRegistrations");
+        await OnInitializedAsync();
     }
-    private void ApplicantReject(Account account )
+    private async Task ApplicantReject(Account account )
     {
-        adminService.RejectMember(account);
+        adminService.UpdateUserStatus(account, Account.STATUS_DELETED);
         navMgr.NavigateTo("/ConfirmRegistrations");
+        await OnInitializedAsync();
     }
     
 }

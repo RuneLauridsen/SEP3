@@ -33,15 +33,8 @@ public class Messages {
     // Admin Register stuff
     //
 
-    public record ApproveUserRequest(Account Account) { }
-
-    public record ApproveUserResponse(boolean b) { }
-    public record RejectUserRequest(Account Account) { }
-
-    public record RejectUserResponse(boolean b) { }
-
-    public record GetUsersWaitingForApprovalRequest() { }
-    public record GetUsersWaitingForApprovalResponse(List<Account> Members) { }
+    public record UpdateUserStatusRequest(Account account, int newStatus){};
+    public record UpdateUserStatusResponse(boolean b){};
 
     //
     // Spilkataolog

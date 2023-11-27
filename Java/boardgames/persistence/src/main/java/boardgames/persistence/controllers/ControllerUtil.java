@@ -61,4 +61,10 @@ public class ControllerUtil {
             throw new BadRequestException("Participant id in path (" + participant + ") does not match participant id in body (" + participant.participantId() + ").");
         }
     }
+
+    public static void throwIfMismatched(int accountId, Account account) throws BadRequestException {
+        if (accountId != account.accountId()) {
+            throw new BadRequestException("Account id in path (" + account + ") does not match account id in body (" + account.accountId() + ").");
+        }
+    }
 }

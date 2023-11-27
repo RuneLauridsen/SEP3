@@ -68,4 +68,14 @@ public class AccountServiceRest implements AccountService {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }
     }
+
+    @Override
+    public boolean updateStatus(Account account) {
+        try{
+            restTemplate.put(ulr+"/accounts/"+ account.accountId(), account);
+            return true;
+        } catch (RestClientException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

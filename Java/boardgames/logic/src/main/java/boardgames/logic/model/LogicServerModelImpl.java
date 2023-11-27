@@ -195,4 +195,12 @@ public class LogicServerModelImpl implements LogicServerModel {
         return new GetAccountsRes(accounts);
     }
 
+    @Override
+    public UpdateUserStatusResponse approveUserReg(UpdateUserStatusRequest req, String jwt) throws NotAuthorizedException {
+       JwtClaims claims = jwtService.verify(jwt);
+       req.account().setStatus(req.newStatus());
+       boolean success = accountService.updateStatus(req.account());
+       return new UpdateUserStatusResponse(success);
+    }
+
 }

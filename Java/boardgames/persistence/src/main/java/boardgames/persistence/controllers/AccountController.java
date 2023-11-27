@@ -2,10 +2,7 @@ package boardgames.persistence.controllers;
 
 import boardgames.persistence.data.AccountData;
 import boardgames.shared.dto.Account;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +38,17 @@ public class AccountController {
         return accounts;
     }
 
+    @PutMapping("/accounts/{accountId}")
+    public void updateStatus(@PathVariable int accountId, @RequestBody Account account){
+        throwIfMismatched(accountId, account);
+        accountData.update(account);
+    }
+
     public List<Account> getAll() {
         List<Account> accounts = accountData.getAll();
         return accounts;
     }
+
+
+
 }

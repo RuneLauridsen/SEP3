@@ -31,6 +31,9 @@ public class ServiceSocket {
         _stream = new NetworkStream(_socket);
         _writer = new BinaryWriter(_stream);
         _reader = new BinaryReader(_stream);
+        var jwt = SendAndReceive<LoginResponse>(new LoginRequest("BenDover", "julie")).jwt;
+
+        _getJwtFunc = () => jwt;
     }
 
     // NOTE(rune): Javas DataInputStream og DataOuputStream sender utf8-strings,
