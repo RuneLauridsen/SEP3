@@ -68,4 +68,8 @@ public class GameService : IGameService {
     public DecidePendingRes DecidePending(DecidePendingReq req) {
         return _socket.SendAndReceive<DecidePendingRes>(req);
     }
+
+    public UpdateAccountRes UpdateAccount(UpdateAccountReq req) {
+        return _socket.SendAndReceive<UpdateAccountRes>(req);
+    }
 }

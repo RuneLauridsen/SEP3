@@ -14,15 +14,25 @@
 
 <h2>@_account.Username</h2>
 
-<!-- TODO(rune): Bedre GUI -->
-<p>AccountId: @_account.AccountId</p>
-<p>Username: @_account.Username</p>
-<p>FirstName: @_account.FirstName</p>
-<p>LastName: @_account.LastName</p>
-<p>Email: @_account.Email</p>
-<p>Status: @_account.StatusName()</p>
-<p>RegisterDateTime: @_account.RegisterDateTime</p>
-<p>CreatedOn: @_account.CreatedOn</p>
+            <!-- TODO(rune): Bedre GUI -->
+<div class="container">
+    <div class="row">
+        <div class="col-4"> <!-- TODO(rune): Responsive  -->
+            <p>AccountId: @_account.AccountId</p>
+            <p>Username: @_account.Username</p>
+            <p>FirstName: @_account.FirstName</p>
+            <p>LastName: @_account.LastName</p>
+            <p>Email: @_account.Email</p>
+            <p>Status: @_account.StatusName()</p>
+            <p>RegisterDateTime: @_account.RegisterDateTime</p>
+            <p>CreatedOn: @_account.CreatedOn</p>
+        </div>
+        <div class="col-4">
+            <img src="@_imgSrc" alt="Profile Picture"/>
+        </div>
+    </div>
+</div>
+
 @if (_isEditing) {
     <hr class="my-5">
 
@@ -43,6 +53,11 @@
         <label>Email</label>
         <input type="text" class="form-control" value="@_account.Email">
     </p>
+    <p>
+        <label>Profilbillede.</label>
+        <InputFile OnChange="@LoadFile"/>
+    </p>
+
 
     <button @onclick=OnSaveClicked>Save</button>
 } else {
@@ -53,6 +68,8 @@
 @code {
     private Account _account = Empty.Account();
     private bool _isEditing = false;
+    private IBrowserFile? _uploadedProfilePicture = null;
+    private string _imgSrc = "";
 
     protected override Task OnInitializedAsync() {
         string accountIdString = AuthService.GetClaims().GetOrDefault("userId", "");
@@ -61,6 +78,11 @@
             var req = new GetAccountReq(accountID);
             var res = GameService.GetAccount(req);
             _account = res.account;
+
+            if (_account.ProfilePicture != null &&
+                _account.ProfilePictureType != null) {
+                _imgSrc = string.Format("data:{0};base64, {1}", _account.ProfilePictureType, _account.ProfilePicture);
+            }
         }
 
         return Task.CompletedTask;
@@ -70,6 +92,38 @@
         _isEditing = true;
     }
 
-    private void OnSaveClicked() {
+    private async Task OnSaveClicked() {
+        if (_uploadedProfilePicture == null) {
+            _account.ProfilePicture = null;
+        } else {
+            // NOTE(rune):
+            // Lidt spild at læse det hele ind i en temp buffers, når det alligevel bare
+            // bliver proxyet til socket, men vi har få brugere so who cares ¯\_(ツ)_/¯.
+            // Der er alligevel _mange_ andre problemer at løse, hvis vi skulle lave et
+            // effektivt system.
+            await using var stream = _uploadedProfilePicture.OpenReadStream();
+            var bytes = await ReadAllBytesAsync(stream);
+            var base64 = Convert.ToBase64String(bytes);
+            _account.ProfilePicture = base64;
+            _account.ProfilePictureType = _uploadedProfilePicture.ContentType;
+        }
+
+        var req = new UpdateAccountReq(_account);
+        var res = GameService.UpdateAccount(req);
+
+        // TODO(rune): Show errorReason
+
+        navMgr.ReloadCurrentPage();
+    }
+
+    private void LoadFile(InputFileChangeEventArgs obj) {
+        _uploadedProfilePicture = obj.File;
+    }
+
+    // NOTE(rune): https://stackoverflow.com/a/6586039
+    private static async Task<byte[]> ReadAllBytesAsync(Stream input) {
+        using MemoryStream ms = new MemoryStream();
+        await input.CopyToAsync(ms);
+        return ms.ToArray();
     }
 }

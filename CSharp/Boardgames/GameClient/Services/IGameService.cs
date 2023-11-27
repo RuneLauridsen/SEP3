@@ -1,4 +1,5 @@
-﻿using static Shared.Data.Messages;
+﻿using GameClient.DTO;
+using static Shared.Data.Messages;
 
 namespace GameClient.Services;
 
@@ -23,4 +24,5 @@ public interface IGameService {
     public GetParticipantsRes GetParticipants(GetParticipantsReq req);
     public GetPendingRes GetPending(GetPendingReq req);
     public DecidePendingRes DecidePending(DecidePendingReq req);
+    public UpdateAccountRes UpdateAccount(UpdateAccountReq req);
 }
