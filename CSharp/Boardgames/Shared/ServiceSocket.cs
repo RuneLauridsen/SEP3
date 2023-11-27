@@ -42,18 +42,22 @@ public class ServiceSocket {
     // ReadString() svarer til DataInputStream.readUTF() i Java.
 
     private void SendString(string s) {
-        _writer.Write((byte)(s.Length >> 8));
-        _writer.Write((byte)(s.Length >> 0));
-        _writer.Write(Encoding.UTF8.GetBytes(s));
+        _writer.Write((byte)(s.Length >> 24));
+        _writer.Write((byte)(s.Length >> 16));
+        _writer.Write((byte)(s.Length >>  8));
+        _writer.Write((byte)(s.Length >>  0));
+        _writer.Write(Encoding.BigEndianUnicode.GetBytes(s));
         _writer.Flush();
     }
 
     private string ReadString() {
         int length = 0;
-        length |= _reader.ReadByte() << 8;
-        length |= _reader.ReadByte() << 0;
-        byte[] bytes = _reader.ReadBytes(length);
-        string ret = Encoding.UTF8.GetString(bytes);
+        length |= _reader.ReadByte() << 24;
+        length |= _reader.ReadByte() << 16;
+        length |= _reader.ReadByte() <<  8;
+        length |= _reader.ReadByte() <<  0;
+        byte[] bytes = _reader.ReadBytes(length * 2);
+        string ret = Encoding.BigEndianUnicode.GetString(bytes);
         return ret;
     }
 

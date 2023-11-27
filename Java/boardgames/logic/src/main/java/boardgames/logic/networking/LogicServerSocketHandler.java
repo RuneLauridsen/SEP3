@@ -13,6 +13,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 import static boardgames.logic.messages.Messages.LoginRequest;
 
@@ -138,12 +139,15 @@ public class LogicServerSocketHandler implements Runnable {
     }
 
     private void sendString(String string) throws IOException {
-        outToClient.writeUTF(string);
+        outToClient.writeInt(string.length());
+        outToClient.writeChars(string);
         outToClient.flush();
     }
 
     private String readString() throws IOException {
-        String s = inFromClient.readUTF();
+        int len = inFromClient.readInt();
+        byte[] bytes = inFromClient.readNBytes(len * 2);
+        String s = new String(bytes, StandardCharsets.UTF_16);
         return s;
     }
 
