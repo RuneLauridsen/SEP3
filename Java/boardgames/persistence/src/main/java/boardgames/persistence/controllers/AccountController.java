@@ -39,7 +39,7 @@ public class AccountController {
     }
 
     @PutMapping("/accounts/{accountId}")
-    public void updateStatus(@PathVariable int accountId, @RequestBody Account account){
+    public void update(@PathVariable int accountId, @RequestBody Account account) {
         throwIfMismatched(accountId, account);
         accountData.update(account);
     }
@@ -48,7 +48,4 @@ public class AccountController {
         List<Account> accounts = accountData.getAll();
         return accounts;
     }
-
-
-
 }

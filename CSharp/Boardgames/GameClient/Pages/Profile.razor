@@ -5,17 +5,71 @@
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
+@inject IAuthService AuthService;
 @inject NavigationManager navMgr
 
 <PageTitle>Profile</PageTitle>
 
+<h1>Profile</h1>
+
+<h2>@_account.Username</h2>
+
+<!-- TODO(rune): Bedre GUI -->
+<p>AccountId: @_account.AccountId</p>
+<p>Username: @_account.Username</p>
+<p>FirstName: @_account.FirstName</p>
+<p>LastName: @_account.LastName</p>
+<p>Email: @_account.Email</p>
+<p>Status: @_account.StatusName()</p>
+<p>RegisterDateTime: @_account.RegisterDateTime</p>
+<p>CreatedOn: @_account.CreatedOn</p>
+@if (_isEditing) {
+    <hr class="my-5">
+
+    <h1>Edit profile</h1>
+    <p>
+        <label>Username</label>
+        <input type="text" class="form-control" value="@_account.Username">
+    </p>
+    <p>
+        <label>First name</label>
+        <input type="text" class="form-control" value="@_account.FirstName">
+    </p>
+    <p>
+        <label>Last name</label>
+        <input type="text" class="form-control" value="@_account.LastName">
+    </p>
+    <p>
+        <label>Email</label>
+        <input type="text" class="form-control" value="@_account.Email">
+    </p>
+
+    <button @onclick=OnSaveClicked>Save</button>
+} else {
+    <button @onclick=OnEditClicked>Edit</button>
+}
+
+
 @code {
-    private Account _account;
+    private Account _account = Empty.Account();
+    private bool _isEditing = false;
 
     protected override Task OnInitializedAsync() {
-        var req = new GetAccountReq(1);
-        var res = GameService.GetAccount(req);
+        string accountIdString = AuthService.GetClaims().GetOrDefault("userId", "");
+        int accountID = ParseUtil.ParseIntOrDefault(accountIdString, 0);
+        if (accountID != 0) {
+            var req = new GetAccountReq(accountID);
+            var res = GameService.GetAccount(req);
+            _account = res.account;
+        }
 
         return Task.CompletedTask;
+    }
+
+    private void OnEditClicked() {
+        _isEditing = true;
+    }
+
+    private void OnSaveClicked() {
     }
 }

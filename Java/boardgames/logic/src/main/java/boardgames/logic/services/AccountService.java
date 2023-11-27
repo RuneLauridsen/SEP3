@@ -10,5 +10,5 @@ public interface AccountService {
     public Account get(String username, String hashedPassword);
     public List<Account> get();
 
-    boolean updateStatus(Account account);
+    boolean update(Account account);
 }

@@ -15,4 +15,14 @@ public class Account {
     public const int STATUS_PENDING = 1;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
     public const int STATUS_ACCEPTED = 2; // NOTE(rune): Bruger er godkendt af admin.
     public const int STATUS_DELETED = 3;  // NOTE(rune): Bruger er fjernet af admin.
+
+    public string StatusName() {
+        return Status switch {
+            STATUS_NONE => "STATUS_NONE",
+            STATUS_PENDING => "STATUS_PENDING",
+            STATUS_ACCEPTED => "STATUS_ACCEPTED",
+            STATUS_DELETED => "STATUS_DELETED",
+            _ => ""
+        };
+    }
 }

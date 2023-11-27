@@ -5,6 +5,7 @@ import boardgames.logic.messages.Messages;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.model.LogicServerModel;
 import boardgames.logic.model.NotAuthorizedException;
+import boardgames.shared.dto.Account;
 import boardgames.shared.util.JsonUtil;
 import com.google.gson.JsonSyntaxException;
 
@@ -119,8 +120,13 @@ public class LogicServerSocketHandler implements Runnable {
                 return res;
             }
 
-            if (body instanceof UpdateUserStatusRequest req){
+            if (body instanceof UpdateUserStatusRequest req) {
                 UpdateUserStatusResponse res = model.approveUserReg(req, jwt);
+                return res;
+            }
+
+            if (body instanceof UpdateAccountReq req) {
+                UpdateAccountRes res = model.updateAccount(req, jwt);
                 return res;
             }
 

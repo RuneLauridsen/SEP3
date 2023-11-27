@@ -67,6 +67,7 @@ public class Sql {
     public Sql set(String v) { return setIndex(autoIndex++, v); }
     public Sql set(LocalDate v) { return setIndex(autoIndex++, v); }
     public Sql set(LocalDateTime v) { return setIndex(autoIndex++, v); }
+    public Sql set(byte[] v) { return setIndex(autoIndex++, v); }
 
     public Sql setIndex(int parameterIndex, int v) {
         if (caughtException == null) {
@@ -172,6 +173,22 @@ public class Sql {
         return this;
     }
 
+    public Sql setIndex(int parameterIndex, byte[] v) {
+        if (caughtException == null) {
+            try {
+                if (v == null) {
+                    statement.setNull(parameterIndex, Types.VARBINARY);
+                } else {
+                    statement.setBytes(parameterIndex, v);
+                }
+            } catch (SQLException e) {
+                caughtException = e;
+            }
+        }
+
+        return this;
+    }
+
     public boolean next() {
         if (caughtException == null) {
             try {
@@ -251,6 +268,19 @@ public class Sql {
                 } else {
                     return v.toLocalDateTime();
                 }
+            } catch (SQLException e) {
+                caughtException = e;
+            }
+        }
+
+        return null;
+    }
+
+    public byte[] readBytes(String columnName) {
+        if (caughtException == null) {
+            try {
+                byte[] bytes = resultSet.getBytes(columnName);
+                return null;
             } catch (SQLException e) {
                 caughtException = e;
             }

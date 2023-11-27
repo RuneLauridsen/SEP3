@@ -33,8 +33,10 @@ public class Messages {
     // Admin Register stuff
     //
 
-    public record UpdateUserStatusRequest(Account account, int newStatus){};
-    public record UpdateUserStatusResponse(boolean b){};
+    public record UpdateUserStatusRequest(Account account, int newStatus) { }
+    ;
+    public record UpdateUserStatusResponse(boolean b) { }
+    ;
 
     //
     // Spilkataolog
@@ -84,6 +86,10 @@ public class Messages {
     // TODO(rune): Kun hent online?
     public record GetAccountsReq() { }
     public record GetAccountsRes(List<Account> accounts) { }
+
+    // NOTE(rune): Opdaterer kun profil billede hvis account.profilePicture() != null.
+    public record UpdateAccountReq(Account account) { }
+    public record UpdateAccountRes(String errorReason) { }
 
     //
     // Move
