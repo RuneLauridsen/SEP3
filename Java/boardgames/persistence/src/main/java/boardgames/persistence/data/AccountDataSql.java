@@ -35,7 +35,8 @@ public class AccountDataSql implements AccountData {
 
     private Account readAccountWithProfilePicture(Sql sql) {
         Account ret = readAccount(sql);
-        ret.setProfilePicture(sql.readBytes("profile_picture"));
+        ret.setProfilePicture(sql.readString("profile_picture"));
+        ret.setProfilePictureType(sql.readString("profile_picture_type"));
         return ret;
     }
 
@@ -89,14 +90,17 @@ public class AccountDataSql implements AccountData {
         sql.set(account.accountId());
         sql.execute();
 
-        if (account.profilePicture() != null) {
+        if (account.profilePicture() != null &&
+            account.profilePictureType() != null) {
             sql = new Sql(conn, """
                 UPDATE boardgames.account
-                SET profile_picture = ?
+                SET profile_picture = ?,
+                    profile_picture_type = ?
                 WHERE account_id = ?
                 """);
 
             sql.set(account.profilePicture());
+            sql.set(account.profilePictureType());
             sql.set(account.accountId());
             sql.execute();
         }

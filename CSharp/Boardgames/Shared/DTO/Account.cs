@@ -11,6 +11,9 @@ public class Account {
     public required DateTime RegisterDateTime { get; set; }
     public required DateTime CreatedOn { get; set; }
 
+    public String? ProfilePicture { get; set; }     // NOTE(rune): Som base 64
+    public String? ProfilePictureType { get; set; } // NOTE(rune): MIME content type.
+
     public const int STATUS_NONE = 0;
     public const int STATUS_PENDING = 1;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
     public const int STATUS_ACCEPTED = 2; // NOTE(rune): Bruger er godkendt af admin.

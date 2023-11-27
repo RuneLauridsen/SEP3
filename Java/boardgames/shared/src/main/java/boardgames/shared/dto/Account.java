@@ -14,7 +14,8 @@ public final class Account {
     private String email;
     private LocalDateTime registerDateTime;
     private LocalDateTime createdOn;
-    private byte[] profilePicture;
+    private String profilePicture;     // NOTE(rune): Som base 64
+    private String profilePictureType; // NOTE(rune): MIME content type.
     private int status;
 
     public static final int STATUS_NONE = 0;
@@ -100,13 +101,22 @@ public final class Account {
         this.createdOn = createdOn;
     }
 
-    public byte[] profilePicture() {
+    public String profilePicture() {
         return profilePicture;
     }
 
-    public void setProfilePicture(byte[] profilePicture) {
+    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
+
+    public String profilePictureType() {
+        return profilePictureType;
+    }
+
+    public void setProfilePictureType(String profilePictureType) {
+        this.profilePictureType = profilePictureType;
+    }
+
     @Override
     public String toString() {
         return username;

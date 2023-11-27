@@ -19,7 +19,8 @@ CREATE TABLE account
     registration_datetime   timestamp NOT NULL ,
     status                  int     NOT NULL CHECK (status IN (0, 1, 2, 3, 4)) , -- NOTE(rune): Se konstanter i Account.java
     hashed_password         varchar NOT NULL,
-    profile_picture         bytea   NULL,
+    profile_picture         varchar NULL, -- NOTE(rune): Som Base 64.
+    profile_picture_type    varchar NULL, -- NOTE(rune): MIME content type.
     created_on              timestamp NOT NULL DEFAULT now()
 );
 
