@@ -79,6 +79,10 @@ public class Messages {
     public record GetAccountsReq() {}
     public record GetAccountsRes(List<Account> accounts) {}
 
+    // NOTE(rune): Opdaterer kun profil billede hvis account.profilePicture() != null.
+    public record UpdateAccountReq(Account account) { }
+    public record UpdateAccountRes(String errorReason) { }
+
     //
     // Move
     //

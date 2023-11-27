@@ -47,7 +47,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public GetMyMatchesResponse getMyMatches(GetMyMatchesRequest req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         List<Match> matches = new ArrayList<>();
 
         matches.addAll(matchService.getAll(claims.accountId(), Match.STATUS_PENDING));
@@ -58,7 +58,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public CreateMatchResponse createMatch(CreateMatchRequest req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
 
         // Create
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());
@@ -79,14 +79,14 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public GetGamesResponse getGames(GetGamesRequest req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         List<Game> games = gameService.getGames();
         return new GetGamesResponse(games);
     }
 
     @Override
     public GetMatchRes getMatch(GetMatchReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
         if (match == null) {
             match = Empty.match();
@@ -100,7 +100,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public AddParticipantRes addParticipant(AddParticipantReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
         if (match.ownerId() != claims.accountId()) {
             throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
@@ -111,21 +111,21 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public GetParticipantsRes getParticipants(GetParticipantsReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         List<Participant> participants = participantService.getByMatch(req.matchId());
         return new GetParticipantsRes(participants);
     }
 
     @Override
     public GetPendingRes getPending(GetPendingReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         List<Participant> pending = participantService.getByAccountAndStatus(claims.accountId(), Participant.STATUS_PENDING);
         return new GetPendingRes(pending);
     }
 
     @Override
     public DecidePendingRes decidePending(DecidePendingReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
 
         Match match = matchService.get(req.matchId());
         GameLogic gl = GameCatalog.get(match.gameId());
@@ -163,7 +163,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public MoveRes move(MoveReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         Account account = accountService.get(claims.accountId());
         Match match = matchService.get(req.matchId());
 
@@ -190,17 +190,41 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public GetAccountsRes getAccounts(GetAccountsReq req, String jwt) throws NotAuthorizedException {
-        JwtClaims claims = jwtService.verify(jwt);
+        Claims claims = jwtService.verify(jwt);
         List<Account> accounts = accountService.get();
         return new GetAccountsRes(accounts);
     }
 
     @Override
     public UpdateUserStatusResponse approveUserReg(UpdateUserStatusRequest req, String jwt) throws NotAuthorizedException {
-       JwtClaims claims = jwtService.verify(jwt);
-       req.account().setStatus(req.newStatus());
-       boolean success = accountService.updateStatus(req.account());
-       return new UpdateUserStatusResponse(success);
+        Claims claims = jwtService.verify(jwt);
+        req.account().setStatus(req.newStatus());
+        boolean success = accountService.update(req.account());
+        return new UpdateUserStatusResponse(success);
     }
+    @Override
+    public UpdateAccountRes updateAccount(UpdateAccountReq req, String jwt) throws NotAuthorizedException {
+        Claims claims = jwtService.verify(jwt);
+        Account fromClient = req.account();
+        Account fromServer = accountService.get(fromClient.accountId());
 
+        // TODO(rune): Username already taken.
+        // TODO(rune): Følgende tjek gælder ikke for admin.
+        Validation v = new Validation();
+        v.mustBeEqual(fromClient, fromServer, Account::registerDateTime, "register date time");
+        v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
+        v.mustBeEqual(fromClient, fromServer, Account::status, "status");
+
+        v.mustBeNonEmpty(fromClient, Account::username, "username");
+        v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
+        v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
+        v.mustBeNonEmpty(fromClient, Account::email, "email");
+
+        if (v.isValid()) {
+            accountService.update(fromClient);
+            return new UpdateAccountRes("");
+        } else {
+            return new UpdateAccountRes(v.reason());
+        }
+    }
 }

@@ -14,6 +14,7 @@ public final class Account {
     private String email;
     private LocalDateTime registerDateTime;
     private LocalDateTime createdOn;
+    private byte[] profilePicture;
     private int status;
 
     public static final int STATUS_NONE = 0;
@@ -99,6 +100,13 @@ public final class Account {
         this.createdOn = createdOn;
     }
 
+    public byte[] profilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
     @Override
     public String toString() {
         return username;

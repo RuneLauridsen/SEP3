@@ -5,6 +5,7 @@ import boardgames.shared.util.Timer;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static boardgames.persistence.data.SqlUtil.close;
@@ -32,18 +33,24 @@ public class AccountDataSql implements AccountData {
         );
     }
 
+    private Account readAccountWithProfilePicture(Sql sql) {
+        Account ret = readAccount(sql);
+        ret.setProfilePicture(sql.readBytes("profile_picture"));
+        return ret;
+    }
+
     @Override
     public Account get(int accountId) {
         Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE account_id = ?");
         sql.set(accountId);
-        return sql.querySingle(this::readAccount);
+        return sql.querySingle(this::readAccountWithProfilePicture);
     }
 
     @Override
     public Account get(String username) {
         Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE username = ?");
         sql.set(username);
-        return sql.querySingle(this::readAccount);
+        return sql.querySingle(this::readAccountWithProfilePicture);
     }
 
     @Override
@@ -51,7 +58,7 @@ public class AccountDataSql implements AccountData {
         Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE username = ? AND hashed_password = ?");
         sql.set(username);
         sql.set(hashedPassword);
-        return sql.querySingle(this::readAccount);
+        return sql.querySingle(this::readAccountWithProfilePicture);
     }
 
     @Override
@@ -81,5 +88,17 @@ public class AccountDataSql implements AccountData {
         sql.set(account.status());
         sql.set(account.accountId());
         sql.execute();
+
+        if (account.profilePicture() != null) {
+            sql = new Sql(conn, """
+                UPDATE boardgames.account
+                SET profile_picture = ?
+                WHERE account_id = ?
+                """);
+
+            sql.set(account.profilePicture());
+            sql.set(account.accountId());
+            sql.execute();
+        }
     }
 }

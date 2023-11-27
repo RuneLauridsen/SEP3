@@ -44,10 +44,10 @@ public class JwtServiceAuth0 implements JwtService {
     }
 
     @Override
-    public JwtClaims verify(String jwt) throws NotAuthorizedException {
+    public Claims verify(String jwt) throws NotAuthorizedException {
         try {
             DecodedJWT decoded = decrypter.verify(jwt);
-            JwtClaims claims = new JwtClaims(
+            Claims claims = new Claims(
                 decoded.getClaim("userId").asInt(),
                 decoded.getClaim("username").asString()
             );
