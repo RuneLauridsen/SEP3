@@ -37,6 +37,11 @@
     <hr class="my-5">
 
     <h1>Edit profile</h1>
+
+    @if (_errorReason != "") {
+        <div class="alert alert-danger">@_errorReason</div>
+    }
+
     <p>
         <label>Username</label>
         <input type="text" class="form-control" value="@_account.Username">
@@ -70,6 +75,7 @@
     private bool _isEditing = false;
     private IBrowserFile? _uploadedProfilePicture = null;
     private string _imgSrc = "";
+    private string _errorReason = "";
 
     protected override Task OnInitializedAsync() {
         string accountIdString = AuthService.GetClaims().GetOrDefault("userId", "");
@@ -112,8 +118,10 @@
         var res = GameService.UpdateAccount(req);
 
         // TODO(rune): Show errorReason
-
-        navMgr.ReloadCurrentPage();
+        _errorReason = res.errorReason;
+        if (_errorReason == "") {
+            navMgr.ReloadCurrentPage();
+        }
     }
 
     private void LoadFile(InputFileChangeEventArgs obj) {

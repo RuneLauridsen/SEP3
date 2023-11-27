@@ -22,7 +22,10 @@
 
 <h3>Match id = @(_matchId)</h3>
 <p>Status: @(_match.StatusName())</p>
-<p><a href="playtictactoe/@MatchId">Play</a></p>
+
+@if (_match.Status == Match.STATUS_ONGOING) {
+    <p><a href="playtictactoe/@MatchId">Play</a></p>
+}
 
 <h3>Participants</h3>
 @foreach (var p in _match.Participants) {
@@ -55,4 +58,5 @@
             _match = res.match;
         }
     }
+
 }
