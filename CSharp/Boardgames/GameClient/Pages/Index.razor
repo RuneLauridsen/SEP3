@@ -2,10 +2,12 @@
 @using GameClient.Data
 @using GameClient.DTO
 @using GameClient.Services
+@using global::Shared
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
 @inject NavigationManager navMgr
+@inject IAuthService authService
 
 <style>
     .rejected {
@@ -21,30 +23,36 @@
     }
 </style>
 
-@if (_pendingInvites.Any())
+@if (isLoggedIn == 0)
 {
-    <h3>Pending invitations(@_pendingInvites.Count()):</h3>
-    foreach (var p in _pendingInvites)
-    {
-        string styleClass = GetStyleClass(p);
-        bool isDisabled = p.Status != Participant.STATUS_PENDING;
-
-        <div class="@(GetStyleClass(p))">
-            <h3>Match id = @(p.MatchId)</h3>
-            <p>Match owner @(JsonUtil.ToJson(p.Match.Owner))</p>
-            <p>Invitation created on = @(p.CreatedOn)</p>
-            <p>Match created on = @(p.Match.CreatedOn)</p>
-            <p>
-                <button @onclick="() => OnAcceptClicked(p)" disabled="@isDisabled">Accept</button>
-                <button @onclick="() => OnRejectClicked(p)" disabled="@isDisabled">Reject</button>
-            </p>
-        </div>
-    }
+    navMgr.NavigateTo("/login");
 }
 else
 {
-    <h3>No pending game invitations </h3>
-}
+    @if (_pendingInvites.Any())
+    {
+        <h3>Pending invitations(@_pendingInvites.Count()):</h3>
+        foreach (var p in _pendingInvites)
+        {
+            string styleClass = GetStyleClass(p);
+            bool isDisabled = p.Status != Participant.STATUS_PENDING;
+
+            <div class="@(GetStyleClass(p))">
+                <h3>Match id = @(p.MatchId)</h3>
+                <p>Match owner @(JsonUtil.ToJson(p.Match.Owner))</p>
+                <p>Invitation created on = @(p.CreatedOn)</p>
+                <p>Match created on = @(p.Match.CreatedOn)</p>
+                <p>
+                    <button @onclick="() => OnAcceptClicked(p)" disabled="@isDisabled">Accept</button>
+                    <button @onclick="() => OnRejectClicked(p)" disabled="@isDisabled">Reject</button>
+                </p>
+            </div>
+        }
+    }
+    else
+    {
+        <h3>No pending game invitations </h3>
+    }
 
 @if (_matches.Any())
 {
@@ -64,18 +72,27 @@ else
     <div class="alert alert-danger">@_errorReason</div>
 }
 
+}
+
+
 @code{
     private string _errorReason = "";
     private IEnumerable<Participant> _pendingInvites = Enumerable.Empty<Participant>();
     private IEnumerable<Match> _matches = Empty.Enumerable<Match>();
+    int isLoggedIn;
     protected override Task OnInitializedAsync() {
         Refresh();
         return base.OnInitializedAsync();
     }
     
-    private void Refresh() {
-        _pendingInvites = GameService.GetPending(new GetPendingReq()).participants;
-        _matches = GameService.GetMyMatches(new GetMyMatchesRequest()).matches;
+    private void Refresh()
+    {
+        isLoggedIn = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
+        if (isLoggedIn != 0)
+        {
+             _pendingInvites = GameService.GetPending(new GetPendingReq()).participants;
+                    _matches = GameService.GetMyMatches(new GetMyMatchesRequest()).matches;
+        }
     }
    
     private string GetStyleClass(Participant p) {
