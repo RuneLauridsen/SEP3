@@ -3,7 +3,6 @@ package boardgames.logic.games.tictactoe;
 import boardgames.logic.games.GameLogic;
 import boardgames.logic.games.GameSpec;
 import boardgames.logic.messages.Messages.MoveReq;
-import boardgames.logic.messages.Messages.MoveRes;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
@@ -35,20 +34,16 @@ public class TicTacToeLogic implements GameLogic {
     }
 
     @Override
-    public GameSpec getSpec() {
+    public GameSpec spec() {
         return spec;
     }
 
     @Override
-    public MoveRes validateMoveAndUpdateData(MoveReq req, Match match, Account reqBy) {
+    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match, Account reqBy) {
         TicTacToeData data = JsonUtil.fromJson(match.data(), TicTacToeData.class);
         TicTacToeMove move = JsonUtil.fromJson(req.moveData(), TicTacToeMove.class);
         MoveResult result = ticTacToeLogic(data, move, reqBy);
-        if (result.isValid()) {
-            match.setData(JsonUtil.toJson(data));
-        }
-        MoveRes res = new MoveRes(match.matchId(), JsonUtil.toJson(data), result);
-        return res;
+        return result;
     }
 
     @Override
@@ -109,11 +104,20 @@ public class TicTacToeLogic implements GameLogic {
         // Check for win state.
         for (char[] pattern : winPatterns) {
             if (matchesPattern(player.team(), data.squares(), pattern)) {
-                return MoveResult.winner("ez win");
+                MoveResult result = MoveResult.finished(data, "ez win");
+                for (TicTacToePlayer p : data.players()) {
+                    if (p.accountId() == player.accountId()) {
+                        result.scores().put(p.accountId(), 3); // 3 point til vinder.
+                    } else {
+                        result.scores().put(p.accountId(), 0); // 0 pointer til taber.
+                    }
+                }
+
+                return result;
             }
         }
 
-        return MoveResult.valid();
+        return MoveResult.valid(data);
     }
 
     private static boolean matchesPattern(char c, char[] s, char[] pattern) {

@@ -129,7 +129,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
         Match match = matchService.get(req.matchId());
         GameLogic gl = GameCatalog.get(match.gameId());
-        GameSpec spec = gl.getSpec();
+        GameSpec spec = gl.spec();
 
         Participant participant = Participants.getById(match.participants(), req.participantId());
         assert participant != null;         // TODO(rune): If participant == null then throw ...
@@ -168,17 +168,33 @@ public class LogicServerModelImpl implements LogicServerModel {
         Match match = matchService.get(req.matchId());
 
         GameLogic gl = GameCatalog.get(match.gameId());
-        MoveRes res = gl.validateMoveAndUpdateData(req, match, account);
+        MoveResult result = gl.validateMoveAndUpdateData(req, match, account);
 
-        if (res.result().isWinning()) {
-            match.setStatus(Match.STATUS_FINISHED);
+        switch (result.outcome()) {
+            case MoveResult.OUTCOME_VALID -> {
+                match.setData(result.nextData());
+                matchService.update(match);
+
+            }
+
+            case MoveResult.OUTCOME_INVALID -> {
+                // Ingenting.
+            }
+
+            case MoveResult.OUTCOME_FINISHED -> {
+                match.setStatus(Match.STATUS_FINISHED);
+                match.setData(result.nextData());
+                matchService.update(match);
+                for (Participant p : match.participants()) {
+                    p.setStatus(Participant.STATUS_FINISHED);
+                    p.setScore(result.scores().getOrDefault(p.accountId(), 0));
+                    participantService.update(p);
+                }
+            }
         }
 
-        if (res.result().isValid()) {
-            matchService.update(match);
-        }
-
-        return res;
+        MoveRes response = new MoveRes(match.matchId(), match.data(), result);
+        return response;
     }
     @Override
     public GetAccountRes getAccount(GetAccountReq req, String jwt) throws NotAuthorizedException {

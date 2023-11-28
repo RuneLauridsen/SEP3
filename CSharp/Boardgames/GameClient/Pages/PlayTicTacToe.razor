@@ -87,7 +87,7 @@
 
         _data = JsonUtil.FromJson<TicTacToeData>(res.gameData);
         _invalidMoveText = res.result.InvalidMoveText;
-        _winnerText = res.result.WinnerText;
+        _winnerText = res.result.FinishedText;
 
         return Task.CompletedTask;
     }
