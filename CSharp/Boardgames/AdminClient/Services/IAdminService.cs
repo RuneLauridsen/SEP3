@@ -9,5 +9,7 @@ public interface IAdminService
     public UpdateUserStatusResponse UpdateUserStatus(Account account, int newStatus);
 
     public List<Account> GetUsersWaitingForApproval();
-    List<Account> GetAllUsers();
+    Account GetAccount(GetAccountReq req);
+    UpdateAccountRes UpdateAccount(UpdateAccountReq req);
+    IEnumerable<Account> GetApprovedUsers();
 }

@@ -1,0 +1,109 @@
+﻿@page "/MemberProfile/{accountid}"
+@using GameClient.DTO
+@using AdminClient.Services
+@using global::Shared
+@using global::Shared.Data
+@inject IAdminService adminService
+@inject NavigationManager navMgr
+@inject IJSRuntime JsRuntime
+
+<p>Account ID: @_account.AccountId</p>
+<p>
+        <label>Username:</label>
+        <input type="text" class="form-control" @bind="@_account.Username">
+    </p>
+    <p>
+        <label>First name:</label>
+        <input type="text" class="form-control" @bind="@_account.FirstName">
+    </p>
+    <p>
+        <label>Last name:</label>
+        <input type="text" class="form-control" @bind="@_account.LastName">
+    </p>
+    <p>
+        <label>Email:</label>
+        <input type="text" class="form-control" @bind="@_account.Email">
+    </p>
+<p>
+    <label>Profile Picture:</label>
+    <div class="col-4">
+        @if (_imgSrc != "") {
+            <img src="@_imgSrc" alt="Profile Picture"/>
+        }
+    </div>
+    <InputFile OnChange="@LoadFile"/>
+</p>
+
+<button @onclick=OnSaveClicked>Save</button>
+<button @onclick=OnDeleteClicked>Delete Profile</button>
+
+@code{
+    [Parameter]
+    public string AccountId { get; set; } = "";
+    private Account _account = Empty.Account();
+    private string _imgSrc = "";
+    private IBrowserFile? _uploadedProfilePicture = null;
+    private string _errorReason = "";
+    
+    
+    protected override Task OnInitializedAsync() {
+        int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
+        if (routeAccountId != 0) {
+            var req = new Messages.GetAccountReq(routeAccountId);
+            _account = adminService.GetAccount(req);
+            _imgSrc = HtmlUtil.ToImgSrcString(_account.ProfilePicture, _account.ProfilePictureType);
+        }
+
+        return Task.CompletedTask;
+    }
+    
+    private void LoadFile(InputFileChangeEventArgs obj) {
+        _uploadedProfilePicture = obj.File;
+    }
+    
+    private async Task OnSaveClicked() {
+        if (_uploadedProfilePicture == null) {
+            _account.ProfilePicture = null;
+        } else {
+    // NOTE(rune):
+    // Lidt spild at læse det hele ind i en temp buffers, når det alligevel bare
+    // bliver proxyet til socket, men vi har få brugere so who cares ¯\_(ツ)_/¯.
+    // Der er alligevel _mange_ andre problemer at løse, hvis vi skulle lave et
+    // effektivt system.
+            await using var stream = _uploadedProfilePicture.OpenReadStream();
+            var bytes = await ReadAllBytesAsync(stream);
+            var base64 = Convert.ToBase64String(bytes);
+            _account.ProfilePicture = base64;
+            _account.ProfilePictureType = _uploadedProfilePicture.ContentType;
+        }
+
+        var req = new Messages.UpdateAccountReq(_account);
+        var res = adminService.UpdateAccount(req);
+
+    // TODO(rune): Show errorReason
+        _errorReason = res.errorReason;
+        if (_errorReason == "") {
+            navMgr.ReloadCurrentPage();
+        }
+    }
+    
+    private static async Task<byte[]> ReadAllBytesAsync(Stream input) {
+        using MemoryStream ms = new MemoryStream();
+        await input.CopyToAsync(ms);
+        return ms.ToArray();
+    }
+
+
+    private async Task OnDeleteClicked()
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Are you sure you want to delete profile?");
+        if (confirmed)
+        {
+            _account.Status = Account.STATUS_DELETED;
+            adminService.UpdateUserStatus(_account, Account.STATUS_DELETED);
+            navMgr.NavigateTo("/");
+        }
+    }
+
+}
+

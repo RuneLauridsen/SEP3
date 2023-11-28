@@ -1,4 +1,4 @@
-﻿namespace GameClient;
+﻿namespace Shared;
 
 public static class HtmlUtil {
     public static string ToImgSrcString(string? base64, string? contentType) {

@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Components;
 
-namespace GameClient;
+namespace Shared;
 
 public static class Extensions {
     // NOTE(rune): https://stackoverflow.com/a/75747008

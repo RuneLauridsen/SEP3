@@ -4,16 +4,6 @@
 @inject IAdminService adminService
 @inject NavigationManager navMgr
 
-@if (numberOfApplicants > 0)
-{
-  <h2>you have @numberOfApplicants applicants for registration</h2>
-  <button @onclick="GoToRegistrations">click here to see applicants</button>
-}
-else
-{
-  <h2>you have no applicants for registration</h2>
-}
-
 
 <style>
 table {
@@ -33,33 +23,57 @@ tr:nth-child(even) {
 }
 </style>
 
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Name</th>
-    <th>Email</th>
-  </tr>
 
-  @foreach (Account account in accounts)
-  {
-    <tr @onclick="() => AccountClick(account)">
-      <td>@(account.Username)</td>
-      <td>@(account.FirstName) @(account.LastName)</td>
-      <td>@(account.Email)</td>
+
+@if (numberOfApplicants > 0)
+{
+  <h2>you have @numberOfApplicants applicants for registration</h2>
+  <button @onclick="GoToRegistrations">click here to see applicants</button>
+}
+else
+{
+  <h2>you have no applicants for registration</h2>
+}
+
+<h2>Accounts:</h2>
+
+@if (accounts.Any())
+{
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Email</th>
     </tr>
-  }
-</table>
+
+    @foreach (Account account in accounts)
+    {
+      <tr @onclick="() => AccountClick(account)">
+        <td>@(account.Username)</td>
+        <td>@(account.FirstName) @(account.LastName)</td>
+        <td>@(account.Email)</td>
+      </tr>
+    }
+    
+     </table>
+    }
+else
+{
+  <p>No accounts to show</p>
+}
+
+ 
 
 @code{
   int numberOfApplicants;
   List<Account> accounts = new List<Account>();
-  
+
   protected override async Task OnInitializedAsync()
   {
     await base.OnInitializedAsync();
     numberOfApplicants = adminService.GetUsersWaitingForApproval().Count;
     accounts.Clear();
-    accounts.AddRange(adminService.GetAllUsers());
+    accounts.AddRange(adminService.GetApprovedUsers());
   }
 
   private void GoToRegistrations()
@@ -69,9 +83,7 @@ tr:nth-child(even) {
 
   private void AccountClick(Account account)
   {
-    //TODO vis profilside med clicket acount
-    Console.WriteLine(account.Username);
-    navMgr.NavigateTo("/MemberProfile");
+    navMgr.NavigateTo("/MemberProfile/" + account.AccountId);
   }
 
 }

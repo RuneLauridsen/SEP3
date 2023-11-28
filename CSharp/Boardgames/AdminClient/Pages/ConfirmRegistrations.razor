@@ -27,28 +27,37 @@ tr:nth-child(even) {
 }
 </style>
 
-<table>
-    <tr>
-        <th>Username</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Register Date</th>
-        <th>Confirm</th>
-    </tr>
-    @foreach (Account member in applicants)
-    {
+@if (applicants.Any())
+{
+    <table>
         <tr>
-            <td>@(member.Username)</td>
-            <td>@(member.FirstName) @(member.LastName)</td>
-            <td>@(member.Email)</td>
-            <td>@(member.RegisterDateTime)</td>
-            <td>
-                <button style="background-color: #84e387" width:5px height:5px @onclick="() => ApplicantAccept(member)">Accept</button>
-                <button style="background-color: #f25555" width:5px height:5px @onclick="() => ApplicantReject(member)">Reject</button>
-            </td>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Register Date</th>
+            <th>Confirm</th>
         </tr>
-    }
-</table>
+        @foreach (Account member in applicants)
+        {
+            <tr>
+                <td>@(member.Username)</td>
+                <td>@(member.FirstName) @(member.LastName)</td>
+                <td>@(member.Email)</td>
+                <td>@(member.RegisterDateTime)</td>
+                <td>
+                    <button style="background-color: #84e387" width:5px height:5px @onclick="() => ApplicantAccept(member)">Accept</button>
+                    <button style="background-color: #f25555" width:5px height:5px @onclick="() => ApplicantReject(member)">Reject</button>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No applications for registration</p>
+}
+
+
 
 
 @code {

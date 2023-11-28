@@ -1,4 +1,4 @@
-﻿namespace GameClient;
+﻿namespace Shared;
 
 public class ParseUtil {
     public static int ParseIntOrDefault(string s, int whenNotParsed = default) {

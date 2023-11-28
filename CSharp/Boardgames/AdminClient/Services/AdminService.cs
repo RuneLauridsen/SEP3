@@ -30,9 +30,29 @@ public class AdminService : IAdminService
         }
         return accountsWaitingForApproval;
     }
+    
 
-    public List<Account> GetAllUsers()
+    public Account GetAccount(GetAccountReq req)
     {
-        return _socket.SendAndReceive<GetAccountsRes>(new GetAccountsReq()).accounts;
+        return _socket.SendAndReceive<GetAccountRes>(req).account;
+    }
+
+    public UpdateAccountRes UpdateAccount(UpdateAccountReq req)
+    {
+        return _socket.SendAndReceive<UpdateAccountRes>(req);
+    }
+
+    public IEnumerable<Account> GetApprovedUsers()
+    {
+        List<Account> allAccounts = _socket.SendAndReceive<GetAccountsRes>(new GetAccountsReq()).accounts;
+        List<Account> approvedAccounts = new List<Account>();
+        foreach (Account account in allAccounts)
+        {
+            if (account.Status == Account.STATUS_ACCEPTED)
+            {
+                approvedAccounts.Add(account);
+            }
+        }
+        return approvedAccounts;
     }
 }
