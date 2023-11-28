@@ -64,7 +64,7 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public List<Account> getAll() {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account");
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE status <> 3 -- STATUS_DELETED");
         return sql.queryAll(this::readAccount);
     }
 
