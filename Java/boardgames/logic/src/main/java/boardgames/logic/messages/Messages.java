@@ -34,9 +34,7 @@ public class Messages {
     //
 
     public record UpdateUserStatusRequest(Account account, int newStatus) { }
-    ;
     public record UpdateUserStatusResponse(boolean b) { }
-    ;
 
     //
     // Spilkataolog

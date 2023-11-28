@@ -30,7 +30,8 @@ public class ParticipantDataSql implements ParticipantData {
             sql.readInt("status"),
             sql.readInt("match_id"),
             sql.readInt("account_id"),
-            sql.readDateTime("created_on")
+            sql.readDateTime("created_on"),
+            sql.readInt("score")
         );
     }
 
@@ -38,11 +39,11 @@ public class ParticipantDataSql implements ParticipantData {
     public Participant create(Account account, Match match, int status) {
         Sql sql = new Sql(conn, """
             INSERT INTO boardgames.participant
-                (participant_id, match_id, account_id, status, created_on)
+                (participant_id, match_id, account_id, status, created_on, score)
             VALUES
-                (DEFAULT, ?, ?, ?, DEFAULT)
+                (DEFAULT, ?, ?, ?, DEFAULT, DEFAULT)
             RETURNING
-                participant_id, match_id, account_id, status, created_on
+                participant_id, match_id, account_id, status, created_on, score
             """);
 
         sql.set(match.matchId());
@@ -84,15 +85,17 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public void update(Participant participant) {
-        // NOTE(m2dx): Opdaterer kun status, da det giver ikke mening
+        // NOTE(m2dx): Opdaterer kun status og score, da det giver ikke mening
         // at opdatere match eller account (brug createParticipant() i stedet).
         Sql sql = new Sql(conn, """
             UPDATE boardgames.participant
-            SET status = ?
+            SET status = ?,
+                score = ?
             WHERE participant_id = ?
             """);
 
         sql.set(participant.status());
+        sql.set(participant.score());
         sql.set(participant.participantId());
         sql.execute();
     }

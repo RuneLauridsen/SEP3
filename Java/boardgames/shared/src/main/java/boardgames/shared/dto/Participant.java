@@ -12,6 +12,7 @@ public class Participant {
     private int matchId;
     private int accountId;
     private LocalDateTime createdOn;
+    private int score;
 
     private Match match;
     private Account account;
@@ -20,17 +21,18 @@ public class Participant {
     public static final int STATUS_PENDING = 1;     // NOTE(rune): Venter på svar på invitiation.
     public static final int STATUS_REJECTED = 2;    // NOTE(rune): Invitation afvist.
     public static final int STATUS_ACCEPTED = 3;    // NOTE(rune): Invitation godkendt.
-    public static final int STATUS_DONE = 4;        // NOTE(rune): Efter match er startet.
+    public static final int STATUS_FINISHED = 4;    // NOTE(rune): Efter match er færdig.
 
     public Participant() {
     }
 
-    public Participant(int participantId, int status, int matchId, int accountId, LocalDateTime createdOn) {
+    public Participant(int participantId, int status, int matchId, int accountId, LocalDateTime createdOn, int score) {
         this.participantId = participantId;
         this.matchId = matchId;
         this.accountId = accountId;
         this.status = status;
         this.createdOn = createdOn;
+        this.score = score;
     }
 
     public int participantId() {
@@ -89,4 +91,11 @@ public class Participant {
         this.createdOn = createdOn;
     }
 
+    public int score() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 }

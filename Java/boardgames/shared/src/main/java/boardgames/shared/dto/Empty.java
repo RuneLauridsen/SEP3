@@ -18,7 +18,7 @@ public class Empty {
     }
 
     public static Participant participant() {
-        return new Participant(0, 0, 0, 0, Empty.dateTime());
+        return new Participant(0, 0, 0, 0, Empty.dateTime(), 0);
     }
 
     public static LocalDateTime dateTime() {

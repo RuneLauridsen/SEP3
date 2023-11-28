@@ -47,7 +47,8 @@ CREATE TABLE participant
     match_id            int     NOT NULL REFERENCES match(match_id) ,
     account_id          int     NOT NULL REFERENCES account(account_id) ,
     status              int     NOT NULL CHECK (status IN (0, 1, 2, 3)) , -- NOTE(rune): Se konstanter i Particpant.java
-    created_on          timestamp   NOT NULL DEFAULT now()
+    created_on          timestamp   NOT NULL DEFAULT now(),
+    score               int     NOT NULL DEFAULT 0
 );
 
 --------------------------------
