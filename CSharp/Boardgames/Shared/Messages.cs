@@ -91,6 +91,13 @@ public class Messages {
     public record MoveRes(int matchId, String gameData, MoveResult result) {}
 
     //
+    // Score
+    //
+
+    public record GetScoreSumsRequest(int gameId) { }
+    public record GetScoreSumsResponse(List<ScoreSum> sums) { }
+
+    //
     // Fejlkoder
     //
 

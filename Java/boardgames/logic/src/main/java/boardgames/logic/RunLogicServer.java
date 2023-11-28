@@ -14,6 +14,8 @@ import boardgames.logic.services.MatchService;
 import boardgames.logic.services.MatchServiceRest;
 import boardgames.logic.services.ParticipantService;
 import boardgames.logic.services.ParticipantServiceRest;
+import boardgames.logic.services.ScoreService;
+import boardgames.logic.services.ScoreServiceRest;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.CreateMatchParam;
 import boardgames.shared.dto.CreateParticipantParam;
@@ -31,6 +33,7 @@ public class RunLogicServer {
         GameService gameService = new GameServiceRest(ulr);
         MatchService matchService = new MatchServiceRest(ulr);
         ParticipantService participantService = new ParticipantServiceRest(ulr);
+        ScoreService scoreService = new ScoreServiceRest(ulr);
         JwtService jwtService = new JwtServiceAuth0();
 
         //
@@ -65,7 +68,7 @@ public class RunLogicServer {
         // NOTE(rune): Åbn socket
         //
 
-        LogicServerModel model = new LogicServerModelImpl(accountService, matchService, gameService, participantService, jwtService);
+        LogicServerModel model = new LogicServerModelImpl(accountService, matchService, gameService, participantService, scoreService, jwtService);
         LogicServer server = new LogicServerSocket(model, 1234);
         server.run();
     }

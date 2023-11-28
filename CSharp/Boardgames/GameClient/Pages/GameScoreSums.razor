@@ -1,0 +1,43 @@
+﻿@page "/game/{gameId}/scores"
+@using GameClient.Data
+@using GameClient.DTO
+@using GameClient.Services
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
+@inject IGameService GameService
+@inject IAuthService AuthService;
+@inject NavigationManager navMgr
+
+<PageTitle>Score</PageTitle>
+
+<p>@_json</p>
+
+@code {
+    [Parameter]
+    public string GameId { get; set; } = "";
+
+    private Game _game = Empty.Game();
+    private List<ScoreSum> _scoreSums = Empty.List<ScoreSum>();
+    private string _json = "";
+
+    protected override async Task OnInitializedAsync() {
+        await Task.Run(() => { // TODO(rune): Bedre async
+            List<Game> games;
+            {
+                GetGamesRequest req = new();
+                GetGamesResponse res = GameService.GetGames(req);
+                games = res.games;
+            }
+
+            int gameId = ParseUtil.ParseIntOrDefault(GameId, 0);
+            if (gameId != 0) {
+                _game = games.FirstOrDefault(x => x.GameId == gameId, Empty.Game());
+
+                GetScoreSumsRequest req = new(gameId);
+                GetScoreSumsResponse res = GameService.GetScoreSums(req);
+                _scoreSums = res.sums;
+                _json = JsonUtil.ToJson(_scoreSums); // TODO(rune): Slet
+            }
+        });
+    }
+}

@@ -6,6 +6,7 @@ import boardgames.logic.messages.Messages.*;
 import boardgames.logic.model.LogicServerModel;
 import boardgames.logic.model.NotAuthorizedException;
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.ScoreSum;
 import boardgames.shared.util.JsonUtil;
 import com.google.gson.JsonSyntaxException;
 
@@ -128,6 +129,11 @@ public class LogicServerSocketHandler implements Runnable {
 
             if (body instanceof UpdateAccountReq req) {
                 UpdateAccountRes res = model.updateAccount(req, jwt);
+                return res;
+            }
+
+            if (body instanceof GetScoreSumsRequest req) {
+                GetScoreSumsResponse res = model.getScoreSums(req, jwt);
                 return res;
             }
 

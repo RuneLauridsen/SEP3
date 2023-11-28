@@ -72,4 +72,8 @@ public class GameService : IGameService {
     public UpdateAccountRes UpdateAccount(UpdateAccountReq req) {
         return _socket.SendAndReceive<UpdateAccountRes>(req);
     }
+
+    public GetScoreSumsResponse GetScoreSums(GetScoreSumsRequest req) {
+        return _socket.SendAndReceive<GetScoreSumsResponse>(req);
+    }
 }

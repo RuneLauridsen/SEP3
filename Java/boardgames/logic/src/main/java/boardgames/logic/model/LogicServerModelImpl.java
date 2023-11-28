@@ -15,13 +15,15 @@ public class LogicServerModelImpl implements LogicServerModel {
     private final MatchService matchService;
     private final GameService gameService;
     private final ParticipantService participantService;
+    private final ScoreService scoreService;
     private final JwtService jwtService;
 
-    public LogicServerModelImpl(AccountService accountService, MatchService matchService, GameService gameService, ParticipantService participantService, JwtService jwtService) {
+    public LogicServerModelImpl(AccountService accountService, MatchService matchService, GameService gameService, ParticipantService participantService, ScoreService scoreService, JwtService jwtService) {
         this.accountService = accountService;
         this.matchService = matchService;
         this.gameService = gameService;
         this.participantService = participantService;
+        this.scoreService = scoreService;
         this.jwtService = jwtService;
     }
 
@@ -247,5 +249,12 @@ public class LogicServerModelImpl implements LogicServerModel {
         } else {
             return new UpdateAccountRes(v.reason());
         }
+    }
+    @Override
+    public GetScoreSumsResponse getScoreSums(GetScoreSumsRequest req, String jwt) {
+        int gameId = req.gameId();
+        List<ScoreSum> sums = scoreService.getSums(gameId);
+        GetScoreSumsResponse res = new GetScoreSumsResponse(sums);
+        return res;
     }
 }

@@ -25,4 +25,6 @@ public interface IGameService {
     public GetPendingRes GetPending(GetPendingReq req);
     public DecidePendingRes DecidePending(DecidePendingReq req);
     public UpdateAccountRes UpdateAccount(UpdateAccountReq req);
+
+    public GetScoreSumsResponse GetScoreSums(GetScoreSumsRequest req);
 }
