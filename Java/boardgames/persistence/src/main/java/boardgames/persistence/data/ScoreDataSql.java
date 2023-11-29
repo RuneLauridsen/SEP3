@@ -1,5 +1,6 @@
 package boardgames.persistence.data;
 
+import boardgames.shared.dto.MatchScore;
 import boardgames.shared.dto.ScoreSum;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,16 @@ public class ScoreDataSql implements ScoreData {
             sql.readString("account_name"),
             sql.readInt("score"),
             sql.readInt("count")
+        );
+    }
+
+    private MatchScore readMatchScore(Sql sql) {
+        return new MatchScore(
+            sql.readInt("game_id"),
+            sql.readString("game_name"),
+            sql.readInt("match_id"),
+            sql.readDateTime("match_finished_on"),
+            sql.readInt("score")
         );
     }
 
@@ -51,5 +62,29 @@ public class ScoreDataSql implements ScoreData {
         List<ScoreSum> sums = sql.queryAll(this::readScoreSum);
         return sums;
 
+    }
+    @Override
+    public List<MatchScore> getScores(int accountId) {
+        Sql sql = new Sql(conn, """
+            SELECT g.game_id        AS game_id,
+                   g.name           AS game_name,
+                   m.match_id       AS match_id,
+                   m.finished_on    AS match_finished_on,
+                   p.score          AS score
+            FROM boardgames.account a
+            INNER JOIN boardgames.participant p
+                INNER JOIN boardgames.match m
+                    INNER JOIN boardgames.game g
+                    ON g.game_id = m.game_id
+                ON m.match_id = p.match_id
+            ON p.account_id = a.account_id
+            AND p.status = 4 -- STATUS_FINISHED
+            WHERE a.account_id = ?
+            ORDER BY m.finished_on DESC
+            """);
+
+        sql.set(accountId);
+        List<MatchScore> ret = sql.queryAll(this::readMatchScore);
+        return ret;
     }
 }

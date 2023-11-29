@@ -97,6 +97,9 @@ public class Messages {
     public record GetScoreSumsRequest(int gameId) { }
     public record GetScoreSumsResponse(List<ScoreSum> sums) { }
 
+    public record GetMatchHistoryRequest(int accountId) { }
+    public record GetMatchHistoryResponse(List<MatchScore> scores) { }
+
     //
     // Fejlkoder
     //

@@ -76,4 +76,8 @@ public class GameService : IGameService {
     public GetScoreSumsResponse GetScoreSums(GetScoreSumsRequest req) {
         return _socket.SendAndReceive<GetScoreSumsResponse>(req);
     }
+
+    public GetMatchHistoryResponse GetMatchHistory(GetMatchHistoryRequest req) {
+        return _socket.SendAndReceive<GetMatchHistoryResponse>(req);
+    }
 }

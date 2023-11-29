@@ -1,0 +1,67 @@
+﻿@page "/account/{accountid}/scores"
+@using GameClient.Data
+@using GameClient.DTO
+@using GameClient.Services
+@using global::Shared
+@using global::Shared.Data
+@using static global::Shared.Data.Messages
+@inject IGameService GameService
+@inject IAuthService AuthService;
+@inject NavigationManager navMgr
+
+<PageTitle>History</PageTitle>
+
+<h1>@_account.Username</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Game</th>
+        <th scope="col">Score</th>
+        <th scope="col">Finished on</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var sc in _scores) {
+        <tr>
+            <td>@sc.GameName</td>
+            <td>@sc.Score</td>
+            <td>@sc.MatchFinishedOn</td>
+            <td>
+                <a href="@("match/" + sc.MatchId)">Show match</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@code {
+
+    [Parameter]
+    public string AccountId { get; set; } = "";
+
+    private DTO.Account _account = Empty.Account();
+    private int _accountId = 0;
+    private List<MatchScore> _scores = Empty.List<MatchScore>();
+
+    protected override async Task OnInitializedAsync() {
+        await Task.Run(async () => { // TODO(rune): Bedre async
+            _accountId = ParseUtil.ParseIntOrDefault(AccountId);
+            if (_accountId != 0) {
+                {
+                    GetAccountReq req = new(_accountId);
+                    GetAccountRes res = GameService.GetAccount(req);
+                    _account = res.account;
+                }
+
+                {
+                    GetMatchHistoryRequest req = new(_accountId);
+                    GetMatchHistoryResponse res = GameService.GetMatchHistory(req);
+                    _scores = res.scores;
+                }
+            }
+        });
+    }
+
+}

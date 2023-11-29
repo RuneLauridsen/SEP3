@@ -3,14 +3,9 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
-import boardgames.shared.util.Timer;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static boardgames.persistence.data.SqlUtil.close;
@@ -31,7 +26,8 @@ public class MatchDataSql implements MatchData {
             sql.readString("data"),
             sql.readInt("owner_id"),
             sql.readInt("game_id"),
-            sql.readDateTime("created_on")
+            sql.readDateTime("created_on"),
+            sql.readDateTime("finished_on")
         );
     }
 
@@ -39,11 +35,11 @@ public class MatchDataSql implements MatchData {
     public Match create(Account owner, Game game, String data) {
         Sql sql = new Sql(conn, """
             INSERT INTO boardgames.match
-                (match_id, status, data, owner_id, game_id, created_on)
+                (match_id, status, data, owner_id, game_id, created_on, finished_on)
             VALUES
-                (DEFAULT, 1, ?, ?, ?, DEFAULT)
+                (DEFAULT, 1, ?, ?, ?, DEFAULT, DEFAULT)
             RETURNING
-                match_id, status, data, owner_id, game_id, created_on;
+                match_id, status, data, owner_id, game_id, created_on, finished_on;
             """);
 
         sql.set(data);
@@ -56,13 +52,14 @@ public class MatchDataSql implements MatchData {
     public void update(Match match) {
         Sql sql = new Sql(conn, """
             UPDATE boardgames.match
-            SET data = ?, owner_id = ?, status = ?
+            SET data = ?, owner_id = ?, status = ?, finished_on = ?
             WHERE match_id = ?
             """);
 
         sql.set(match.data());
         sql.set(match.ownerId());
         sql.set(match.status());
+        sql.set(match.finishedOn());
         sql.set(match.matchId());
         sql.execute();
     }

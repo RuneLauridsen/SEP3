@@ -27,4 +27,5 @@ public interface IGameService {
     public UpdateAccountRes UpdateAccount(UpdateAccountReq req);
 
     public GetScoreSumsResponse GetScoreSums(GetScoreSumsRequest req);
+    public GetMatchHistoryResponse GetMatchHistory(GetMatchHistoryRequest req);
 }

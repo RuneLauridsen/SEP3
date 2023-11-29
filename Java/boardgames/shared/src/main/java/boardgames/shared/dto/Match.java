@@ -14,6 +14,7 @@ public class Match {
     private int ownerId;
     private int gameId;
     private LocalDateTime createdOn;
+    private LocalDateTime finishedOn;
 
     private List<Participant> participants = List.of();
     private Account owner;
@@ -27,13 +28,14 @@ public class Match {
     public Match() {
     }
 
-    public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn) {
+    public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn, LocalDateTime finishedOn) {
         this.matchId = matchId;
         this.status = status;
         this.data = data;
         this.gameId = gameId;
         this.ownerId = ownerId;
         this.createdOn = createdOn;
+        this.finishedOn = finishedOn;
     }
 
     public int matchId() {
@@ -106,6 +108,14 @@ public class Match {
 
     public void setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public LocalDateTime finishedOn() {
+        return finishedOn;
+    }
+
+    public void setFinishedOn(LocalDateTime finishedOn) {
+        this.finishedOn = finishedOn;
     }
 
     @Override

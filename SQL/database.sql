@@ -38,6 +38,7 @@ CREATE TABLE match
     owner_id        int         NOT NULL REFERENCES account(account_id),
     game_id         int         NOT NULL REFERENCES game(game_id) ,
     status          int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
+    finished_on     timestamp   NULL ,
     created_on      timestamp   NOT NULL DEFAULT now()
 );
 

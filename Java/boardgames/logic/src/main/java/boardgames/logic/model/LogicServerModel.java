@@ -47,5 +47,6 @@ public interface LogicServerModel {
 
     public UpdateUserStatusResponse approveUserReg(UpdateUserStatusRequest req, String jwt) throws NotAuthorizedException;
     public UpdateAccountRes updateAccount(UpdateAccountReq req, String jwt) throws NotAuthorizedException;
-    public GetScoreSumsResponse getScoreSums(GetScoreSumsRequest req, String jwt);
+    public GetScoreSumsResponse getScoreSums(GetScoreSumsRequest req, String jwt) throws NotAuthorizedException;
+    public GetMatchHistoryResponse getMatchHistory(GetMatchHistoryRequest req, String jwt) throws NotAuthorizedException;
 }

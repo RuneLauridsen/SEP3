@@ -7,6 +7,7 @@ import boardgames.logic.messages.Messages.*;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -185,6 +186,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
             case MoveResult.OUTCOME_FINISHED -> {
                 match.setStatus(Match.STATUS_FINISHED);
+                match.setFinishedOn(LocalDateTime.now());
                 match.setData(result.nextData());
                 matchService.update(match);
                 for (Participant p : match.participants()) {
@@ -251,10 +253,17 @@ public class LogicServerModelImpl implements LogicServerModel {
         }
     }
     @Override
-    public GetScoreSumsResponse getScoreSums(GetScoreSumsRequest req, String jwt) {
-        int gameId = req.gameId();
-        List<ScoreSum> sums = scoreService.getSums(gameId);
+    public GetScoreSumsResponse getScoreSums(GetScoreSumsRequest req, String jwt) throws NotAuthorizedException {
+        jwtService.verify(jwt);
+        List<ScoreSum> sums = scoreService.getSums(req.gameId());
         GetScoreSumsResponse res = new GetScoreSumsResponse(sums);
+        return res;
+    }
+    @Override
+    public GetMatchHistoryResponse getMatchHistory(GetMatchHistoryRequest req, String jwt) throws NotAuthorizedException {
+        jwtService.verify(jwt);
+        List<MatchScore> scores = scoreService.getScores(req.accountId());
+        GetMatchHistoryResponse res = new GetMatchHistoryResponse(scores);
         return res;
     }
 }

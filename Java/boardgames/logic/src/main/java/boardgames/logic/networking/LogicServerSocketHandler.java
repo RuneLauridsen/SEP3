@@ -137,6 +137,11 @@ public class LogicServerSocketHandler implements Runnable {
                 return res;
             }
 
+            if (body instanceof GetMatchHistoryRequest req) {
+                GetMatchHistoryResponse res = model.getMatchHistory(req, jwt);
+                return res;
+            }
+
         } catch (NotAuthorizedException e) {
             return new NotAuthorizedResponse();
         }

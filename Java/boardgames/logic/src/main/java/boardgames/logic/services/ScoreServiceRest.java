@@ -1,6 +1,7 @@
 package boardgames.logic.services;
 
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.MatchScore;
 import boardgames.shared.dto.ScoreSum;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
@@ -21,6 +22,15 @@ public class ScoreServiceRest implements ScoreService {
     public List<ScoreSum> getSums(int gameId) {
         try {
             ResponseEntity<ScoreSum[]> response = restTemplate.getForEntity(ulr + "/games/" + gameId + "/scores", ScoreSum[].class);
+            return List.of(response.getBody()); // TODO(rune): Check status code.
+        } catch (RestClientException e) {
+            throw new RuntimeException(e); // TODO(rune): Error handling.
+        }
+    }
+    @Override
+    public List<MatchScore> getScores(int accountId) {
+        try {
+            ResponseEntity<MatchScore[]> response = restTemplate.getForEntity(ulr + "/accounts/" + accountId + "/scores", MatchScore[].class);
             return List.of(response.getBody()); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
