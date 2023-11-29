@@ -36,8 +36,8 @@
     else
     {
         <div class="container-fluid">
-            
-            
+
+
 <SfSidebar Width="250px">
     <ChildContent>
         <div style="text-align: center;" class="text-content"> Sidebar </div>
@@ -60,7 +60,7 @@
 
         </div>
     }
-    
+
 </div>
 
 @code
@@ -71,9 +71,9 @@
     // så vi ikke skal hent den hele tiden.
         int accountId = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
         if (accountId != 0) {
-            var req = new Messages.GetAccountReq(accountId);
+            var req = new GetAccountReq(accountId);
             var res = gameService.GetAccount(req);
-            account = res.account;
+            account = res?.account ?? Empty.Account();
         }
     }
 }

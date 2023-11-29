@@ -17,7 +17,6 @@ public class GameService : IGameService {
     public GameService(IAuthService authService) {
         _authService = authService;
         _socket = new ServiceSocket("localhost", 1234);
-        _socket.Connect();
         _socket._getJwtFunc = () => _authService.GetJwt();
     }
 

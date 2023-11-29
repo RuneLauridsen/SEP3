@@ -1,4 +1,5 @@
 ﻿using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Text;
 using GameClient;
 using GameClient.Data;
@@ -11,10 +12,10 @@ namespace Shared.Data;
 public class ServiceSocket {
     private readonly string _url;
     private readonly int _port;
-    private readonly Socket _socket;
-    private NetworkStream _stream = null!;
-    private BinaryWriter _writer = null!;
-    private BinaryReader _reader = null!;
+    private Socket? _socket;
+    private NetworkStream? _stream;
+    private BinaryWriter? _writer;
+    private BinaryReader? _reader;
 
     // TODO(rune): HACK: Brug IAuthService i stedet, dvs. flyt IAuthService til Shared.
     public Func<string> _getJwtFunc = () => "";
@@ -22,18 +23,29 @@ public class ServiceSocket {
     public ServiceSocket(string url, int port) {
         _url = url;
         _port = port;
-        _socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
+
+        var jwt = SendAndReceive<LoginResponse>(new LoginRequest("BenDover", "julie"))?.jwt ?? "";
+        _getJwtFunc = () => jwt;
     }
 
-    public void Connect() {
+    private void Open() {
+        _socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
         _socket.Connect(_url, _port);
-
         _stream = new NetworkStream(_socket);
         _writer = new BinaryWriter(_stream);
         _reader = new BinaryReader(_stream);
-        var jwt = SendAndReceive<LoginResponse>(new LoginRequest("BenDover", "julie")).jwt;
+    }
 
-        _getJwtFunc = () => jwt;
+    private void Close() {
+        _stream.Close();
+        _writer.Close();
+        _reader.Close();
+        _socket.Close();
+
+        _stream.Dispose();
+        _writer.Dispose();
+        _reader.Dispose();
+        _socket.Dispose();
     }
 
     private void SendString(string s) {
@@ -87,27 +99,42 @@ public class ServiceSocket {
         }
     }
 
-    public T SendAndReceive<T>(object requestBody) {
-        long tickBegin = DateTime.Now.Ticks;
-        SendMessage(requestBody);
-        ReadMessage(out var responseHead, out var responseBody);
-        long tickEnd = DateTime.Now.Ticks;
-        long tickDiff = tickEnd - tickBegin;
-        double elapsedClientMillis = (double)tickDiff / TimeSpan.TicksPerMillisecond;
+    public T? SendAndReceive<T>(object requestBody) where T : class {
+        try {
+            Open();
 
-        LogSendAndReceive(requestBody, responseBody, elapsedClientMillis, responseHead.elapsedServerMillis);
+            long tickBegin = DateTime.Now.Ticks;
+            SendMessage(requestBody);
+            ReadMessage(out var responseHead, out var responseBody);
+            long tickEnd = DateTime.Now.Ticks;
+            long tickDiff = tickEnd - tickBegin;
+            double elapsedClientMillis = (double)tickDiff / TimeSpan.TicksPerMillisecond;
 
-        if (responseBody is NotAuthorizedResponse) {
-            throw new NotAuthorizedException();
+            LogSendAndReceive(requestBody, responseBody, elapsedClientMillis, responseHead.elapsedServerMillis);
+
+            if (responseBody is NotAuthorizedResponse) {
+                throw new NotAuthorizedException();
+            }
+
+            Console.WriteLine();
+
+            // TODO(rune): if (reponse is not T) { throw ... }
+
+            Close();
+
+            return (T)responseBody;
+        } catch (SocketException e) {
+            Console.WriteLine(e.ToString());
+            return null;
         }
-
-        // TODO(rune): if (reponse is not T) { throw ... }
-
-        return (T)responseBody;
     }
 
     private static void LogSendAndReceive(object requestBody, object responseBody, double clientMillis, double serverMillis) {
         // TODO(rune): Bedre logging system. ILogger?
         Console.WriteLine($"[INFO {DateTime.Now:yyyy-MM-dd hh:mm:ss.fff}] {requestBody.GetType().Name} -> {responseBody.GetType().Name} (client elapsed {clientMillis} ms) (server elapsed {serverMillis} ms)");
     }
+}
+
+public class NetworkException : Exception {
+    public NetworkException(string? message, Exception? innerException) : base(message, innerException) { }
 }
