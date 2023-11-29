@@ -28,6 +28,7 @@
                 <p>Status: @_account.StatusName()</p>
                 <p>RegisterDateTime: @_account.RegisterDateTime</p>
                 <p>CreatedOn: @_account.CreatedOn</p>
+                <p><a href=@("/account/" + _account.AccountId + "/scores")>Show match history</a></p>
             </div>
             <div class="col-4">
                 @if (_imgSrc != "") {
