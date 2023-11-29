@@ -7,6 +7,7 @@ public class Account {
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
     public required string Email { get; set; }
+    public required string Description { get; set; }
     public required int Status { get; set; }
     public required DateTime RegisterDateTime { get; set; }
     public required DateTime CreatedOn { get; set; }

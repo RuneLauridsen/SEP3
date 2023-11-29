@@ -1,11 +1,9 @@
 package boardgames.persistence.data;
 
 import boardgames.shared.dto.Account;
-import boardgames.shared.util.Timer;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static boardgames.persistence.data.SqlUtil.close;
@@ -27,6 +25,7 @@ public class AccountDataSql implements AccountData {
             sql.readString("first_name"),
             sql.readString("last_name"),
             sql.readString("email"),
+            sql.readString("description"),
             sql.readDateTime("registration_datetime"),
             sql.readInt("status"),
             sql.readDateTime("created_on")
@@ -76,6 +75,7 @@ public class AccountDataSql implements AccountData {
                 first_name = ?,
                 last_name = ?,
                 email = ?,
+                description = ?,
                 registration_datetime = ?,
                 status = ?
             WHERE account_id = ?
@@ -85,6 +85,7 @@ public class AccountDataSql implements AccountData {
         sql.set(account.firstName());
         sql.set(account.lastName());
         sql.set(account.email());
+        sql.set(account.description());
         sql.set(account.registerDateTime());
         sql.set(account.status());
         sql.set(account.accountId());

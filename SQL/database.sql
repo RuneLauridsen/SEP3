@@ -16,6 +16,7 @@ CREATE TABLE account
     first_name              varchar NOT NULL ,
     last_name               varchar NOT NULL ,
     email                   varchar NOT NULL ,
+    description             varchar NOT NULL DEFAULT '',
     registration_datetime   timestamp NOT NULL ,
     status                  int     NOT NULL CHECK (status IN (0, 1, 2, 3, 4)) , -- NOTE(rune): Se konstanter i Account.java
     hashed_password         varchar NOT NULL,

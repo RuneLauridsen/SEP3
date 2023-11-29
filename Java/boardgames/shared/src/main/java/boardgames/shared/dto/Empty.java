@@ -6,7 +6,7 @@ import java.util.List;
 // TODO(rune): Er det her Null-Object-Pattern???????????????
 public class Empty {
     public static Account account() {
-        return new Account(0, "?", "?", "?", "?", Empty.dateTime(), 0, Empty.dateTime());
+        return new Account(0, "?", "?", "?", "?", "?", Empty.dateTime(), 0, Empty.dateTime());
     }
 
     public static Match match() {

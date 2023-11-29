@@ -24,6 +24,7 @@
                 <p>FirstName: @_account.FirstName</p>
                 <p>LastName: @_account.LastName</p>
                 <p>Email: @_account.Email</p>
+                <p>Description: @_account.Description</p>
                 <p>Status: @_account.StatusName()</p>
                 <p>RegisterDateTime: @_account.RegisterDateTime</p>
                 <p>CreatedOn: @_account.CreatedOn</p>
@@ -59,6 +60,11 @@
     <p>
         <label>Email</label>
         <input type="text" class="form-control" @bind="@_account.Email">
+    </p>
+    <p>
+        <label>Description</label>
+        <textarea class="form-control" @bind="@_account.Description">
+        </textarea>
     </p>
     <p>
         <label>Profilbillede.</label>

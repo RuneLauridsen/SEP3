@@ -10,6 +10,7 @@ public static class Empty {
             FirstName = "?",
             LastName = "?",
             Email = "?",
+            Description = "?",
             CreatedOn = Empty.DateTime(),
             RegisterDateTime = Empty.DateTime(),
         };

@@ -236,14 +236,16 @@ public class LogicServerModelImpl implements LogicServerModel {
             v.invalid(String.format("Tried to edit account id %s but jwt account id was %s.", fromClient.accountId(), claims.accountId()));
         }
 
-        v.mustBeEqual(fromClient, fromServer, Account::registerDateTime, "register date time");
-        v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
-        v.mustBeEqual(fromClient, fromServer, Account::status, "status");
+        v.equal(fromClient, fromServer, Account::registerDateTime, "register date time");
+        v.equal(fromClient, fromServer, Account::createdOn, "created on");
+        v.equal(fromClient, fromServer, Account::status, "status");
 
         v.mustBeNonEmpty(fromClient, Account::username, "username");
         v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
         v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
         v.mustBeNonEmpty(fromClient, Account::email, "email");
+
+        v.mustBeShortedThan(fromClient, Account::description, "description", 500);
 
         if (v.isValid()) {
             accountService.update(fromClient);

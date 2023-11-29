@@ -16,6 +16,7 @@ public final class Account {
     private String firstName;
     private String lastName;
     private String email;
+    private String description;
     private LocalDateTime registerDateTime;
     private LocalDateTime createdOn;
     private String profilePicture;     // NOTE(rune): Som base 64
@@ -30,12 +31,13 @@ public final class Account {
     private Account() {
     }
 
-    public Account(int accountId, String username, String firstName, String lastName, String email, LocalDateTime registerDateTime, int status, LocalDateTime createdOn) {
+    public Account(int accountId, String username, String firstName, String lastName, String email, String description, LocalDateTime registerDateTime, int status, LocalDateTime createdOn) {
         this.accountId = accountId;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.description = description;
         this.registerDateTime = registerDateTime;
         this.status = status;
         this.createdOn = createdOn;
@@ -79,6 +81,14 @@ public final class Account {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String description() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime registerDateTime() {
