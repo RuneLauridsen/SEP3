@@ -17,7 +17,11 @@ public class GameCatalog {
         // TODO(rune): put(...);
     }
 
-    public static GameLogic get(Integer gameId) {
+    public static GameLogic getLogic(Integer gameId) {
         return map.get(gameId);
+    }
+
+    public static GameSpec getSpec(Integer gameId) {
+        return map.get(gameId).spec();
     }
 }

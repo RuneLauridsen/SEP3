@@ -105,11 +105,28 @@ public class LogicServerModelImpl implements LogicServerModel {
     public AddParticipantRes addParticipant(AddParticipantReq req, String jwt) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
+
+        // Tjek korrekt account.
         if (match.ownerId() != claims.accountId()) {
             throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
         }
-        Participant created = participantService.create(new CreateParticipantParam(req.accountId(), req.matchId()));
-        return new AddParticipantRes(created, "");
+
+        // Tjek antal invites.
+        List<Participant> ps = match.participants();
+        GameSpec spec = GameCatalog.getSpec(match.gameId());
+        int needCount = spec.needPlayerCount();
+        int acceptedCount = Participants.countByStatus(ps, Participant.STATUS_ACCEPTED);
+        int pendingCount = Participants.countByStatus(ps, Participant.STATUS_PENDING);
+        int totalCount = acceptedCount + pendingCount;
+        if (totalCount >= needCount) {
+            String reason = String.format("Cannot add another participant. Currently %d players are invited, and game needs %d to start.", totalCount, needCount);
+            return new AddParticipantRes(Empty.participant(), reason);
+        }
+
+        // Alt ok -> opret i persistence.
+        CreateParticipantParam param = new CreateParticipantParam(req.accountId(), req.matchId());
+        Participant p = participantService.create(param);
+        return new AddParticipantRes(p, "");
     }
 
     @Override
@@ -131,7 +148,7 @@ public class LogicServerModelImpl implements LogicServerModel {
         Claims claims = jwtService.verify(jwt);
 
         Match match = matchService.get(req.matchId());
-        GameLogic gl = GameCatalog.get(match.gameId());
+        GameLogic gl = GameCatalog.getLogic(match.gameId());
         GameSpec spec = gl.spec();
 
         Participant participant = Participants.getById(match.participants(), req.participantId());
@@ -171,7 +188,7 @@ public class LogicServerModelImpl implements LogicServerModel {
         Account account = accountService.get(claims.accountId());
         Match match = matchService.get(req.matchId());
 
-        GameLogic gl = GameCatalog.get(match.gameId());
+        GameLogic gl = GameCatalog.getLogic(match.gameId());
         MoveResult result = gl.validateMoveAndUpdateData(req, match, account);
 
         switch (result.outcome()) {
