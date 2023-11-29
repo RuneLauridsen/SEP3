@@ -24,7 +24,7 @@
 <h3>Match id = @(_matchId)</h3>
 <p>Status: @(_match.StatusName())</p>
 
-@if (_match.Status == Match.STATUS_ONGOING) {
+@if (_match.Status == DTO.Match.STATUS_ONGOING) {
     <p><a href="playtictactoe/@MatchId">Play</a></p>
 }
 
@@ -43,7 +43,7 @@
     public string MatchId { get; set; } = "";
 
     private int _matchId = 0;
-    private Match _match = Empty.Match();
+    private DTO.Match _match = Empty.Match();
     private string _errorReason = "";
 
     protected override Task OnInitializedAsync() {

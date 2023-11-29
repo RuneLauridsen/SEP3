@@ -78,13 +78,13 @@ else
 @code{
     private string _errorReason = "";
     private IEnumerable<Participant> _pendingInvites = Enumerable.Empty<Participant>();
-    private IEnumerable<Match> _matches = Empty.Enumerable<Match>();
+    private IEnumerable<DTO.Match> _matches = Empty.Enumerable<DTO.Match>();
     int isLoggedIn;
     protected override Task OnInitializedAsync() {
         Refresh();
         return base.OnInitializedAsync();
     }
-    
+
     private void Refresh()
     {
         isLoggedIn = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
@@ -94,7 +94,7 @@ else
                     _matches = GameService.GetMyMatches(new GetMyMatchesRequest()).matches;
         }
     }
-   
+
     private string GetStyleClass(Participant p) {
         return p.Status switch {
             Participant.STATUS_ACCEPTED => "accepted",
@@ -104,7 +104,7 @@ else
 
             };
     }
-    
+
     private void OnAcceptClicked(Participant participant) {
         DecidePending(participant, Participant.STATUS_ACCEPTED);
     }
@@ -112,7 +112,7 @@ else
     private void OnRejectClicked(Participant participant) {
         DecidePending(participant, Participant.STATUS_REJECTED);
     }
-    
+
     private void DecidePending(Participant p, int status) {
         var req = new DecidePendingReq(p.MatchId, p.ParticipantId, Participant.STATUS_ACCEPTED);
         var res = GameService.DecidePending(req);

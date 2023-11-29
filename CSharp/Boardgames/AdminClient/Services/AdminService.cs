@@ -9,13 +9,12 @@ public class AdminService : IAdminService
 
     public AdminService() {
         _socket = new ServiceSocket("localhost", 1234);
-        _socket.Connect();
     }
+
     public UpdateUserStatusResponse UpdateUserStatus(Account account, int newStatus)
     {
         return _socket.SendAndReceive<UpdateUserStatusResponse>(new UpdateUserStatusRequest(account, newStatus));
     }
-    
 
     public List<Account> GetUsersWaitingForApproval()
     {
@@ -30,7 +29,7 @@ public class AdminService : IAdminService
         }
         return accountsWaitingForApproval;
     }
-    
+
 
     public Account GetAccount(GetAccountReq req)
     {
