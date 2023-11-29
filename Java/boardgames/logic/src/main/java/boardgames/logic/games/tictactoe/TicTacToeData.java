@@ -3,14 +3,18 @@ package boardgames.logic.games.tictactoe;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class TicTacToeData {
     private int nextTurnAccountId;
     private TicTacToePlayer[] players;
     private char[] squares;
     private int moveCount;
 
-    public TicTacToeData() {}
+    private TicTacToeData() { }
 
     public TicTacToeData(int nextTurnAccountId, TicTacToePlayer[] players, char[] squares) {
         this.nextTurnAccountId = nextTurnAccountId;

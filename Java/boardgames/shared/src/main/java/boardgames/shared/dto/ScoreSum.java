@@ -3,7 +3,11 @@ package boardgames.shared.dto;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class ScoreSum {
     private int gameId;
     private int accountId;
@@ -11,7 +15,7 @@ public class ScoreSum {
     private int score;
     private int count;
 
-    public ScoreSum() {
+    private ScoreSum() {
     }
 
     public ScoreSum(int gameId, int accountId, String accountName, int score, int count) {

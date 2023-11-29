@@ -12,7 +12,11 @@ import java.time.LocalDateTime;
 // være for samme bruger som account id fra requesten.
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class MatchScore {
     private int gameId;
     private String gameName;

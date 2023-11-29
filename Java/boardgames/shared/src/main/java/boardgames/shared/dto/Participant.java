@@ -5,7 +5,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.time.LocalDateTime;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Participant {
     private int participantId;
     private int status;
@@ -23,7 +27,7 @@ public class Participant {
     public static final int STATUS_ACCEPTED = 3;    // NOTE(rune): Invitation godkendt.
     public static final int STATUS_FINISHED = 4;    // NOTE(rune): Efter match er færdig.
 
-    public Participant() {
+    private Participant() {
     }
 
     public Participant(int participantId, int status, int matchId, int accountId, LocalDateTime createdOn, int score) {

@@ -3,13 +3,17 @@ package boardgames.logic.games.tictactoe;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class TicTacToePlayer {
     private int accountId;
     private char team; // TODO(rune): Bedre navn? Team == om man spiller som kryds eller bolle. Husk også at ændr i Java.
     private int remainingPieces;
 
-    public TicTacToePlayer() {}
+    private TicTacToePlayer() { }
 
     public TicTacToePlayer(int accountId, char team, int remainingPieces) {
         this.accountId = accountId;

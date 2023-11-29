@@ -6,7 +6,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Match {
     private int matchId;
     private String data;
@@ -25,7 +29,7 @@ public class Match {
     public static final int STATUS_ONGOING = 2;
     public static final int STATUS_FINISHED = 3;
 
-    public Match() {
+    private Match() {
     }
 
     public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn, LocalDateTime finishedOn) {

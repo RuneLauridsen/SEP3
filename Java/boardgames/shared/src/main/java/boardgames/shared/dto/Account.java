@@ -5,7 +5,11 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import java.time.LocalDateTime;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public final class Account {
     private int accountId;
     private String username;
@@ -23,7 +27,7 @@ public final class Account {
     public static final int STATUS_ACCEPTED = 2; // NOTE(rune): Bruger er godkendt af admin.
     public static final int STATUS_DELETED = 3;  // NOTE(rune): Bruger er fjernet af admin.
 
-    public Account() {
+    private Account() {
     }
 
     public Account(int accountId, String username, String firstName, String lastName, String email, LocalDateTime registerDateTime, int status, LocalDateTime createdOn) {

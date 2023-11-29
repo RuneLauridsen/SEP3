@@ -3,10 +3,16 @@ package boardgames.shared.dto;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.ANY, setterVisibility = JsonAutoDetect.Visibility.ANY, creatorVisibility = JsonAutoDetect.Visibility.ANY)
+@JsonAutoDetect(
+    fieldVisibility = JsonAutoDetect.Visibility.ANY,
+    getterVisibility = JsonAutoDetect.Visibility.ANY,
+    setterVisibility = JsonAutoDetect.Visibility.ANY,
+    creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class CreateAccountDto {
     private String username;
     private String hashedPassword;
+
+    private CreateAccountDto() { }
 
     public CreateAccountDto(String username, String hashedPassword) {
         this.username = username;
