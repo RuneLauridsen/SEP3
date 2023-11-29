@@ -5,6 +5,7 @@ import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
 import boardgames.shared.dto.Participant;
+import boardgames.shared.dto.ScoreSum;
 
 import java.util.List;
 
@@ -95,6 +96,13 @@ public class Messages {
 
     public record MoveReq(int matchId, String moveData) { }
     public record MoveRes(int matchId, String gameData, MoveResult result) { }
+
+    //
+    // Score
+    //
+
+    public record GetScoreSumsRequest(int gameId) { }
+    public record GetScoreSumsResponse(List<ScoreSum> sums) { }
 
     //
     // Fejlkoder
