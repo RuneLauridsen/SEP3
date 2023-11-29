@@ -20,6 +20,7 @@ public class ScoreDataSql implements ScoreData {
         return new ScoreSum(
             sql.readInt("game_id"),
             sql.readInt("account_id"),
+            sql.readString("account_name"),
             sql.readInt("score"),
             sql.readInt("count")
         );
@@ -29,7 +30,11 @@ public class ScoreDataSql implements ScoreData {
     public List<ScoreSum> getSums(int gameId) {
         // TODO(rune): FROM boardgames.game i stedet
         Sql sql = new Sql(conn, """
-            SELECT g.game_id, a.account_id, SUM(p.score) AS score, COUNT(*) AS count
+            SELECT g.game_id,
+                   a.account_id,
+                   a.username AS account_name,
+                   SUM(p.score) AS score,
+                   COUNT(*) AS count
             FROM boardgames.account a
             INNER JOIN boardgames.participant p
                 INNER JOIN boardgames.match m

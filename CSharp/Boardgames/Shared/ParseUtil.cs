@@ -8,4 +8,8 @@ public class ParseUtil {
             return whenNotParsed;
         }
     }
+
+    public static int ParseIntOrDefault(object? o, int whenNotParsed = default) {
+        return ParseIntOrDefault(o?.ToString() ?? "", default);
+    }
 }

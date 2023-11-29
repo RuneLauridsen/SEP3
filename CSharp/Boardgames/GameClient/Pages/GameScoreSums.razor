@@ -1,4 +1,4 @@
-﻿@page "/game/{gameId}/scores"
+﻿@page "/scores"
 @using GameClient.Data
 @using GameClient.DTO
 @using GameClient.Services
@@ -11,34 +11,72 @@
 
 <PageTitle>Score</PageTitle>
 
-<p>@_json</p>
+<h1>@_selectedGame.Name</h1>
+
+<p>
+    Choose game
+    <select @onchange="OnSelectedGameChanged">
+        @foreach (var g in _games) {
+            <option value="@g.GameId">@g.Name</option>
+        }
+    </select>
+</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bruger</th>
+        <th scope="col">Total score</th>
+        <th scope="col">Number of matches</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{ var i = 1;}
+    @foreach(var sc in _scoreSums) {
+        <tr>
+            <th scope="row">@i</th>
+            <td>
+                <a href="@("account/" + sc.AccountId)">@sc.AccountName</a>
+            </td>
+            <td>@sc.Score</td>
+            <td>@sc.Count</td>
+        </tr>
+        i++;
+    }
+    </tbody>
+</table>
 
 @code {
-    [Parameter]
-    public string GameId { get; set; } = "";
-
-    private Game _game = Empty.Game();
+    private int _selectedGameId = 0;
+    private Game _selectedGame = Empty.Game();
+    private List<Game> _games = Empty.List<Game>();
     private List<ScoreSum> _scoreSums = Empty.List<ScoreSum>();
-    private string _json = "";
 
     protected override async Task OnInitializedAsync() {
-        await Task.Run(() => { // TODO(rune): Bedre async
-            List<Game> games;
-            {
-                GetGamesRequest req = new();
-                GetGamesResponse res = GameService.GetGames(req);
-                games = res.games;
-            }
+        await Task.Run(async () => { // TODO(rune): Bedre async
+            GetGamesRequest req = new();
+            GetGamesResponse res = GameService.GetGames(req);
+            _games = res.games;
 
-            int gameId = ParseUtil.ParseIntOrDefault(GameId, 0);
-            if (gameId != 0) {
-                _game = games.FirstOrDefault(x => x.GameId == gameId, Empty.Game());
-
-                GetScoreSumsRequest req = new(gameId);
-                GetScoreSumsResponse res = GameService.GetScoreSums(req);
-                _scoreSums = res.sums;
-                _json = JsonUtil.ToJson(_scoreSums); // TODO(rune): Slet
-            }
+            await ChangeToGame(1);
         });
+    }
+
+    private async Task ChangeToGame(int gameId) {
+        _selectedGameId = gameId;
+
+        _scoreSums = Empty.List<ScoreSum>();
+        _selectedGame = _games.FirstOrDefault(x => x.GameId == gameId, Empty.Game());
+        if (_selectedGameId != 0) {
+            GetScoreSumsRequest req = new(_selectedGameId);
+            GetScoreSumsResponse res = GameService.GetScoreSums(req);
+            _scoreSums = res.sums;
+        }
+    }
+
+    private async Task OnSelectedGameChanged(ChangeEventArgs e) {
+        int valueAsInt = ParseUtil.ParseIntOrDefault(e.Value);
+        ChangeToGame(valueAsInt);
     }
 }

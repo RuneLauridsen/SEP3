@@ -7,19 +7,23 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class ScoreSum {
     private int gameId;
     private int accountId;
+    private String accountName;
     private int score;
     private int count;
 
     public ScoreSum() {
     }
 
-    public ScoreSum(int gameId, int accountId, int score, int count) {
+    public ScoreSum(int gameId, int accountId, String accountName, int score, int count) {
         this.gameId = gameId;
         this.accountId = accountId;
+        this.accountName = accountName;
         this.score = score;
         this.count = count;
     }
 
+    public int gameId() { return gameId; }
+    public String accountName() { return accountName; }
     public int accountId() { return accountId; }
     public int score() { return score; }
     public int count() { return count; }

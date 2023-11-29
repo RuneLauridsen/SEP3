@@ -36,11 +36,6 @@ public class ServiceSocket {
         _getJwtFunc = () => jwt;
     }
 
-    // NOTE(rune): Javas DataInputStream og DataOuputStream sender utf8-strings,
-    // ved først at skrive længden i en big-endian 16-bit int.
-    // SendString() svarer til DataInputStream.writeUTF() i Java.
-    // ReadString() svarer til DataInputStream.readUTF() i Java.
-
     private void SendString(string s) {
         _writer.Write((byte)(s.Length >> 24));
         _writer.Write((byte)(s.Length >> 16));
