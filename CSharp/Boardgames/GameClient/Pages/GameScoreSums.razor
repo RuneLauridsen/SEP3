@@ -11,15 +11,40 @@
 
 <PageTitle>Score</PageTitle>
 
-<p>@_json</p>
+<h1>@_game.Name</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Bruger</th>
+        <th scope="col">Total score</th>
+        <th scope="col">Antal matches</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (var i = 0; i < _scoreSums.Count; i++) {
+        var sc = _scoreSums[i];
+        <tr>
+            <th scope="row">@i</th>
+            <td>
+                <a href="@("account/" + sc.AccountId)">@sc.AccountName</a>
+            </td>
+            <td>@sc.Score</td>
+            <td>@sc.Count</td>
+        </tr>
+        i++;
+    }
+    </tbody>
+</table>
 
 @code {
+
     [Parameter]
     public string GameId { get; set; } = "";
 
     private Game _game = Empty.Game();
     private List<ScoreSum> _scoreSums = Empty.List<ScoreSum>();
-    private string _json = "";
 
     protected override async Task OnInitializedAsync() {
         await Task.Run(() => { // TODO(rune): Bedre async
@@ -37,8 +62,8 @@
                 GetScoreSumsRequest req = new(gameId);
                 GetScoreSumsResponse res = GameService.GetScoreSums(req);
                 _scoreSums = res.sums;
-                _json = JsonUtil.ToJson(_scoreSums); // TODO(rune): Slet
             }
         });
     }
+
 }
