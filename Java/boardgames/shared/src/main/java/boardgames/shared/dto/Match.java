@@ -19,6 +19,7 @@ public class Match {
     private int gameId;
     private LocalDateTime createdOn;
     private LocalDateTime finishedOn;
+    private LocalDateTime startedOn;
 
     private List<Participant> participants = List.of();
     private Account owner;
@@ -32,7 +33,7 @@ public class Match {
     private Match() {
     }
 
-    public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn, LocalDateTime finishedOn) {
+    public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn, LocalDateTime finishedOn, LocalDateTime startedOn) {
         this.matchId = matchId;
         this.status = status;
         this.data = data;
@@ -40,87 +41,41 @@ public class Match {
         this.ownerId = ownerId;
         this.createdOn = createdOn;
         this.finishedOn = finishedOn;
+        this.startedOn = startedOn;
     }
 
-    public int matchId() {
-        return matchId;
-    }
+    public int matchId() { return matchId; }
+    public void setMatchId(int matchId) { this.matchId = matchId; }
 
-    public void setMatchId(int matchId) {
-        this.matchId = matchId;
-    }
+    public int status() { return status; }
+    public void setStatus(int status) { this.status = status; }
 
-    public int status() {
-        return status;
-    }
+    public String data() { return data; }
+    public void setData(String data) { this.data = data; }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
+    public int ownerId() { return ownerId; }
+    public void setOwnerId(int ownerId) { this.ownerId = ownerId; }
 
-    public String data() {
-        return data;
-    }
+    public int gameId() { return gameId; }
+    public void setGameId(int gameId) { this.gameId = gameId; }
 
-    public void setData(String data) {
-        this.data = data;
-    }
+    public List<Participant> participants() { return participants; }
+    public void setParticipants(List<Participant> participants) { this.participants = participants; }
 
-    public int ownerId() {
-        return ownerId;
-    }
+    public Account owner() { return owner; }
+    public void setOwner(Account owner) { this.owner = owner; }
 
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
-    }
+    public Game game() { return game; }
+    public void setGame(Game game) { this.game = game; }
 
-    public int gameId() {
-        return gameId;
-    }
+    public LocalDateTime createdOn() { return createdOn; }
+    public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
 
-    public void setGameId(int gameId) {
-        this.gameId = gameId;
-    }
+    public LocalDateTime finishedOn() { return finishedOn; }
+    public void setFinishedOn(LocalDateTime finishedOn) { this.finishedOn = finishedOn; }
 
-    public List<Participant> participants() {
-        return participants;
-    }
-
-    public void setParticipants(List<Participant> participants) {
-        this.participants = participants;
-    }
-
-    public Account owner() {
-        return owner;
-    }
-
-    public void setOwner(Account owner) {
-        this.owner = owner;
-    }
-
-    public Game game() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    public LocalDateTime createdOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public LocalDateTime finishedOn() {
-        return finishedOn;
-    }
-
-    public void setFinishedOn(LocalDateTime finishedOn) {
-        this.finishedOn = finishedOn;
-    }
+    public LocalDateTime startedOn() { return startedOn; }
+    public void setStartedOn(LocalDateTime startedOn) { this.startedOn = startedOn; }
 
     @Override
     public String toString() {

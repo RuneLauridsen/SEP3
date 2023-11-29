@@ -151,6 +151,7 @@ public class LogicServerModelImpl implements LogicServerModel {
             if (pendingCount == 0 && acceptedCount == spec.needPlayerCount()) {
                 match.setData(gl.getInitialData(match));
                 match.setStatus(Match.STATUS_ONGOING);
+                match.setStartedOn(LocalDateTime.now());
                 matchService.update(match);
             }
 
