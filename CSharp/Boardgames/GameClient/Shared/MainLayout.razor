@@ -1,16 +1,79 @@
-﻿@inherits LayoutComponentBase
+﻿
+
+
+
+
+@using GameClient.DTO
+@using GameClient.Services
+@using global::Shared
+@using global::Shared.Data
+@inherits LayoutComponentBase
+@inject IAuthService authService;
+@inject IGameService gameService;
+
+<PageTitle>GameClient</PageTitle>
+
 
 <NavMenu/>
+<div class="page">
 
-<main class="container">
-    <ErrorBoundary>
-        <ChildContent>
-            @Body
-        </ChildContent>
-        <ErrorContent Context="ex">
-            <!-- TODO(rune): Måske kun developer mode? -->
-            <h1>@ex.Message</h1>
-            <p style="white-space: pre-wrap; font-family: monospace">@ex.ToString()</p>
-        </ErrorContent>
-    </ErrorBoundary>
-</main>
+    @if (account.AccountId == 0)
+    {
+        <main class="container">
+            <ErrorBoundary>
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent Context="ex">
+                    <!-- TODO(rune): Måske kun developer mode? -->
+                    <h1>@ex.Message</h1>
+                    <p style="white-space: pre-wrap; font-family: monospace">@ex.ToString()</p>
+                </ErrorContent>
+            </ErrorBoundary>
+        </main>
+
+    }
+    else
+    {
+        <div class="container-fluid">
+            
+            
+<SfSidebar Width="250px">
+    <ChildContent>
+        <div style="text-align: center;" class="text-content"> Sidebar </div>
+    </ChildContent>
+</SfSidebar>
+
+
+            <main class="container">
+                <ErrorBoundary>
+                    <ChildContent>
+                        @Body
+                    </ChildContent>
+                    <ErrorContent Context="ex">
+                        <!-- TODO(rune): Måske kun developer mode? -->
+                        <h1>@ex.Message</h1>
+                        <p style="white-space: pre-wrap; font-family: monospace">@ex.ToString()</p>
+                    </ErrorContent>
+                </ErrorBoundary>
+            </main>
+
+        </div>
+    }
+    
+</div>
+
+@code
+{
+    private Account account = Empty.Account();
+    protected override void OnInitialized() {
+    // TODO(rune): Måske gem brugerens eget Account object globalt,
+    // så vi ikke skal hent den hele tiden.
+        int accountId = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
+        if (accountId != 0) {
+            var req = new Messages.GetAccountReq(accountId);
+            var res = gameService.GetAccount(req);
+            account = res.account;
+        }
+    }
+}
