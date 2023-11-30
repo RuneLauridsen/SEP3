@@ -158,7 +158,10 @@ public class LogicServerModelImpl implements LogicServerModel {
             throw new NotAuthorizedException();
         }
 
-        if (req.status() == Participant.STATUS_ACCEPTED || req.status() == Participant.STATUS_REJECTED) {
+        boolean validStatus = req.status() == Participant.STATUS_ACCEPTED ||
+                              req.status() == Participant.STATUS_REJECTED;
+
+        if (validStatus) {
             participant.setStatus(req.status());
             participantService.update(participant);
 
@@ -166,7 +169,9 @@ public class LogicServerModelImpl implements LogicServerModel {
             int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
             int acceptedCount = Participants.countByStatus(match.participants(), Participant.STATUS_ACCEPTED);
             if (pendingCount == 0 && acceptedCount == spec.needPlayerCount()) {
-                match.setData(gl.getInitialData(match));
+                var players = Participants.withoutStatus(match.participants(), Participant.STATUS_REJECTED);
+                var data = gl.getInitialData(players);
+                match.setData(data);
                 match.setStatus(Match.STATUS_ONGOING);
                 match.setStartedOn(LocalDateTime.now());
                 matchService.update(match);

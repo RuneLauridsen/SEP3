@@ -27,4 +27,8 @@ public class Match {
             _ => ""
         };
     }
+
+    public override string ToString() {
+        return "Match#" + MatchId;
+    }
 }

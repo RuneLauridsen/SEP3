@@ -1,4 +1,4 @@
-﻿@page "/playtictactoe/{matchid}"
+﻿@page "/match/{matchid}/play/tictactoe"
 @using GameClient.Data
 @using GameClient.DTO
 @using GameClient.Games
@@ -9,9 +9,10 @@
 @inject IGameService GameService
 @inject NavigationManager navMgr
 
-<PageTitle>Play TicTacToe</PageTitle>
+<PageTitle>Play @_match.ToString()</PageTitle>
 
-<h1>Play TicTacToe</h1>
+<h1>Play @_match.ToString()</h1>
+<p><a href="/match/@_matchId">View match</a></p>
 
 <!-- NOTE(rune): https://www.w3schools.com/css/css_grid.asp -->
 <!-- TODO(rune): Auto scaling -->
@@ -34,10 +35,20 @@
 </style>
 
 @if (_data != null) {
+    @foreach (var p in _data.Players) {
+        <p>
+            <span>@(p.AccountId == _data.NextTurnAccountId ? "➡" : " ")</span>
+            <span>@PlayerAccount(p).Username</span>
+            <span> - Remaining pieces: @p.RemainingPieces</span>
+        </p>
+    }
+
     <div class="grid-container">
         @for (var i = 0; i < _data.Squares.Length; i++) {
             int squareIndex = i;
-            <div class="grid-item" @onclick="() => OnSquaredClicked(squareIndex)">@_data.Squares[i]</div>
+            <div class="grid-item" @onclick="() => OnSquaredClicked(squareIndex)">
+                @_data.Squares[i]
+            </div>
         }
     </div>
 }
@@ -63,7 +74,15 @@
     private string _invalidMoveText = "";
     private string _winnerText = "";
 
+    private List<DTO.Account> _accounts = Empty.List<DTO.Account>();
+
     protected override Task OnInitializedAsync() {
+        {
+            GetAccountsReq req = new();
+            GetAccountsRes res = GameService.GetAccounts(req);
+            _accounts = res.accounts;
+        }
+
         Refresh();
         return base.OnInitializedAsync();
     }
@@ -91,5 +110,10 @@
         _winnerText = res.result.FinishedText;
 
         return Task.CompletedTask;
+    }
+
+    private DTO.Account PlayerAccount(TicTacToePlayer player) {
+        DTO.Account ret = _accounts.FirstOrDefault(x => x.AccountId == player.AccountId, Empty.Account());
+        return ret;
     }
 }

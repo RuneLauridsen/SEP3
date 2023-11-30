@@ -6,6 +6,7 @@ import boardgames.logic.messages.Messages.MoveReq;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
+import boardgames.shared.dto.Participant;
 import boardgames.shared.util.JsonUtil;
 import boardgames.shared.util.ResourceUtil;
 
@@ -47,12 +48,12 @@ public class TicTacToeLogic implements GameLogic {
     }
 
     @Override
-    public String getInitialData(Match match) {
+    public String getInitialData(List<Participant> participants) {
         // TODO(rune): Check participants.size() indenfor spec.min()/spec.max()
 
         TicTacToePlayer[] players = new TicTacToePlayer[NUM_PLAYERS];
-        players[0] = new TicTacToePlayer(match.participants().get(0).accountId(), 'X', NUM_PIECES_PER_PLAYER);
-        players[1] = new TicTacToePlayer(match.participants().get(1).accountId(), 'O', NUM_PIECES_PER_PLAYER);
+        players[0] = new TicTacToePlayer(participants.get(0).accountId(), 'X', NUM_PIECES_PER_PLAYER);
+        players[1] = new TicTacToePlayer(participants.get(1).accountId(), 'O', NUM_PIECES_PER_PLAYER);
 
         char[] squares = new char[NUM_SQUARES];
         Arrays.fill(squares, ' ');
@@ -91,6 +92,7 @@ public class TicTacToeLogic implements GameLogic {
         // Take piece.
         if (player.remainingPieces() <= 0) {
             data.squares()[move.takeFromIndex()] = ' ';
+        } else {
             player.setRemainingPieces(player.remainingPieces() - 1);
         }
 

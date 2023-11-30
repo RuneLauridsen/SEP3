@@ -33,7 +33,7 @@
             var res = GameService.CreateMatch(req);
 
             if (res.errorReason == "") {
-                navMgr.NavigateTo("/creatematchparticipants/" + res.match.MatchId);
+                navMgr.NavigateTo("/match/" + res.match.MatchId);
             } else {
                 // TODO(rune): Show error reason.
             }

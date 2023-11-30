@@ -6,29 +6,61 @@
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
+@inject IAuthService AuthService
 @inject NavigationManager navMgr
 
-<PageTitle>Create match participants</PageTitle>
+<PageTitle>@_match.ToString()</PageTitle>
 
-<h1>Not already invited</h1>
+<h1>@_match.ToString()</h1>
+<p>Game: @_match.Game.Name</p>
+<p>Owner: <a href="/account/@_owner.AccountId">@_owner.Username</a></p>
 
-@foreach (var a in _allAccounts.Where(NotAlreadyInvited)) {
+@if (_match.Status == DTO.Match.STATUS_ONGOING) {
+
+    <a href="/match/@MatchId/play/@_match.Game.Name">
+        <button type="button" class="btn btn-primary mb-5">
+            Play
+        </button>
+    </a>
+}
+
+<h2>Participants</h2>
+@foreach (var p in _match.Participants.OrderBy(x => x.Status == Participant.STATUS_REJECTED)) {
+    var a = AccountFromParticipant(p);
     <p>
-        <button @onclick="() => OnInviteClicked(a)">Invite</button>
-        <span>@(a.Username)</span>
+        <a href="/account/@a.AccountId">
+            <span>🧍 @(a.Username)</span>
+        </a>
+
+        @switch (p.Status) {
+            case Participant.STATUS_PENDING:
+                <span class="text-muted"> (Pending)</span>
+                break;
+            case Participant.STATUS_REJECTED:
+                <span class="text-danger"> (Rejected)</span>
+                break;
+            case Participant.STATUS_ACCEPTED:
+                <span class="text-success"> (Accepted)</span>
+                break;
+        }
+        <br/>
+        <small>Invited on: @(p.CreatedOn)</small>
     </p>
 }
 
-<h1>Already invited</h1>
-
-@foreach (var a in _allAccounts.Where(IsAlreadyInvited)) {
-    <p>
-        <span>@(a.Username)</span>
-    </p>
+<!-- Kun owner kan invitere folk -->
+@if (_isOwner) {
+    <h1>Invite</h1>
+    @foreach (var a in _allAccounts.Where(NotAlreadyInvited)) {
+        <p>
+            <button @onclick="() => OnInviteClicked(a)">Invite</button>
+            <span>@(a.Username)</span>
+        </p>
+    }
 }
 
 @if (_errorReason != "") {
-    <div class="alert alert-danger">@_errorReason</div>
+    <div class="alert alert-warning">@_errorReason</div>
 }
 
 @code {
@@ -38,6 +70,9 @@
 
     private int _matchId = 0;
     private DTO.Match _match = Empty.Match();
+    private bool _isOwner = false;
+    private int _accountId = 0;
+    private DTO.Account _owner = Empty.Account();
 
     private string _errorReason = "";
 
@@ -48,13 +83,13 @@
         base.OnInitialized();
     }
 
-    private bool IsAlreadyInvited(DTO.Account a) {
-        bool ret = _match.Participants.Any(x => x.AccountId == a.AccountId);
-        return ret;
+    private DTO.Account AccountFromParticipant(Participant p) {
+        return _allAccounts.FirstOrDefault(x => x.AccountId == p.AccountId, Empty.Account());
     }
 
     private bool NotAlreadyInvited(DTO.Account a) {
-        return !IsAlreadyInvited(a);
+        bool ret = _match.Participants.All(x => x.AccountId != a.AccountId);
+        return ret;
     }
 
     private void Refresh() {
@@ -69,6 +104,13 @@
             var req = new GetAccountsReq();
             var res = GameService.GetAccounts(req);
             _allAccounts = res.accounts;
+        }
+
+        {
+            var accountIdAsString = AuthService.GetClaims().GetOrDefault("userId", "");
+            _accountId = ParseUtil.ParseIntOrDefault(accountIdAsString);
+            _isOwner = _match.OwnerId == _accountId;
+            _owner = _allAccounts.FirstOrDefault(x => x.AccountId == _match.OwnerId, Empty.Account());
         }
     }
 

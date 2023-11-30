@@ -46,13 +46,17 @@ public class MatchController {
         Match match = matchData.get(matchId);
         throwIfNotFound(matchId, match);
 
+        // Include participants.
         List<Participant> participants = participantData.getAll(matchId, -1, -1);
         match.setParticipants(participants);
-
         for (Participant p : participants) {
             Account a = accountData.get(p.accountId());
             p.setAccount(a);
         }
+
+        // Include game.
+        Game game = gameData.get(match.gameId());
+        match.setGame(game);
 
         return match;
     }

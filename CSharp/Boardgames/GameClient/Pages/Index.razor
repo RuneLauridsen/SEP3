@@ -58,7 +58,7 @@ else
 {
     <h3>Current games(@_matches.Count()):</h3>
     @foreach (var m in _matches) {
-        <h3><a href="mymatches/@m.MatchId">ShowMatch id = @(m.MatchId)</a></h3>
+        <h3><a href="match/@m.MatchId">@m.ToString()</a></h3>
     }
 }
 else
@@ -114,7 +114,7 @@ else
     }
 
     private void DecidePending(Participant p, int status) {
-        var req = new DecidePendingReq(p.MatchId, p.ParticipantId, Participant.STATUS_ACCEPTED);
+        var req = new DecidePendingReq(p.MatchId, p.ParticipantId, status);
         var res = GameService.DecidePending(req);
         _errorReason = res.errorReason;
         if (_errorReason == "") {

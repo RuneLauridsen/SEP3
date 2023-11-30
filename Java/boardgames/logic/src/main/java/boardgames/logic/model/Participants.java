@@ -2,6 +2,9 @@ package boardgames.logic.model;
 
 import boardgames.shared.dto.Participant;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Participants {
     public static Participant getById(Iterable<Participant> p, int id) {
         Participant ret = null;
@@ -19,6 +22,16 @@ public class Participants {
         for (Participant it : p) {
             if (it.status() == status) {
                 ret++;
+            }
+        }
+        return ret;
+    }
+
+    public static List<Participant> withoutStatus(Iterable<Participant> ps, int status) {
+        List<Participant> ret = new ArrayList<>();
+        for (Participant p : ps) {
+            if (p.status() != status) {
+                ret.add(p);
             }
         }
         return ret;
