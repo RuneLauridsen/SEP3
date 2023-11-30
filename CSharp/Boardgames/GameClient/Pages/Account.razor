@@ -88,7 +88,7 @@
     private string _errorReason = "";
     private bool _isOwnProfile = false;
 
-    protected override Task OnInitializedAsync() {
+    protected override Task OnParametersSetAsync() {
         int claimAccountId = ParseUtil.ParseIntOrDefault(AuthService.GetClaims().GetOrDefault("userId", ""));
         int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
         if (routeAccountId != 0) {
