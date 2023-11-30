@@ -10,7 +10,7 @@
 
 
 <!-- TODO(rune): Kan man slippe for all 100%'erne?   -->
-<div style="height: 100vh">
+<div style="height: 100vh; overflow: hidden;">
 
     <NavMenu/>
     <div class="page" style="height: 100%">
@@ -32,7 +32,7 @@
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
-                        <div class="col-9 p-5">
+                        <div class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
                             <ErrorBoundary>
                                 <ChildContent>
                                     @Body
@@ -44,10 +44,13 @@
                                 </ErrorContent>
                             </ErrorBoundary>
                         </div>
-                        <div class="col-3 p-5" style="background-color: #2c3034">
-                            @foreach (var a in allAccounts) {
+                        <div class="col-2 p-5 pt-4" style="background-color: #2c3034">
+                            <h3 style="color: white">Users</h3>
+                            <hr style="color: white"/>
+                            @foreach (var a in allAccounts)
+                            {
                                 <!-- TODO(rune): Hvad skal den linke til? -->
-                                <p><a href="/account/@a.AccountId"> @a.Username</a></p>
+                                <p ><a style="text-decoration: none; color: white;" href="/account/@a.AccountId"> @a.Username</a></p>
                             }
                         </div>
                     </div>
