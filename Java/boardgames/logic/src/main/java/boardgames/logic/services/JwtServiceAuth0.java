@@ -34,6 +34,7 @@ public class JwtServiceAuth0 implements JwtService {
             //.withSubject("Baeldung Details")
             .withClaim("userId", account.accountId())
             .withClaim("username", account.username())
+            .withClaim("isAdmin", account.isAdmin())
             .withIssuedAt(new Date())
             .withExpiresAt(new Date(System.currentTimeMillis() + 1000L * 60L * 20L)) // NOTE(rune): 20 minutter.
             .withJWTId(UUID.randomUUID().toString())
@@ -49,7 +50,8 @@ public class JwtServiceAuth0 implements JwtService {
             DecodedJWT decoded = decrypter.verify(jwt);
             Claims claims = new Claims(
                 decoded.getClaim("userId").asInt(),
-                decoded.getClaim("username").asString()
+                decoded.getClaim("username").asString(),
+                decoded.getClaim("isAdmin").asBoolean()
             );
             return claims;
         } catch (JWTVerificationException e) {

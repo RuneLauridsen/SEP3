@@ -28,7 +28,8 @@ public class AccountDataSql implements AccountData {
             sql.readString("description"),
             sql.readDateTime("registration_datetime"),
             sql.readInt("status"),
-            sql.readDateTime("created_on")
+            sql.readDateTime("created_on"),
+            sql.readBoolean("is_admin")
         );
     }
 

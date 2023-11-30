@@ -22,6 +22,7 @@ public final class Account {
     private String profilePicture;     // NOTE(rune): Som base 64
     private String profilePictureType; // NOTE(rune): MIME content type.
     private int status;
+    private boolean isAdmin;
 
     public static final int STATUS_NONE = 0;
     public static final int STATUS_PENDING = 1;  // NOTE(rune): Bruger ikke godkendt af admin endnu.
@@ -31,7 +32,7 @@ public final class Account {
     private Account() {
     }
 
-    public Account(int accountId, String username, String firstName, String lastName, String email, String description, LocalDateTime registerDateTime, int status, LocalDateTime createdOn) {
+    public Account(int accountId, String username, String firstName, String lastName, String email, String description, LocalDateTime registerDateTime, int status, LocalDateTime createdOn, boolean isAdmin) {
         this.accountId = accountId;
         this.username = username;
         this.firstName = firstName;
@@ -41,6 +42,7 @@ public final class Account {
         this.registerDateTime = registerDateTime;
         this.status = status;
         this.createdOn = createdOn;
+        this.isAdmin = isAdmin;
     }
 
     public int accountId() {
@@ -129,6 +131,14 @@ public final class Account {
 
     public void setProfilePictureType(String profilePictureType) {
         this.profilePictureType = profilePictureType;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     @Override

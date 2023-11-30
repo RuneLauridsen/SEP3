@@ -234,8 +234,20 @@ public class LogicServerModelImpl implements LogicServerModel {
     @Override
     public GetAccountsRes getAccounts(GetAccountsReq req, String jwt) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
-        List<Account> accounts = accountService.get();
-        return new GetAccountsRes(accounts);
+        List<Account> allAccounts = accountService.get();
+        List<Account> returnAccounts = allAccounts;
+
+        // NOTE(rune): Hvis ikke admin -> vis kun accounts som er accepted.
+        if (!claims.isAdmin()) {
+            returnAccounts = new ArrayList<>();
+            for (Account a : allAccounts) {
+                if (a.status() == Account.STATUS_ACCEPTED) {
+                    returnAccounts.add(a);
+                }
+            }
+        }
+
+        return new GetAccountsRes(returnAccounts);
     }
 
     @Override

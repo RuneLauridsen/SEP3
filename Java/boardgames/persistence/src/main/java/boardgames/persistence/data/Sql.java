@@ -289,6 +289,19 @@ public class Sql {
         return null;
     }
 
+    public boolean readBoolean(String columnName) {
+        if (caughtException == null) {
+            try {
+                boolean b = resultSet.getBoolean(columnName);
+                return b;
+            } catch (SQLException e) {
+                caughtException = e;
+            }
+        }
+
+        return false;
+    }
+
     private void executeQuery() {
         if (caughtException == null) {
             try {
