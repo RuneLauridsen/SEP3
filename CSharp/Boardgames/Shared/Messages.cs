@@ -76,6 +76,7 @@ public class Messages {
     // TODO(rune): Paging?
     // TODO(rune): Kun hent venner?
     // TODO(rune): Kun hent online?
+    // TODO(rune): boolean includePending, server side tjek admin.
     public record GetAccountsReq() {}
     public record GetAccountsRes(List<Account> accounts) {}
 
