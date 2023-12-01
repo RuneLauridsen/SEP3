@@ -24,11 +24,12 @@ public class Messages {
     // Authorization
     //
 
-    public record LoginRequest(String username, String password) {}
+    public record LoginRequest(String username, String password, boolean AdminClient) {}
     public record LoginResponse(boolean loginSuccessful, Account account, String jwt) {}
 
     public record RegisterRequest(String username, String firstName, String lastName, String email, String password) {}
     public record RegisterResponse(boolean response) {}  //Todo, lav response ordenlig
+    
 
     //
     // Spilkataolog

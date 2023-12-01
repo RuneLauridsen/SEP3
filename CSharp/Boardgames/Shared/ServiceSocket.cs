@@ -24,7 +24,7 @@ public class ServiceSocket {
         _url = url;
         _port = port;
 
-        var jwt = SendAndReceive<LoginResponse>(new LoginRequest("BenDover", "julie"))?.jwt ?? "";
+        var jwt = SendAndReceive<LoginResponse>(new LoginRequest("Bob", "bobersej",true))?.jwt ?? "";
         _getJwtFunc = () => jwt;
     }
 

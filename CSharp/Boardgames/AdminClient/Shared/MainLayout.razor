@@ -3,9 +3,38 @@
 <PageTitle>AdminClient</PageTitle>
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">VIA Boardgame Club</a>
+            <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                            <span class="oi oi-home" aria-hidden="true"></span> Home
+                        </NavLink>
+                    </li>
+                        
+        
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="login">
+                            <span class="oi oi-account-login" aria-hidden="true"></span> Login
+                        </NavLink>
+                    </li>
+        
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="creatematch">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Create match
+                        </NavLink>
+                    </li>
+                </ul>
+                    
+            </div>
+        </div>
+    </nav>
 
     <main>
         <div class="top-row px-4">
@@ -16,4 +45,16 @@
             @Body
         </article>
     </main>
+    
+    
 </div>
+
+@code
+{
+    private bool collapseNavMenu = true;
+    private string? NavBarCssClass => collapseNavMenu ? null : "show";
+    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+    private void ToggleNavMenu() {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

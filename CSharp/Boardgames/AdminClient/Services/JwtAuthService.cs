@@ -24,7 +24,7 @@ public class JwtAuthService : IAuthService {
     }
 
     public Task<bool> LoginAsync(string username, string password) {
-        LoginRequest req = new LoginRequest(username, password, false);
+        LoginRequest req = new LoginRequest(username, password, true);
         LoginResponse res = socket.SendAndReceive<LoginResponse>(req);
 
         jwt = res.jwt;
@@ -68,14 +68,7 @@ public class JwtAuthService : IAuthService {
         ClaimsPrincipal = new ClaimsPrincipal();
         return Task.CompletedTask;
     }
-
-    public Task RegisterAsync(string userName, string firstName, string lastName, string email, string password) {
-        // Todo Gør ordenlig
-        RegisterRequest req = new RegisterRequest(userName, firstName, lastName, email, password);
-        RegisterResponse res = socket.SendAndReceive<RegisterResponse>(req);
-        return Task.CompletedTask;
-    }
-
+    
     public string GetJwt() {
         return jwt ?? "";
     }
