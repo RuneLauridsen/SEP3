@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GameCatalog {
-    private static final Map<Integer, GameLogic> map; // NOTE(rune): Key = samme id som i database.
+    private static final Map<Integer, TurnBasedGameLogic> map; // NOTE(rune): Key = samme id som i database.
 
     static {
         map = new HashMap<>();
@@ -17,7 +17,7 @@ public class GameCatalog {
         // TODO(rune): put(...);
     }
 
-    public static GameLogic getLogic(Integer gameId) {
+    public static TurnBasedGameLogic getLogic(Integer gameId) {
         return map.get(gameId);
     }
 

@@ -1,9 +1,8 @@
 package boardgames.logic.games.tictactoe;
 
-import boardgames.logic.games.GameLogic;
+import boardgames.logic.games.TurnBasedGameLogic;
 import boardgames.logic.games.GameSpec;
 import boardgames.logic.messages.Messages.MoveReq;
-import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
 import boardgames.shared.dto.Participant;
@@ -15,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 // TODO(rune): Oplagt til unit-test.
-public class TicTacToeLogic implements GameLogic {
+public class TicTacToeLogic implements TurnBasedGameLogic {
     private final static int NUM_PLAYERS = 2;
     private final static int NUM_SQUARES = 9;
     private final static int NUM_PIECES_PER_PLAYER = 3;
@@ -120,6 +119,25 @@ public class TicTacToeLogic implements GameLogic {
 
         // All done -> valid move.
         return MoveResult.valid(nextTurnAccountId, data);
+    }
+
+    @Override
+    public MoveResult impatientWin(Match match) {
+        TicTacToeData data = JsonUtil.fromJson(match.data(), TicTacToeData.class);
+
+        int wouldHaveWonOnTurn = data.moveCount() + 1;
+        int winnerId = data.players()[wouldHaveWonOnTurn % NUM_PLAYERS].accountId();
+
+        MoveResult result = MoveResult.finished(data, "Impatient win");
+        for (TicTacToePlayer p : data.players()) {
+            if (p.accountId() == winnerId) {
+                result.scores().put(p.accountId(), 3); // 3 point til vinder.
+            } else {
+                result.scores().put(p.accountId(), 0); // 0 pointer til taber.
+            }
+        }
+
+        return result;
     }
 
     private static boolean matchesPattern(char c, char[] s, char[] pattern) {

@@ -91,6 +91,9 @@ public class Messages {
     public record MoveReq(int matchId, String moveData) {}
     public record MoveRes(int matchId, String gameData, MoveResult result) {}
 
+    public record ImpatientWinRequest(int matchId) { }
+    public record ImpatientWinResponse(int matchId, String errorReason) { }
+
     //
     // Score
     //

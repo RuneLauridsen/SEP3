@@ -76,6 +76,3 @@ INSERT INTO game
 VALUES
     ('TicTacToe'),
     ('Stratego');
-
-
-SELECT * FROM match WHERE match_id = 5

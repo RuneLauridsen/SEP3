@@ -28,4 +28,5 @@ public interface IGameService {
 
     public GetScoreSumsResponse GetScoreSums(GetScoreSumsRequest req);
     public GetMatchHistoryResponse GetMatchHistory(GetMatchHistoryRequest req);
+    public ImpatientWinResponse ImpatientWin(ImpatientWinRequest req);
 }

@@ -79,4 +79,8 @@ public class GameService : IGameService {
     public GetMatchHistoryResponse GetMatchHistory(GetMatchHistoryRequest req) {
         return _socket.SendAndReceive<GetMatchHistoryResponse>(req);
     }
+
+    public ImpatientWinResponse ImpatientWin(ImpatientWinRequest req) {
+        return _socket.SendAndReceive<ImpatientWinResponse>(req);
+    }
 }

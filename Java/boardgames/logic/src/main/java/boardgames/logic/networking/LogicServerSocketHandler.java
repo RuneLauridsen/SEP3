@@ -71,6 +71,11 @@ public class LogicServerSocketHandler implements Runnable {
                 return res;
             }
 
+            if (body instanceof ImpatientWinRequest req) {
+                ImpatientWinResponse res = model.impatientWin(req, jwt);
+                return res;
+            }
+
             if (body instanceof GetMatchReq req) {
                 GetMatchRes res = model.getMatch(req, jwt);
                 return res;
