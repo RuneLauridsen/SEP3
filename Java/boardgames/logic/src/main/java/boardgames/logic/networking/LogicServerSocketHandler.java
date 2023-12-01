@@ -5,8 +5,6 @@ import boardgames.logic.messages.Messages;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.model.LogicServerModel;
 import boardgames.logic.model.NotAuthorizedException;
-import boardgames.shared.dto.Account;
-import boardgames.shared.dto.ScoreSum;
 import boardgames.shared.util.JsonUtil;
 import com.google.gson.JsonSyntaxException;
 
@@ -24,6 +22,7 @@ public class LogicServerSocketHandler implements Runnable {
     private final LogicServerModel model;
     private final DataInputStream inFromClient;
     private final DataOutputStream outToClient;
+    private final MessageHandlers handlers;
 
     public LogicServerSocketHandler(Socket socket, LogicServerModel model) throws IOException {
         this.socket = socket;
@@ -31,6 +30,25 @@ public class LogicServerSocketHandler implements Runnable {
 
         this.inFromClient = new DataInputStream(socket.getInputStream());
         this.outToClient = new DataOutputStream(socket.getOutputStream());
+
+        handlers = new MessageHandlers();
+        handlers.register(LoginRequest.class, model::login);
+        handlers.register(MoveReq.class, model::move);
+        handlers.register(ImpatientWinRequest.class, model::impatientWin);
+        handlers.register(GetMatchReq.class, model::getMatch);
+        handlers.register(GetMyMatchesRequest.class, model::getMyMatches);
+        handlers.register(GetGamesRequest.class, model::getGames);
+        handlers.register(GetAccountReq.class, model::getAccount);
+        handlers.register(GetAccountsReq.class, model::getAccounts);
+        handlers.register(CreateMatchRequest.class, model::createMatch);
+        handlers.register(AddParticipantReq.class, model::addParticipant);
+        handlers.register(GetParticipantsReq.class, model::getParticipants);
+        handlers.register(GetPendingReq.class, model::getPending);
+        handlers.register(DecidePendingReq.class, model::decidePending);
+        handlers.register(UpdateUserStatusRequest.class, model::approveUserReg);
+        handlers.register(UpdateAccountReq.class, model::updateAccount);
+        handlers.register(GetScoreSumsRequest.class, model::getScoreSums);
+        handlers.register(GetMatchHistoryRequest.class, model::getMatchHistory);
     }
 
     @Override
@@ -55,98 +73,20 @@ public class LogicServerSocketHandler implements Runnable {
     }
 
     private Object getResponseForRequest(Message msg) {
-        // TODO(rune): Anti-solid genopstår \o/, men vi kan godt lave noget ulækkert
-        // refelection i stedet, eller bare et map der oversætter T -> Consumer<T>.
-        String jwt = msg.head().jwt();
-        Object body = msg.body();
-
         try {
-            if (body instanceof LoginRequest req) {
-                LoginResponse res = model.login(req);
-                return res;
+            String jwt = msg.head().jwt();
+            Object body = msg.body();
+
+            MessageHandlers.Handler<Object> handler = handlers.get(body.getClass());
+            if (handler == null) {
+                // TODO(rune): Unknown message.
+                return null;
+            } else {
+                return handler.handle(body, jwt);
             }
-
-            if (body instanceof MoveReq req) {
-                MoveRes res = model.move(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetMatchReq req) {
-                GetMatchRes res = model.getMatch(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetMyMatchesRequest req) {
-                GetMyMatchesResponse res = model.getMyMatches(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetGamesRequest req) {
-                GetGamesResponse res = model.getGames(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetAccountReq req) {
-                GetAccountRes res = model.getAccount(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetAccountsReq req) {
-                GetAccountsRes res = model.getAccounts(req, jwt);
-                return res;
-            }
-
-            if (body instanceof CreateMatchRequest req) {
-                CreateMatchResponse res = model.createMatch(req, jwt);
-                return res;
-            }
-
-            if (body instanceof AddParticipantReq req) {
-                AddParticipantRes res = model.addParticipant(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetParticipantsReq req) {
-                GetParticipantsRes res = model.getParticipants(req, jwt);
-                return res;
-
-            }
-            if (body instanceof GetPendingReq req) {
-                GetPendingRes res = model.getPending(req, jwt);
-                return res;
-
-            }
-
-            if (body instanceof DecidePendingReq req) {
-                DecidePendingRes res = model.decidePending(req, jwt);
-                return res;
-            }
-
-            if (body instanceof UpdateUserStatusRequest req) {
-                UpdateUserStatusResponse res = model.approveUserReg(req, jwt);
-                return res;
-            }
-
-            if (body instanceof UpdateAccountReq req) {
-                UpdateAccountRes res = model.updateAccount(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetScoreSumsRequest req) {
-                GetScoreSumsResponse res = model.getScoreSums(req, jwt);
-                return res;
-            }
-
-            if (body instanceof GetMatchHistoryRequest req) {
-                GetMatchHistoryResponse res = model.getMatchHistory(req, jwt);
-                return res;
-            }
-
         } catch (NotAuthorizedException e) {
             return new NotAuthorizedResponse();
         }
-
-        return null;
     }
 
     private void sendString(String string) throws IOException {

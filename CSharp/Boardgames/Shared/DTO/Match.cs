@@ -8,6 +8,7 @@ public class Match {
     public required int OwnerId { get; set; }
     public required int GameId { get; set; }
     public required DateTime CreatedOn { get; set; }
+    public DateTime? StartedOn { get; set; }
     public DateTime? LastMoveOn { get; set; }
     public int? NextAccountId { get; set; }
 
@@ -26,6 +27,16 @@ public class Match {
             STATUS_PENDING => "STATUS_PENDING",
             STATUS_ONGOING => "STATUS_ONGOING",
             STATUS_FINISHED => "STATUS_FINISHED",
+            _ => ""
+        };
+    }
+
+    public string StatusDisplayName() {
+        return Status switch {
+            STATUS_NONE => "None",
+            STATUS_PENDING => "Pending",
+            STATUS_ONGOING => "Ongoing",
+            STATUS_FINISHED => "Finished",
             _ => ""
         };
     }

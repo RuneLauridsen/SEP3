@@ -1,13 +1,16 @@
 package boardgames.logic.model;
 
 import boardgames.logic.games.GameCatalog;
-import boardgames.logic.games.GameLogic;
+import boardgames.logic.games.TurnBasedGameLogic;
 import boardgames.logic.games.GameSpec;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,11 +38,11 @@ public class LogicServerModelImpl implements LogicServerModel {
     //
 
     @Override
-    public LoginResponse login(LoginRequest req) {
+    public LoginResponse login(LoginRequest req, String jwt) {
         String hashedPassword = PasswordHashing.hash(req.password());
         Account account = accountService.get(req.username(), hashedPassword);
         if (account != null) {
-            String jwt = jwtService.create(account);
+            jwt = jwtService.create(account);
             return new LoginResponse(true, account, jwt);
         } else {
             return new LoginResponse(false, Empty.account(), "");
@@ -157,7 +160,7 @@ public class LogicServerModelImpl implements LogicServerModel {
             Claims claims = jwtService.verify(jwt);
 
             Match match = matchService.get(req.matchId());
-            GameLogic gl = GameCatalog.getLogic(match.gameId());
+            TurnBasedGameLogic gl = GameCatalog.getLogic(match.gameId());
             GameSpec spec = gl.spec();
 
             Participant participant = Participants.getById(match.participants(), req.participantId());
@@ -210,38 +213,46 @@ public class LogicServerModelImpl implements LogicServerModel {
                 return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("It's not your turn."));
             }
 
-            GameLogic gl = GameCatalog.getLogic(match.gameId());
+            if (match.status() != Match.STATUS_ONGOING) {
+                return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("Match is not ongoing"));
+            }
+
+            TurnBasedGameLogic gl = GameCatalog.getLogic(match.gameId());
             MoveResult result = gl.validateMoveAndUpdateData(req, match);
 
-            switch (result.outcome()) {
-                case MoveResult.OUTCOME_VALID -> {
-                    match.setData(result.nextData());
-                    match.setNextAccountId(result.nextAccountId());
-                    match.setLastMoveOn(LocalDateTime.now());
-                    matchService.update(match);
-                }
-
-                case MoveResult.OUTCOME_INVALID -> {
-                    // Opdater ikke noget i databasen.
-                }
-
-                case MoveResult.OUTCOME_FINISHED -> {
-                    match.setStatus(Match.STATUS_FINISHED);
-                    match.setLastMoveOn(LocalDateTime.now());
-                    match.setFinishedOn(LocalDateTime.now());
-                    match.setData(result.nextData());
-                    matchService.update(match);
-                    for (Participant p : match.participants()) {
-                        p.setStatus(Participant.STATUS_FINISHED);
-                        p.setScore(result.scores().getOrDefault(p.accountId(), 0));
-                        participantService.update(p);
-                    }
-                }
-            }
+            applyMoveResultToMatch(result, match);
 
             MoveRes response = new MoveRes(match.matchId(), match.data(), result);
             return response;
         });
+    }
+
+    private void applyMoveResultToMatch(MoveResult result, Match match) {
+        switch (result.outcome()) {
+            case MoveResult.OUTCOME_VALID -> {
+                match.setData(result.nextData());
+                match.setNextAccountId(result.nextAccountId());
+                match.setLastMoveOn(LocalDateTime.now());
+                matchService.update(match);
+            }
+
+            case MoveResult.OUTCOME_INVALID -> {
+                // Opdater ikke noget i databasen.
+            }
+
+            case MoveResult.OUTCOME_FINISHED -> {
+                match.setStatus(Match.STATUS_FINISHED);
+                match.setLastMoveOn(LocalDateTime.now());
+                match.setFinishedOn(LocalDateTime.now());
+                match.setData(result.nextData());
+                matchService.update(match);
+                for (Participant p : match.participants()) {
+                    p.setStatus(Participant.STATUS_FINISHED);
+                    p.setScore(result.scores().getOrDefault(p.accountId(), 0));
+                    participantService.update(p);
+                }
+            }
+        }
     }
     @Override
     public GetAccountRes getAccount(GetAccountReq req, String jwt) throws NotAuthorizedException {
@@ -322,5 +333,36 @@ public class LogicServerModelImpl implements LogicServerModel {
         List<MatchScore> scores = scoreService.getScores(req.accountId());
         GetMatchHistoryResponse res = new GetMatchHistoryResponse(scores);
         return res;
+    }
+
+    @Override
+    public ImpatientWinResponse impatientWin(ImpatientWinRequest req, String jwt) throws NotAuthorizedException {
+        return matchMutexes.lockedScope(req.matchId(), () -> {
+            final int MAX_HOURS_WAIT = 24;
+
+            jwtService.verify(jwt);
+
+            Match m = matchService.get(req.matchId());
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime then = m.lastMoveOn();
+
+            // Tjek om impatient win er lovlig.
+            long hoursSinceLastMove = ChronoUnit.HOURS.between(then, now);
+            if (hoursSinceLastMove < 24) {
+                return new ImpatientWinResponse(
+                    m.matchId(),
+                    String.format(
+                        "It's has been %d hours since last move, but must be %d since last move to do impatient win.",
+                        hoursSinceLastMove, MAX_HOURS_WAIT
+                    )
+                );
+            }
+
+            // Update game status, sæt score osv.
+            TurnBasedGameLogic gl = GameCatalog.getLogic(m.gameId());
+            MoveResult moveResult = gl.impatientWin(m);
+            applyMoveResultToMatch(moveResult, m);
+            return new ImpatientWinResponse(m.matchId(), "");
+        });
     }
 }

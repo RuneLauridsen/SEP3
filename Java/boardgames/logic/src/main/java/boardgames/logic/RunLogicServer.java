@@ -37,12 +37,7 @@ public class RunLogicServer {
         JwtService jwtService = new JwtServiceAuth0();
 
         //
-        // NOTE(rune): Poor man's unit test.
-        //
 
-
-
-        //
         // NOTE(rune): Åbn socket
         //
 
