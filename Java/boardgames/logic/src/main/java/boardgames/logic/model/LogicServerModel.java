@@ -7,7 +7,7 @@ public interface LogicServerModel {
     // Authorization
     //
 
-    public LoginResponse login(LoginRequest req);
+    public LoginResponse login(LoginRequest req, String jwt);
 
     //
     // Spilkataolog

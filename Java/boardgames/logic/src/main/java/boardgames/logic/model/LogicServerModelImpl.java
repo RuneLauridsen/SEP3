@@ -38,11 +38,11 @@ public class LogicServerModelImpl implements LogicServerModel {
     //
 
     @Override
-    public LoginResponse login(LoginRequest req) {
+    public LoginResponse login(LoginRequest req, String jwt) {
         String hashedPassword = PasswordHashing.hash(req.password());
         Account account = accountService.get(req.username(), hashedPassword);
         if (account != null) {
-            String jwt = jwtService.create(account);
+            jwt = jwtService.create(account);
             return new LoginResponse(true, account, jwt);
         } else {
             return new LoginResponse(false, Empty.account(), "");

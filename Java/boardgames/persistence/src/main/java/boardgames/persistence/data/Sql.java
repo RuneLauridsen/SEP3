@@ -197,7 +197,11 @@ public class Sql {
                     executeQuery();
                 }
 
-                return resultSet.next();
+                if (resultSet != null) {
+                    return resultSet.next();
+                } else {
+                    return false;
+                }
             } catch (SQLException e) {
                 caughtException = e;
             }
