@@ -2,9 +2,8 @@
 @inject IAuthService authService
 
 @page "/LogIn"
-@using GameClient.Data
 @using GameClient.Services
-@using global::Shared.Data
+
 
 <style>
     .card {
@@ -36,8 +35,6 @@
 
 <h3>Login</h3>
 
-<AuthorizeView>
-    <NotAuthorized>
         <div class="card">
             <h3>Please login</h3>
             <p class="field"><label>User name:</label></p>
@@ -55,18 +52,6 @@
                 <button class="loginbtn" @onclick="LoginAsync">Log in</button>
             </div>
         </div>
-        <br/>
-        <div>
-            <h4>Don't have an account?</h4>
-            <button class="loginbtn" @onclick="CreateUser">Register</button>
-        </div>
-    </NotAuthorized>
-    <Authorized>
-        <div class="card">
-            <h3>Hello, @context.User.Identity.Name</h3>
-        </div>
-    </Authorized>
-</AuthorizeView>
 
 @code {
     private string userName;
@@ -76,12 +61,12 @@
     private async Task LoginAsync() {
         errorLabel = "";
 
-        bool loginSuccessful = await authService.LoginAsync(userName, password);
+        bool loginSuccessful = await authService.LoginAsync(userName, password,true);
         var c = authService.GetClaims();
         if (loginSuccessful) {
             navMgr.NavigateTo("/");
         } else {
-            errorLabel = "Invalid username or password";
+            errorLabel = "Invalid username or password for admin client";
         }
     }
 

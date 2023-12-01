@@ -23,8 +23,8 @@ public class JwtAuthService : IAuthService {
         set => _claimsPrincipal = value;
     }
 
-    public Task<bool> LoginAsync(string username, string password) {
-        LoginRequest req = new LoginRequest(username, password, false);
+    public Task<bool> LoginAsync(string username, string password, bool isAdminClient) {
+        LoginRequest req = new LoginRequest(username, password, isAdminClient);
         LoginResponse res = socket.SendAndReceive<LoginResponse>(req);
 
         jwt = res.jwt;

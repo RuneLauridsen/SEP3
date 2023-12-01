@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using AdminClient.Data;
 using AdminClient.Services;
+using GameClient.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<IAdminService, AdminService>();
+builder.Services.AddSingleton<IAuthService, JwtAuthService>();
 
 var app = builder.Build();
 

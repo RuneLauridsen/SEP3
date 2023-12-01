@@ -1,8 +1,11 @@
 ﻿@page "/"
 @using GameClient.DTO
 @using AdminClient.Services
+@using GameClient.Services
+@using global::Shared
 @inject IAdminService adminService
 @inject NavigationManager navMgr
+@inject IAuthService authService
 
 
 <style>
@@ -23,6 +26,12 @@ tr:nth-child(even) {
 }
 </style>
 
+@if (isLoggedIn == 0)
+{
+    navMgr.NavigateTo("/login");
+}
+else
+{
 
 
 @if (numberOfApplicants > 0)
@@ -35,7 +44,7 @@ else
   <h2>you have no applicants for registration</h2>
 }
 
-<h2>Accounts:</h2>
+  <h2>Accounts:</h2>
 
 @if (accounts.Any())
 {
@@ -54,12 +63,13 @@ else
         <td>@(account.Email)</td>
       </tr>
     }
-    
-     </table>
-    }
+
+  </table>
+}
 else
 {
   <p>No accounts to show</p>
+}
 }
 
  
@@ -67,10 +77,12 @@ else
 @code{
   int numberOfApplicants;
   List<Account> accounts = new List<Account>();
+  int isLoggedIn;
 
   protected override async Task OnInitializedAsync()
   {
     await base.OnInitializedAsync();
+    isLoggedIn = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
     numberOfApplicants = adminService.GetUsersWaitingForApproval().Count;
     accounts.Clear();
     accounts.AddRange(adminService.GetApprovedUsers());

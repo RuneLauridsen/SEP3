@@ -41,11 +41,12 @@ public class LogicServerModelImpl implements LogicServerModel {
     public LoginResponse login(LoginRequest req, String jwt) {
         String hashedPassword = PasswordHashing.hash(req.password());
         Account account = accountService.get(req.username(), hashedPassword);
-        if (account != null) {
+        if (account == null ||(req.adminClient() && !account.isAdmin())){
+            return new LoginResponse(false, Empty.account(), "");
+        }
+        else{
             jwt = jwtService.create(account);
             return new LoginResponse(true, account, jwt);
-        } else {
-            return new LoginResponse(false, Empty.account(), "");
         }
     }
 
