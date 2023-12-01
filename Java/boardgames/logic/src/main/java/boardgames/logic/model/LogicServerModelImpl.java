@@ -18,6 +18,7 @@ public class LogicServerModelImpl implements LogicServerModel {
     private final ParticipantService participantService;
     private final ScoreService scoreService;
     private final JwtService jwtService;
+    private final IndexedMutexes matchMutexes;
 
     public LogicServerModelImpl(AccountService accountService, MatchService matchService, GameService gameService, ParticipantService participantService, ScoreService scoreService, JwtService jwtService) {
         this.accountService = accountService;
@@ -26,6 +27,7 @@ public class LogicServerModelImpl implements LogicServerModel {
         this.participantService = participantService;
         this.scoreService = scoreService;
         this.jwtService = jwtService;
+        this.matchMutexes = new IndexedMutexes();
     }
 
     //
@@ -67,13 +69,15 @@ public class LogicServerModelImpl implements LogicServerModel {
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());
         Match match = matchService.create(param);
 
-        // Owner accepts automatically.
-        AddParticipantReq addReq = new AddParticipantReq(match.matchId(), claims.accountId());
-        AddParticipantRes addRes = addParticipant(addReq, jwt);
-        DecidePendingReq decideReq = new DecidePendingReq(match.matchId(), addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
-        DecidePendingRes decideRes = decidePending(decideReq, jwt);
+        return matchMutexes.lockedScope(match.matchId(), () -> {
+            // Owner accepts automatically.
+            AddParticipantReq addReq = new AddParticipantReq(match.matchId(), claims.accountId());
+            AddParticipantRes addRes = addParticipant(addReq, jwt);
+            DecidePendingReq decideReq = new DecidePendingReq(match.matchId(), addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
+            DecidePendingRes decideRes = decidePending(decideReq, jwt);
 
-        return new CreateMatchResponse("", match);
+            return new CreateMatchResponse("", match);
+        });
     }
 
     //
@@ -103,30 +107,33 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public AddParticipantRes addParticipant(AddParticipantReq req, String jwt) throws NotAuthorizedException {
-        Claims claims = jwtService.verify(jwt);
-        Match match = matchService.get(req.matchId());
+        return matchMutexes.lockedScope(req.matchId(), () -> {
 
-        // Tjek korrekt account.
-        if (match.ownerId() != claims.accountId()) {
-            throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
-        }
+            Claims claims = jwtService.verify(jwt);
+            Match match = matchService.get(req.matchId());
 
-        // Tjek antal invites.
-        List<Participant> ps = match.participants();
-        GameSpec spec = GameCatalog.getSpec(match.gameId());
-        int needCount = spec.needPlayerCount();
-        int acceptedCount = Participants.countByStatus(ps, Participant.STATUS_ACCEPTED);
-        int pendingCount = Participants.countByStatus(ps, Participant.STATUS_PENDING);
-        int totalCount = acceptedCount + pendingCount;
-        if (totalCount >= needCount) {
-            String reason = String.format("Cannot add another participant. Currently %d players are invited, and game needs %d to start.", totalCount, needCount);
-            return new AddParticipantRes(Empty.participant(), reason);
-        }
+            // Tjek korrekt account.
+            if (match.ownerId() != claims.accountId()) {
+                throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
+            }
 
-        // Alt ok -> opret i persistence.
-        CreateParticipantParam param = new CreateParticipantParam(req.accountId(), req.matchId());
-        Participant p = participantService.create(param);
-        return new AddParticipantRes(p, "");
+            // Tjek antal invites.
+            List<Participant> ps = match.participants();
+            GameSpec spec = GameCatalog.getSpec(match.gameId());
+            int needCount = spec.needPlayerCount();
+            int acceptedCount = Participants.countByStatus(ps, Participant.STATUS_ACCEPTED);
+            int pendingCount = Participants.countByStatus(ps, Participant.STATUS_PENDING);
+            int totalCount = acceptedCount + pendingCount;
+            if (totalCount >= needCount) {
+                String reason = String.format("Cannot add another participant. Currently %d players are invited, and game needs %d to start.", totalCount, needCount);
+                return new AddParticipantRes(Empty.participant(), reason);
+            }
+
+            // Alt ok -> opret i persistence.
+            CreateParticipantParam param = new CreateParticipantParam(req.accountId(), req.matchId());
+            Participant p = participantService.create(param);
+            return new AddParticipantRes(p, "");
+        });
     }
 
     @Override
@@ -145,42 +152,45 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public DecidePendingRes decidePending(DecidePendingReq req, String jwt) throws NotAuthorizedException {
-        Claims claims = jwtService.verify(jwt);
+        return matchMutexes.lockedScope(req.matchId(), () -> {
 
-        Match match = matchService.get(req.matchId());
-        GameLogic gl = GameCatalog.getLogic(match.gameId());
-        GameSpec spec = gl.spec();
+            Claims claims = jwtService.verify(jwt);
 
-        Participant participant = Participants.getById(match.participants(), req.participantId());
-        assert participant != null;         // TODO(rune): If participant == null then throw ...
+            Match match = matchService.get(req.matchId());
+            GameLogic gl = GameCatalog.getLogic(match.gameId());
+            GameSpec spec = gl.spec();
 
-        if (participant.accountId() != claims.accountId()) {
-            throw new NotAuthorizedException();
-        }
+            Participant participant = Participants.getById(match.participants(), req.participantId());
+            assert participant != null;         // TODO(rune): If participant == null then throw ...
 
-        boolean validStatus = req.status() == Participant.STATUS_ACCEPTED ||
-                              req.status() == Participant.STATUS_REJECTED;
-
-        if (validStatus) {
-            participant.setStatus(req.status());
-            participantService.update(participant);
-
-            // Begin match if no participants are pending.
-            int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
-            int acceptedCount = Participants.countByStatus(match.participants(), Participant.STATUS_ACCEPTED);
-            if (pendingCount == 0 && acceptedCount == spec.needPlayerCount()) {
-                var players = Participants.withoutStatus(match.participants(), Participant.STATUS_REJECTED);
-                var data = gl.getInitialData(players);
-                match.setData(data);
-                match.setStatus(Match.STATUS_ONGOING);
-                match.setStartedOn(LocalDateTime.now());
-                matchService.update(match);
+            if (participant.accountId() != claims.accountId()) {
+                throw new NotAuthorizedException();
             }
 
-            return new DecidePendingRes("");
-        } else {
-            return new DecidePendingRes("Invalid participant status (was " + req.status() + " but must be ACCEPTED or REJECTED).");
-        }
+            boolean validStatus = req.status() == Participant.STATUS_ACCEPTED ||
+                                  req.status() == Participant.STATUS_REJECTED;
+
+            if (validStatus) {
+                participant.setStatus(req.status());
+                participantService.update(participant);
+
+                // Begin match if no participants are pending.
+                int pendingCount = Participants.countByStatus(match.participants(), Participant.STATUS_PENDING);
+                int acceptedCount = Participants.countByStatus(match.participants(), Participant.STATUS_ACCEPTED);
+                if (pendingCount == 0 && acceptedCount == spec.needPlayerCount()) {
+                    var players = Participants.withoutStatus(match.participants(), Participant.STATUS_REJECTED);
+                    var data = gl.getInitialData(players);
+                    match.setData(data);
+                    match.setStatus(Match.STATUS_ONGOING);
+                    match.setStartedOn(LocalDateTime.now());
+                    matchService.update(match);
+                }
+
+                return new DecidePendingRes("");
+            } else {
+                return new DecidePendingRes("Invalid participant status (was " + req.status() + " but must be ACCEPTED or REJECTED).");
+            }
+        });
     }
 
     //
@@ -189,39 +199,42 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     @Override
     public MoveRes move(MoveReq req, String jwt) throws NotAuthorizedException {
-        Claims claims = jwtService.verify(jwt);
-        Account account = accountService.get(claims.accountId());
-        Match match = matchService.get(req.matchId());
+        return matchMutexes.lockedScope(req.matchId(), () -> {
 
-        GameLogic gl = GameCatalog.getLogic(match.gameId());
-        MoveResult result = gl.validateMoveAndUpdateData(req, match, account);
+            Claims claims = jwtService.verify(jwt);
+            Account account = accountService.get(claims.accountId());
+            Match match = matchService.get(req.matchId());
 
-        switch (result.outcome()) {
-            case MoveResult.OUTCOME_VALID -> {
-                match.setData(result.nextData());
-                matchService.update(match);
+            GameLogic gl = GameCatalog.getLogic(match.gameId());
+            MoveResult result = gl.validateMoveAndUpdateData(req, match, account);
 
-            }
+            switch (result.outcome()) {
+                case MoveResult.OUTCOME_VALID -> {
+                    match.setData(result.nextData());
+                    matchService.update(match);
 
-            case MoveResult.OUTCOME_INVALID -> {
-                // Ingenting.
-            }
+                }
 
-            case MoveResult.OUTCOME_FINISHED -> {
-                match.setStatus(Match.STATUS_FINISHED);
-                match.setFinishedOn(LocalDateTime.now());
-                match.setData(result.nextData());
-                matchService.update(match);
-                for (Participant p : match.participants()) {
-                    p.setStatus(Participant.STATUS_FINISHED);
-                    p.setScore(result.scores().getOrDefault(p.accountId(), 0));
-                    participantService.update(p);
+                case MoveResult.OUTCOME_INVALID -> {
+                    // Ingenting.
+                }
+
+                case MoveResult.OUTCOME_FINISHED -> {
+                    match.setStatus(Match.STATUS_FINISHED);
+                    match.setFinishedOn(LocalDateTime.now());
+                    match.setData(result.nextData());
+                    matchService.update(match);
+                    for (Participant p : match.participants()) {
+                        p.setStatus(Participant.STATUS_FINISHED);
+                        p.setScore(result.scores().getOrDefault(p.accountId(), 0));
+                        participantService.update(p);
+                    }
                 }
             }
-        }
 
-        MoveRes response = new MoveRes(match.matchId(), match.data(), result);
-        return response;
+            MoveRes response = new MoveRes(match.matchId(), match.data(), result);
+            return response;
+        });
     }
     @Override
     public GetAccountRes getAccount(GetAccountReq req, String jwt) throws NotAuthorizedException {
