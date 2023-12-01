@@ -57,6 +57,13 @@ else
 @if (_matches.Any())
 {
     <h3>Current games(@_matches.Count()):</h3>
+    <div class="container">
+        @for (int i = 0; i < (_matches.Count() / 3); i++)
+        {
+            //TODO Julie finish css html style whatever 
+        }
+
+    </div>
     @foreach (var m in _matches) {
         <h3><a href="match/@m.MatchId">@m.ToString()</a></h3>
     }
