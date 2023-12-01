@@ -218,6 +218,23 @@ public class Sql {
         return 0;
     }
 
+    public Integer readInteger(String columnName) {
+        if (caughtException == null) {
+            try {
+                int i = resultSet.getInt(columnName);
+                if (resultSet.wasNull()) {
+                    return null;
+                } else {
+                    return i;
+                }
+            } catch (SQLException e) {
+                caughtException = e;
+            }
+        }
+
+        return 0;
+    }
+
     public double readDouble(String columnName) {
         if (caughtException == null) {
             try {

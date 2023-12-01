@@ -9,25 +9,15 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
     setterVisibility = JsonAutoDetect.Visibility.ANY,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class TicTacToeData {
-    private int nextTurnAccountId;
     private TicTacToePlayer[] players;
     private char[] squares;
     private int moveCount;
 
     private TicTacToeData() { }
 
-    public TicTacToeData(int nextTurnAccountId, TicTacToePlayer[] players, char[] squares) {
-        this.nextTurnAccountId = nextTurnAccountId;
+    public TicTacToeData(TicTacToePlayer[] players, char[] squares) {
         this.players = players;
         this.squares = squares;
-    }
-
-    public int nextTurnAccountId() {
-        return nextTurnAccountId;
-    }
-
-    public void setNextTurnAccountId(int nextTurnAccountId) {
-        this.nextTurnAccountId = nextTurnAccountId;
     }
 
     public TicTacToePlayer[] players() {

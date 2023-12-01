@@ -35,14 +35,16 @@ CREATE TABLE game
 
 CREATE TABLE match
 (
-    match_id        serial      NOT NULL PRIMARY KEY ,
-    data            varchar     NOT NULL ,
-    owner_id        int         NOT NULL REFERENCES account(account_id),
-    game_id         int         NOT NULL REFERENCES game(game_id) ,
-    status          int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
-    started_on      timestamp   NULL ,
-    finished_on     timestamp   NULL ,
-    created_on      timestamp   NOT NULL DEFAULT now()
+    match_id            serial      NOT NULL PRIMARY KEY ,
+    data                varchar     NOT NULL ,
+    owner_id            int         NOT NULL REFERENCES account(account_id),
+    game_id             int         NOT NULL REFERENCES game(game_id) ,
+    status              int         NOT NULL ,  -- NOTE(rune): Se konstanter i Match.java
+    next_account_id     int         NULL REFERENCES account(account_id),
+    started_on          timestamp   NULL ,
+    finished_on         timestamp   NULL ,
+    last_move_on        timestamp   NULL ,
+    created_on          timestamp   NOT NULL DEFAULT now()
 );
 
 CREATE TABLE participant
@@ -74,3 +76,6 @@ INSERT INTO game
 VALUES
     ('TicTacToe'),
     ('Stratego');
+
+
+SELECT * FROM match WHERE match_id = 5

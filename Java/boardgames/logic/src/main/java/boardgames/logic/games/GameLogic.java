@@ -12,5 +12,5 @@ import java.util.List;
 public interface GameLogic {
     public GameSpec spec();
     public String getInitialData(List<Participant> participants);
-    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match, Account reqBy); // NOTE(rune): VMUD i daglig tale.
+    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match); // NOTE(rune): VMUD i daglig tale.
 }

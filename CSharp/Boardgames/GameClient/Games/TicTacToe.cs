@@ -9,7 +9,6 @@ public class TicTacToePlayer {
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
 public class TicTacToeData {
-    public required int NextTurnAccountId { get; set; }
     public required TicTacToePlayer[] Players { get; set; }
     public required char[] Squares { get; set; }
     public required int MoveCount { get; set; }
