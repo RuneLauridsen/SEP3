@@ -7,8 +7,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 // NOTE(rune):
 // Mange ting vi laver i LogicServerModelImpl på Match'es er ikke atomiske,
-// fordi de kører mere end ét SQL statement (og sender http request/resopnse
-// over netværk!). I stedet for at fixe problemet bruger vi IndexedMutexes
+// bla. fordi de kører mere end ét SQL statement og sender http request/resopnse
+// over netværk. I stedet for at fixe problemet bruger vi IndexedMutexes
 // til at låse per. matchId.
 
 public class IndexedMutexes {

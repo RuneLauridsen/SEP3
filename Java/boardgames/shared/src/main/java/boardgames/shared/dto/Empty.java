@@ -10,7 +10,7 @@ public class Empty {
     }
 
     public static Match match() {
-        return new Match(0, 0, "", 0, 0, Empty.dateTime(), null, null);
+        return new Match(0, 0, null, "", 0, 0, Empty.dateTime(), null, null, null);
     }
 
     public static Game game() {

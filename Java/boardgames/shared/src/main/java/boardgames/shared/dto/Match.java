@@ -13,6 +13,7 @@ import java.util.List;
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
 public class Match {
     private int matchId;
+    private Integer nextAccountId;
     private String data;
     private int status;
     private int ownerId;
@@ -20,6 +21,7 @@ public class Match {
     private LocalDateTime createdOn;
     private LocalDateTime finishedOn;
     private LocalDateTime startedOn;
+    private LocalDateTime lastMoveOn;
 
     private List<Participant> participants = List.of();
     private Account owner;
@@ -33,15 +35,17 @@ public class Match {
     private Match() {
     }
 
-    public Match(int matchId, int status, String data, int ownerId, int gameId, LocalDateTime createdOn, LocalDateTime finishedOn, LocalDateTime startedOn) {
+    public Match(int matchId, int status, Integer nextAccountId, String data, int ownerId, int gameId, LocalDateTime createdOn, LocalDateTime finishedOn, LocalDateTime startedOn, LocalDateTime lastMoveOn) {
         this.matchId = matchId;
         this.status = status;
+        this.nextAccountId = nextAccountId;
         this.data = data;
         this.gameId = gameId;
         this.ownerId = ownerId;
         this.createdOn = createdOn;
         this.finishedOn = finishedOn;
         this.startedOn = startedOn;
+        this.lastMoveOn = lastMoveOn;
     }
 
     public int matchId() { return matchId; }
@@ -49,6 +53,9 @@ public class Match {
 
     public int status() { return status; }
     public void setStatus(int status) { this.status = status; }
+
+    public Integer nextAccountId() { return nextAccountId; }
+    public void setNextAccountId(Integer nextAccountId) { this.nextAccountId = nextAccountId; }
 
     public String data() { return data; }
     public void setData(String data) { this.data = data; }
@@ -76,6 +83,9 @@ public class Match {
 
     public LocalDateTime startedOn() { return startedOn; }
     public void setStartedOn(LocalDateTime startedOn) { this.startedOn = startedOn; }
+
+    public LocalDateTime lastMoveOn() { return lastMoveOn; }
+    public void setLastMoveOn(LocalDateTime lastMoveOn) { this.lastMoveOn = lastMoveOn; }
 
     @Override
     public String toString() {

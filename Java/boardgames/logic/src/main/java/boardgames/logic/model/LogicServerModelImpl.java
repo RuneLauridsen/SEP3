@@ -181,6 +181,7 @@ public class LogicServerModelImpl implements LogicServerModel {
                     var players = Participants.withoutStatus(match.participants(), Participant.STATUS_REJECTED);
                     var data = gl.getInitialData(players);
                     match.setData(data);
+                    match.setNextAccountId(match.ownerId());
                     match.setStatus(Match.STATUS_ONGOING);
                     match.setStartedOn(LocalDateTime.now());
                     matchService.update(match);
@@ -205,22 +206,28 @@ public class LogicServerModelImpl implements LogicServerModel {
             Account account = accountService.get(claims.accountId());
             Match match = matchService.get(req.matchId());
 
+            if (match.nextAccountId() != claims.accountId()) {
+                return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("It's not your turn."));
+            }
+
             GameLogic gl = GameCatalog.getLogic(match.gameId());
-            MoveResult result = gl.validateMoveAndUpdateData(req, match, account);
+            MoveResult result = gl.validateMoveAndUpdateData(req, match);
 
             switch (result.outcome()) {
                 case MoveResult.OUTCOME_VALID -> {
                     match.setData(result.nextData());
+                    match.setNextAccountId(result.nextAccountId());
+                    match.setLastMoveOn(LocalDateTime.now());
                     matchService.update(match);
-
                 }
 
                 case MoveResult.OUTCOME_INVALID -> {
-                    // Ingenting.
+                    // Opdater ikke noget i databasen.
                 }
 
                 case MoveResult.OUTCOME_FINISHED -> {
                     match.setStatus(Match.STATUS_FINISHED);
+                    match.setLastMoveOn(LocalDateTime.now());
                     match.setFinishedOn(LocalDateTime.now());
                     match.setData(result.nextData());
                     matchService.update(match);
