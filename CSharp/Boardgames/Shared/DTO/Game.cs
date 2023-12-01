@@ -4,4 +4,6 @@
 public class Game {
     public required int GameId { get; set; }
     public required string Name { get; set; }
+    public required string GamePicture { get; set; }
+    public required string GamePictureType { get; set; }
 }

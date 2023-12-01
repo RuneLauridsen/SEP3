@@ -2,6 +2,7 @@
 @using GameClient.Data
 @using GameClient.DTO
 @using GameClient.Services
+@using global::Shared
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
@@ -11,7 +12,9 @@
 
 @foreach (var game in _availableGames) {
     <h1>@game.Name</h1>
-    <div style="width: 400px; height: 300px; background-color: #dddddd;">[indsæt billede her]</div>
+    <div style="width: 400px; height: 300px; background-color: #dddddd;">
+        <img style="width:100%; height: 100%;"  src="@HtmlUtil.ToImgSrcString(game.GamePicture, game.GamePictureType)" alt="game picture"/>
+    </div>
     <p>
     <button @onclick="@(e => OnCreateClicked(game))">Create match</button>
     </p>

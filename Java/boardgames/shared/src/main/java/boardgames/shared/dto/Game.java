@@ -11,13 +11,17 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class Game {
     private int gameId;
     private String name;
+    private String gamePicture;     // NOTE(rune): Som base 64
+    private String gamePictureType; // NOTE(rune): MIME content type.
 
     private Game() {
     }
 
-    public Game(int gameId, String name) {
+    public Game(int gameId, String name, String gamePicture, String gamePictureType) {
         this.gameId = gameId;
         this.name = name;
+        this.gamePicture = gamePicture;
+        this.gamePictureType = gamePictureType;
     }
 
     public int gameId() {
@@ -34,5 +38,22 @@ public class Game {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getGamePicture() {
+        return gamePicture;
+    }
+
+    public void setGamePicture(String gamePicture) {
+        this.gamePicture = gamePicture;
+    }
+
+    public String getGamePictureType() {
+        return gamePictureType;
+    }
+
+    public void setGamePictureType(String gamePictureType) {
+        this.gamePictureType = gamePictureType;
     }
 }

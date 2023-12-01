@@ -23,7 +23,9 @@ public class GameDataSql implements GameData {
     private Game readGame(Sql sql) {
         return new Game(
             sql.readInt("game_id"),
-            sql.readString("name")
+            sql.readString("name"),
+                sql.readString("game_picture"),
+                sql.readString("game_picture_type")
         );
     }
 
