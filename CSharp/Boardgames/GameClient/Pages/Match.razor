@@ -14,9 +14,10 @@
 <h1>@_match.ToString()</h1>
 <p>Game: @_match.Game.Name</p>
 <p>Owner: <a href="/account/@_owner.AccountId">@_owner.Username</a></p>
+<p>Status: @_match.StatusDisplayName()</p>
 
 @if (_match.Status != DTO.Match.STATUS_PENDING) {
-    <p>Started on: @_match.</p>
+    <p>Started on: @_match.StartedOn</p>
     <p>Last move on: @_match.LastMoveOn</p>
     <p>Next turn:
         @{ var next = AccountFromId(_match.NextAccountId ?? 0);}
@@ -60,6 +61,9 @@
                 break;
             case Participant.STATUS_ACCEPTED:
                 <span class="text-success"> (Accepted)</span>
+                break;
+             case Participant.STATUS_FINISHED:
+                <span class="text-muted"> (Score: @p.Score)</span>
                 break;
         }
         <br/>
