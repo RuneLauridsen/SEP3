@@ -14,27 +14,89 @@
 
 @if (!_isEditing) {
     <h1>@_account.Username</h1>
-    <!-- TODO(rune): Bedre GUI -->
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <!-- TODO(rune): Responsive  -->
-                <p>AccountId: @_account.AccountId</p>
-                <p>Username: @_account.Username</p>
-                <p>FirstName: @_account.FirstName</p>
-                <p>LastName: @_account.LastName</p>
-                <p>Email: @_account.Email</p>
-                <p>Description: @_account.Description</p>
-                <p>Status: @_account.StatusName()</p>
-                <p>RegisterDateTime: @_account.RegisterDateTime</p>
-                <p>CreatedOn: @_account.CreatedOn</p>
-                <p><a href=@("/account/" + _account.AccountId + "/scores")>Show match history</a></p>
+            <div class="col-6 col-md-3">
+                <p>AccountId:</p>
             </div>
-            <div class="col-4">
-                @if (_imgSrc != "") {
-                    <img src="@_imgSrc" alt="Profile Picture"/>
-                }
+            <div class="col">
+                <p>@_account.AccountId</p>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>Username:</p>
+            </div>
+            <div class="col">
+                <p>@_account.Username</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>FirstName::</p>
+            </div>
+            <div class="col">
+                <p>@_account.FirstName</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>LastName:</p>
+            </div>
+            <div class="col">
+                <p>@_account.LastName</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>Email:</p>
+            </div>
+            <div class="col">
+                <p>@_account.Email</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>Description:</p>
+            </div>
+            <div class="col">
+                <p>@_account.Description</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>Status:</p>
+            </div>
+            <div class="col">
+                <p>@_account.StatusName()</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>RegisterDateTime:</p>
+            </div>
+            <div class="col">
+                <p>@_account.RegisterDateTime</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <p>CreatedOn:</p>
+            </div>
+            <div class="col">
+                <p>@_account.CreatedOn</p>
+            </div>
+        </div>
+        
+        
+        <div>
+            <p><a href=@("/account/" + _account.AccountId + "/scores")>Show match history</a></p>
+        </div>
+        
+        <div class="col-4">
+            @if (_imgSrc != "") {
+                <img src="@_imgSrc" alt="Profile Picture"/>
+            }
         </div>
     </div>
 
