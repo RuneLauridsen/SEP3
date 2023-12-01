@@ -40,10 +40,10 @@ public class TicTacToeLogic implements GameLogic {
     }
 
     @Override
-    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match, Account reqBy) {
+    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match) {
         TicTacToeData data = JsonUtil.fromJson(match.data(), TicTacToeData.class);
         TicTacToeMove move = JsonUtil.fromJson(req.moveData(), TicTacToeMove.class);
-        MoveResult result = ticTacToeLogic(data, move, reqBy);
+        MoveResult result = ticTacToeLogic(data, move, match.nextAccountId());
         return result;
     }
 
@@ -58,28 +58,27 @@ public class TicTacToeLogic implements GameLogic {
         char[] squares = new char[NUM_SQUARES];
         Arrays.fill(squares, ' ');
 
-        TicTacToeData data = new TicTacToeData(players[0].accountId(), players, squares);
+        TicTacToeData data = new TicTacToeData(players, squares);
         String s = JsonUtil.toJson(data);
         return s;
     }
 
-    public MoveResult ticTacToeLogic(TicTacToeData data, TicTacToeMove move, Account moveBy) {
+    public MoveResult ticTacToeLogic(TicTacToeData data, TicTacToeMove move, int accountId) {
         // TODO(rune): Re-factor. Svært at holde styr på state, når alle predicates står først -> brug else i stedet.
         // TODO(rune): Må vi gerne droppe getters og setters? Det er dumt og jeg savner '++', '--' og '='  :((((
 
         // Validate TicTacToeData.
         if (data.players().length != NUM_PLAYERS) return MoveResult.invalid(String.format("Number of players must be %d, but was %s.", NUM_PLAYERS, data.players().length));
         if (data.squares().length != NUM_SQUARES) return MoveResult.invalid(String.format("Number of squares must be %d, but was %s.", NUM_SQUARES, data.squares().length));
-        if (data.nextTurnAccountId() != moveBy.accountId()) return MoveResult.invalid(String.format("Next turn account id is %d, but move by account id was %d.", data.nextTurnAccountId(), moveBy.accountId()));
 
         TicTacToePlayer player = null;
         for (TicTacToePlayer it : data.players()) {
-            if (it.accountId() == data.nextTurnAccountId()) {
+            if (it.accountId() == accountId) {
                 player = it;
             }
         }
 
-        if (player == null) return MoveResult.invalid(String.format("Next turn account id is %d, but is not in the players array.", data.nextTurnAccountId()));
+        if (player == null) return MoveResult.invalid(String.format("Next turn account id is %d, but is not in the players array.", accountId));
 
         // Validate TicTacToeMove.
         if (move.takeFromIndex() < 0 || move.takeFromIndex() >= NUM_SQUARES) return MoveResult.invalid(String.format("Take from index out of range (was %d, but must be between 0 and %d).", move.takeFromIndex(), NUM_SQUARES));
@@ -99,10 +98,6 @@ public class TicTacToeLogic implements GameLogic {
         // Place piece.
         data.squares()[move.placeOnIndex()] = player.team();
 
-        // Move to next player.
-        data.setMoveCount(data.moveCount() + 1);
-        data.setNextTurnAccountId(data.players()[data.moveCount() % NUM_PLAYERS].accountId());
-
         // Check for win state.
         for (char[] pattern : winPatterns) {
             if (matchesPattern(player.team(), data.squares(), pattern)) {
@@ -119,7 +114,12 @@ public class TicTacToeLogic implements GameLogic {
             }
         }
 
-        return MoveResult.valid(data);
+        // Move to next player.
+        data.setMoveCount(data.moveCount() + 1);
+        int nextTurnAccountId = data.players()[data.moveCount() % NUM_PLAYERS].accountId();
+
+        // All done -> valid move.
+        return MoveResult.valid(nextTurnAccountId, data);
     }
 
     private static boolean matchesPattern(char c, char[] s, char[] pattern) {

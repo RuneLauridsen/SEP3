@@ -8,6 +8,8 @@ public class Match {
     public required int OwnerId { get; set; }
     public required int GameId { get; set; }
     public required DateTime CreatedOn { get; set; }
+    public DateTime? LastMoveOn { get; set; }
+    public int? NextAccountId { get; set; }
 
     public List<Participant> Participants { get; set; } = Empty.List<Participant>();
     public Account Owner { get; set; } = Empty.Account();

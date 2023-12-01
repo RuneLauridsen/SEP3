@@ -37,7 +37,7 @@
 @if (_data != null) {
     @foreach (var p in _data.Players) {
         <p>
-            <span>@(p.AccountId == _data.NextTurnAccountId ? "➡" : " ")</span>
+            <span>@(p.AccountId == _match.NextAccountId ? "➡" : " ")</span>
             <span>@PlayerAccount(p).Username</span>
             <span> - Remaining pieces: @p.RemainingPieces</span>
         </p>
@@ -105,9 +105,10 @@
         var req = new MoveReq(_matchId, moveJson);
         var res = GameService.Move(req);
 
-        _data = JsonUtil.FromJson<TicTacToeData>(res.gameData);
         _invalidMoveText = res.result.InvalidMoveText;
         _winnerText = res.result.FinishedText;
+
+        Refresh();
 
         return Task.CompletedTask;
     }

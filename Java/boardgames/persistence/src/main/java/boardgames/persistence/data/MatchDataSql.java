@@ -23,12 +23,14 @@ public class MatchDataSql implements MatchData {
         return new Match(
             sql.readInt("match_id"),
             sql.readInt("status"),
+            sql.readInteger("next_account_id"),
             sql.readString("data"),
             sql.readInt("owner_id"),
             sql.readInt("game_id"),
             sql.readDateTime("created_on"),
             sql.readDateTime("finished_on"),
-            sql.readDateTime("started_on")
+            sql.readDateTime("started_on"),
+            sql.readDateTime("last_move_on")
         );
     }
 
@@ -36,11 +38,11 @@ public class MatchDataSql implements MatchData {
     public Match create(Account owner, Game game, String data) {
         Sql sql = new Sql(conn, """
             INSERT INTO boardgames.match
-                (match_id, status, data, owner_id, game_id, created_on, finished_on, started_on)
+                (match_id, status, data, owner_id, game_id, created_on, finished_on, started_on, last_move_on, next_account_id)
             VALUES
-                (DEFAULT, 1, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT)
+                (DEFAULT, 1, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT, DEFAULT, DEFAULT)
             RETURNING
-                match_id, status, data, owner_id, game_id, created_on, finished_on, started_on;
+                match_id, status, data, owner_id, game_id, created_on, finished_on, started_on, last_move_on, next_account_id;
             """);
 
         sql.set(data);
@@ -53,15 +55,23 @@ public class MatchDataSql implements MatchData {
     public void update(Match match) {
         Sql sql = new Sql(conn, """
             UPDATE boardgames.match
-            SET data = ?, owner_id = ?, status = ?, finished_on = ?, started_on = ?
+            SET data = ?,
+                next_account_id = ?,
+                owner_id = ?,
+                status = ?, 
+                finished_on = ?, 
+                started_on = ?, 
+                last_move_on = ?
             WHERE match_id = ?
             """);
 
         sql.set(match.data());
+        sql.set(match.nextAccountId());
         sql.set(match.ownerId());
         sql.set(match.status());
         sql.set(match.finishedOn());
         sql.set(match.startedOn());
+        sql.set(match.lastMoveOn());
         sql.set(match.matchId());
         sql.execute();
     }

@@ -3,6 +3,7 @@
 // WARNING(rune): Navne skal matche mellem Java og C#
 public class MoveResult {
     public required int Outcome { get; set; }
+    public required int NextAccountId { get; set; }
     public required string NextData { get; set; }
     public required string InvalidMoveText { get; set; }
     public required string FinishedText { get; set; }
