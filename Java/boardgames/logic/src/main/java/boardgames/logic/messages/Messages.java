@@ -112,6 +112,15 @@ public class Messages {
     public record GetMatchHistoryResponse(List<MatchScore> scores) { }
 
     //
+    // Live update
+    //
+
+    public record BeginLiveUpdateRequest() { }
+    public record BeginLiveUpdateResponse(boolean success) { }
+    public record MatchNotification(int matchId) { }
+    public record QuitNotification() { }
+
+    //
     // Fejlkoder
     //
 

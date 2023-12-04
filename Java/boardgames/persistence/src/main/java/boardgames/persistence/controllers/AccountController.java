@@ -19,7 +19,7 @@ public class AccountController {
 
     @GetMapping("accounts/{accountId}")
     public Account get(@PathVariable int accountId) {
-        Account account = accountData.get(accountId);
+        Account account = accountData.getWithPicture(accountId);
         throwIfNotFound(accountId, account);
         return account;
     }

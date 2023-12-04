@@ -1,11 +1,14 @@
 ﻿@using GameClient.DTO
 @using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthService
+@using global::Shared.AuthState
 @using global::Shared.Data
 @using Microsoft.AspNetCore.Mvc
 @inherits LayoutComponentBase
-@inject IAuthService authService;
+@inject IAuthState authState;
 @inject IGameService gameService;
+@inject ILiveService liveService;
 @inject ApplicationState applicationState;
 
 <PageTitle>GameClient</PageTitle>
@@ -13,7 +16,7 @@
 
 <!-- TODO(rune): Kan man slippe for all 100%'erne?   -->
 <div style="height: 100vh; overflow: hidden;">
-    
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="">VIA Boardgame Club</a>
@@ -28,22 +31,22 @@
                             <span class="oi oi-home" aria-hidden="true"></span> Home
                         </NavLink>
                     </li>
-                    
+
                     <!--TODO slet login fra navbar når dev færdig-->
-    
+
                     <li class="nav-item">
                         <NavLink class="nav-link" href="login">
                             <span class="oi oi-account-login" aria-hidden="true"></span> Login
                         </NavLink>
                     </li>
-    
+
                     <li class="nav-item">
                         <NavLink class="nav-link" href="creatematch">
                             <span class="oi oi-plus" aria-hidden="true"></span> Create match
                         </NavLink>
                     </li>
                 </ul>
-    
+
                 <form class="form-inline my-2 my-lg-0 d-flex align-items-center text-muted">
                     @if (!loggedIn) {
                         <span>Not logged in</span>
@@ -58,7 +61,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="page" style="height: 100%">
 
         @if (!loggedIn && account.AccountId ==0) {
@@ -118,48 +121,44 @@
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
     private string imgSrc = "";
-    
-    
+
     private List<Account> allAccounts = Empty.List<Account>();
     private Account account = Empty.Account();
-    EventCallback UpdateStyle => EventCallback.Factory.Create(this, UpdateAlertStyle);
-    bool loggedIn;
-    
+    private EventCallback UpdateStyle => EventCallback.Factory.Create(this, UpdateAccount);
+    private bool loggedIn;
 
-    protected override void OnInitialized() {
-        loggedIn = applicationState.IsDirty;
+    protected override async Task OnInitializedAsync() {
+        applicationState.IsDirty = true;
+
         //TODO Not good at den skal hente accounts på refresh, men ellers sætter den listerne til tomme
-        UpdateAlertStyle();
+        await UpdateAccount();
     }
-    
+
     private void ToggleNavMenu() {
         collapseNavMenu = !collapseNavMenu;
     }
 
-    
-    public void UpdateAlertStyle()
+    private async Task UpdateAccount()
     {
         if (applicationState.IsDirty)
         {
-            loggedIn = true;
-            
-            int accountId = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
-            {
-                var req = new GetAccountReq(accountId);
-                var res = gameService.GetAccount(req);
-                account = res?.account ?? Empty.Account();
+            int accountId = await authState.GetUserIdAsync();
+            loggedIn = accountId != 0;
+            if (loggedIn) {
+                {
+                    var req = new GetAccountReq(accountId);
+                    var res = await gameService.GetAccountAsync(req);
+                    account = res?.account ?? Empty.Account();
+                }
+
+                {
+                    var req = new GetAccountsReq();
+                    var res = await gameService.GetAccountsAsync(req);
+                    allAccounts = res.accounts;
+                }
             }
 
-            {
-                var req = new GetAccountsReq();
-                var res = gameService.GetAccounts(req);
-                allAccounts = res.accounts;
-            }
-            
-        }
-        else
-        {
-            loggedIn = false;
+            applicationState.IsDirty = false;
         }
     }
 }

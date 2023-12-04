@@ -29,7 +29,7 @@ public class Messages {
 
     public record RegisterRequest(String username, String firstName, String lastName, String email, String password) {}
     public record RegisterResponse(boolean response) {}  //Todo, lav response ordenlig
-    
+
 
     //
     // Spilkataolog
@@ -104,6 +104,15 @@ public class Messages {
 
     public record GetMatchHistoryRequest(int accountId) { }
     public record GetMatchHistoryResponse(List<MatchScore> scores) { }
+
+    //
+    // Live update
+    //
+
+    public record BeginLiveUpdateRequest() { }
+    public record BeginLiveUpdateResponse(boolean success) { }
+    public record MatchNotification(int matchId) { }
+    public record QuitNotification() { }
 
     //
     // Fejlkoder

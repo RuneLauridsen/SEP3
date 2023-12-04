@@ -2,16 +2,17 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using AdminClient.Data;
 using AdminClient.Services;
-using GameClient.Services;
+using Shared.AuthService;
+using Shared.AuthState;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
-builder.Services.AddSingleton<IAdminService, AdminService>();
-builder.Services.AddSingleton<IAuthService, JwtAuthService>();
+builder.Services.AddScoped<IAuthState, AuthStateSessionStorage>();
+builder.Services.AddScoped<IAuthService, JwtAuthService>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 
 var app = builder.Build();
 

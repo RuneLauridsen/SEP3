@@ -5,6 +5,7 @@
 @page "/LogIn"
 @using GameClient.Data
 @using GameClient.Services
+@using global::Shared.AuthService
 @using global::Shared.Data
 
 <style>
@@ -65,7 +66,7 @@
     private string userName;
     private string password;
     private string errorLabel;
-    
+
     [CascadingParameter]
     public EventCallback UpdateStyle { get; set; }
 
@@ -73,7 +74,6 @@
         errorLabel = "";
 
         bool loginSuccessful = await authService.LoginAsync(userName, password, false);
-        var c = authService.GetClaims();
         if (loginSuccessful) {
             navMgr.NavigateTo("/");
             applicationState.IsDirty = true;

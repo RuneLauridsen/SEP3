@@ -1,49 +1,106 @@
 package boardgames.logic.networking;
 
-import boardgames.logic.model.LogicServerModel;
+import boardgames.logic.messages.MessageQueue;
+import boardgames.logic.messages.QueuedMessage;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class LogicServerSocket implements LogicServer {
-    private final LogicServerModel model;
+    private final MessageQueue incomingQueue;
+    private final MessageQueue outgoingQueue;
+    private final Thread distributorThread;
+    private final Thread acceptorThread;
     private final int port;
+
     private ServerSocket serverSocket;
     private boolean quit;
+    private int clientIdentCounter = 1;
 
-    public LogicServerSocket(LogicServerModel model, int port) {
-        this.model = model;
+    private final ConcurrentMap<Integer, LogicSocket> currentClients;
+
+    public LogicServerSocket(MessageQueue incomingQueue, MessageQueue outgoingQueue, int port) {
         this.port = port;
+        this.incomingQueue = incomingQueue;
+        this.outgoingQueue = outgoingQueue;
+
+        this.distributorThread = new Thread(this::distributorThreadProc);
+        this.acceptorThread = new Thread(this::acceptorThreadProc);
+        this.currentClients = new ConcurrentHashMap<>();
     }
 
     @Override
     public void run() {
+        distributorThread.start();
+        acceptorThread.start();
+
+        try {
+            distributorThread.join();
+            acceptorThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void acceptorThreadProc() {
         try {
             serverSocket = new ServerSocket(port);
 
             while (!quit) {
                 Socket socket = serverSocket.accept();
-                LogicServerSocketHandler handler = new LogicServerSocketHandler(socket, model);
 
-                Thread thread = new Thread(handler);
-                thread.setDaemon(true);
-                thread.start();
+                int clientIdent = clientIdentCounter++;
+                LogicSocket client = new LogicSocket(socket, clientIdent, incomingQueue);
+
+                Thread readerThread = new Thread(() -> {
+                    client.readerThreadProc();
+                    currentClients.remove(client.clientIdent());
+                });
+
+                Thread writerThread = new Thread(() -> {
+                    client.writerThreadProc();
+                    currentClients.remove(client.clientIdent());
+                });
+
+                readerThread.setDaemon(true);
+                writerThread.setDaemon(true);
+                readerThread.start();
+                writerThread.start();
+
+                currentClients.put(clientIdent, client);
             }
         } catch (IOException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
+            throw new RuntimeException(e);
         } finally {
-            close(serverSocket);
+            closeServerSocket(serverSocket);
         }
     }
 
-    @Override
-    public void close() {
-        quit = true;
-        close(serverSocket);
+    public void distributorThreadProc() {
+        while (!quit) {
+            QueuedMessage fromQueue = outgoingQueue.pull(10_000);
+            if (fromQueue != null) {
+                LogicSocket client = currentClients.get(fromQueue.clientIdent());
+                if (client != null) {
+                    client.outgoingQueue().post(fromQueue);
+                }
+            }
+        }
     }
 
-    public static void close(ServerSocket serverSocket) {
+    public void close() {
+        quit = true;
+        distributorThread.interrupt();
+        acceptorThread.interrupt();
+        closeServerSocket(serverSocket);
+    }
+
+    private static void closeServerSocket(ServerSocket serverSocket) {
         if (serverSocket != null && !serverSocket.isClosed()) {
             try {
                 serverSocket.close();

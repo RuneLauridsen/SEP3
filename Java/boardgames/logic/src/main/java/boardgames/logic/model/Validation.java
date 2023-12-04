@@ -22,12 +22,6 @@ public class Validation {
         reason.append(toAppend);
     }
 
-    public void throwIfInvalid() throws ValidationException {
-        if (isInvalid()) {
-            throw new ValidationException(reason());
-        }
-    }
-
     public <T, M> void equal(T fromClient, T fromServer, Function<T, M> selector, String name) throws NotAuthorizedException {
         M valueFromClient = selector.apply(fromClient);
         M valueFromServer = selector.apply(fromServer);

@@ -3,11 +3,13 @@
 @using GameClient.DTO
 @using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthService
+@using global::Shared.AuthState
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
 @inject NavigationManager navMgr
-@inject IAuthService authService
+@inject IAuthState authState
 
 <style>
     .rejected {
@@ -22,25 +24,25 @@
     {
     padding: 0;
     }
-    
+
     .InviteBox
     {
-    border-style: solid; 
-    border-width: 2px; 
-    border-radius: 10px; 
-    border-color: black; 
-    margin: 15px; 
-    padding: 4px; 
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: black;
+    margin: 15px;
+    padding: 4px;
     word-wrap: break-word;
     }
-    
+
     .Match
     {
-    border-style: solid; 
-    border-width: 2px; 
+    border-style: solid;
+    border-width: 2px;
     border-radius: 10px;
-    border-color: black; 
-    margin: 15px; 
+    border-color: black;
+    margin: 15px;
     padding: 4px;
     }
     .pending {
@@ -48,16 +50,12 @@
     }
 </style>
 
-@if (isLoggedIn == 0)
-{
-    navMgr.NavigateTo("/login");
-}
-else
+@if (isLoggedIn != 0)
 {
     @if (_pendingInvites.Any())
     {
         <h3>Pending invitations(@_pendingInvites.Count()):</h3>
-                                                        
+
         <div class="container">
             <div class="row">
                 @{ int counter = 0;}
@@ -75,9 +73,9 @@ else
                                        <button @onclick="() => OnRejectClicked(p)" disabled="@isDisabled">Reject</button>
                                        </p>
                                    </div>
-                                                          
+
                            </div>
-                           
+
                            counter++;
                             @if (counter % 3 == 0)
                            {
@@ -85,68 +83,67 @@ else
                            }
                        }
             </div>
-        </div>                               
-        
+        </div>
+
     }
     else
     {
         <h3>No pending game invitations </h3>
     }
 
-@if (_matches.Any())
-{
-    <h3>Current games(@_matches.Count()):</h3>
-    <div class="container">
-        <div class="row">
-            @{ int counter = 0;}
-            @foreach (DTO.Match m in _matches)
-            {
-                <div class="col-4 BoxHeader">
-                    <div class="Match">
-                        <h3><a href="match/@m.MatchId">@m.ToString()</a></h3>
-                    </div>
-
-                </div>
-                counter++;
-                if (counter % 3 == 0)
+    @if (_matches.Any())
+    {
+        <h3>Current games(@_matches.Count()):</h3>
+        <div class="container">
+            <div class="row">
+                @{ int counter = 0;}
+                @foreach (DTO.Match m in _matches)
                 {
-                    @:</div> <div class="row">
-                }
-            }
-        </div>
-    </div>
-}
-else
-{
-    <h3>No current games </h3>
-}
+                    <div class="col-4 BoxHeader">
+                        <div class="Match">
+                            <h3><a href="match/@m.MatchId">@m.ToString()</a></h3>
+                        </div>
 
+                    </div>
+                    counter++;
+                    if (counter % 3 == 0)
+                    {
+                        @:</div> <div class="row">
+                    }
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <h3>No current games </h3>
+    }
+}
 
 
 @if (_errorReason != "") {
     <div class="alert alert-danger">@_errorReason</div>
 }
 
-}
 
-
-@code{
+@code {
     private string _errorReason = "";
     private IEnumerable<Participant> _pendingInvites = Enumerable.Empty<Participant>();
     private IEnumerable<DTO.Match> _matches = Empty.Enumerable<DTO.Match>();
-    int isLoggedIn;
-    protected override Task OnInitializedAsync() {
-        Refresh();
-        return base.OnInitializedAsync();
+    private int isLoggedIn;
+
+    protected override async Task OnInitializedAsync() {
+        await Refresh();
+        await base.OnInitializedAsync();
     }
 
-    private void Refresh()
-    {
-        isLoggedIn = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
-        if (isLoggedIn != 0)
-        {
-             _pendingInvites = GameService.GetPending(new GetPendingReq()).participants;
-                    _matches = GameService.GetMyMatches(new GetMyMatchesRequest()).matches;
+    private async Task Refresh() {
+        isLoggedIn = await authState.GetUserIdAsync();
+        if (isLoggedIn != 0) {
+             _pendingInvites = (await GameService.GetPendingAsync(new GetPendingReq())).participants;
+                    _matches = (await GameService.GetMyMatchesAsync(new GetMyMatchesRequest())).matches;
+        } else {
+            navMgr.NavigateTo("/login");
         }
     }
 
@@ -156,25 +153,23 @@ else
             Participant.STATUS_PENDING => "pending",
             Participant.STATUS_REJECTED => "rejected",
             _ => ""
-
-            };
+        };
     }
 
-    private void OnAcceptClicked(Participant participant) {
-        DecidePending(participant, Participant.STATUS_ACCEPTED);
+    private async Task OnAcceptClicked(Participant participant) {
+        await DecidePending(participant, Participant.STATUS_ACCEPTED);
     }
 
-    private void OnRejectClicked(Participant participant) {
-        DecidePending(participant, Participant.STATUS_REJECTED);
+    private async Task OnRejectClicked(Participant participant) {
+        await DecidePending(participant, Participant.STATUS_REJECTED);
     }
 
-    private void DecidePending(Participant p, int status) {
+    private async Task DecidePending(Participant p, int status) {
         var req = new DecidePendingReq(p.MatchId, p.ParticipantId, status);
-        var res = GameService.DecidePending(req);
+        var res = await GameService.DecidePendingAsync(req);
         _errorReason = res.errorReason;
         if (_errorReason == "") {
             p.Status = status;
         }
     }
-
 }

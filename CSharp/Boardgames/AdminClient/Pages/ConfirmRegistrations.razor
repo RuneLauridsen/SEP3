@@ -68,20 +68,20 @@ else
     {
         await base.OnInitializedAsync();
         applicants.Clear();
-        applicants.AddRange(adminService.GetUsersWaitingForApproval());
+        applicants.AddRange(await adminService.GetUsersWaitingForApprovalAsync());
     }
 
     private async Task ApplicantAccept(Account account )
     {
-        adminService.UpdateUserStatus(account, Account.STATUS_ACCEPTED);
+        await adminService.UpdateUserStatusAsync(account, Account.STATUS_ACCEPTED);
         navMgr.NavigateTo("/ConfirmRegistrations");
         await OnInitializedAsync();
     }
+
     private async Task ApplicantReject(Account account )
     {
-        adminService.UpdateUserStatus(account, Account.STATUS_DELETED);
+        await adminService.UpdateUserStatusAsync(account, Account.STATUS_DELETED);
         navMgr.NavigateTo("/ConfirmRegistrations");
         await OnInitializedAsync();
     }
-    
 }

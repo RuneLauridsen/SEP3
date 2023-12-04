@@ -1,10 +1,12 @@
-﻿@inherits LayoutComponentBase
+﻿@using global::Shared.AuthState
+@inherits LayoutComponentBase
+@inject IAuthState authState;
 
 <PageTitle>AdminClient</PageTitle>
 
 
 <div>
-    
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="">VIA Boardgame Club</a>
@@ -20,12 +22,12 @@
                         </NavLink>
                     </li>
                 </ul>
-                        
+
             </div>
         </div>
     </nav>
-    
-    
+
+
     <div class="page">
         <main>
             <article class="content px-4">
@@ -34,8 +36,8 @@
         </main>
     </div>
 
-    
-    
+
+
 </div>
 
 
@@ -46,5 +48,12 @@
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
     private void ToggleNavMenu() {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private bool loggedIn;
+
+    protected override async Task OnInitializedAsync() {
+        var accountId = await authState.GetUserIdAsync();
+        loggedIn = accountId != 0;
     }
 }

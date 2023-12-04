@@ -11,22 +11,22 @@ namespace GameClient.Services;
 //
 
 public interface IGameService {
-    public LoginResponse Login(LoginRequest request);
-    public MoveRes Move(MoveReq req);
-    public GetMatchRes GetMatch(GetMatchReq req);
-    public GetMyMatchesResponse GetMyMatches(GetMyMatchesRequest request);
-    public CreateMatchResponse CreateMatch(CreateMatchRequest request);
-    public GetGamesResponse GetGames(GetGamesRequest request);
-    public GetAccountRes GetAccount(GetAccountReq req);
-    public GetAccountsRes GetAccounts(GetAccountsReq req);
+    public Task<LoginResponse> LoginAsync(LoginRequest request);
+    public Task<MoveRes> MoveAsync(MoveReq req);
+    public Task<GetMatchRes> GetMatchAsync(GetMatchReq req);
+    public Task<GetMyMatchesResponse> GetMyMatchesAsync(GetMyMatchesRequest request);
+    public Task<CreateMatchResponse> CreateMatchAsync(CreateMatchRequest request);
+    public Task<GetGamesResponse> GetGamesAsync(GetGamesRequest request);
+    public Task<GetAccountRes> GetAccountAsync(GetAccountReq req);
+    public Task<GetAccountsRes> GetAccountsAsync(GetAccountsReq req);
 
-    public AddParticipantRes AddParticipant(AddParticipantReq req);
-    public GetParticipantsRes GetParticipants(GetParticipantsReq req);
-    public GetPendingRes GetPending(GetPendingReq req);
-    public DecidePendingRes DecidePending(DecidePendingReq req);
-    public UpdateAccountRes UpdateAccount(UpdateAccountReq req);
+    public Task<AddParticipantRes> AddParticipantAsync(AddParticipantReq req);
+    public Task<GetParticipantsRes> GetParticipantsAsync(GetParticipantsReq req);
+    public Task<GetPendingRes> GetPendingAsync(GetPendingReq req);
+    public Task<DecidePendingRes> DecidePendingAsync(DecidePendingReq req);
+    public Task<UpdateAccountRes> UpdateAccountAsync(UpdateAccountReq req);
 
-    public GetScoreSumsResponse GetScoreSums(GetScoreSumsRequest req);
-    public GetMatchHistoryResponse GetMatchHistory(GetMatchHistoryRequest req);
-    public ImpatientWinResponse ImpatientWin(ImpatientWinRequest req);
+    public Task<GetScoreSumsResponse> GetScoreSumsAsync(GetScoreSumsRequest req);
+    public Task<GetMatchHistoryResponse> GetMatchHistoryAsync(GetMatchHistoryRequest req);
+    public Task<ImpatientWinResponse> ImpatientWinAsync(ImpatientWinRequest req);
 }

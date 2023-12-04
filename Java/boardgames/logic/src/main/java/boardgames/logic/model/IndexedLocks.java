@@ -11,10 +11,10 @@ import java.util.concurrent.locks.ReentrantLock;
 // over netværk. I stedet for at fixe problemet bruger vi IndexedMutexes
 // til at låse per. matchId.
 
-public class IndexedMutexes {
+public class IndexedLocks {
     private final Map<Integer, Lock> map;
 
-    public IndexedMutexes() {
+    public IndexedLocks() {
         map = new HashMap<>();
     }
 

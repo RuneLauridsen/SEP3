@@ -1,24 +1,29 @@
 ﻿using GameClient.DTO;
+using Shared.AuthService;
+using Shared.AuthState;
 using Shared.Data;
 using static Shared.Data.Messages;
 namespace AdminClient.Services;
 
 public class AdminService : IAdminService
 {
-    private readonly ServiceSocket _socket;
+    private readonly IAuthState _authState;
 
-    public AdminService() {
-        _socket = new ServiceSocket("localhost", 1234);
+    public AdminService(IAuthState authState) {
+        _authState = authState;
+
     }
 
-    public UpdateUserStatusResponse UpdateUserStatus(Account account, int newStatus)
+    public async Task<UpdateUserStatusResponse> UpdateUserStatusAsync(Account account, int newStatus)
     {
-        return _socket.SendAndReceive<UpdateUserStatusResponse>(new UpdateUserStatusRequest(account, newStatus));
+        var socket = new ServiceSocket("localhost", 1234, _authState);
+        return await socket.SendAndReceiveAsync<UpdateUserStatusResponse>(new UpdateUserStatusRequest(account, newStatus));
     }
 
-    public List<Account> GetUsersWaitingForApproval()
+    public async Task<List<Account>> GetUsersWaitingForApprovalAsync()
     {
-        List<Account> allAccounts = _socket.SendAndReceive<GetAccountsRes>(new GetAccountsReq()).accounts;
+        var socket = new ServiceSocket("localhost", 1234, _authState);
+        List<Account> allAccounts = (await socket.SendAndReceiveAsync<GetAccountsRes>(new GetAccountsReq())).accounts;
         List<Account> accountsWaitingForApproval = new List<Account>();
         foreach (Account account in allAccounts)
         {
@@ -31,19 +36,22 @@ public class AdminService : IAdminService
     }
 
 
-    public Account GetAccount(GetAccountReq req)
+    public async Task<Account> GetAccountAsync(GetAccountReq req)
     {
-        return _socket.SendAndReceive<GetAccountRes>(req).account;
+        var socket = new ServiceSocket("localhost", 1234, _authState);
+        return (await socket.SendAndReceiveAsync<GetAccountRes>(req)).account;
     }
 
-    public UpdateAccountRes UpdateAccount(UpdateAccountReq req)
+    public async Task<UpdateAccountRes> UpdateAccountAsync(UpdateAccountReq req)
     {
-        return _socket.SendAndReceive<UpdateAccountRes>(req);
+        var socket = new ServiceSocket("localhost", 1234, _authState);
+        return await socket.SendAndReceiveAsync<UpdateAccountRes>(req);
     }
 
-    public IEnumerable<Account> GetApprovedUsers()
-    {
-        List<Account> allAccounts = _socket.SendAndReceive<GetAccountsRes>(new GetAccountsReq()).accounts;
+    public async Task<IEnumerable<Account>> GetApprovedUsersAsync() {
+        var socket = new ServiceSocket("localhost", 1234, _authState);
+        GetAccountsRes res = await socket.SendAndReceiveAsync<GetAccountsRes>(new GetAccountsReq());
+        List<Account> allAccounts = res.accounts;
         List<Account> approvedAccounts = new List<Account>();
         foreach (Account account in allAccounts)
         {

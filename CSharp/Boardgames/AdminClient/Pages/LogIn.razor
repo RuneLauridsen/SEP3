@@ -2,7 +2,7 @@
 @inject IAuthService authService
 
 @page "/LogIn"
-@using GameClient.Services
+@using global::Shared.AuthService
 
 
 <style>
@@ -57,12 +57,16 @@
     private string userName;
     private string password;
     private string errorLabel;
+    private bool isLoggedIn;
+
+    protected override void OnInitialized() {
+        base.OnInitialized();
+    }
 
     private async Task LoginAsync() {
         errorLabel = "";
 
         bool loginSuccessful = await authService.LoginAsync(userName, password,true);
-        var c = authService.GetClaims();
         if (loginSuccessful) {
             navMgr.NavigateTo("/");
         } else {
@@ -73,5 +77,4 @@
     private void CreateUser() {
         navMgr.NavigateTo("/Register");
     }
-
 }

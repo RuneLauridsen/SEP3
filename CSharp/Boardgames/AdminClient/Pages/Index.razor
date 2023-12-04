@@ -1,11 +1,12 @@
 ﻿@page "/"
 @using GameClient.DTO
 @using AdminClient.Services
-@using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthService
+@using global::Shared.AuthState
 @inject IAdminService adminService
 @inject NavigationManager navMgr
-@inject IAuthService authService
+@inject IAuthState authState;
 
 
 <style>
@@ -72,7 +73,7 @@ else
 }
 }
 
- 
+
 
 @code{
   int numberOfApplicants;
@@ -82,10 +83,13 @@ else
   protected override async Task OnInitializedAsync()
   {
     await base.OnInitializedAsync();
-    isLoggedIn = ParseUtil.ParseIntOrDefault(authService.GetClaims().GetOrDefault("userId", ""), 0);
-    numberOfApplicants = adminService.GetUsersWaitingForApproval().Count;
-    accounts.Clear();
-    accounts.AddRange(adminService.GetApprovedUsers());
+    isLoggedIn = await authState.GetUserIdAsync();
+    if (isLoggedIn != 0) {
+      var applicants = await adminService.GetUsersWaitingForApprovalAsync();
+      numberOfApplicants = applicants.Count;
+      accounts.Clear();
+      accounts.AddRange(await adminService.GetApprovedUsersAsync());
+    }
   }
 
   private void GoToRegistrations()

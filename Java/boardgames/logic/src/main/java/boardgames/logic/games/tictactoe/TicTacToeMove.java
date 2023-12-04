@@ -11,27 +11,4 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 public class TicTacToeMove {
     public int placeOnIndex;
     public int takeFromIndex;
-
-    private TicTacToeMove() { }
-
-    public TicTacToeMove(int placeOnIndex, int takeFromIndex) {
-        this.placeOnIndex = placeOnIndex;
-        this.takeFromIndex = takeFromIndex;
-    }
-
-    public int placeOnIndex() {
-        return placeOnIndex;
-    }
-
-    public void setPlaceOnIndex(int placeOnIndex) {
-        this.placeOnIndex = placeOnIndex;
-    }
-
-    public int takeFromIndex() {
-        return takeFromIndex;
-    }
-
-    public void setTakeFromIndex(int takeFromIndex) {
-        this.takeFromIndex = takeFromIndex;
-    }
 }

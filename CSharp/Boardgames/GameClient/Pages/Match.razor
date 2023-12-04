@@ -3,10 +3,13 @@
 @using GameClient.DTO
 @using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthService
+@using global::Shared.AuthState
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
-@inject IAuthService AuthService
+@inject IAuthState AuthState
+@inject ILiveService LiveService
 @inject NavigationManager navMgr
 
 <PageTitle>@_match.ToString()</PageTitle>
@@ -97,9 +100,19 @@
 
     private IEnumerable<DTO.Account> _allAccounts = Enumerable.Empty<DTO.Account>();
 
-    protected override void OnInitialized() {
-        Refresh();
-        base.OnInitialized();
+    protected override async Task OnInitializedAsync() {
+        LiveService.MatchUpdated += (s, e) => {
+            if (e == _matchId) {
+                InvokeAsync(RefreshAsync);
+            }
+        };
+
+        var req = new GetAccountsReq();
+        var res = await GameService.GetAccountsAsync(req);
+        _allAccounts = res.accounts;
+
+        await RefreshAsync();
+        await base.OnInitializedAsync();
     }
 
     private DTO.Account AccountFromParticipant(Participant p) {
@@ -115,46 +128,39 @@
         return ret;
     }
 
-    private void Refresh() {
+    private async Task RefreshAsync() {
         _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
         if (_matchId != 0) {
             var req = new GetMatchReq(_matchId);
-            var res = GameService.GetMatch(req);
+            var res = await GameService.GetMatchAsync(req);
             _match = res.match;
         }
 
-        {
-            var req = new GetAccountsReq();
-            var res = GameService.GetAccounts(req);
-            _allAccounts = res.accounts;
-        }
+        _accountId = await AuthState.GetUserIdAsync();
+        _isOwner = _match.OwnerId == _accountId;
+        _owner = _allAccounts.FirstOrDefault(x => x.AccountId == _match.OwnerId, Empty.Account());
 
-        {
-            var accountIdAsString = AuthService.GetClaims().GetOrDefault("userId", "");
-            _accountId = ParseUtil.ParseIntOrDefault(accountIdAsString);
-            _isOwner = _match.OwnerId == _accountId;
-            _owner = _allAccounts.FirstOrDefault(x => x.AccountId == _match.OwnerId, Empty.Account());
-        }
+        StateHasChanged();
     }
 
-    private void OnInviteClicked(DTO.Account accountToInvite) {
+    private async Task OnInviteClicked(DTO.Account accountToInvite) {
         if (_matchId != 0) {
             var req = new AddParticipantReq(_matchId, accountToInvite.AccountId);
-            var res = GameService.AddParticipant(req);
+            var res = await GameService.AddParticipantAsync(req);
             _errorReason = res.errorReason;
             if (_errorReason == "") {
-                Refresh();
+                await RefreshAsync();
             }
         }
     }
 
-    private void OnImpatientWinClicked() {
+    private async Task OnImpatientWinClicked() {
         if (_matchId != 0) {
             var req = new ImpatientWinRequest(_matchId);
-            var res = GameService.ImpatientWin(req);
+            var res = await GameService.ImpatientWinAsync(req);
             _errorReason = res.errorReason;
             if (_errorReason == "") {
-                Refresh();
+                await RefreshAsync();
             }
         }
     }

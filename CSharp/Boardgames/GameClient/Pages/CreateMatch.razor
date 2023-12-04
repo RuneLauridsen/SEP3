@@ -23,17 +23,17 @@
 @code {
     private IEnumerable<Game> _availableGames = Enumerable.Empty<Game>();
 
-    protected override Task OnInitializedAsync() {
+    protected override async Task OnInitializedAsync() {
         var req = new GetGamesRequest();
-        var res = GameService.GetGames(req);
+        var res = await GameService.GetGamesAsync(req);
         _availableGames = res.games;
-        return base.OnInitializedAsync();
+        await base.OnInitializedAsync();
     }
 
-    private void OnCreateClicked(Game selectedGame) {
+    private async Task OnCreateClicked(Game selectedGame) {
         try {
             var req = new CreateMatchRequest(selectedGame.GameId);
-            var res = GameService.CreateMatch(req);
+            var res = await GameService.CreateMatchAsync(req);
 
             if (res.errorReason == "") {
                 navMgr.NavigateTo("/match/" + res.match.MatchId);

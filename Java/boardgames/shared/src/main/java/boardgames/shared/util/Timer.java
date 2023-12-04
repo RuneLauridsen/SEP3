@@ -43,7 +43,7 @@ public class Timer {
         p.beginNanos.add(System.nanoTime());
     }
 
-    public static ProfileItem end() {
+    public static TimerItem end() {
         long endNano = System.nanoTime();
 
         Timer p = threadLocal.get();
@@ -52,11 +52,11 @@ public class Timer {
         long nanoDiff = endNano - beginNano;
         double elapsedMillis = (double) nanoDiff / (1000.0 * 1000.0);
 
-        return new ProfileItem(name, beginNano, endNano, elapsedMillis);
+        return new TimerItem(name, beginNano, endNano, elapsedMillis);
     }
 
     public static void endAndPrint() {
-        ProfileItem item = end();
+        TimerItem item = end();
         System.out.println(item.name() + " took " + item.elapsedMillis() + " ms");
     }
 

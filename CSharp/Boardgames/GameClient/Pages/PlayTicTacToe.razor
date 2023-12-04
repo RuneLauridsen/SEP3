@@ -4,9 +4,12 @@
 @using GameClient.Games
 @using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthState
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
+@inject IAuthState AuthState
+@inject ILiveService LiveService
 @inject NavigationManager navMgr
 
 <PageTitle>Play @_match.ToString()</PageTitle>
@@ -35,22 +38,30 @@
 </style>
 
 @if (_data != null) {
-    @foreach (var p in _data.Players) {
-        <p>
-            <span>@(p.AccountId == _match.NextAccountId ? "➡" : " ")</span>
-            <span>@PlayerAccount(p).Username</span>
-            <span> - Remaining pieces: @p.RemainingPieces</span>
-        </p>
-    }
+    <p>
+        <span>@(_match.NextAccountId == _data.AccountIdO ? "➡" : " ")</span>
+        <span>@AccountById(_data.AccountIdO).Username</span>
+        <span>- O - Remaining pieces: @_data.RemainingO</span>
+    </p>
 
-    <div class="grid-container">
-        @for (var i = 0; i < _data.Squares.Length; i++) {
-            int squareIndex = i;
-            <div class="grid-item" @onclick="() => OnSquaredClicked(squareIndex)">
-                @_data.Squares[i]
-            </div>
-        }
-    </div>
+    <p>
+        <span>@(_match.NextAccountId == _data.AccountIdX ? "➡" : " ")</span>
+        <span>@AccountById(_data.AccountIdX).Username</span>
+        <span>- X - Remaining pieces: @_data.RemainingX</span>
+    </p>
+
+        <div class="grid-container">
+            @for (var i = 0; i < 9; i++) {
+                int squareIndex = i;
+                int squareBit = 1 << squareIndex;
+                <div @onclick="() => OnSquaredClicked(squareIndex)"
+                     class="grid-item"
+                     style="@(i == takeFromIndex ? "background-color: cyan;" : "")">
+                    @if ((_data.PiecesO & squareBit) != 0) { <span>O</span> }
+                    @if ((_data.PiecesX & squareBit) != 0) { <span>X</span> }
+                </div>
+            }
+        </div>
 }
 
 <br/>
@@ -74,47 +85,70 @@
     private string _invalidMoveText = "";
     private string _winnerText = "";
 
+    private int remaining = 0;
+    private int takeFromIndex = -1;
+
     private List<DTO.Account> _accounts = Empty.List<DTO.Account>();
 
-    protected override Task OnInitializedAsync() {
+    protected override async Task OnInitializedAsync() {
+        LiveService.MatchUpdated += (s, e) => {
+            if (e == _matchId) {
+                InvokeAsync(RefreshAsync);
+            }
+        };
+
         {
             GetAccountsReq req = new();
-            GetAccountsRes res = GameService.GetAccounts(req);
+            GetAccountsRes res = await GameService.GetAccountsAsync(req);
             _accounts = res.accounts;
         }
 
-        Refresh();
-        return base.OnInitializedAsync();
+        await RefreshAsync();
+        await base.OnInitializedAsync();
     }
 
-    private void Refresh() {
+    private async Task RefreshAsync() {
         _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
         if (_matchId != 0) {
             var req = new GetMatchReq(_matchId);
-            var res = GameService.GetMatch(req);
+            var res = await GameService.GetMatchAsync(req);
             _match = res.match;
 
             _data = JsonUtil.FromJson<TicTacToeData>(_match.Data);
+
+            if (_match.NextAccountId == _data.AccountIdO) remaining = _data.RemainingO;
+            if (_match.NextAccountId == _data.AccountIdX) remaining = _data.RemainingX;
         }
+
+        takeFromIndex = -1;
+        StateHasChanged();
     }
 
-    private Task OnSquaredClicked(int index) {
-        var move = new TicTacToeMove { PlaceOnIndex = index, TakeFromIndex = 0 }; // TODO(rune): TakeFromIndex
+    private async Task OnSquaredClicked(int squareIndex) {
+        if (takeFromIndex == squareIndex) {
+            takeFromIndex = -1;
+            return;
+        }
+
+        if (remaining == 0 && takeFromIndex == -1) {
+            takeFromIndex = squareIndex;
+            return;
+        }
+
+        var move = new TicTacToeMove { PlaceOnIndex = squareIndex, TakeFromIndex = takeFromIndex };
         var moveJson = JsonUtil.ToJson(move);
 
         var req = new MoveReq(_matchId, moveJson);
-        var res = GameService.Move(req);
+        var res = await GameService.MoveAsync(req);
 
         _invalidMoveText = res.result.InvalidMoveText;
         _winnerText = res.result.FinishedText;
 
-        Refresh();
-
-        return Task.CompletedTask;
+        await RefreshAsync();
     }
 
-    private DTO.Account PlayerAccount(TicTacToePlayer player) {
-        DTO.Account ret = _accounts.FirstOrDefault(x => x.AccountId == player.AccountId, Empty.Account());
+    private DTO.Account AccountById(int accountId) {
+        DTO.Account ret = _accounts.FirstOrDefault(x => x.AccountId == accountId, Empty.Account());
         return ret;
     }
 }

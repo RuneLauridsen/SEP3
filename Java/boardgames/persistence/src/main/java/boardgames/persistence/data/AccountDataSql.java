@@ -41,10 +41,17 @@ public class AccountDataSql implements AccountData {
     }
 
     @Override
-    public Account get(int accountId) {
+    public Account getWithPicture(int accountId) {
         Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE account_id = ?");
         sql.set(accountId);
         return sql.querySingle(this::readAccountWithProfilePicture);
+    }
+
+    @Override
+    public Account get(int accountId) {
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE account_id = ?");
+        sql.set(accountId);
+        return sql.querySingle(this::readAccount);
     }
 
     @Override

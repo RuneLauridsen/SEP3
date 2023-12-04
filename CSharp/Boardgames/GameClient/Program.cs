@@ -1,15 +1,35 @@
 using GameClient;
-
+using GameClient.DTO;
 using GameClient.Services;
+using Shared.AuthService;
+using Shared.AuthState;
+using Shared.Data;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<IAuthService, JwtAuthService>();
-builder.Services.AddSingleton<IGameService, GameService>();
-builder.Services.AddSingleton<ApplicationState>();
+builder.Services.AddScoped<IAuthState, AuthStateSessionStorage>();
+builder.Services.AddTransient<IAuthService, JwtAuthService>();
+builder.Services.AddTransient<IGameService, GameService>();
+builder.Services.AddScoped<ApplicationState>();
+builder.Services.AddScoped<ILiveService, LiveService>();
 
 var app = builder.Build();
 

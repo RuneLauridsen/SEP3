@@ -1,16 +1,13 @@
 ﻿namespace GameClient.Games;
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
-public class TicTacToePlayer {
-    public required int AccountId { get; set; }
-    public required char Team { get; set; } // TODO(rune): Bedre navn? Team == om man spiller som kryds eller bolle. Husk også at ændr i Java.
-    public required int RemainingPieces { get; set; }
-}
-
-// WARNING(rune): Navne skal matche mellem Java og C#.
 public class TicTacToeData {
-    public required TicTacToePlayer[] Players { get; set; }
-    public required char[] Squares { get; set; }
+    public required int PiecesO { get; set; }
+    public required int PiecesX { get; set; }
+    public required int AccountIdO { get; set; }
+    public required int AccountIdX { get; set; }
+    public required int RemainingO { get; set; }
+    public required int RemainingX { get; set; }
     public required int MoveCount { get; set; }
 }
 

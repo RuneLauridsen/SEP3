@@ -24,8 +24,17 @@ public class GameDataSql implements GameData {
         return new Game(
             sql.readInt("game_id"),
             sql.readString("name"),
-                sql.readString("game_picture"),
-                sql.readString("game_picture_type")
+            "",
+            ""
+        );
+    }
+
+    private Game readGameWithPicture(Sql sql) {
+        return new Game(
+            sql.readInt("game_id"),
+            sql.readString("name"),
+            sql.readString("game_picture"),
+            sql.readString("game_picture_type")
         );
     }
 
@@ -37,8 +46,15 @@ public class GameDataSql implements GameData {
     }
 
     @Override
+    public Game getWithPicture(int gameId) {
+        Sql sql = new Sql(conn, "SELECT * FROM boardgames.game WHERE game_id = ?");
+        sql.set(gameId);
+        return sql.querySingle(this::readGameWithPicture);
+    }
+
+    @Override
     public List<Game> getAll() {
         Sql sql = new Sql(conn, "SELECT * FROM boardgames.game");
-        return sql.queryAll(this::readGame);
+        return sql.queryAll(this::readGameWithPicture);
     }
 }

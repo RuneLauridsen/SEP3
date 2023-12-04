@@ -3,10 +3,12 @@
 @using GameClient.DTO
 @using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthService
+@using global::Shared.AuthState
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
-@inject IAuthService AuthService;
+@inject IAuthState AuthState;
 @inject NavigationManager navMgr
 
 <PageTitle>@_account.Username</PageTitle>
@@ -87,12 +89,12 @@
                 <p>@_account.CreatedOn</p>
             </div>
         </div>
-        
-        
+
+
         <div>
             <p><a href=@("/account/" + _account.AccountId + "/scores")>Show match history</a></p>
         </div>
-        
+
         <div class="col-4">
             @if (_imgSrc != "") {
                 <img src="@_imgSrc" alt="Profile Picture"/>
@@ -150,18 +152,18 @@
     private string _errorReason = "";
     private bool _isOwnProfile = false;
 
-    protected override Task OnParametersSetAsync() {
-        int claimAccountId = ParseUtil.ParseIntOrDefault(AuthService.GetClaims().GetOrDefault("userId", ""));
+    protected override async Task OnParametersSetAsync() {
+        int claimAccountId = await AuthState.GetUserIdAsync();
         int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
         if (routeAccountId != 0) {
             _isOwnProfile = routeAccountId == claimAccountId;
             var req = new GetAccountReq(routeAccountId);
-            var res = GameService.GetAccount(req);
+            var res = await GameService.GetAccountAsync(req);
             _account = res.account;
             _imgSrc = HtmlUtil.ToImgSrcString(_account.ProfilePicture, _account.ProfilePictureType);
         }
 
-        return Task.CompletedTask;
+        return;
     }
 
     private void OnEditClicked() {
@@ -172,11 +174,12 @@
         if (_uploadedProfilePicture == null) {
             _account.ProfilePicture = null;
         } else {
-    // NOTE(rune):
-    // Lidt spild at læse det hele ind i en temp buffers, når det alligevel bare
-    // bliver proxyet til socket, men vi har få brugere so who cares ¯\_(ツ)_/¯.
-    // Der er alligevel _mange_ andre problemer at løse, hvis vi skulle lave et
-    // effektivt system.
+
+            // NOTE(rune):
+            // Lidt spild at læse det hele ind i en temp buffers, når det alligevel bare
+            // bliver proxyet til socket, men vi har få brugere so who cares ¯\_(ツ)_/¯.
+            // Der er alligevel _mange_ andre problemer at løse, hvis vi skulle lave et
+            // effektivt system.
             await using var stream = _uploadedProfilePicture.OpenReadStream();
             var bytes = await ReadAllBytesAsync(stream);
             var base64 = Convert.ToBase64String(bytes);
@@ -185,7 +188,7 @@
         }
 
         var req = new UpdateAccountReq(_account);
-        var res = GameService.UpdateAccount(req);
+        var res = await GameService.UpdateAccountAsync(req);
 
     // TODO(rune): Show errorReason
         _errorReason = res.errorReason;

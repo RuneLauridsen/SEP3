@@ -1,5 +1,8 @@
 package boardgames.logic;
 
+import boardgames.logic.games.GameCatalog;
+import boardgames.logic.games.GameSpec;
+import boardgames.logic.messages.MessageQueue;
 import boardgames.logic.model.LogicServerModel;
 import boardgames.logic.model.LogicServerModelImpl;
 import boardgames.logic.networking.LogicServer;
@@ -16,14 +19,6 @@ import boardgames.logic.services.ParticipantService;
 import boardgames.logic.services.ParticipantServiceRest;
 import boardgames.logic.services.ScoreService;
 import boardgames.logic.services.ScoreServiceRest;
-import boardgames.shared.dto.Account;
-import boardgames.shared.dto.CreateMatchParam;
-import boardgames.shared.dto.CreateParticipantParam;
-import boardgames.shared.dto.Game;
-import boardgames.shared.dto.Match;
-import boardgames.shared.dto.Participant;
-
-import java.util.List;
 
 public class RunLogicServer {
     public static void main(String[] args) {
@@ -36,13 +31,23 @@ public class RunLogicServer {
         ScoreService scoreService = new ScoreServiceRest(ulr);
         JwtService jwtService = new JwtServiceAuth0();
 
-        //
+        MessageQueue incomingQueue = new MessageQueue();
+        MessageQueue outgoingQueue = new MessageQueue();
 
-        // NOTE(rune): Åbn socket
-        //
+        LogicServerModel model = new LogicServerModelImpl(incomingQueue, outgoingQueue, accountService, matchService, gameService, participantService, scoreService, jwtService);
+        LogicServer server = new LogicServerSocket(incomingQueue, outgoingQueue, 1234);
 
-        LogicServerModel model = new LogicServerModelImpl(accountService, matchService, gameService, participantService, scoreService, jwtService);
-        LogicServer server = new LogicServerSocket(model, 1234);
-        server.run();
+        Thread modelThread = new Thread(model);
+        Thread serverThread = new Thread(server);
+
+        modelThread.start();
+        serverThread.start();
+
+        try {
+            modelThread.join();
+            serverThread.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

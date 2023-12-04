@@ -3,6 +3,7 @@
 @using GameClient.DTO
 @using GameClient.Services
 @using global::Shared
+@using global::Shared.AuthService
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
@@ -51,13 +52,13 @@
             if (_accountId != 0) {
                 {
                     GetAccountReq req = new(_accountId);
-                    GetAccountRes res = GameService.GetAccount(req);
+                    GetAccountRes res = await GameService.GetAccountAsync(req);
                     _account = res.account;
                 }
 
                 {
                     GetMatchHistoryRequest req = new(_accountId);
-                    GetMatchHistoryResponse res = GameService.GetMatchHistory(req);
+                    GetMatchHistoryResponse res = await GameService.GetMatchHistoryAsync(req);
                     _scores = res.scores;
                 }
             }
