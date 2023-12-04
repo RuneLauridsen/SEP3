@@ -335,12 +335,12 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
             Account account = accountService.get(claims.accountId());
             Match match = matchService.get(req.matchId());
 
-            if (match.nextAccountId() != claims.accountId()) {
-                return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("It's not your turn."));
-            }
-
             if (match.status() != Match.STATUS_ONGOING) {
                 return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("Match is not ongoing"));
+            }
+
+            if (match.nextAccountId() != claims.accountId()) {
+                return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("It's not your turn."));
             }
 
             TurnBasedGameLogic gl = GameCatalog.getLogic(match.gameId());

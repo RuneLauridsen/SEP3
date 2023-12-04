@@ -58,9 +58,9 @@ public class LogicSocket {
     public void writerThreadProc() {
         try {
             while (!quit) {
-                QueuedMessage outgoingMessage = outgoingQueue.pull(10_000);
-                if (outgoingMessage != null) {
-                    sendMessage(outgoingMessage.message());
+                QueuedMessage m = outgoingQueue.pull(10_000);
+                if (m != null) {
+                    sendMessage(m.message());
                 }
             }
         } catch (IOException e) {
