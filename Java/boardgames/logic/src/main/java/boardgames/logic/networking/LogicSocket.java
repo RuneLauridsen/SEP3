@@ -43,8 +43,7 @@ public class LogicSocket {
     public void readerThreadProc() {
         try {
             while (!quit) {
-                String s = StringStreamer.readString(inFromClient);
-                Message m = MessageSerializer.deserialize(s);
+                Message m = readMessage();
                 if (m != null) {
                     incomingQueue.post(m, clientIdent);
                 }
@@ -61,10 +60,7 @@ public class LogicSocket {
             while (!quit) {
                 QueuedMessage outgoingMessage = outgoingQueue.pull(10_000);
                 if (outgoingMessage != null) {
-                    assert outgoingMessage.clientIdent() == clientIdent;
-                    Message m = outgoingMessage.message();
-                    String s = MessageSerializer.serialize(m);
-                    StringStreamer.sendString(outToClient, s);
+                    sendMessage(outgoingMessage.message());
                 }
             }
         } catch (IOException e) {
@@ -72,6 +68,17 @@ public class LogicSocket {
         } finally {
             quit();
         }
+    }
+
+    private void sendMessage(Message m) throws IOException {
+        String s = MessageSerializer.serialize(m);
+        StringStreamer.sendString(outToClient, s);
+    }
+
+    private Message readMessage() throws IOException {
+        String s = StringStreamer.readString(inFromClient);
+        Message m = MessageSerializer.deserialize(s);
+        return m;
     }
 
     private void quit() {
