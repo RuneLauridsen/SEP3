@@ -240,6 +240,11 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
             Claims claims = jwtService.verify(jwt);
             Match match = matchService.get(req.matchId());
 
+            // Tjek match ikke er begyndt endnu.
+            if (match.status() != Match.STATUS_PENDING) {
+                return new AddParticipantRes(Empty.participant(), "Cannot add participant to an ongoing/finished game.");
+            }
+
             // Tjek korrekt account.
             if (match.ownerId() != claims.accountId()) {
                 throw new NotAuthorizedException(String.format("Account id %d is not owner of match id %d (owner is account id %d).", claims.accountId(), match.matchId(), match.ownerId()));
