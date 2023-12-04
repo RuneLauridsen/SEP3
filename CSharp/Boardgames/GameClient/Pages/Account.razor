@@ -67,22 +67,6 @@
         </div>
         <div class="row">
             <div class="col-6 col-md-3">
-                <p>Status:</p>
-            </div>
-            <div class="col">
-                <p>@_account.StatusName()</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>RegisterDateTime:</p>
-            </div>
-            <div class="col">
-                <p>@_account.RegisterDateTime</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
                 <p>CreatedOn:</p>
             </div>
             <div class="col">
@@ -102,7 +86,13 @@
         </div>
     </div>
 
-    <button @onclick=OnEditClicked>Edit</button>
+
+    @if (_account.AccountId == claimAccountId)
+    {
+        <button @onclick=OnEditClicked>Edit</button>
+    }
+
+    
 } else {
     <h1>Edit profile</h1>
 
@@ -151,9 +141,10 @@
     private string _imgSrc = "";
     private string _errorReason = "";
     private bool _isOwnProfile = false;
+    int claimAccountId;
 
     protected override async Task OnParametersSetAsync() {
-        int claimAccountId = await AuthState.GetUserIdAsync();
+        claimAccountId = await AuthState.GetUserIdAsync();
         int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
         if (routeAccountId != 0) {
             _isOwnProfile = routeAccountId == claimAccountId;
@@ -161,6 +152,7 @@
             var res = await GameService.GetAccountAsync(req);
             _account = res.account;
             _imgSrc = HtmlUtil.ToImgSrcString(_account.ProfilePicture, _account.ProfilePictureType);
+            _isEditing = false;
         }
 
         return;
