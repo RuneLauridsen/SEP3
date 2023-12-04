@@ -10,7 +10,8 @@
 @inject IGameService gameService;
 @inject ILiveService liveService;
 @inject ApplicationState applicationState;
-@inject NavigationManager navMgr
+@inject NavigationManager navMgr;
+@inject IAuthService AuthService;
 
 <PageTitle>GameClient</PageTitle>
 
@@ -32,20 +33,31 @@
                             <span class="oi oi-home" aria-hidden="true"></span> Home
                         </NavLink>
                     </li>
-
-                    <!--TODO slet login fra navbar når dev færdig-->
-
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="login">
-                            <span class="oi oi-account-login" aria-hidden="true"></span> Login
-                        </NavLink>
-                    </li>
-
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="creatematch">
-                            <span class="oi oi-plus" aria-hidden="true"></span> Create match
-                        </NavLink>
-                    </li>
+                    
+                    @if (loggedIn)
+                    {
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="creatematch">
+                                <span class="oi oi-plus" aria-hidden="true"></span> Create match
+                            </NavLink>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="login" @onclick="LogOut" >
+                                <span class="oi oi-account-logout" aria-hidden="true" ></span> Logout
+                            </NavLink>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <NavLink class="nav-link" href="login">
+                                <span class="oi oi-account-login" aria-hidden="true"></span> Login
+                            </NavLink>
+                        </li>
+                    }
+                    
+                    
                 </ul>
 
                 <form class="form-inline my-2 my-lg-0 d-flex align-items-center text-muted" @onclick="NavigateToProfile">
@@ -117,6 +129,8 @@
 
 @code
 {
+    
+    
     //nav
     private bool collapseNavMenu = true;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
@@ -129,8 +143,6 @@
     private bool loggedIn;
 
     protected override async Task OnInitializedAsync() {
-        applicationState.IsDirty = true;
-
         //TODO Not good at den skal hente accounts på refresh, men ellers sætter den listerne til tomme
         await UpdateAccount();
     }
@@ -157,15 +169,26 @@
                     var res = await gameService.GetAccountsAsync(req);
                     allAccounts = res.accounts;
                 }
+                
+                imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
             }
-            imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
-
+            
             applicationState.IsDirty = false;
         }
+        
     }
 
     private void NavigateToProfile()
     {
         navMgr.NavigateTo("/account/"+account.AccountId);
+    }
+
+    private async Task LogOut()
+    {
+        //Muligvis er noget af dette redundant
+        await AuthService.LogoutAsync();
+        loggedIn = false;
+        account = Empty.Account();
+        await UpdateAccount();
     }
 }
