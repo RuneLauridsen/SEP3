@@ -24,6 +24,7 @@ public class JwtAuthService : IAuthService {
 
     public async Task LogoutAsync() {
         await authState.SetAuthStateAsync("");
+        
     }
 
     public async Task RegisterAsync(string userName, string firstName, string lastName, string email, string password) {
