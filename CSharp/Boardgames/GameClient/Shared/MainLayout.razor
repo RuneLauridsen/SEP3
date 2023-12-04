@@ -115,8 +115,11 @@
                             <hr style="color: white"/>
                             @foreach (var a in allAccounts)
                             {
-                                <!-- TODO(rune): Hvad skal den linke til? -->
-                                <p ><a style="text-decoration: none; color: white;" href="/account/@a.AccountId"> @a.Username</a></p>
+                                if (a.AccountId != account.AccountId)
+                                {
+                                    <p ><a style="text-decoration: none; color: white;" href="/account/@a.AccountId"> @a.Username</a></p>
+                                }
+                                
                             }
                         </div>
                     </div>
