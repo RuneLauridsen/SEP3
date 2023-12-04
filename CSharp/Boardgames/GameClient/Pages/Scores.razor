@@ -55,13 +55,10 @@
     private List<ScoreSum> _scoreSums = Empty.List<ScoreSum>();
 
     protected override async Task OnInitializedAsync() {
-        await Task.Run(async () => { // TODO(rune): Bedre async
             GetGamesRequest req = new();
             GetGamesResponse res = await GameService.GetGamesAsync(req);
             _games = res.games;
-
-            await ChangeToGame(1);
-        });
+            await ChangeToGame(1);;
     }
 
     private async Task ChangeToGame(int gameId) {

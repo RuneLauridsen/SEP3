@@ -47,7 +47,6 @@
     private List<MatchScore> _scores = Empty.List<MatchScore>();
 
     protected override async Task OnInitializedAsync() {
-        await Task.Run(async () => { // TODO(rune): Bedre async
             _accountId = ParseUtil.ParseIntOrDefault(AccountId);
             if (_accountId != 0) {
                 {
@@ -62,7 +61,6 @@
                     _scores = res.scores;
                 }
             }
-        });
     }
 
 }
