@@ -18,7 +18,7 @@
 <!-- TODO(rune): Kan man slippe for all 100%'erne?   -->
 <div style="height: 100vh; overflow: hidden;">
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="height: 9%">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="height: @navbarHeight%">
         <div class="container-fluid">
             <a class="navbar-brand" href="">VIA Boardgame Club</a>
             <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -124,6 +124,7 @@
 {
     //nav
     private bool collapseNavMenu = true;
+    int navbarHeight = 9;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
     private string imgSrc = "";
@@ -141,7 +142,17 @@
     }
 
     private void ToggleNavMenu() {
+        
         collapseNavMenu = !collapseNavMenu;
+        if (collapseNavMenu)
+        {
+            navbarHeight = 40;
+        }
+        else
+        {
+            navbarHeight = 9;
+        }
+        
     }
 
     private async Task UpdateAccount()
