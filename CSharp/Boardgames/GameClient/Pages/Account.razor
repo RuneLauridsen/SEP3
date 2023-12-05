@@ -181,8 +181,7 @@
 
         var req = new UpdateAccountReq(_account);
         var res = await GameService.UpdateAccountAsync(req);
-
-    // TODO(rune): Show errorReason
+        
         _errorReason = res.errorReason;
         if (_errorReason == "") {
             navMgr.ReloadCurrentPage();

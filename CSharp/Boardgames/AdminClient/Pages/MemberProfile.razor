@@ -37,6 +37,11 @@
 <button @onclick=OnSaveClicked>Save</button>
 <button @onclick=OnDeleteClicked>Delete Profile</button>
 
+@if (_errorReason != "")
+{
+    <div class="alert alert-danger">@_errorReason</div>
+}
+
 @code{
     [Parameter]
     public string AccountId { get; set; } = "";
@@ -77,8 +82,7 @@
 
         var req = new Messages.UpdateAccountReq(_account);
         var res = await adminService.UpdateAccountAsync(req);
-
-        // TODO(rune): Show errorReason
+        
         _errorReason = res.errorReason;
         if (_errorReason == "") {
             navMgr.ReloadCurrentPage();

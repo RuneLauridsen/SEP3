@@ -1,6 +1,5 @@
 ﻿@inject NavigationManager navMgr
 @inject IAuthService authService
-@inject ApplicationState applicationState
 
 @page "/LogIn"
 @using GameClient.Data
@@ -76,7 +75,6 @@
         bool loginSuccessful = await authService.LoginAsync(userName, password, false);
         if (loginSuccessful) {
             navMgr.NavigateTo("/");
-            applicationState.IsDirty = true;
             await UpdateStyle.InvokeAsync();
         } else {
             errorLabel = "Invalid username or password";

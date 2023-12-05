@@ -9,7 +9,6 @@
 @inject IAuthState authState;
 @inject IGameService gameService;
 @inject ILiveService liveService;
-@inject ApplicationState applicationState;
 @inject NavigationManager navMgr;
 @inject IAuthService AuthService;
 
@@ -34,7 +33,7 @@
                         </NavLink>
                     </li>
                     
-                    @if (loggedIn)
+                    @if (accountId != 0)
                     {
                         <li class="nav-item">
                             <NavLink class="nav-link" href="creatematch">
@@ -60,15 +59,18 @@
                     
                 </ul>
 
-                <form class="form-inline my-2 my-lg-0 d-flex align-items-center text-muted" @onclick="NavigateToProfile">
-                    @if (!loggedIn) {
+                <form class="form-inline my-2 my-lg-0 d-flex align-items-center text-muted">
+                    @if (accountId == 0) {
                         <span>Not logged in</span>
                     } else {
-                        <span>@account.Username</span>
-                        <span style="width: 20px"></span>
-                        @if (imgSrc != "") {
-                            <img class="rounded-circle border-0 " style="width: 50px; height: 50px;" src="@imgSrc">
-                        }
+                        <a style="text-decoration: none; color: white;" href="/account/@accountId">
+                            <span>@account.Username</span>
+                            <span style="width: 20px"></span>
+                            @if (imgSrc != "") {
+                                <img class="rounded-circle border-0 " style="width: 50px; height: 50px;" src="@imgSrc">
+                            }
+                        </a>
+                        
                     }
                 </form>
             </div>
@@ -77,45 +79,33 @@
 
     <div class="page" style="height: 100%">
 
-        @if (!loggedIn && account.AccountId ==0) {
+        @if (accountId ==0) {
             <main class="container">
-                <ErrorBoundary>
                     <ChildContent>
                         <CascadingValue Value=UpdateStyle>
                             @Body
                         </CascadingValue>
                     </ChildContent>
-                    <ErrorContent Context="ex">
-                        <!-- TODO(rune): Måske kun developer mode? -->
-                        <h1>@ex.Message</h1>
-                        <p style="white-space: pre-wrap; font-family: monospace">@ex.ToString()</p>
-                    </ErrorContent>
-                </ErrorBoundary>
+                
             </main>
-        } else if (loggedIn){
+        } else{
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
                         <div class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
-                            <ErrorBoundary>
                                 <ChildContent>
                                     <CascadingValue Value=UpdateStyle>
                                         @Body
                                     </CascadingValue>
                                 </ChildContent>
-                                <ErrorContent Context="ex">
-                                    <!-- TODO(rune): Måske kun developer mode? -->
-                                    <h1>@ex.Message</h1>
-                                    <p style="white-space: pre-wrap; font-family: monospace">@ex.ToString()</p>
-                                </ErrorContent>
-                            </ErrorBoundary>
+                            
                         </div>
                         <div class="col-2 p-5 pt-4" style="background-color: #2c3034">
                             <h3 style="color: white">Users</h3>
                             <hr style="color: white"/>
                             @foreach (var a in allAccounts)
                             {
-                                if (a.AccountId != account.AccountId)
+                                if (a.AccountId != accountId)
                                 {
                                     <p ><a style="text-decoration: none; color: white;" href="/account/@a.AccountId"> @a.Username</a></p>
                                 }
@@ -132,8 +122,6 @@
 
 @code
 {
-    
-    
     //nav
     private bool collapseNavMenu = true;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
@@ -142,12 +130,14 @@
 
     private List<Account> allAccounts = Empty.List<Account>();
     private Account account = Empty.Account();
+    int accountId;
     private EventCallback UpdateStyle => EventCallback.Factory.Create(this, UpdateAccount);
-    private bool loggedIn;
+    
 
-    protected override async Task OnInitializedAsync() {
-        //TODO Not good at den skal hente accounts på refresh, men ellers sætter den listerne til tomme
+    protected override async Task OnParametersSetAsync() {
+        accountId = await authState.GetUserIdAsync();
         await UpdateAccount();
+
     }
 
     private void ToggleNavMenu() {
@@ -156,41 +146,32 @@
 
     private async Task UpdateAccount()
     {
-        if (applicationState.IsDirty)
+        if (accountId != 0)
         {
-            int accountId = await authState.GetUserIdAsync();
-            loggedIn = accountId != 0;
-            if (loggedIn) {
-                {
-                    var req = new GetAccountReq(accountId);
-                    var res = await gameService.GetAccountAsync(req);
-                    account = res?.account ?? Empty.Account();
-                }
-
-                {
-                    var req = new GetAccountsReq();
-                    var res = await gameService.GetAccountsAsync(req);
-                    allAccounts = res.accounts;
-                }
-                
-                imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
+            if (accountId != account.AccountId)
+            {
+                var req = new GetAccountReq(accountId);
+                var res = await gameService.GetAccountAsync(req);
+                account = res?.account ?? Empty.Account();
             }
-            
-            applicationState.IsDirty = false;
+
+            if (!allAccounts.Any())
+            {
+                var req = new GetAccountsReq();
+                var res = await gameService.GetAccountsAsync(req);
+                allAccounts = res.accounts;
+            }
+                
+            imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
         }
+            
         
     }
-
-    private void NavigateToProfile()
-    {
-        navMgr.NavigateTo("/account/"+account.AccountId);
-    }
-
+    
     private async Task LogOut()
     {
         //Muligvis er noget af dette redundant
         await AuthService.LogoutAsync();
-        loggedIn = false;
         account = Empty.Account();
         await UpdateAccount();
     }

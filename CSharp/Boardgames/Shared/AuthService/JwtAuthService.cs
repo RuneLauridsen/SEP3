@@ -28,7 +28,6 @@ public class JwtAuthService : IAuthService {
     }
 
     public async Task RegisterAsync(string userName, string firstName, string lastName, string email, string password) {
-        // Todo Gør ordenlig
         var socket = new ServiceSocket("localhost", 1234, authState);
         RegisterRequest req = new RegisterRequest(userName, firstName, lastName, email, password);
         RegisterResponse? res = await socket.SendAndReceiveAsync<RegisterResponse>(req);

@@ -28,7 +28,6 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<IAuthState, AuthStateSessionStorage>();
 builder.Services.AddTransient<IAuthService, JwtAuthService>();
 builder.Services.AddTransient<IGameService, GameService>();
-builder.Services.AddScoped<ApplicationState>();
 builder.Services.AddScoped<ILiveService, LiveService>();
 
 var app = builder.Build();
