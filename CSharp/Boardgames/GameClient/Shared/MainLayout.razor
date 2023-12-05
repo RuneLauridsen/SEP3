@@ -18,7 +18,7 @@
 <!-- TODO(rune): Kan man slippe for all 100%'erne?   -->
 <div style="height: 100vh; overflow: hidden;">
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="height: 9%">
         <div class="container-fluid">
             <a class="navbar-brand" href="">VIA Boardgame Club</a>
             <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -77,7 +77,7 @@
         </div>
     </nav>
 
-    <div class="page" style="height: 100%">
+    <div class="page" style="height: 91%">
 
         @if (accountId ==0) {
             <main class="container">
@@ -170,7 +170,6 @@
     
     private async Task LogOut()
     {
-        //Muligvis er noget af dette redundant
         await AuthService.LogoutAsync();
         account = Empty.Account();
         await UpdateAccount();
