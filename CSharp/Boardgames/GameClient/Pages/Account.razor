@@ -18,71 +18,75 @@
     <h1>@_account.Username</h1>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-3">
-                <p>AccountId:</p>
-            </div>
-            <div class="col">
-                <p>@_account.AccountId</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>Username:</p>
-            </div>
-            <div class="col">
-                <p>@_account.Username</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>FirstName::</p>
-            </div>
-            <div class="col">
-                <p>@_account.FirstName</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>LastName:</p>
-            </div>
-            <div class="col">
-                <p>@_account.LastName</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>Email:</p>
-            </div>
-            <div class="col">
-                <p>@_account.Email</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>Description:</p>
-            </div>
-            <div class="col">
-                <p>@_account.Description</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6 col-md-3">
-                <p>CreatedOn:</p>
-            </div>
-            <div class="col">
-                <p>@_account.CreatedOn</p>
-            </div>
-        </div>
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>AccountId:</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.AccountId</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>Username:</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.Username</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>Description:</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.Description</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>FirstName::</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.FirstName</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>LastName:</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.LastName</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>Email:</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.Email</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <p>CreatedOn:</p>
+                    </div>
+                    <div class="col">
+                        <p>@_account.CreatedOn</p>
+                    </div>
+                </div>
 
-
+            </div>
+            <div class="col-md-5">
+                @if (_imgSrc != "")
+                {
+                    <img src="@_imgSrc" alt="Profile Picture" style="height: 300px; width: auto;"/>
+                }
+            </div>
+        </div>
+        
         <div>
             <p><a href=@("/account/" + _account.AccountId + "/scores")>Show match history</a></p>
-        </div>
-
-        <div class="col-4">
-            @if (_imgSrc != "") {
-                <img src="@_imgSrc" alt="Profile Picture"/>
-            }
         </div>
     </div>
 
