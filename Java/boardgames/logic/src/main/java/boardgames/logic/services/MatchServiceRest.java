@@ -9,18 +9,18 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 public class MatchServiceRest implements MatchService {
-    private final String ulr;
+    private final String url;
     private final RestTemplate restTemplate;
 
-    public MatchServiceRest(String ulr) {
-        this.ulr = ulr;
+    public MatchServiceRest(String url) {
+        this.url = url;
         this.restTemplate = new RestTemplate();
     }
 
     @Override
     public Match create(CreateMatchParam param) {
         try {
-            ResponseEntity<Match> response = restTemplate.postForEntity(ulr + "/matches", param, Match.class);
+            ResponseEntity<Match> response = restTemplate.postForEntity(url + "/matches", param, Match.class);
             return response.getBody(); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -29,7 +29,7 @@ public class MatchServiceRest implements MatchService {
 
     public Match get(int matchId) {
         try {
-            ResponseEntity<Match> response = restTemplate.getForEntity(ulr + "/matches/" + matchId, Match.class);
+            ResponseEntity<Match> response = restTemplate.getForEntity(url + "/matches/" + matchId, Match.class);
             return response.getBody(); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
@@ -38,7 +38,7 @@ public class MatchServiceRest implements MatchService {
 
     public void update(Match match) {
         try {
-            restTemplate.put(ulr + "/matches/" + match.matchId(), match);
+            restTemplate.put(url + "/matches/" + match.matchId(), match);
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }
@@ -46,7 +46,7 @@ public class MatchServiceRest implements MatchService {
 
     public void delete(int matchId) {
         try {
-            restTemplate.delete(ulr + "/matches/" + matchId);
+            restTemplate.delete(url + "/matches/" + matchId);
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.
         }
@@ -55,7 +55,7 @@ public class MatchServiceRest implements MatchService {
     @Override
     public List<Match> getAll(int accountId, int status) {
         try {
-            ResponseEntity<Match[]> response = restTemplate.getForEntity(ulr + "/matches?accountId=" + accountId + "&status=" + status, Match[].class);
+            ResponseEntity<Match[]> response = restTemplate.getForEntity(url + "/matches?accountId=" + accountId + "&status=" + status, Match[].class);
             return List.of(response.getBody()); // TODO(rune): Check status code.
         } catch (RestClientException e) {
             throw new RuntimeException(e); // TODO(rune): Error handling.

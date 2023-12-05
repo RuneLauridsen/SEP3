@@ -23,12 +23,12 @@ import boardgames.logic.services.ScoreServiceRest;
 public class RunLogicServer {
     public static void main(String[] args) {
         // TODO(rune): Hardcoded url til persistence server.
-        String ulr = "http://localhost:8080";
-        AccountService accountService = new AccountServiceRest(ulr);
-        GameService gameService = new GameServiceRest(ulr);
-        MatchService matchService = new MatchServiceRest(ulr);
-        ParticipantService participantService = new ParticipantServiceRest(ulr);
-        ScoreService scoreService = new ScoreServiceRest(ulr);
+        String url = "http://localhost:8080";
+        AccountService accountService = new AccountServiceRest(url);
+        GameService gameService = new GameServiceRest(url);
+        MatchService matchService = new MatchServiceRest(url);
+        ParticipantService participantService = new ParticipantServiceRest(url);
+        ScoreService scoreService = new ScoreServiceRest(url);
         JwtService jwtService = new JwtServiceAuth0();
 
         MessageQueue incomingQueue = new MessageQueue();
