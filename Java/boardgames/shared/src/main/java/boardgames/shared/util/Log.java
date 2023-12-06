@@ -5,7 +5,7 @@ import java.io.StringWriter;
 import java.time.LocalDateTime;
 
 public class Log {
-    public enum Severity { INFO, ERROR }
+    public enum Severity { INFO, ERROR, PROFILE }
 
     public static void info(String string) {
         msg(Severity.INFO, string);
@@ -13,6 +13,10 @@ public class Log {
 
     public static void error(String string) {
         msg(Severity.ERROR, string);
+    }
+
+    public static void profile(String string) {
+        msg(Severity.PROFILE, string);
     }
 
     public static void error(Throwable e) {
