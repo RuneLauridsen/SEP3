@@ -17,6 +17,7 @@
 
 <div style="height: 100vh; overflow: hidden;">
 
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="">VIA Boardgame Club</a>
@@ -77,6 +78,17 @@
     </nav>
 
     <div class="page" style="height: 100%">
+
+        @if (accountId ==0) {
+            <main class="container">
+                    <ChildContent>
+                        <CascadingValue Value=UpdateStyle>
+                            @Body
+                        </CascadingValue>
+                    </ChildContent>
+                
+            </main>
+        } else{
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
@@ -104,6 +116,7 @@
                     </div>
                 </div>
             </main>
+        }
     </div>
 </div>
 
@@ -111,7 +124,6 @@
 {
     //nav
     private bool collapseNavMenu = true;
-    int navbarHeight = 9;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
     private string imgSrc = "";
@@ -128,17 +140,10 @@
 
     }
 
-    private void ToggleNavMenu() {
+    private void ToggleNavMenu()
+    {
 
         collapseNavMenu = !collapseNavMenu;
-        if (collapseNavMenu)
-        {
-            navbarHeight = 40;
-        }
-        else
-        {
-            navbarHeight = 9;
-        }
 
     }
 

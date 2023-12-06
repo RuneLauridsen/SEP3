@@ -1,9 +1,11 @@
 package boardgames.persistence.data;
 
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.RegisterAccountParam;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static boardgames.persistence.data.SqlUtil.close;
@@ -73,6 +75,23 @@ public class AccountDataSql implements AccountData {
     public List<Account> getAll() {
         Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE status <> 3 -- STATUS_DELETED");
         return sql.queryAll(this::readAccount);
+    }
+
+    @Override
+    public Account create(RegisterAccountParam param) {
+        Sql sql = new Sql(conn, """
+        INSERT INTO boardgames.account 
+        (account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description)
+        VALUES (default, ?,?,?,?,Default,?,?,Default,default, default)
+        RETURNING account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description
+        """);
+        sql.set(param.getUsername());
+        sql.set(param.getFirstName());
+        sql.set(param.getLastName());
+        sql.set(param.getEmail());
+        sql.set(param.getHashedPassword());
+        sql.set(Account.STATUS_PENDING);
+        return sql.querySingle(this::readAccount);
     }
 
     @Override

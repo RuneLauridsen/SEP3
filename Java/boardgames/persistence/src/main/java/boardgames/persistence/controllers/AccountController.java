@@ -2,6 +2,9 @@ package boardgames.persistence.controllers;
 
 import boardgames.persistence.data.AccountData;
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.CreateMatchParam;
+import boardgames.shared.dto.Match;
+import boardgames.shared.dto.RegisterAccountParam;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -36,6 +39,11 @@ public class AccountController {
         }
 
         return accounts;
+    }
+
+    @PostMapping("accounts")
+    public Account create(@RequestBody RegisterAccountParam param) {
+        return accountData.create(param);
     }
 
     @PutMapping("/accounts/{accountId}")
