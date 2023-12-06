@@ -77,6 +77,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         this.handlers.register(GetMatchHistoryRequest.class, this::getMatchHistory);
         this.handlers.register(BeginLiveUpdateRequest.class, this::beginLiveUpdate);
         this.handlers.register(QuitNotification.class, this::quit);
+        this.handlers.register(RegisterRequest.class, this::createAccount);
     }
 
     @Override
@@ -174,6 +175,23 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         } else {
             jwt = jwtService.create(account);
             return new LoginResponse(true, account, jwt);
+        }
+    }
+
+
+    private RegisterResponse createAccount(RegisterRequest req, String jwt, int clientIdent) {
+        //Der kunne muligvis laves bedre errorhandling
+        if (req.username() == null || req.firstName() == null||req.password() == null||req.lastName() == null||req.username().isEmpty() || req.firstName().isEmpty()||req.password().isEmpty()||req.lastName().isEmpty())
+            return new RegisterResponse(false, "No parameters can be empty");
+        String hashedPassword = PasswordHashing.hash(req.password());
+        if (accountService.get(req.username()) != null)
+            return new RegisterResponse(false, "Username Already taken");
+        RegisterAccountParam param = new RegisterAccountParam(req.username(),req.firstName(),req.lastName(),req.email(), hashedPassword);
+        Account account = accountService.create(param);
+        if (account == null ) {
+            return new RegisterResponse(false, "Account could not be made");
+        } else {
+            return new RegisterResponse(true,"");
         }
     }
 

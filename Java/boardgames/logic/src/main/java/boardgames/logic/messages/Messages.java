@@ -29,7 +29,7 @@ public class Messages {
     public record LoginResponse(boolean loginSuccessful, Account account, String jwt) { }
 
     public record RegisterRequest(String username, String firstName, String lastName, String email, String password) { }
-    public record RegisterResponse(boolean response) { }  //Todo, lav response ordenlig
+    public record RegisterResponse(boolean response, String errorReason) { }
 
     //
     // Admin Register stuff

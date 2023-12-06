@@ -1,5 +1,6 @@
 ﻿@inject NavigationManager navMgr
 @inject IAuthService authService
+@inject IJSRuntime JsRuntime
 
 @page "/register"
 @using GameClient.Services
@@ -54,11 +55,11 @@
         <label style="text-align: center">Password:</label>
         <input type="password" @bind="password"/>
     </div>
-    @if (!string.IsNullOrEmpty(errorLabel))
+    @if (!string.IsNullOrEmpty(response))
     {
         <div class="field">
             <label style="color: red">
-                @errorLabel
+                @response
             </label>
         </div>
     }
@@ -78,7 +79,7 @@
     private string lastName;
     private string email;
     private string password;
-    private string errorLabel;
+    private string response;
     
     
     
@@ -91,8 +92,18 @@
     {
         try
         {
-            //Todo mere validering
-            await authService.RegisterAsync(userName, firstName, lastName, email, password);
+            RegisterRequest req = new RegisterRequest(userName, firstName, lastName, email, password);
+            RegisterResponse res = await authService.RegisterAsync(req);
+            if (res.response)
+            {
+                await JsRuntime.InvokeVoidAsync("alert", "Registration successful, awaiting admin approval");
+                navMgr.NavigateTo("/login");
+
+            }
+            
+            else 
+            response = res.errorReason;
+            
         }
         catch (Exception e)
         {

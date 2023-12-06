@@ -16,12 +16,18 @@
         <img style="width:100%; height: 100%;"  src="@HtmlUtil.ToImgSrcString(game.GamePicture, game.GamePictureType)" alt="game picture"/>
     </div>
     <p>
-    <button @onclick="@(e => OnCreateClicked(game))">Create match</button>
+        <button @onclick="@(e => OnCreateClicked(game))">Create match</button>
     </p>
+    
+    @if (_errorReason != "") {
+        <div class="alert alert-warning">@_errorReason</div>
+    }
 }
+
 
 @code {
     private IEnumerable<Game> _availableGames = Enumerable.Empty<Game>();
+    String _errorReason = "";
 
     protected override async Task OnInitializedAsync() {
         var req = new GetGamesRequest();
@@ -35,10 +41,10 @@
             var req = new CreateMatchRequest(selectedGame.GameId);
             var res = await GameService.CreateMatchAsync(req);
 
-            if (res.errorReason == "") {
+            _errorReason = res.errorReason;
+            if (_errorReason == "")
+            {
                 navMgr.NavigateTo("/match/" + res.match.MatchId);
-            } else {
-                // TODO(rune): Show error reason.
             }
         } catch (NotAuthorizedException) {
             // TODO(rune): Error handling.
