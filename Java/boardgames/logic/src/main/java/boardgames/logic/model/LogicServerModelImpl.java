@@ -11,6 +11,7 @@ import boardgames.logic.messages.MessageHandler;
 import boardgames.logic.messages.MessageHandlers;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
+import boardgames.shared.util.Log;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -101,7 +102,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
     }
 
     private void handleMessage(Message request, int clientIdent) {
-        System.out.println("Incoming " + request.head().bodyType() + " from clientIdent " + clientIdent);
+        Log.info("Incoming " + request.head().bodyType() + " from clientIdent " + clientIdent);
 
         long tBegin = System.nanoTime();
         Object responseBody = getResponseForRequest(request.body(), request.head().jwt(), clientIdent);
@@ -118,8 +119,8 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
     private Object getResponseForRequest(Object request, String jwt, int clientIdent) {
         MessageHandler<Object> h = handlers.get(request.getClass());
         if (h == null) {
-            System.out.println("No handler for message type " + request.getClass().getSimpleName() + ".");
-            return null; // Ukendt message type -> ignorer.
+            Log.info("No handler for message type " + request.getClass().getSimpleName() + ".");
+            return null; // NOTE(rune): Ukendt message type -> ignorer.
         }
 
         Object ret;

@@ -50,14 +50,14 @@ public class Timer {
         String name = p.names.remove(p.names.size() - 1);
         long beginNano = p.beginNanos.remove(p.beginNanos.size() - 1);
         long nanoDiff = endNano - beginNano;
-        double elapsedMillis = (double) nanoDiff / (1000.0 * 1000.0);
+        double elapsedMillis = (double)nanoDiff / (1000.0 * 1000.0);
 
         return new TimerItem(name, beginNano, endNano, elapsedMillis);
     }
 
     public static void endAndPrint() {
         TimerItem item = end();
-        System.out.println(item.name() + " took " + item.elapsedMillis() + " ms");
+        Log.profile(item.name() + " took " + item.elapsedMillis() + " ms");
     }
 
     public static void scope(Runnable scope) {
