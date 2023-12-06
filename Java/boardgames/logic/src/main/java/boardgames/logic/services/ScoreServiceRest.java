@@ -12,18 +12,18 @@ import java.util.List;
 import static boardgames.logic.services.RestUtil.getBodyOrThrow;
 
 public class ScoreServiceRest implements ScoreService {
-    private final String ulr;
+    private final String url;
     private final RestTemplate restTemplate;
 
-    public ScoreServiceRest(String ulr) {
-        this.ulr = ulr;
+    public ScoreServiceRest(String url) {
+        this.url = url;
         this.restTemplate = new RestTemplate();
     }
 
     @Override
     public List<ScoreSum> getSums(int gameId) {
         try {
-            ResponseEntity<ScoreSum[]> response = restTemplate.getForEntity(ulr + "/games/" + gameId + "/scores", ScoreSum[].class);
+            ResponseEntity<ScoreSum[]> response = restTemplate.getForEntity(url + "/games/" + gameId + "/scores", ScoreSum[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
             Log.logError(e);
@@ -33,7 +33,7 @@ public class ScoreServiceRest implements ScoreService {
     @Override
     public List<FinishedMatchScore> getScores(int accountId) {
         try {
-            ResponseEntity<FinishedMatchScore[]> response = restTemplate.getForEntity(ulr + "/accounts/" + accountId + "/scores", FinishedMatchScore[].class);
+            ResponseEntity<FinishedMatchScore[]> response = restTemplate.getForEntity(url + "/accounts/" + accountId + "/scores", FinishedMatchScore[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
             Log.logError(e);

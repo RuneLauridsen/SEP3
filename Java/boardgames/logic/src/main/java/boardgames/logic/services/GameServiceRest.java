@@ -11,18 +11,18 @@ import java.util.List;
 import static boardgames.logic.services.RestUtil.getBodyOrThrow;
 
 public class GameServiceRest implements GameService {
-    private final String ulr;
+    private final String url;
     private final RestTemplate restTemplate;
 
-    public GameServiceRest(String ulr) {
-        this.ulr = ulr;
+    public GameServiceRest(String url) {
+        this.url = url;
         this.restTemplate = new RestTemplate();
     }
 
     @Override
     public List<Game> getGames() {
         try {
-            ResponseEntity<Game[]> response = restTemplate.getForEntity(ulr + "/games", Game[].class);
+            ResponseEntity<Game[]> response = restTemplate.getForEntity(url + "/games", Game[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
             Log.logError(e);
