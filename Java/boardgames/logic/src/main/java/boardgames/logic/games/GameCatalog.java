@@ -11,10 +11,6 @@ public class GameCatalog {
     static {
         map = new HashMap<>();
         map.put(1, new TicTacToeLogic());
-        // TODO(rune): put(2, new Stratego());
-        // TODO(rune): put(...);
-        // TODO(rune): put(...);
-        // TODO(rune): put(...);
     }
 
     public static TurnBasedGameLogic getLogic(Integer gameId) {

@@ -1,5 +1,6 @@
 package boardgames.persistence.data;
 
+import boardgames.shared.util.Log;
 import boardgames.shared.util.ResourceUtil;
 
 import java.sql.Connection;
@@ -15,7 +16,8 @@ public class SqlUtil {
             Connection conn = DriverManager.getConnection(connString);
             return conn;
         } catch (SQLException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
+            Log.logError("Could not open connection to SQL database.");
+            return null;
         }
     }
 
@@ -24,7 +26,7 @@ public class SqlUtil {
             try {
                 connection.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.logError(e);
             }
         }
     }
@@ -34,7 +36,7 @@ public class SqlUtil {
             try {
                 statement.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.logError(e);
             }
         }
     }
@@ -44,7 +46,7 @@ public class SqlUtil {
             try {
                 resultSet.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                Log.logError(e);
             }
         }
     }

@@ -480,8 +480,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
             v.mustBeShorterThan(fromClient, Account::description, "description", 500);
         }
 
-        if (withSameUsername != null &&
-            withSameUsername.accountId() != req.account().accountId()) {
+        if (withSameUsername != null) {
             v.reportInvalid("Username already taken.");
         }
 
@@ -505,7 +504,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
 
     private GetMatchHistoryResponse getMatchHistory(GetMatchHistoryRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         jwtService.verify(jwt);
-        List<MatchScore> scores = scoreService.getScores(req.accountId());
+        List<FinishedMatchScore> scores = scoreService.getScores(req.accountId());
         GetMatchHistoryResponse res = new GetMatchHistoryResponse(scores);
         return res;
     }

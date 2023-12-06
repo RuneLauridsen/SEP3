@@ -7,7 +7,6 @@ import boardgames.shared.dto.Participant;
 
 import java.util.List;
 
-// TODO(rune): Tænk lidt mere over hvordan vi abstracter scoring.
 public interface TurnBasedGameLogic {
     public GameSpec spec();
     public String getInitialData(List<Participant> participants);

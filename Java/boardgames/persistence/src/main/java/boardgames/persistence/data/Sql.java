@@ -1,5 +1,6 @@
 package boardgames.persistence.data;
 
+import boardgames.shared.util.Log;
 import boardgames.shared.util.Timer;
 import org.intellij.lang.annotations.Language;
 
@@ -52,6 +53,9 @@ public class Sql {
 
     public Sql(Connection connection, @Language("SQL") String sql) {
         try {
+            if (connection == null) {
+                throw new SQLException("Connection was null");
+            }
             this.statement = connection.prepareStatement(sql);
         } catch (SQLException e) {
             this.caughtException = e;
@@ -333,7 +337,7 @@ public class Sql {
         }
     }
 
-    public int execute() throws RuntimeException {
+    public int execute() {
         Timer.begin(1);
 
         int ret = 0;
@@ -342,6 +346,7 @@ public class Sql {
                 ret = statement.executeUpdate();
             } catch (SQLException e) {
                 caughtException = e;
+                Log.logError(e);
             }
         }
         close();
@@ -349,13 +354,13 @@ public class Sql {
         Timer.endAndPrint();
 
         if (caughtException != null) {
-            throw new RuntimeException(caughtException); // TODO(rune): Custom DataAccesException i stedet?
+            Log.logError(caughtException);
         }
 
         return ret;
     }
 
-    public <T> T querySingle(Function<Sql, T> readWith) throws RuntimeException {
+    public <T> T querySingle(Function<Sql, T> readWith) {
         Timer.begin(1);
 
         T ret = null;
@@ -367,13 +372,13 @@ public class Sql {
         Timer.endAndPrint();
 
         if (caughtException != null) {
-            throw new RuntimeException(caughtException); // TODO(rune): Custom DataAccesException i stedet?
+            Log.logError(caughtException);
         }
 
         return ret;
     }
 
-    public <T> List<T> queryAll(Function<Sql, T> readWith) throws RuntimeException {
+    public <T> List<T> queryAll(Function<Sql, T> readWith) {
         Timer.begin(1);
 
         List<T> ret = new ArrayList<>();
@@ -385,7 +390,7 @@ public class Sql {
         Timer.endAndPrint();
 
         if (caughtException != null) {
-            throw new RuntimeException(caughtException); // TODO(rune): Custom DataAccesException i stedet?
+            Log.logError(caughtException);
         }
 
         return ret;

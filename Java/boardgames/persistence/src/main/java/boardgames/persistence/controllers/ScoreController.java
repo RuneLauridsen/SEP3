@@ -1,7 +1,7 @@
 package boardgames.persistence.controllers;
 
 import boardgames.persistence.data.ScoreData;
-import boardgames.shared.dto.MatchScore;
+import boardgames.shared.dto.FinishedMatchScore;
 import boardgames.shared.dto.ScoreSum;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +26,8 @@ public class ScoreController {
     }
 
     @GetMapping("accounts/{accountId}/scores")
-    public List<MatchScore> getScores(@PathVariable int accountId) {
-        List<MatchScore> scores = scoreData.getScores(accountId);
+    public List<FinishedMatchScore> getScores(@PathVariable int accountId) {
+        List<FinishedMatchScore> scores = scoreData.getScores(accountId);
         return scores;
     }
 }

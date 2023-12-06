@@ -44,7 +44,7 @@
 
     private DTO.Account _account = Empty.Account();
     private int _accountId = 0;
-    private List<MatchScore> _scores = Empty.List<MatchScore>();
+    private List<FinishedMatchScore> _scores = Empty.List<FinishedMatchScore>();
 
     protected override async Task OnInitializedAsync() {
             _accountId = ParseUtil.ParseIntOrDefault(AccountId);
