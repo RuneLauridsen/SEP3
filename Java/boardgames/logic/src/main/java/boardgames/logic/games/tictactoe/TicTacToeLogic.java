@@ -10,7 +10,6 @@ import boardgames.shared.util.JsonUtil;
 
 import java.util.List;
 
-// TODO(rune): Oplagt til unit-test.
 public class TicTacToeLogic implements TurnBasedGameLogic {
     private final static int NUM_PLAYERS = 2;
     private final static int NUM_SQUARES = 9;
@@ -61,9 +60,9 @@ public class TicTacToeLogic implements TurnBasedGameLogic {
 
     public MoveResult ticTacToeLogic(TicTacToeData data, TicTacToeMove move, int accountId) {
         // Indlæs i array så vi kan indexere efter spiller.
-        int[] pieces = {data.piecesO, data.piecesX};
-        int[] remaining = {data.remainingO, data.remainingX};
-        int[] accountIds = {data.accountIdO, data.accountIdX};
+        int[] pieces = { data.piecesO, data.piecesX };
+        int[] remaining = { data.remainingO, data.remainingX };
+        int[] accountIds = { data.accountIdO, data.accountIdX };
 
         int playerIndex = -1;
 
