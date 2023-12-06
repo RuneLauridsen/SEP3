@@ -22,13 +22,18 @@ import boardgames.logic.services.ScoreServiceRest;
 
 public class RunLogicServer {
     public static void main(String[] args) {
-        // TODO(rune): Hardcoded url til persistence server.
-        String url = "http://localhost:8080";
-        AccountService accountService = new AccountServiceRest(url);
-        GameService gameService = new GameServiceRest(url);
-        MatchService matchService = new MatchServiceRest(url);
-        ParticipantService participantService = new ParticipantServiceRest(url);
-        ScoreService scoreService = new ScoreServiceRest(url);
+        String persistenceUrl = "http://localhost:8080";
+        if (args.length == 0) {
+            System.out.println("First argument is not persistence server url, using default '" + persistenceUrl + "' instead.");
+        } else {
+            persistenceUrl = args[0];
+        }
+
+        AccountService accountService = new AccountServiceRest(persistenceUrl);
+        GameService gameService = new GameServiceRest(persistenceUrl);
+        MatchService matchService = new MatchServiceRest(persistenceUrl);
+        ParticipantService participantService = new ParticipantServiceRest(persistenceUrl);
+        ScoreService scoreService = new ScoreServiceRest(persistenceUrl);
         JwtService jwtService = new JwtServiceAuth0();
 
         MessageQueue incomingQueue = new MessageQueue();
