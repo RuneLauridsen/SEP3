@@ -27,7 +27,7 @@ public class ParticipantServiceRest implements ParticipantService {
             ResponseEntity<Participant> response = restTemplate.getForEntity(url + "/participants/" + participantId, Participant.class);
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -38,7 +38,7 @@ public class ParticipantServiceRest implements ParticipantService {
             ResponseEntity<Participant[]> response = restTemplate.getForEntity(url + "/participants?matchId=" + matchId, Participant[].class);
             return Arrays.asList(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return List.of();
         }
     }
@@ -49,7 +49,7 @@ public class ParticipantServiceRest implements ParticipantService {
             ResponseEntity<Participant[]> response = restTemplate.getForEntity(url + "/participants?accountId=" + accountId + "&participantStatus=" + participantStatus, Participant[].class);
             return Arrays.asList(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return List.of();
         }
     }
@@ -60,7 +60,7 @@ public class ParticipantServiceRest implements ParticipantService {
             ResponseEntity<Participant> response = restTemplate.postForEntity(url + "/matches/" + param.matchId() + "/participants", param, Participant.class);
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -70,7 +70,7 @@ public class ParticipantServiceRest implements ParticipantService {
         try {
             restTemplate.put(url + "/participants/" + participant.participantId(), participant);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
         }
     }
 
@@ -79,7 +79,7 @@ public class ParticipantServiceRest implements ParticipantService {
         try {
             restTemplate.delete(url + "/participants/" + participantId);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
         }
     }
 }

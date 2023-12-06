@@ -16,7 +16,7 @@ public class SqlUtil {
             Connection conn = DriverManager.getConnection(connString);
             return conn;
         } catch (SQLException e) {
-            Log.logError("Could not open connection to SQL database.");
+            Log.error("Could not open connection to SQL database.");
             return null;
         }
     }
@@ -26,7 +26,7 @@ public class SqlUtil {
             try {
                 connection.close();
             } catch (SQLException e) {
-                Log.logError(e);
+                Log.error(e);
             }
         }
     }
@@ -36,7 +36,7 @@ public class SqlUtil {
             try {
                 statement.close();
             } catch (SQLException e) {
-                Log.logError(e);
+                Log.error(e);
             }
         }
     }
@@ -46,7 +46,7 @@ public class SqlUtil {
             try {
                 resultSet.close();
             } catch (SQLException e) {
-                Log.logError(e);
+                Log.error(e);
             }
         }
     }

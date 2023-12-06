@@ -18,7 +18,6 @@
 <p><a href="/match/@_matchId">View match</a></p>
 
 <!-- NOTE(rune): https://www.w3schools.com/css/css_grid.asp -->
-<!-- TODO(rune): Auto scaling -->
 <style>
     .grid-container {
         display: grid;
@@ -99,8 +98,8 @@
 
         {
             GetAccountsRequest request = new();
-            GetAccountsRespnse respnse = await GameService.GetAccountsAsync(request);
-            _accounts = respnse.accounts;
+            GetAccountsResponse response = await GameService.GetAccountsAsync(request);
+            _accounts = response.accounts;
         }
 
         await RefreshAsync();

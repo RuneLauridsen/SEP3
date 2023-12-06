@@ -4,6 +4,7 @@
 
 @page "/register"
 @using GameClient.Services
+@using global::Shared
 @using global::Shared.AuthService
 
 
@@ -80,9 +81,9 @@
     private string email;
     private string password;
     private string response;
-    
-    
-    
+
+
+
     private void Login()
     {
         navMgr.NavigateTo("/LogIn");
@@ -90,26 +91,14 @@
 
     private async Task RegisterAsync()
     {
-        try
+        RegisterRequest req = new RegisterRequest(userName, firstName, lastName, email, password);
+        RegisterResponse res = await authService.RegisterAsync(req);
+        if (res.response)
         {
-            RegisterRequest req = new RegisterRequest(userName, firstName, lastName, email, password);
-            RegisterResponse res = await authService.RegisterAsync(req);
-            if (res.response)
-            {
-                await JsRuntime.InvokeVoidAsync("alert", "Registration successful, awaiting admin approval");
-                navMgr.NavigateTo("/login");
-
-            }
-            
-            else 
+            await JsRuntime.InvokeVoidAsync("alert", "Registration successful, awaiting admin approval");
+            navMgr.NavigateTo("/login");
+        } else {
             response = res.errorReason;
-            
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
         }
     }
-
 }

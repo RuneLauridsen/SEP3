@@ -26,7 +26,7 @@ public class ScoreServiceRest implements ScoreService {
             ResponseEntity<ScoreSum[]> response = restTemplate.getForEntity(url + "/games/" + gameId + "/scores", ScoreSum[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return List.of();
         }
     }
@@ -36,7 +36,7 @@ public class ScoreServiceRest implements ScoreService {
             ResponseEntity<FinishedMatchScore[]> response = restTemplate.getForEntity(url + "/accounts/" + accountId + "/scores", FinishedMatchScore[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return List.of();
         }
     }

@@ -25,7 +25,7 @@ public class GameServiceRest implements GameService {
             ResponseEntity<Game[]> response = restTemplate.getForEntity(url + "/games", Game[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return List.of();
         }
     }

@@ -26,7 +26,7 @@ public class MatchServiceRest implements MatchService {
             ResponseEntity<Match> response = restTemplate.postForEntity(url + "/matches", param, Match.class);
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -36,7 +36,7 @@ public class MatchServiceRest implements MatchService {
             ResponseEntity<Match> response = restTemplate.getForEntity(url + "/matches/" + matchId, Match.class);
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -45,7 +45,7 @@ public class MatchServiceRest implements MatchService {
         try {
             restTemplate.put(url + "/matches/" + match.matchId(), match);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
         }
     }
 
@@ -53,7 +53,7 @@ public class MatchServiceRest implements MatchService {
         try {
             restTemplate.delete(url + "/matches/" + matchId);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
         }
     }
 
@@ -63,7 +63,7 @@ public class MatchServiceRest implements MatchService {
             ResponseEntity<Match[]> response = restTemplate.getForEntity(url + "/matches?accountId=" + accountId + "&status=" + status, Match[].class);
             return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return List.of();
         }
     }

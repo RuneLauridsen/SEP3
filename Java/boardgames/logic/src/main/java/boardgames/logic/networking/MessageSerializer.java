@@ -21,11 +21,11 @@ public class MessageSerializer {
                 Object body = JsonUtil.fromJson(bodyString, bodyType);
                 return new Message(head, body);
             } catch (JsonSyntaxException | ClassNotFoundException e) {
-                Log.logError(e);
+                Log.error(e);
                 return null;
             }
         } else {
-            Log.logError("Invalid message string received (could not find '|' marker). Message string was '" + s + "'");
+            Log.error("Invalid message string received (could not find '|' marker). Message string was '" + s + "'");
             return null;
         }
     }

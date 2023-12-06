@@ -346,7 +346,7 @@ public class Sql {
                 ret = statement.executeUpdate();
             } catch (SQLException e) {
                 caughtException = e;
-                Log.logError(e);
+                Log.error(e);
             }
         }
         close();
@@ -354,7 +354,7 @@ public class Sql {
         Timer.endAndPrint();
 
         if (caughtException != null) {
-            Log.logError(caughtException);
+            Log.error(caughtException);
         }
 
         return ret;
@@ -372,7 +372,7 @@ public class Sql {
         Timer.endAndPrint();
 
         if (caughtException != null) {
-            Log.logError(caughtException);
+            Log.error(caughtException);
         }
 
         return ret;
@@ -390,7 +390,7 @@ public class Sql {
         Timer.endAndPrint();
 
         if (caughtException != null) {
-            Log.logError(caughtException);
+            Log.error(caughtException);
         }
 
         return ret;

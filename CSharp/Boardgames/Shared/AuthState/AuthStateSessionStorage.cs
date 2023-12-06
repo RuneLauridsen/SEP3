@@ -32,8 +32,8 @@ public class AuthStateSessionStorage : IAuthState {
                 await SetAuthStateAsync(fromStorage.Value ?? "");
                 lookedInSessionStorage = true;
             } catch (Exception e) {
-                // Ikke nogen alvorlig fejl. Beytder bare at bruger skal logge ind igen ved næste page refresh.
-                Console.WriteLine(e);
+                // NOTE(rune): Ikke nogen alvorlig fejl. Beytder bare at bruger skal logge ind igen ved næste page refresh.
+                Log.Error(e);
             }
         }
     }
@@ -44,8 +44,8 @@ public class AuthStateSessionStorage : IAuthState {
         try {
             await sessionStorage.SetAsync("jwt", jwt);
         } catch (Exception e) {
-            // Ikke nogen alvorlig fejl. Beytder bare at bruger skal logge ind igen ved næste page refresh.
-            Console.WriteLine(e);
+            // NOTE(rune): Ikke nogen alvorlig fejl. Beytder bare at bruger skal logge ind igen ved næste page refresh.
+            Log.Error(e);
         }
 
         AuthStateChanged?.Invoke(this, jwt);

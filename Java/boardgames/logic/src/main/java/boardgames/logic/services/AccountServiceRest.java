@@ -2,10 +2,8 @@ package boardgames.logic.services;
 
 import boardgames.shared.dto.Account;
 import boardgames.shared.util.Log;
-import boardgames.shared.dto.Match;
 import boardgames.shared.dto.RegisterAccountParam;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,7 +29,7 @@ public class AccountServiceRest implements AccountService {
             ResponseEntity<Account> response = restTemplate.getForEntity(url + "/accounts/" + accountId, Account.class);
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -47,7 +45,7 @@ public class AccountServiceRest implements AccountService {
                 return body[0];
             }
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -64,13 +62,13 @@ public class AccountServiceRest implements AccountService {
                 return body[0];
             }
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
 
     @Override
-    public Account create(RegisterAccountParam param){
+    public Account create(RegisterAccountParam param) {
         try {
             ResponseEntity<Account> response = restTemplate.postForEntity(url + "/accounts", param, Account.class);
             return response.getBody(); // TODO: Check status code.
@@ -85,7 +83,7 @@ public class AccountServiceRest implements AccountService {
             ResponseEntity<Account[]> response = restTemplate.getForEntity(url + "/accounts", Account[].class);
             return List.of(response.getBody()); // TODO(rune): Check status code.
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return null;
         }
     }
@@ -96,7 +94,7 @@ public class AccountServiceRest implements AccountService {
             restTemplate.put(url + "/accounts/" + account.accountId(), account);
             return true;
         } catch (RestClientException e) {
-            Log.logError(e);
+            Log.error(e);
             return false;
         }
     }

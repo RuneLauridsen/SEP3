@@ -5,19 +5,11 @@ using static Shared.Data.Messages;
 
 namespace GameClient.Services;
 
-//
-// TODO(rune):
-// Skal vi ikke slette dette lag? Vi gentager alligevel bare hvad der står
-// i Messages.cs, så måske skulle interfacet i stedet bare være en enkelt
-// uspecific metode, der tager (object request) -> (object response).
-//
-
 public class GameService : IGameService {
     private readonly IAuthState _authState;
 
     public GameService(IAuthState authState) {
         _authState = authState;
-
     }
 
     public async Task<LoginResponse> LoginAsync(LoginRequest request) {
