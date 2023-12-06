@@ -1,6 +1,5 @@
 ﻿namespace GameClient.DTO;
 
-// TODO(rune): Er det her Null-Object-Pattern???????????????
 public static class Empty {
     public static Account Account() {
         return new Account {

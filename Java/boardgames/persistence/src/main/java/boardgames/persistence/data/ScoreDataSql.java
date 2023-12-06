@@ -1,6 +1,6 @@
 package boardgames.persistence.data;
 
-import boardgames.shared.dto.MatchScore;
+import boardgames.shared.dto.FinishedMatchScore;
 import boardgames.shared.dto.ScoreSum;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +27,8 @@ public class ScoreDataSql implements ScoreData {
         );
     }
 
-    private MatchScore readMatchScore(Sql sql) {
-        return new MatchScore(
+    private FinishedMatchScore readMatchScore(Sql sql) {
+        return new FinishedMatchScore(
             sql.readInt("game_id"),
             sql.readString("game_name"),
             sql.readInt("match_id"),
@@ -39,7 +39,6 @@ public class ScoreDataSql implements ScoreData {
 
     @Override
     public List<ScoreSum> getSums(int gameId) {
-        // TODO(rune): FROM boardgames.game i stedet
         Sql sql = new Sql(conn, """
             SELECT g.game_id,
                    a.account_id,
@@ -64,7 +63,7 @@ public class ScoreDataSql implements ScoreData {
 
     }
     @Override
-    public List<MatchScore> getScores(int accountId) {
+    public List<FinishedMatchScore> getScores(int accountId) {
         Sql sql = new Sql(conn, """
             SELECT g.game_id        AS game_id,
                    g.name           AS game_name,
@@ -84,7 +83,7 @@ public class ScoreDataSql implements ScoreData {
             """);
 
         sql.set(accountId);
-        List<MatchScore> ret = sql.queryAll(this::readMatchScore);
+        List<FinishedMatchScore> ret = sql.queryAll(this::readMatchScore);
         return ret;
     }
 }

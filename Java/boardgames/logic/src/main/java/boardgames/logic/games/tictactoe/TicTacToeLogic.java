@@ -2,7 +2,7 @@ package boardgames.logic.games.tictactoe;
 
 import boardgames.logic.games.TurnBasedGameLogic;
 import boardgames.logic.games.GameSpec;
-import boardgames.logic.messages.Messages.MoveReq;
+import boardgames.logic.messages.Messages.MoveRequest;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
 import boardgames.shared.dto.Participant;
@@ -10,7 +10,6 @@ import boardgames.shared.util.JsonUtil;
 
 import java.util.List;
 
-// TODO(rune): Oplagt til unit-test.
 public class TicTacToeLogic implements TurnBasedGameLogic {
     private final static int NUM_PLAYERS = 2;
     private final static int NUM_SQUARES = 9;
@@ -34,7 +33,7 @@ public class TicTacToeLogic implements TurnBasedGameLogic {
     }
 
     @Override
-    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match) {
+    public MoveResult validateMoveAndUpdateData(MoveRequest req, Match match) {
         TicTacToeData data = JsonUtil.fromJson(match.data(), TicTacToeData.class);
         TicTacToeMove move = JsonUtil.fromJson(req.moveData(), TicTacToeMove.class);
         MoveResult result = ticTacToeLogic(data, move, match.nextAccountId());
@@ -61,9 +60,9 @@ public class TicTacToeLogic implements TurnBasedGameLogic {
 
     public MoveResult ticTacToeLogic(TicTacToeData data, TicTacToeMove move, int accountId) {
         // Indlæs i array så vi kan indexere efter spiller.
-        int[] pieces = {data.piecesO, data.piecesX};
-        int[] remaining = {data.remainingO, data.remainingX};
-        int[] accountIds = {data.accountIdO, data.accountIdX};
+        int[] pieces = { data.piecesO, data.piecesX };
+        int[] remaining = { data.remainingO, data.remainingX };
+        int[] accountIds = { data.accountIdO, data.accountIdX };
 
         int playerIndex = -1;
 

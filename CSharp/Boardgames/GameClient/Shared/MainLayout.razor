@@ -86,7 +86,7 @@
                             @Body
                         </CascadingValue>
                     </ChildContent>
-                
+
             </main>
         } else{
             <main style="height: 100%;">
@@ -153,14 +153,14 @@
         {
             if (accountId != account.AccountId)
             {
-                var req = new GetAccountReq(accountId);
+                var req = new GetAccountRequest(accountId);
                 var res = await gameService.GetAccountAsync(req);
                 account = res?.account ?? Empty.Account();
             }
 
             if (!allAccounts.Any())
             {
-                var req = new GetAccountsReq();
+                var req = new GetAccountsRequest();
                 var res = await gameService.GetAccountsAsync(req);
                 allAccounts = res.accounts;
             }

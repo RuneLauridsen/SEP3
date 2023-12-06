@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-// TODO(rune): Kan man gøre det smartere?
-// Vi skal mappe accountId -> 1 eller flere clientIdent, som lytter på accountId'en.
 public class MultiValueHashMap<K, V> {
     private Map<K, Set<V>> backing;
     private int count;

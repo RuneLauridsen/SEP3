@@ -23,7 +23,7 @@ public class AdminService : IAdminService
     public async Task<List<Account>> GetUsersWaitingForApprovalAsync()
     {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        List<Account> allAccounts = (await socket.SendAndReceiveAsync<GetAccountsRes>(new GetAccountsReq())).accounts;
+        List<Account> allAccounts = (await socket.SendAndReceiveAsync<GetAccountsResponse>(new GetAccountsRequest())).accounts;
         List<Account> accountsWaitingForApproval = new List<Account>();
         foreach (Account account in allAccounts)
         {
@@ -36,22 +36,22 @@ public class AdminService : IAdminService
     }
 
 
-    public async Task<Account> GetAccountAsync(GetAccountReq req)
+    public async Task<Account> GetAccountAsync(GetAccountRequest request)
     {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return (await socket.SendAndReceiveAsync<GetAccountRes>(req)).account;
+        return (await socket.SendAndReceiveAsync<GetAccountResponse>(request)).account;
     }
 
-    public async Task<UpdateAccountRes> UpdateAccountAsync(UpdateAccountReq req)
+    public async Task<UpdateAccountResponse> UpdateAccountAsync(UpdateAccountRequest request)
     {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<UpdateAccountRes>(req);
+        return await socket.SendAndReceiveAsync<UpdateAccountResponse>(request);
     }
 
     public async Task<IEnumerable<Account>> GetApprovedUsersAsync() {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        GetAccountsRes res = await socket.SendAndReceiveAsync<GetAccountsRes>(new GetAccountsReq());
-        List<Account> allAccounts = res.accounts;
+        GetAccountsResponse respnse = await socket.SendAndReceiveAsync<GetAccountsResponse>(new GetAccountsRequest());
+        List<Account> allAccounts = respnse.accounts;
         List<Account> approvedAccounts = new List<Account>();
         foreach (Account account in allAccounts)
         {

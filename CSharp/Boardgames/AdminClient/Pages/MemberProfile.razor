@@ -54,7 +54,7 @@
     protected override async Task OnInitializedAsync() {
         int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
         if (routeAccountId != 0) {
-            var req = new Messages.GetAccountReq(routeAccountId);
+            var req = new Messages.GetAccountRequest(routeAccountId);
             _account = await adminService.GetAccountAsync(req);
             _imgSrc = HtmlUtil.ToImgSrcString(_account.ProfilePicture, _account.ProfilePictureType);
         }
@@ -80,7 +80,7 @@
             _account.ProfilePictureType = _uploadedProfilePicture.ContentType;
         }
 
-        var req = new Messages.UpdateAccountReq(_account);
+        var req = new Messages.UpdateAccountRequest(_account);
         var res = await adminService.UpdateAccountAsync(req);
         
         _errorReason = res.errorReason;

@@ -18,7 +18,7 @@
     <p>
         <button @onclick="@(e => OnCreateClicked(game))">Create match</button>
     </p>
-    
+
     @if (_errorReason != "") {
         <div class="alert alert-warning">@_errorReason</div>
     }
@@ -37,17 +37,12 @@
     }
 
     private async Task OnCreateClicked(Game selectedGame) {
-        try {
-            var req = new CreateMatchRequest(selectedGame.GameId);
-            var res = await GameService.CreateMatchAsync(req);
+        var req = new CreateMatchRequest(selectedGame.GameId);
+        var res = await GameService.CreateMatchAsync(req);
 
-            _errorReason = res.errorReason;
-            if (_errorReason == "")
-            {
-                navMgr.NavigateTo("/match/" + res.match.MatchId);
-            }
-        } catch (NotAuthorizedException) {
-            // TODO(rune): Error handling.
+        _errorReason = res.errorReason;
+        if (_errorReason == "") {
+            navMgr.NavigateTo("/match/" + res.match.MatchId);
         }
     }
 

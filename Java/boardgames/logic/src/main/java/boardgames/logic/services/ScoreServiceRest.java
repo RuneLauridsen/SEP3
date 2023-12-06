@@ -1,39 +1,43 @@
 package boardgames.logic.services;
 
-import boardgames.shared.dto.Account;
-import boardgames.shared.dto.MatchScore;
+import boardgames.shared.dto.FinishedMatchScore;
 import boardgames.shared.dto.ScoreSum;
+import boardgames.shared.util.Log;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+import static boardgames.logic.services.RestUtil.getBodyOrThrow;
+
 public class ScoreServiceRest implements ScoreService {
-    private final String ulr;
+    private final String url;
     private final RestTemplate restTemplate;
 
-    public ScoreServiceRest(String ulr) {
-        this.ulr = ulr;
+    public ScoreServiceRest(String url) {
+        this.url = url;
         this.restTemplate = new RestTemplate();
     }
 
     @Override
     public List<ScoreSum> getSums(int gameId) {
         try {
-            ResponseEntity<ScoreSum[]> response = restTemplate.getForEntity(ulr + "/games/" + gameId + "/scores", ScoreSum[].class);
-            return List.of(response.getBody()); // TODO(rune): Check status code.
+            ResponseEntity<ScoreSum[]> response = restTemplate.getForEntity(url + "/games/" + gameId + "/scores", ScoreSum[].class);
+            return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
+            Log.error(e);
+            return List.of();
         }
     }
     @Override
-    public List<MatchScore> getScores(int accountId) {
+    public List<FinishedMatchScore> getScores(int accountId) {
         try {
-            ResponseEntity<MatchScore[]> response = restTemplate.getForEntity(ulr + "/accounts/" + accountId + "/scores", MatchScore[].class);
-            return List.of(response.getBody()); // TODO(rune): Check status code.
+            ResponseEntity<FinishedMatchScore[]> response = restTemplate.getForEntity(url + "/accounts/" + accountId + "/scores", FinishedMatchScore[].class);
+            return List.of(getBodyOrThrow(response));
         } catch (RestClientException e) {
-            throw new RuntimeException(e); // TODO(rune): Error handling.
+            Log.error(e);
+            return List.of();
         }
     }
 }

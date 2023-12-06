@@ -84,7 +84,7 @@
                 }
             </div>
         </div>
-        
+
         <div>
             <p><a href=@("/account/" + _account.AccountId + "/scores")>Show match history</a></p>
         </div>
@@ -96,7 +96,7 @@
         <button @onclick=OnEditClicked>Edit</button>
     }
 
-    
+
 } else {
     <h1>Edit profile</h1>
 
@@ -152,7 +152,7 @@
         int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
         if (routeAccountId != 0) {
             _isOwnProfile = routeAccountId == claimAccountId;
-            var req = new GetAccountReq(routeAccountId);
+            var req = new GetAccountRequest(routeAccountId);
             var res = await GameService.GetAccountAsync(req);
             _account = res.account;
             _imgSrc = HtmlUtil.ToImgSrcString(_account.ProfilePicture, _account.ProfilePictureType);
@@ -183,9 +183,9 @@
             _account.ProfilePictureType = _uploadedProfilePicture.ContentType;
         }
 
-        var req = new UpdateAccountReq(_account);
+        var req = new UpdateAccountRequest(_account);
         var res = await GameService.UpdateAccountAsync(req);
-        
+
         _errorReason = res.errorReason;
         if (_errorReason == "") {
             navMgr.ReloadCurrentPage();

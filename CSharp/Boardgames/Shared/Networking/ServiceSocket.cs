@@ -9,8 +9,6 @@ using Shared.AuthState;
 
 namespace Shared.Data;
 
-// TODO(rune): Måske gøre JWT til en del af protokollen, så alle request typerne
-// ikke behøver at construct'es med en JWT?
 public class ServiceSocket {
     private readonly string _url;
     private readonly int _port;
@@ -75,20 +73,22 @@ public class ServiceSocket {
                 throw new NotAuthorizedException();
             }
 
-            // TODO(rune): if (reponse is not T) { throw ... }
+            if (response.Body is not T t) {
+                throw new Exception(
+                    $"Unexpected response type from logic server. Got '{response.Body.GetType().Name}' but expected '{typeof(T).Name}'.");
+            }
 
-            return (T)response.Body;
+            return t;
         } catch (SocketException e) {
-            Console.WriteLine(e.ToString());
-            return null;
+            Log.Error(e);
+            throw;
         } finally {
             Close();
         }
     }
 
     private static void LogSendAndReceive(object requestBody, object responseBody, double clientMillis, double serverMillis) {
-        // TODO(rune): Bedre logging system. ILogger?
-        Console.WriteLine($"[INFO {DateTime.Now:yyyy-MM-dd hh:mm:ss.fff}] {requestBody.GetType().Name} -> {responseBody.GetType().Name} (client elapsed {clientMillis} ms) (server elapsed {serverMillis} ms))");
+        Log.Info($"{requestBody.GetType().Name} -> {responseBody.GetType().Name} (client elapsed {clientMillis} ms) (server elapsed {serverMillis} ms))");
     }
 }
 

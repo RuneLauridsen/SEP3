@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import java.time.LocalDateTime;
 
-// TODO(rune): Bedre navn.
-
 // NOTE(rune):
 // MatchScore = en række som bliver returneret når man beder om en brugers
-// match historik. Account er implicit, fordi alle MatchScore records vil
-// være for samme bruger som account id fra requesten.
+// match historik, for hver game. Account er implicit, fordi alle MatchScore
+// records vil være for samme bruger som account id fra requesten.
 
 // WARNING(rune): Navne skal matche mellem Java og C#.
 @JsonAutoDetect(
@@ -17,17 +15,17 @@ import java.time.LocalDateTime;
     getterVisibility = JsonAutoDetect.Visibility.ANY,
     setterVisibility = JsonAutoDetect.Visibility.ANY,
     creatorVisibility = JsonAutoDetect.Visibility.ANY)
-public class MatchScore {
+public class FinishedMatchScore {
     private int gameId;
     private String gameName;
     private int matchId;
     private LocalDateTime matchFinishedOn;
     private int score;
 
-    public MatchScore() {
+    public FinishedMatchScore() {
     }
 
-    public MatchScore(int gameId, String gameName, int matchId, LocalDateTime matchFinishedOn, int score) {
+    public FinishedMatchScore(int gameId, String gameName, int matchId, LocalDateTime matchFinishedOn, int score) {
         this.gameId = gameId;
         this.gameName = gameName;
         this.matchId = matchId;

@@ -3,6 +3,7 @@ package boardgames.logic.networking;
 import boardgames.logic.messages.Message;
 import boardgames.logic.messages.Messages;
 import boardgames.shared.util.JsonUtil;
+import boardgames.shared.util.Log;
 import com.google.gson.JsonSyntaxException;
 
 // NOTE(rune): Tilsvarende klasse i Java/C# skal passe sammen.
@@ -19,15 +20,12 @@ public class MessageSerializer {
                 Class<?> bodyType = Class.forName(bodyTypeName);
                 Object body = JsonUtil.fromJson(bodyString, bodyType);
                 return new Message(head, body);
-            } catch (JsonSyntaxException e) {
-                // TODO(rune): Logging.
-                return null;
-            } catch (ClassNotFoundException e) {
-                // TODO(rune): Logging.
+            } catch (JsonSyntaxException | ClassNotFoundException e) {
+                Log.error(e);
                 return null;
             }
         } else {
-            // TODO(rune): Logging.
+            Log.error("Invalid message string received (could not find '|' marker). Message string was '" + s + "'");
             return null;
         }
     }

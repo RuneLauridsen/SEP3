@@ -44,15 +44,15 @@
 
     private DTO.Account _account = Empty.Account();
     private int _accountId = 0;
-    private List<MatchScore> _scores = Empty.List<MatchScore>();
+    private List<FinishedMatchScore> _scores = Empty.List<FinishedMatchScore>();
 
     protected override async Task OnInitializedAsync() {
             _accountId = ParseUtil.ParseIntOrDefault(AccountId);
             if (_accountId != 0) {
                 {
-                    GetAccountReq req = new(_accountId);
-                    GetAccountRes res = await GameService.GetAccountAsync(req);
-                    _account = res.account;
+                    GetAccountRequest request = new(_accountId);
+                    GetAccountResponse response = await GameService.GetAccountAsync(request);
+                    _account = response.account;
                 }
 
                 {

@@ -107,7 +107,7 @@
             }
         };
 
-        var req = new GetAccountsReq();
+        var req = new GetAccountsRequest();
         var res = await GameService.GetAccountsAsync(req);
         _allAccounts = res.accounts;
 
@@ -131,7 +131,7 @@
     private async Task RefreshAsync() {
         _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
         if (_matchId != 0) {
-            var req = new GetMatchReq(_matchId);
+            var req = new GetMatchRequest(_matchId);
             var res = await GameService.GetMatchAsync(req);
             _match = res.match;
         }
@@ -145,7 +145,7 @@
 
     private async Task OnInviteClicked(DTO.Account accountToInvite) {
         if (_matchId != 0) {
-            var req = new AddParticipantReq(_matchId, accountToInvite.AccountId);
+            var req = new AddParticipantRequest(_matchId, accountToInvite.AccountId);
             var res = await GameService.AddParticipantAsync(req);
             _errorReason = res.errorReason;
             if (_errorReason == "") {

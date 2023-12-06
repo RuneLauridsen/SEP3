@@ -59,20 +59,20 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
 
         this.handlers = new MessageHandlers();
         this.handlers.register(LoginRequest.class, this::login);
-        this.handlers.register(MoveReq.class, this::move);
+        this.handlers.register(MoveRequest.class, this::move);
         this.handlers.register(ImpatientWinRequest.class, this::impatientWin);
-        this.handlers.register(GetMatchReq.class, this::getMatch);
+        this.handlers.register(GetMatchRequest.class, this::getMatch);
         this.handlers.register(GetMyMatchesRequest.class, this::getMyMatches);
         this.handlers.register(GetGamesRequest.class, this::getGames);
-        this.handlers.register(GetAccountReq.class, this::getAccount);
-        this.handlers.register(GetAccountsReq.class, this::getAccounts);
+        this.handlers.register(GetAccountRequest.class, this::getAccount);
+        this.handlers.register(GetAccountsRequest.class, this::getAccounts);
         this.handlers.register(CreateMatchRequest.class, this::createMatch);
-        this.handlers.register(AddParticipantReq.class, this::addParticipant);
-        this.handlers.register(GetParticipantsReq.class, this::getParticipants);
-        this.handlers.register(GetPendingReq.class, this::getPending);
-        this.handlers.register(DecidePendingReq.class, this::decidePending);
+        this.handlers.register(AddParticipantRequest.class, this::addParticipant);
+        this.handlers.register(GetParticipantsRequest.class, this::getParticipants);
+        this.handlers.register(GetPendingRequest.class, this::getPending);
+        this.handlers.register(DecidePendingRequest.class, this::decidePending);
         this.handlers.register(UpdateUserStatusRequest.class, this::approveUserReg);
-        this.handlers.register(UpdateAccountReq.class, this::updateAccount);
+        this.handlers.register(UpdateAccountRequest.class, this::updateAccount);
         this.handlers.register(GetScoreSumsRequest.class, this::getScoreSums);
         this.handlers.register(GetMatchHistoryRequest.class, this::getMatchHistory);
         this.handlers.register(BeginLiveUpdateRequest.class, this::beginLiveUpdate);
@@ -190,20 +190,19 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         }
     }
 
-
     private RegisterResponse createAccount(RegisterRequest req, String jwt, int clientIdent) {
         //Der kunne muligvis laves bedre errorhandling
-        if (req.username() == null || req.firstName() == null||req.password() == null||req.lastName() == null||req.username().isEmpty() || req.firstName().isEmpty()||req.password().isEmpty()||req.lastName().isEmpty())
+        if (req.username() == null || req.firstName() == null || req.password() == null || req.lastName() == null || req.username().isEmpty() || req.firstName().isEmpty() || req.password().isEmpty() || req.lastName().isEmpty())
             return new RegisterResponse(false, "No parameters can be empty");
         String hashedPassword = PasswordHashing.hash(req.password());
         if (accountService.get(req.username()) != null)
             return new RegisterResponse(false, "Username Already taken");
-        RegisterAccountParam param = new RegisterAccountParam(req.username(),req.firstName(),req.lastName(),req.email(), hashedPassword);
+        RegisterAccountParam param = new RegisterAccountParam(req.username(), req.firstName(), req.lastName(), req.email(), hashedPassword);
         Account account = accountService.create(param);
-        if (account == null ) {
+        if (account == null) {
             return new RegisterResponse(false, "Account could not be made");
         } else {
-            return new RegisterResponse(true,"");
+            return new RegisterResponse(true, "");
         }
     }
 
@@ -229,10 +228,10 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
 
         CreateMatchResponse res = matchMutexes.lockedScope(match.matchId(), () -> {
             // Owner accepts automatically.
-            AddParticipantReq addReq = new AddParticipantReq(match.matchId(), claims.accountId());
-            AddParticipantRes addRes = addParticipant(addReq, jwt, clientIdent);
-            DecidePendingReq decideReq = new DecidePendingReq(match.matchId(), addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
-            DecidePendingRes decideRes = decidePending(decideReq, jwt, clientIdent);
+            AddParticipantRequest addReq = new AddParticipantRequest(match.matchId(), claims.accountId());
+            AddParticipantResponse addRes = addParticipant(addReq, jwt, clientIdent);
+            DecidePendingRequest decideReq = new DecidePendingRequest(match.matchId(), addRes.participant().participantId(), Participant.STATUS_ACCEPTED);
+            DecidePendingResponse decideRes = decidePending(decideReq, jwt, clientIdent);
 
             return new CreateMatchResponse("", match);
         });
@@ -250,27 +249,27 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         return new GetGamesResponse(games);
     }
 
-    private GetMatchRes getMatch(GetMatchReq req, String jwt, int clientIdent) throws NotAuthorizedException {
+    private GetMatchResponse getMatch(GetMatchRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
         if (match == null) {
             match = Empty.match();
         }
-        return new GetMatchRes(match);
+        return new GetMatchResponse(match);
     }
 
     ////////////////////////////////////////////////////////////////
     // Participants
 
-    private AddParticipantRes addParticipant(AddParticipantReq req, String jwt, int clientIdent) throws NotAuthorizedException {
-        AddParticipantRes res = matchMutexes.lockedScope(req.matchId(), () -> {
+    private AddParticipantResponse addParticipant(AddParticipantRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
+        AddParticipantResponse res = matchMutexes.lockedScope(req.matchId(), () -> {
 
             Claims claims = jwtService.verify(jwt);
             Match match = matchService.get(req.matchId());
 
             // Tjek match ikke er begyndt endnu.
             if (match.status() != Match.STATUS_PENDING) {
-                return new AddParticipantRes(Empty.participant(), "Cannot add participant to an ongoing/finished game.");
+                return new AddParticipantResponse(Empty.participant(), "Cannot add participant to an ongoing/finished game.");
             }
 
             // Tjek korrekt account.
@@ -287,33 +286,33 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
             int totalCount = acceptedCount + pendingCount;
             if (totalCount >= needCount) {
                 String reason = String.format("Cannot add another participant. Currently %d players are invited, and game needs %d to start.", totalCount, needCount);
-                return new AddParticipantRes(Empty.participant(), reason);
+                return new AddParticipantResponse(Empty.participant(), reason);
             }
 
             // Alt ok -> opret i persistence.
             CreateParticipantParam param = new CreateParticipantParam(req.accountId(), req.matchId());
             Participant p = participantService.create(param);
-            return new AddParticipantRes(p, "");
+            return new AddParticipantResponse(p, "");
         });
 
         broadcastMatchUpdate(req.matchId());
         return res;
     }
 
-    private GetParticipantsRes getParticipants(GetParticipantsReq req, String jwt, int clientIdent) throws NotAuthorizedException {
+    private GetParticipantsResponse getParticipants(GetParticipantsRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         List<Participant> participants = participantService.getByMatch(req.matchId());
-        return new GetParticipantsRes(participants);
+        return new GetParticipantsResponse(participants);
     }
 
-    private GetPendingRes getPending(GetPendingReq req, String jwt, int clientIdent) throws NotAuthorizedException {
+    private GetPendingResponse getPending(GetPendingRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         List<Participant> pending = participantService.getByAccountAndStatus(claims.accountId(), Participant.STATUS_PENDING);
-        return new GetPendingRes(pending);
+        return new GetPendingResponse(pending);
     }
 
-    private DecidePendingRes decidePending(DecidePendingReq req, String jwt, int clientIdent) throws NotAuthorizedException {
-        DecidePendingRes res = matchMutexes.lockedScope(req.matchId(), () -> {
+    private DecidePendingResponse decidePending(DecidePendingRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
+        DecidePendingResponse res = matchMutexes.lockedScope(req.matchId(), () -> {
 
             Claims claims = jwtService.verify(jwt);
 
@@ -348,9 +347,9 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
                     matchService.update(match);
                 }
 
-                return new DecidePendingRes("");
+                return new DecidePendingResponse("");
             } else {
-                return new DecidePendingRes("Invalid participant status (was " + req.status() + " but must be ACCEPTED or REJECTED).");
+                return new DecidePendingResponse("Invalid participant status (was " + req.status() + " but must be ACCEPTED or REJECTED).");
             }
         });
 
@@ -361,19 +360,19 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
     ////////////////////////////////////////////////////////////////
     // Move
 
-    private MoveRes move(MoveReq req, String jwt, int clientIdent) throws NotAuthorizedException {
-        MoveRes res = matchMutexes.lockedScope(req.matchId(), () -> {
+    private MoveResponse move(MoveRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
+        MoveResponse res = matchMutexes.lockedScope(req.matchId(), () -> {
 
             Claims claims = jwtService.verify(jwt);
             Account account = accountService.get(claims.accountId());
             Match match = matchService.get(req.matchId());
 
             if (match.status() != Match.STATUS_ONGOING) {
-                return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("Match is not ongoing"));
+                return new MoveResponse(match.matchId(), match.data(), MoveResult.invalid("Match is not ongoing"));
             }
 
             if (match.nextAccountId() != claims.accountId()) {
-                return new MoveRes(match.matchId(), match.data(), MoveResult.invalid("It's not your turn."));
+                return new MoveResponse(match.matchId(), match.data(), MoveResult.invalid("It's not your turn."));
             }
 
             TurnBasedGameLogic gl = GameCatalog.getLogic(match.gameId());
@@ -381,7 +380,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
 
             applyMoveResultToMatch(result, match);
 
-            MoveRes response = new MoveRes(match.matchId(), match.data(), result);
+            MoveResponse response = new MoveResponse(match.matchId(), match.data(), result);
             return response;
         });
 
@@ -453,14 +452,14 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
     ////////////////////////////////////////////////////////////////
     // Accounts
 
-    private GetAccountRes getAccount(GetAccountReq req, String jwt, int clientIdent) throws NotAuthorizedException {
+    private GetAccountResponse getAccount(GetAccountRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         jwtService.verify(jwt);
         Account account = accountService.get(req.accountId());
-        GetAccountRes res = new GetAccountRes(account);
+        GetAccountResponse res = new GetAccountResponse(account);
         return res;
     }
 
-    private GetAccountsRes getAccounts(GetAccountsReq req, String jwt, int clientIdent) throws NotAuthorizedException {
+    private GetAccountsResponse getAccounts(GetAccountsRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         List<Account> allAccounts = accountService.get();
         List<Account> returnAccounts = allAccounts;
@@ -475,7 +474,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
             }
         }
 
-        return new GetAccountsRes(returnAccounts);
+        return new GetAccountsResponse(returnAccounts);
     }
 
     private UpdateUserStatusResponse approveUserReg(UpdateUserStatusRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
@@ -485,7 +484,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         return new UpdateUserStatusResponse(success);
     }
 
-    private UpdateAccountRes updateAccount(UpdateAccountReq req, String jwt, int clientIdent) throws NotAuthorizedException {
+    private UpdateAccountResponse updateAccount(UpdateAccountRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         Account fromClient = req.account();
         Account fromServer = accountService.get(fromClient.accountId());
@@ -510,16 +509,15 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
             v.mustBeShorterThan(fromClient, Account::description, "description", 500);
         }
 
-        if (withSameUsername != null &&
-            withSameUsername.accountId() != req.account().accountId()) {
+        if (withSameUsername != null) {
             v.reportInvalid("Username already taken.");
         }
 
         if (v.isValid()) {
             accountService.update(fromClient);
-            return new UpdateAccountRes("");
+            return new UpdateAccountResponse("");
         } else {
-            return new UpdateAccountRes(v.reason());
+            return new UpdateAccountResponse(v.reason());
         }
     }
 
@@ -535,7 +533,7 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
 
     private GetMatchHistoryResponse getMatchHistory(GetMatchHistoryRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         jwtService.verify(jwt);
-        List<MatchScore> scores = scoreService.getScores(req.accountId());
+        List<FinishedMatchScore> scores = scoreService.getScores(req.accountId());
         GetMatchHistoryResponse res = new GetMatchHistoryResponse(scores);
         return res;
     }
