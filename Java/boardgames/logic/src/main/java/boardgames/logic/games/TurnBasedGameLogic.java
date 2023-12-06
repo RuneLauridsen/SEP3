@@ -10,6 +10,6 @@ import java.util.List;
 public interface TurnBasedGameLogic {
     public GameSpec spec();
     public String getInitialData(List<Participant> participants);
-    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match); // NOTE(rune): VMUD i daglig tale.
+    public MoveResult validateMoveAndUpdateData(MoveRequest req, Match match); // NOTE(rune): VMUD i daglig tale.
     public MoveResult impatientWin(Match match);
 }

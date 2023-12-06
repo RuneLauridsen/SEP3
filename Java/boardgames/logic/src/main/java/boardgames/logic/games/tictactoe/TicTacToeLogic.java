@@ -2,7 +2,7 @@ package boardgames.logic.games.tictactoe;
 
 import boardgames.logic.games.TurnBasedGameLogic;
 import boardgames.logic.games.GameSpec;
-import boardgames.logic.messages.Messages.MoveReq;
+import boardgames.logic.messages.Messages.MoveRequest;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.MoveResult;
 import boardgames.shared.dto.Participant;
@@ -33,7 +33,7 @@ public class TicTacToeLogic implements TurnBasedGameLogic {
     }
 
     @Override
-    public MoveResult validateMoveAndUpdateData(MoveReq req, Match match) {
+    public MoveResult validateMoveAndUpdateData(MoveRequest req, Match match) {
         TicTacToeData data = JsonUtil.fromJson(match.data(), TicTacToeData.class);
         TicTacToeMove move = JsonUtil.fromJson(req.moveData(), TicTacToeMove.class);
         MoveResult result = ticTacToeLogic(data, move, match.nextAccountId());

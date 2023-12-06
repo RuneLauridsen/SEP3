@@ -50,9 +50,9 @@
             _accountId = ParseUtil.ParseIntOrDefault(AccountId);
             if (_accountId != 0) {
                 {
-                    GetAccountReq req = new(_accountId);
-                    GetAccountRes res = await GameService.GetAccountAsync(req);
-                    _account = res.account;
+                    GetAccountRequest request = new(_accountId);
+                    GetAccountResponse response = await GameService.GetAccountAsync(request);
+                    _account = response.account;
                 }
 
                 {

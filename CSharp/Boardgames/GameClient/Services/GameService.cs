@@ -25,14 +25,14 @@ public class GameService : IGameService {
         return await socket.SendAndReceiveAsync<LoginResponse>(request);
     }
 
-    public async Task<MoveRes> MoveAsync(MoveReq req) {
+    public async Task<MoveResponse> MoveAsync(MoveRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<MoveRes>(req);
+        return await socket.SendAndReceiveAsync<MoveResponse>(request);
     }
 
-    public async Task<GetMatchRes> GetMatchAsync(GetMatchReq req) {
+    public async Task<GetMatchResponse> GetMatchAsync(GetMatchRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<GetMatchRes>(req);
+        return await socket.SendAndReceiveAsync<GetMatchResponse>(request);
     }
 
     public async Task<GetMyMatchesResponse> GetMyMatchesAsync(GetMyMatchesRequest request) {
@@ -50,39 +50,39 @@ public class GameService : IGameService {
         return await socket.SendAndReceiveAsync<GetGamesResponse>(request);
     }
 
-    public async Task<GetAccountRes> GetAccountAsync(GetAccountReq req) {
+    public async Task<GetAccountResponse> GetAccountAsync(GetAccountRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<GetAccountRes>(req);
+        return await socket.SendAndReceiveAsync<GetAccountResponse>(request);
     }
 
-    public async Task<GetAccountsRes> GetAccountsAsync(GetAccountsReq req) {
+    public async Task<GetAccountsResponse> GetAccountsAsync(GetAccountsRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<GetAccountsRes>(req);
+        return await socket.SendAndReceiveAsync<GetAccountsResponse>(request);
     }
 
-    public async Task<AddParticipantRes> AddParticipantAsync(AddParticipantReq req) {
+    public async Task<AddParticipantResponse> AddParticipantAsync(AddParticipantRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<AddParticipantRes>(req);
+        return await socket.SendAndReceiveAsync<AddParticipantResponse>(request);
     }
 
-    public async Task<GetParticipantsRes> GetParticipantsAsync(GetParticipantsReq req) {
+    public async Task<GetParticipantsResponse> GetParticipantsAsync(GetParticipantsRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<GetParticipantsRes>(req);
+        return await socket.SendAndReceiveAsync<GetParticipantsResponse>(request);
     }
 
-    public async Task<GetPendingRes> GetPendingAsync(GetPendingReq req) {
+    public async Task<GetPendingResponse> GetPendingAsync(GetPendingRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<GetPendingRes>(req);
+        return await socket.SendAndReceiveAsync<GetPendingResponse>(request);
     }
 
-    public async Task<DecidePendingRes> DecidePendingAsync(DecidePendingReq req) {
+    public async Task<DecidePendingResponse> DecidePendingAsync(DecidePendingRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<DecidePendingRes>(req);
+        return await socket.SendAndReceiveAsync<DecidePendingResponse>(request);
     }
 
-    public async Task<UpdateAccountRes> UpdateAccountAsync(UpdateAccountReq req) {
+    public async Task<UpdateAccountResponse> UpdateAccountAsync(UpdateAccountRequest request) {
         var socket = new ServiceSocket("localhost", 1234, _authState);
-        return await socket.SendAndReceiveAsync<UpdateAccountRes>(req);
+        return await socket.SendAndReceiveAsync<UpdateAccountResponse>(request);
     }
 
     public async Task<GetScoreSumsResponse> GetScoreSumsAsync(GetScoreSumsRequest req) {

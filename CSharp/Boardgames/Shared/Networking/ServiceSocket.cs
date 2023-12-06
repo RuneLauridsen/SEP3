@@ -9,8 +9,6 @@ using Shared.AuthState;
 
 namespace Shared.Data;
 
-// TODO(rune): Måske gøre JWT til en del af protokollen, så alle request typerne
-// ikke behøver at construct'es med en JWT?
 public class ServiceSocket {
     private readonly string _url;
     private readonly int _port;

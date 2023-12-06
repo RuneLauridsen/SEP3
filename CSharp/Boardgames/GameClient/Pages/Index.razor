@@ -149,7 +149,7 @@
     private async Task Refresh() {
         isLoggedIn = await authState.GetUserIdAsync();
         if (isLoggedIn != 0) {
-             _pendingInvites = (await GameService.GetPendingAsync(new GetPendingReq())).participants;
+             _pendingInvites = (await GameService.GetPendingAsync(new GetPendingRequest())).participants;
                     _matches = (await GameService.GetMyMatchesAsync(new GetMyMatchesRequest())).matches;
         } else {
             navMgr.NavigateTo("/login");
@@ -174,7 +174,7 @@
     }
 
     private async Task DecidePending(Participant p, int status) {
-        var req = new DecidePendingReq(p.MatchId, p.ParticipantId, status);
+        var req = new DecidePendingRequest(p.MatchId, p.ParticipantId, status);
         var res = await GameService.DecidePendingAsync(req);
         _errorReason = res.errorReason;
         if (_errorReason == "") {

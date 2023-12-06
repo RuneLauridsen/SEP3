@@ -12,19 +12,19 @@ namespace GameClient.Services;
 
 public interface IGameService {
     public Task<LoginResponse> LoginAsync(LoginRequest request);
-    public Task<MoveRes> MoveAsync(MoveReq req);
-    public Task<GetMatchRes> GetMatchAsync(GetMatchReq req);
+    public Task<MoveResponse> MoveAsync(MoveRequest request);
+    public Task<GetMatchResponse> GetMatchAsync(GetMatchRequest request);
     public Task<GetMyMatchesResponse> GetMyMatchesAsync(GetMyMatchesRequest request);
     public Task<CreateMatchResponse> CreateMatchAsync(CreateMatchRequest request);
     public Task<GetGamesResponse> GetGamesAsync(GetGamesRequest request);
-    public Task<GetAccountRes> GetAccountAsync(GetAccountReq req);
-    public Task<GetAccountsRes> GetAccountsAsync(GetAccountsReq req);
+    public Task<GetAccountResponse> GetAccountAsync(GetAccountRequest request);
+    public Task<GetAccountsResponse> GetAccountsAsync(GetAccountsRequest request);
 
-    public Task<AddParticipantRes> AddParticipantAsync(AddParticipantReq req);
-    public Task<GetParticipantsRes> GetParticipantsAsync(GetParticipantsReq req);
-    public Task<GetPendingRes> GetPendingAsync(GetPendingReq req);
-    public Task<DecidePendingRes> DecidePendingAsync(DecidePendingReq req);
-    public Task<UpdateAccountRes> UpdateAccountAsync(UpdateAccountReq req);
+    public Task<AddParticipantResponse> AddParticipantAsync(AddParticipantRequest request);
+    public Task<GetParticipantsResponse> GetParticipantsAsync(GetParticipantsRequest request);
+    public Task<GetPendingResponse> GetPendingAsync(GetPendingRequest request);
+    public Task<DecidePendingResponse> DecidePendingAsync(DecidePendingRequest request);
+    public Task<UpdateAccountResponse> UpdateAccountAsync(UpdateAccountRequest request);
 
     public Task<GetScoreSumsResponse> GetScoreSumsAsync(GetScoreSumsRequest req);
     public Task<GetMatchHistoryResponse> GetMatchHistoryAsync(GetMatchHistoryRequest req);

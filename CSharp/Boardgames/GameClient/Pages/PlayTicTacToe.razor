@@ -98,9 +98,9 @@
         };
 
         {
-            GetAccountsReq req = new();
-            GetAccountsRes res = await GameService.GetAccountsAsync(req);
-            _accounts = res.accounts;
+            GetAccountsRequest request = new();
+            GetAccountsRespnse respnse = await GameService.GetAccountsAsync(request);
+            _accounts = respnse.accounts;
         }
 
         await RefreshAsync();
@@ -110,7 +110,7 @@
     private async Task RefreshAsync() {
         _matchId = ParseUtil.ParseIntOrDefault(MatchId, 0);
         if (_matchId != 0) {
-            var req = new GetMatchReq(_matchId);
+            var req = new GetMatchRequest(_matchId);
             var res = await GameService.GetMatchAsync(req);
             _match = res.match;
 
@@ -138,7 +138,7 @@
         var move = new TicTacToeMove { PlaceOnIndex = squareIndex, TakeFromIndex = takeFromIndex };
         var moveJson = JsonUtil.ToJson(move);
 
-        var req = new MoveReq(_matchId, moveJson);
+        var req = new MoveRequest(_matchId, moveJson);
         var res = await GameService.MoveAsync(req);
 
         _invalidMoveText = res.result.InvalidMoveText;

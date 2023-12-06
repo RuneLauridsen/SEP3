@@ -8,7 +8,7 @@ public interface IAdminService
 {
     public Task<UpdateUserStatusResponse> UpdateUserStatusAsync(Account account, int newStatus);
     public Task<List<Account>> GetUsersWaitingForApprovalAsync();
-    public Task<Account> GetAccountAsync(GetAccountReq req);
-    public Task<UpdateAccountRes> UpdateAccountAsync(UpdateAccountReq req);
+    public Task<Account> GetAccountAsync(GetAccountRequest request);
+    public Task<UpdateAccountResponse> UpdateAccountAsync(UpdateAccountRequest request);
     public Task<IEnumerable<Account>> GetApprovedUsersAsync();
 }
