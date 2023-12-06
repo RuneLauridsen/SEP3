@@ -15,8 +15,6 @@ import boardgames.shared.dto.*;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class LogicServerModelImpl implements LogicServerModel, Runnable {
@@ -461,25 +459,31 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         Claims claims = jwtService.verify(jwt);
         Account fromClient = req.account();
         Account fromServer = accountService.get(fromClient.accountId());
+        Account withSameUsername = accountService.get(req.account().username());
 
-        // TODO(rune): Username already taken.
-        // TODO(rune): Følgende tjek gælder ikke for admin.
         Validation v = new Validation();
 
-        if (fromClient.accountId() != claims.accountId()) {
-            v.invalid(String.format("Tried to edit account id %s but jwt account id was %s.", fromClient.accountId(), claims.accountId()));
+        if (!claims.isAdmin()) {
+            if (fromClient.accountId() != claims.accountId()) {
+                v.reportInvalid(String.format("Tried to edit account id %s but jwt account id was %s.", fromClient.accountId(), claims.accountId()));
+            }
+
+            v.mustBeEqual(fromClient, fromServer, Account::registerDateTime, "register date time");
+            v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
+            v.mustBeEqual(fromClient, fromServer, Account::status, "status");
+
+            v.mustBeNonEmpty(fromClient, Account::username, "username");
+            v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
+            v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
+            v.mustBeNonEmpty(fromClient, Account::email, "email");
+
+            v.mustBeShorterThan(fromClient, Account::description, "description", 500);
         }
 
-        v.equal(fromClient, fromServer, Account::registerDateTime, "register date time");
-        v.equal(fromClient, fromServer, Account::createdOn, "created on");
-        v.equal(fromClient, fromServer, Account::status, "status");
-
-        v.mustBeNonEmpty(fromClient, Account::username, "username");
-        v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
-        v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
-        v.mustBeNonEmpty(fromClient, Account::email, "email");
-
-        v.mustBeShortedThan(fromClient, Account::description, "description", 500);
+        if (withSameUsername != null &&
+            withSameUsername.accountId() != req.account().accountId()) {
+            v.reportInvalid("Username already taken.");
+        }
 
         if (v.isValid()) {
             accountService.update(fromClient);
