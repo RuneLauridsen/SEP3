@@ -15,10 +15,9 @@
 <PageTitle>GameClient</PageTitle>
 
 
-<!-- TODO(rune): Kan man slippe for all 100%'erne?   -->
 <div style="height: 100vh; overflow: hidden;">
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="height: @navbarHeight%">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="">VIA Boardgame Club</a>
             <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
@@ -32,7 +31,7 @@
                             <span class="oi oi-home" aria-hidden="true"></span> Home
                         </NavLink>
                     </li>
-                    
+
                     @if (accountId != 0)
                     {
                         <li class="nav-item">
@@ -40,7 +39,7 @@
                                 <span class="oi oi-plus" aria-hidden="true"></span> Create match
                             </NavLink>
                         </li>
-                        
+
                         <li class="nav-item">
                             <NavLink class="nav-link" href="login" @onclick="LogOut" >
                                 <span class="oi oi-account-logout" aria-hidden="true" ></span> Logout
@@ -55,8 +54,8 @@
                             </NavLink>
                         </li>
                     }
-                    
-                    
+
+
                 </ul>
 
                 <form class="form-inline my-2 my-lg-0 d-flex align-items-center text-muted">
@@ -70,25 +69,14 @@
                                 <img class="rounded-circle border-0 " style="width: 50px; height: 50px;" src="@imgSrc">
                             }
                         </a>
-                        
+
                     }
                 </form>
             </div>
         </div>
     </nav>
 
-    <div class="page" style="height: 91%">
-
-        @if (accountId ==0) {
-            <main class="container">
-                    <ChildContent>
-                        <CascadingValue Value=UpdateStyle>
-                            @Body
-                        </CascadingValue>
-                    </ChildContent>
-                
-            </main>
-        } else{
+    <div class="page" style="height: 100%">
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
@@ -96,27 +84,26 @@
                                 <ChildContent>
                                     <CascadingValue Value=UpdateStyle>
                                         @Body
+                                        <div style="height: 200px"></div> <!-- Empty filler -->
                                     </CascadingValue>
                                 </ChildContent>
-                            
+
                         </div>
                         <div class="col-2 p-5 pt-4" style="background-color: #2c3034">
-                            <h3 style="color: white">Users</h3>
-                            <hr style="color: white"/>
-                            @foreach (var a in allAccounts)
-                            {
-                                if (a.AccountId != accountId)
-                                {
-                                    <p ><a style="text-decoration: none; color: white;" href="/account/@a.AccountId"> @a.Username</a></p>
+                            @if (accountId != 0) {
+                                <h3 style="color: white">Users</h3>
+                                <hr style="color: white"/>
+                                @foreach (var a in allAccounts) {
+                                    if (a.AccountId != accountId) {
+                                        <p ><a style="text-decoration: none; color: white;" href="/account/@a.AccountId"> @a.Username</a></p>
+                                    }
+
                                 }
-                                
                             }
                         </div>
                     </div>
                 </div>
             </main>
-        }
-
     </div>
 </div>
 
@@ -133,7 +120,7 @@
     private Account account = Empty.Account();
     int accountId;
     private EventCallback UpdateStyle => EventCallback.Factory.Create(this, UpdateAccount);
-    
+
 
     protected override async Task OnParametersSetAsync() {
         accountId = await authState.GetUserIdAsync();
@@ -142,7 +129,7 @@
     }
 
     private void ToggleNavMenu() {
-        
+
         collapseNavMenu = !collapseNavMenu;
         if (collapseNavMenu)
         {
@@ -152,7 +139,7 @@
         {
             navbarHeight = 9;
         }
-        
+
     }
 
     private async Task UpdateAccount()
@@ -172,13 +159,13 @@
                 var res = await gameService.GetAccountsAsync(req);
                 allAccounts = res.accounts;
             }
-                
+
             imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
         }
-            
-        
+
+
     }
-    
+
     private async Task LogOut()
     {
         await AuthService.LogoutAsync();
