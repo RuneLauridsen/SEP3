@@ -12,14 +12,28 @@ public class UnitTest1 {
 
     public UnitTest1() {
         TestUtil.ResetDatabase();
-        client = new TestClient(SIMON);
+        client = new TestClient(BOB);
     }
     
     
     //Update user status
     //Update user 
     //get users approved useres = alle users der har status approves
+    
     //get users waiting for approvel, alle users skal have status pending
+    [Fact]
+    public async Task Test_GetUsersWaitingForApproval()
+    {
+        List<Account> accountsWaitingForApproval = new List<Account>();
+        accountsWaitingForApproval.AddRange(await client.AdminService.GetUsersWaitingForApprovalAsync());
+        Assert.Single(accountsWaitingForApproval);
+        foreach (Account a in accountsWaitingForApproval)
+        {
+            Assert.Equal(Account.STATUS_PENDING, a.Status);
+        }
+    }
+    
+    
     //get account med account id
     
     
