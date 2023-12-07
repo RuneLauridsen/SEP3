@@ -132,7 +132,11 @@ public class LogicServerModelImpl implements LogicServerModel {
             ret = h.handle(request, jwt, clientIdent);
         } catch (NotAuthorizedException e) {
             ret = new NotAuthorizedResponse();
+        } catch (Exception e) {
+            Log.error(e);
+            return null;
         }
+
         return ret;
     }
 
@@ -177,21 +181,18 @@ public class LogicServerModelImpl implements LogicServerModel {
         Account account = accountService.get(req.username(), hashedPassword);
         if (account == null) {
             return new LoginResponse(false, Empty.account(), "", "Can't find account, invalid credentials");
-        }
-        else if (req.adminClient() && !account.isAdmin()){
+        } else if (req.adminClient() && !account.isAdmin()) {
             return new LoginResponse(false, Empty.account(), "", "Admin account requered for admin client");
-        }
-        else if (account.status()!= Account.STATUS_ACCEPTED){
+        } else if (account.status() != Account.STATUS_ACCEPTED) {
             String errorReason;
             if (account.status() == Account.STATUS_PENDING)
                 errorReason = "Account awaiting admin approval";
             else
                 errorReason = "Account is no longer active";
             return new LoginResponse(false, Empty.account(), "", errorReason);
-        }
-        else {
+        } else {
             jwt = jwtService.create(account);
-            return new LoginResponse(true, account, jwt,"");
+            return new LoginResponse(true, account, jwt, "");
         }
     }
 
@@ -226,6 +227,11 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     private CreateMatchResponse createMatch(CreateMatchRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
+
+        GameSpec spec = GameCatalog.getSpec(req.gameId());
+        if (spec == null) {
+            return new CreateMatchResponse(String.format("Game id %d not found.", req.gameId()), Empty.match());
+        }
 
         // Create
         CreateMatchParam param = new CreateMatchParam(claims.accountId(), req.gameId());

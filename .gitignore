@@ -33,3 +33,6 @@ Java/boardgames/persistence/src/main/resources/ConnectionString.txt
 # Så længer vi alle bruger lokal database, er det nemmere at have hver sin data source config, 
 # fordi vi bruger forskellige passwords og port.
 dataSources.xml
+Java/boardgames/shared/src/main/resources/ConnectionString.txt
+CSharp/Boardgames/Shared.Tests/ConnectionString.txt
+Java/boardgames/shared/src/main/resources/ConnectionString.txt

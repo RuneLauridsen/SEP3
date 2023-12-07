@@ -18,6 +18,10 @@ public class GameCatalog {
     }
 
     public static GameSpec getSpec(Integer gameId) {
-        return map.get(gameId).spec();
+        TurnBasedGameLogic l = map.get(gameId);
+        if (l == null) {
+            return null;
+        }
+        return l.spec();
     }
 }
