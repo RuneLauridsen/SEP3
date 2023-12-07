@@ -7,7 +7,6 @@ using Shared.Tets;
 namespace GameClient.Tests;
 
 public class UnitTest1 {
-
     private readonly IAuthState authState;
     private readonly IGameService gameService;
     private readonly IAuthService authService;
@@ -19,7 +18,7 @@ public class UnitTest1 {
         authService = new JwtAuthService(authState);
         gameService = new GameService(authState);
 
-        authService.LoginAsync("Minii", "simon", false).Wait();
+        authService.LoginAsync(new LoginRequest("Minii", "simon", false)).Wait();
     }
 
     [Fact]
