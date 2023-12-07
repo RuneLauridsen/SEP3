@@ -67,6 +67,46 @@ public class UnitTest1 {
         Assert.Equal(3, res.matches.Count);
     }
 
+    [Fact]
+    public async Task Test_AddParticipant_GetParticipants() {
+        int matchId;
+        Match before;
+        Match after;
+
+        {
+            // Create match.
+            var res = await client.GameService.CreateMatchAsync(new(TICTACTOE_ID));
+            var m = res.match;
+            matchId = m.MatchId;
+        }
+
+        {
+            // Get match before add participant.
+            var res = await client.GameService.GetMatchAsync(new(matchId));
+            before = res.match;
+        }
+
+        {
+            // Add participant.
+            var res = await client.GameService.AddParticipantAsync(new(matchId, RUNE_ID));
+        }
+
+        {
+            // Get match after add participant.
+            var res = await client.GameService.GetMatchAsync(new(matchId));
+            after = res.match;
+        }
+
+        Assert.Equal(before.Participants.Count, 1);
+        Assert.Equal(after.Participants.Count, 2);
+        Assert.Equal(after.Participants[0].Status, Participant.STATUS_ACCEPTED);
+        Assert.Equal(after.Participants[1].Status, Participant.STATUS_PENDING);
+        Assert.Equal(after.Participants[0].AccountId, SIMON_ID);
+        Assert.Equal(after.Participants[1].AccountId, RUNE_ID);
+    }
+
+    // TODO(simon): Test Simon inviterer sig selv.
+
     // TODO(rune): Test_AddParticipant
     // TODO(rune): Test_GetParticipants
     // TODO(rune): Test_GetPending
@@ -74,13 +114,11 @@ public class UnitTest1 {
     // TODO(rune): Test_GetAccount
 
     [Fact]
-    public void Test_GetAccount()
-    {
+    public void Test_GetAccount() {
         var req = new GetAccountRequest(1);
         var res = client.GameService.GetAccountAsync(req).Result;
         var account = res.account;
         Assert.Equal(1, account.AccountId);
-
     }
     // TODO(rune): Test_GetAccounts
     // TODO(rune): Test_UpdateAccount
