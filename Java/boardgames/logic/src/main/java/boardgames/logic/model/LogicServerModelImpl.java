@@ -300,6 +300,17 @@ public class LogicServerModelImpl implements LogicServerModel {
                 return new AddParticipantResponse(Empty.participant(), reason);
             }
 
+            // Tjek allerede inviteret.
+            for (Participant p : ps) {
+                if (p.status() == Participant.STATUS_ACCEPTED ||
+                    p.status() == Participant.STATUS_PENDING) {
+                    if (p.accountId() == req.accountId()) {
+                        String reason = String.format("Account id %d is already invited.", req.accountId());
+                        return new AddParticipantResponse(Empty.participant(), reason);
+                    }
+                }
+            }
+
             // Alt ok -> opret i persistence.
             CreateParticipantParam param = new CreateParticipantParam(req.accountId(), req.matchId());
             Participant p = participantService.create(param);
