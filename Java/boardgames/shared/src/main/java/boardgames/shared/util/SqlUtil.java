@@ -1,7 +1,4 @@
-package boardgames.persistence.data;
-
-import boardgames.shared.util.Log;
-import boardgames.shared.util.ResourceUtil;
+package boardgames.shared.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

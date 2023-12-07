@@ -3,13 +3,14 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
+import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.util.List;
 
-import static boardgames.persistence.data.SqlUtil.close;
-import static boardgames.persistence.data.SqlUtil.openConnection;
+import static boardgames.shared.util.SqlUtil.close;
+import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class MatchDataSql implements MatchData {

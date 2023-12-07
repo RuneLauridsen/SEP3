@@ -6,8 +6,6 @@ import boardgames.logic.messages.QueuedMessage;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -77,7 +75,7 @@ public class LogicServerSocket implements LogicServer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-            closeServerSocket(serverSocket);
+            close(serverSocket);
         }
     }
 
@@ -93,14 +91,14 @@ public class LogicServerSocket implements LogicServer {
         }
     }
 
-    public void close() {
+    public void shutdown() {
         quit = true;
         distributorThread.interrupt();
         acceptorThread.interrupt();
-        closeServerSocket(serverSocket);
+        close(serverSocket);
     }
 
-    private static void closeServerSocket(ServerSocket serverSocket) {
+    private static void close(ServerSocket serverSocket) {
         if (serverSocket != null && !serverSocket.isClosed()) {
             try {
                 serverSocket.close();

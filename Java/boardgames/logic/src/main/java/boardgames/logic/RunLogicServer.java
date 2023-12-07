@@ -19,9 +19,25 @@ import boardgames.logic.services.ParticipantService;
 import boardgames.logic.services.ParticipantServiceRest;
 import boardgames.logic.services.ScoreService;
 import boardgames.logic.services.ScoreServiceRest;
+import boardgames.shared.util.Log;
 
 public class RunLogicServer {
+    private LogicServerModel model;
+    private LogicServerSocket server;
+
+    private Thread modelThread;
+    private Thread serverThread;
+
     public static void main(String[] args) {
+        RunLogicServer app = new RunLogicServer();
+        app.run(args);
+    }
+
+    public void run() {
+        run(new String[0]);
+    }
+
+    public void run(String[] args) {
         String persistenceUrl = "http://localhost:8080";
         if (args.length == 0) {
             System.out.println("First argument is not persistence server url, using default '" + persistenceUrl + "' instead.");
@@ -39,11 +55,11 @@ public class RunLogicServer {
         MessageQueue incomingQueue = new MessageQueue();
         MessageQueue outgoingQueue = new MessageQueue();
 
-        LogicServerModel model = new LogicServerModelImpl(incomingQueue, outgoingQueue, accountService, matchService, gameService, participantService, scoreService, jwtService);
-        LogicServer server = new LogicServerSocket(incomingQueue, outgoingQueue, 1234);
+        model = new LogicServerModelImpl(incomingQueue, outgoingQueue, accountService, matchService, gameService, participantService, scoreService, jwtService);
+        server = new LogicServerSocket(incomingQueue, outgoingQueue, 1234);
 
-        Thread modelThread = new Thread(model);
-        Thread serverThread = new Thread(server);
+        modelThread = new Thread(model);
+        serverThread = new Thread(server);
 
         modelThread.start();
         serverThread.start();
@@ -53,6 +69,25 @@ public class RunLogicServer {
             serverThread.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        } finally {
+            shutdown();
+        }
+    }
+
+    public void shutdown() {
+        modelThread.interrupt();
+        serverThread.interrupt();
+
+        try {
+            model.shutdown();
+        } catch (Exception e) {
+            Log.error(e);
+        }
+
+        try {
+            server.shutdown();
+        } catch (Exception e) {
+            Log.error(e);
         }
     }
 }
