@@ -12,14 +12,11 @@ public class JwtAuthService : IAuthService {
         this.authState = authState;
     }
 
-    public async Task<bool> LoginAsync(string username, string password, bool isAdminClient) {
+    public async Task<LoginResponse> LoginAsync(LoginRequest req) {
         var socket = new ServiceSocket("localhost", 1234, authState);
-        LoginRequest req = new LoginRequest(username, password, isAdminClient);
-        LoginResponse? res = await socket.SendAndReceiveAsync<LoginResponse>(req);
-
+        LoginResponse res = await socket.SendAndReceiveAsync<LoginResponse>(req);
         await authState.SetAuthStateAsync(res?.jwt ?? "");
-
-        return res?.loginSuccessful ?? false;
+        return res;
     }
 
     public async Task LogoutAsync() {

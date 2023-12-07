@@ -23,7 +23,7 @@ public class Messages {
     //
 
     public record LoginRequest(String username, String password, boolean adminClient) {}
-    public record LoginResponse(boolean loginSuccessful, Account account, String jwt) {}
+    public record LoginResponse(boolean loginSuccessful, Account account, String jwt, String errorReason) {}
 
     public record RegisterRequest(String username, String firstName, String lastName, String email, String password) {}
     public record RegisterResponse(boolean response, String errorReason) {}

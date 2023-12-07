@@ -57,24 +57,15 @@
     private string userName;
     private string password;
     private string errorLabel;
-    private bool isLoggedIn;
-
-    protected override void OnInitialized() {
-        base.OnInitialized();
-    }
+    
 
     private async Task LoginAsync() {
-        errorLabel = "";
-
-        bool loginSuccessful = await authService.LoginAsync(userName, password,true);
-        if (loginSuccessful) {
+        LoginRequest req = new LoginRequest(userName, password, true);
+        LoginResponse res = await authService.LoginAsync(req);
+        if (res.loginSuccessful) {
             navMgr.NavigateTo("/");
         } else {
-            errorLabel = "Invalid username or password for admin client";
+            errorLabel = res.errorReason;
         }
-    }
-
-    private void CreateUser() {
-        navMgr.NavigateTo("/Register");
     }
 }

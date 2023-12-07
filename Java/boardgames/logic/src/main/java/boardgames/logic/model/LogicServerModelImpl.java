@@ -175,11 +175,23 @@ public class LogicServerModelImpl implements LogicServerModel {
     private LoginResponse login(LoginRequest req, String jwt, int clientIdent) {
         String hashedPassword = PasswordHashing.hash(req.password());
         Account account = accountService.get(req.username(), hashedPassword);
-        if (account == null || (req.adminClient() && !account.isAdmin())) {
-            return new LoginResponse(false, Empty.account(), "");
-        } else {
+        if (account == null) {
+            return new LoginResponse(false, Empty.account(), "", "Can't find account, invalid credentials");
+        }
+        else if (req.adminClient() && !account.isAdmin()){
+            return new LoginResponse(false, Empty.account(), "", "Admin account requered for admin client");
+        }
+        else if (account.status()!= Account.STATUS_ACCEPTED){
+            String errorReason;
+            if (account.status() == Account.STATUS_PENDING)
+                errorReason = "Account awaiting admin approval";
+            else
+                errorReason = "Account is no longer active";
+            return new LoginResponse(false, Empty.account(), "", errorReason);
+        }
+        else {
             jwt = jwtService.create(account);
-            return new LoginResponse(true, account, jwt);
+            return new LoginResponse(true, account, jwt,"");
         }
     }
 

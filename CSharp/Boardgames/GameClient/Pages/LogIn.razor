@@ -70,14 +70,13 @@
     public EventCallback UpdateStyle { get; set; }
 
     private async Task LoginAsync() {
-        errorLabel = "";
-
-        bool loginSuccessful = await authService.LoginAsync(userName, password, false);
-        if (loginSuccessful) {
+        LoginRequest req = new LoginRequest(userName, password, false);
+        LoginResponse res = await authService.LoginAsync(req);
+        if (res.loginSuccessful) {
             navMgr.NavigateTo("/");
             await UpdateStyle.InvokeAsync();
         } else {
-            errorLabel = "Invalid username or password";
+            errorLabel = res.errorReason;
         }
     }
 
