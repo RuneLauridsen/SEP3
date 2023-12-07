@@ -71,9 +71,10 @@ public class AccountServiceRest implements AccountService {
     public Account create(RegisterAccountParam param) {
         try {
             ResponseEntity<Account> response = restTemplate.postForEntity(url + "/accounts", param, Account.class);
-            return response.getBody(); // TODO: Check status code.
+            Account body = getBodyOrThrow(response);
+            return body;
         } catch (RestClientException e) {
-            throw new RuntimeException(e); // TODO: Error handling.
+            return null;
         }
     }
 
@@ -81,7 +82,8 @@ public class AccountServiceRest implements AccountService {
     public List<Account> get() {
         try {
             ResponseEntity<Account[]> response = restTemplate.getForEntity(url + "/accounts", Account[].class);
-            return List.of(response.getBody()); // TODO(rune): Check status code.
+            Account[] body = getBodyOrThrow(response);
+            return List.of(body);
         } catch (RestClientException e) {
             Log.error(e);
             return null;
