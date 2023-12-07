@@ -1,1 +1,1 @@
-﻿Host=localhost;Username=postgres;Password=1234;
+﻿Host=localhost;Username=postgres;Password=1346;

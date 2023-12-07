@@ -182,7 +182,7 @@ public class LogicServerModelImpl implements LogicServerModel {
         if (account == null) {
             return new LoginResponse(false, Empty.account(), "", "Can't find account, invalid credentials");
         } else if (req.adminClient() && !account.isAdmin()) {
-            return new LoginResponse(false, Empty.account(), "", "Admin account requered for admin client");
+            return new LoginResponse(false, Empty.account(), "", "Admin account required for admin client");
         } else if (account.status() != Account.STATUS_ACCEPTED) {
             String errorReason;
             if (account.status() == Account.STATUS_PENDING)
