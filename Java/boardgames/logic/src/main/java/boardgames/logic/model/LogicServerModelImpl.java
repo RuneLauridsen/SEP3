@@ -521,12 +521,13 @@ public class LogicServerModelImpl implements LogicServerModel {
             v.mustBeEqual(fromClient, fromServer, Account::registerDateTime, "register date time");
             v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
             v.mustBeEqual(fromClient, fromServer, Account::status, "status");
-
-            v.mustBeNonEmpty(fromClient, Account::username, "username");
-            v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
-            v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
-            v.mustBeNonEmpty(fromClient, Account::email, "email");
         }
+        
+        v.mustBeNonEmpty(fromClient, Account::username, "username");
+        v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
+        v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
+        v.mustBeNonEmpty(fromClient, Account::email, "email");
+        v.mustBeShorterThan(fromClient, Account::description, "description", 500);
 
         v.mustBeShorterThan(fromClient, Account::description, "description", 500);
 
