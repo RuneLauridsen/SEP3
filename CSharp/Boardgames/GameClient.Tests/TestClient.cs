@@ -13,6 +13,6 @@ public class TestClient {
         AuthState = new AuthStateInMemory();
         AuthService = new JwtAuthService(AuthState);
         GameService = new GameService(AuthState);
-        AuthService.LoginAsync(new LoginRequest(user.Username, user.Password, user.IsAdmin)).Wait();
+        AuthService.LoginAsync(new LoginRequest(user.Username, user.Password, false)).Wait();
     }
 }
