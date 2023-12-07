@@ -73,5 +73,28 @@ public class UnitTest1 {
         
     }
 
+    [Fact]
+    public async Task Test_User_Status()
+    {
+        Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(6));
+        UpdateUserStatusRequest req = new (account, 2);
+        Assert.Equal(2, req.newStatus);
+
+    }
+
+    [Fact]
+    public async Task Test_Get_Account()
+    {
+        Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(1));
+        
+        Assert.Equal(1,account.AccountId);
+        Assert.Equal("BenDover",account.Username);
+        Assert.Equal(2,account.Status);
+        Assert.Equal("",account.Description);
+        Assert.Equal("julie@juliemail.dk",account.Email);
+        Assert.Equal("Julie",account.FirstName);
+        Assert.Equal("Bramsen",account.LastName);
+        
+    }
     
 }
