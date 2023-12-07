@@ -18,14 +18,26 @@ public class UnitTest1 {
     
     //Update user status
     //Update user 
+    
+    
     //get users approved useres = alle users der har status approves
+    [Fact]
+    public async Task Test_getAllApprovedUsers()
+    {
+        List<Account> allApprovedAccounts = (List<Account>)await client.AdminService.GetApprovedUsersAsync();
+        Assert.Equal(5,allApprovedAccounts.Count);
+        foreach (Account a in allApprovedAccounts)
+        {
+            Assert.Equal(Account.STATUS_ACCEPTED, a.Status);
+        }
+        
+    }
     
     //get users waiting for approvel, alle users skal have status pending
     [Fact]
     public async Task Test_GetUsersWaitingForApproval()
     {
-        List<Account> accountsWaitingForApproval = new List<Account>();
-        accountsWaitingForApproval.AddRange(await client.AdminService.GetUsersWaitingForApprovalAsync());
+        List<Account> accountsWaitingForApproval = await client.AdminService.GetUsersWaitingForApprovalAsync();
         Assert.Single(accountsWaitingForApproval);
         foreach (Account a in accountsWaitingForApproval)
         {
