@@ -29,8 +29,8 @@ public class Log {
         // NOTE(rune): Erstat med noget fancy, hvis du vil have en fancy log.
         System.out.printf(
             "[%s %s] %s\n",
-            severity.toString(),
             LocalDateTime.now().toString(),
+            severity.toString(),
             string
         );
     }
