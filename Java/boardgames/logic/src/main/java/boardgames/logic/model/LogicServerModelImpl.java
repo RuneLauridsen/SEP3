@@ -477,6 +477,7 @@ public class LogicServerModelImpl implements LogicServerModel {
     private GetAccountResponse getAccount(GetAccountRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         jwtService.verify(jwt);
         Account account = accountService.get(req.accountId());
+        if (account == null) account = Empty.account();
         GetAccountResponse res = new GetAccountResponse(account);
         return res;
     }
