@@ -128,7 +128,6 @@ public class UnitTest1 {
     // TODO(rune): Test_GetParticipants
     // TODO(rune): Test_GetPending
     // TODO(rune): Test_DecidePending
-    // TODO(rune): Test_GetAccount
 
     [Fact]
     public void Test_GetAccount() {
@@ -158,7 +157,20 @@ public class UnitTest1 {
         Assert.Equal(SIMON_ID, accounts[2].AccountId);
     }
 
-    // TODO(rune): Test_UpdateAccount
+    [Fact]
+    public void Test_UpdateAccount()
+    {
+        var req = new GetAccountRequest(SIMON_ID);
+        var res = client.GameService.GetAccountAsync(req).Result;
+        var bimon = res.account;
+        Assert.Equal("Banh", bimon.LastName);
+        
+        bimon.LastName = "Mai";
+        var upReq = new UpdateAccountRequest(bimon);
+        var upRes = client.GameService.UpdateAccountAsync(upReq).Result;
+        Assert.Equal("", upRes.errorReason);
+
+    }
     // TODO(rune): Test_Move
     // TODO(rune): Test_ImpatientWin
     // TODO(rune): Test_GetScoreSums
