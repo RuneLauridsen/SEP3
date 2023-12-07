@@ -15,8 +15,20 @@ public class UnitTest1 {
         client = new TestClient(BOB);
     }
     
-    
-    //Update user status
+    //Get Account
+    [Fact]
+    public async Task Test_Get_Account()
+    {
+        Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(1));
+        
+        Assert.Equal(1,account.AccountId);
+        Assert.Equal("BenDover",account.Username);
+        Assert.Equal(2,account.Status);
+        Assert.Equal("",account.Description);
+        Assert.Equal("julie@juliemail.dk",account.Email);
+        Assert.Equal("Julie",account.FirstName);
+        Assert.Equal("Bramsen",account.LastName);
+    }
     
     
     //Update user 
@@ -149,6 +161,7 @@ public class UnitTest1 {
         
     }
 
+    //Update user status
     [Fact]
     public async Task Test_User_Status()
     {
@@ -158,19 +171,6 @@ public class UnitTest1 {
 
     }
 
-    [Fact]
-    public async Task Test_Get_Account()
-    {
-        Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(1));
-        
-        Assert.Equal(1,account.AccountId);
-        Assert.Equal("BenDover",account.Username);
-        Assert.Equal(2,account.Status);
-        Assert.Equal("",account.Description);
-        Assert.Equal("julie@juliemail.dk",account.Email);
-        Assert.Equal("Julie",account.FirstName);
-        Assert.Equal("Bramsen",account.LastName);
-        
-    }
+   
     
 }
