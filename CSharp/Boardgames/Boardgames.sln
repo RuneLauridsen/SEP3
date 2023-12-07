@@ -10,7 +10,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameClient.Tests", "GameCli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Tests", "Shared.Tests\Shared.Tests.csproj", "{D753B110-28C2-444C-B8F2-5A3E4B6596CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminClient.xunittest", "AdminClient.xunittest\AdminClient.xunittest.csproj", "{BEC0C8A3-9650-41A1-AFCC-774FA879B12A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminClient.Tests", "AdminClient.Tests\AdminClient.Tests.csproj", "{BEC0C8A3-9650-41A1-AFCC-774FA879B12A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

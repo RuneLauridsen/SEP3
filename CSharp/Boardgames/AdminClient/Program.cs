@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using AdminClient.Data;
 using AdminClient.Services;
 using Shared.AuthService;
 using Shared.AuthState;
