@@ -179,10 +179,10 @@ public class LogicServerModelImpl implements LogicServerModel {
     private LoginResponse login(LoginRequest req, String jwt, int clientIdent) {
         String hashedPassword = PasswordHashing.hash(req.password());
         Account account = accountService.get(req.username(), hashedPassword);
-        if (account == null) {
+        if (account.accountId() == 0) {
             return new LoginResponse(false, Empty.account(), "", "Can't find account, invalid credentials");
         } else if (req.adminClient() && !account.isAdmin()) {
-            return new LoginResponse(false, Empty.account(), "", "Admin account requered for admin client");
+            return new LoginResponse(false, Empty.account(), "", "Admin account required for admin client");
         } else if (account.status() != Account.STATUS_ACCEPTED) {
             String errorReason;
             if (account.status() == Account.STATUS_PENDING)
@@ -200,12 +200,14 @@ public class LogicServerModelImpl implements LogicServerModel {
         //Der kunne muligvis laves bedre errorhandling
         if (req.username() == null || req.firstName() == null || req.password() == null || req.lastName() == null || req.username().isEmpty() || req.firstName().isEmpty() || req.password().isEmpty() || req.lastName().isEmpty())
             return new RegisterResponse(false, "No parameters can be empty");
+
         String hashedPassword = PasswordHashing.hash(req.password());
         if (accountService.get(req.username()) != null)
             return new RegisterResponse(false, "Username Already taken");
+
         RegisterAccountParam param = new RegisterAccountParam(req.username(), req.firstName(), req.lastName(), req.email(), hashedPassword);
         Account account = accountService.create(param);
-        if (account == null) {
+        if (account.accountId() == 0) {
             return new RegisterResponse(false, "Account could not be made");
         } else {
             return new RegisterResponse(true, "");
@@ -263,9 +265,6 @@ public class LogicServerModelImpl implements LogicServerModel {
     private GetMatchResponse getMatch(GetMatchRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
         Match match = matchService.get(req.matchId());
-        if (match == null) {
-            match = Empty.match();
-        }
         return new GetMatchResponse(match);
     }
 
@@ -477,7 +476,6 @@ public class LogicServerModelImpl implements LogicServerModel {
     private GetAccountResponse getAccount(GetAccountRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         jwtService.verify(jwt);
         Account account = accountService.get(req.accountId());
-        if (account == null) account = Empty.account();
         GetAccountResponse res = new GetAccountResponse(account);
         return res;
     }
@@ -528,11 +526,11 @@ public class LogicServerModelImpl implements LogicServerModel {
             v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
             v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
             v.mustBeNonEmpty(fromClient, Account::email, "email");
-
-            v.mustBeShorterThan(fromClient, Account::description, "description", 500);
         }
 
-        if (withSameUsername != null &&
+        v.mustBeShorterThan(fromClient, Account::description, "description", 500);
+
+        if (withSameUsername.accountId() != 0 &&
             withSameUsername.accountId() != req.account().accountId()) {
             v.reportInvalid("Username already taken.");
         }

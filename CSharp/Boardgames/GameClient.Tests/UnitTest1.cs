@@ -132,17 +132,17 @@ public class UnitTest1 {
         var account = res.account;
         Assert.Equal(1, account.AccountId);
     }
-    
+
     [Fact]
     public void Test_GetNonExistentAccount()
     {
         var req = new GetAccountRequest(999);
         var res = client.GameService.GetAccountAsync(req).Result;
         var account = res.account;
-        Assert.Equal(0, account.AccountId); 
+        Assert.Equal(0, account.AccountId);
         Assert.Equal("?", account.Username);
     }
-    
+
     [Fact]
     public void Test_GetAccounts()
     {
@@ -160,7 +160,7 @@ public class UnitTest1 {
         var res = client.GameService.GetAccountAsync(req).Result;
         var bimon = res.account;
         Assert.Equal("Banh", bimon.LastName);
-        
+
         bimon.LastName = "Mai";
         var upReq = new UpdateAccountRequest(bimon);
         var upRes = client.GameService.UpdateAccountAsync(upReq).Result;
@@ -168,9 +168,6 @@ public class UnitTest1 {
 
     }
     // TODO(rune): Test_Move
-    // TODO(rune): Test_ImpatientWin
     // TODO(rune): Test_GetScoreSums
     // TODO(rune): Test_GetMatchHistory
-    // TODO(rune): Test_BeginLiveUpdate
-    // TODO(rune): Test_UpdateUserStatus
 }

@@ -1,6 +1,7 @@
 package boardgames.logic.services;
 
 import boardgames.shared.dto.Account;
+import boardgames.shared.dto.Empty;
 import boardgames.shared.util.Log;
 import boardgames.shared.dto.RegisterAccountParam;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class AccountServiceRest implements AccountService {
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.account();
         }
     }
 
@@ -40,13 +41,13 @@ public class AccountServiceRest implements AccountService {
             ResponseEntity<Account[]> response = restTemplate.getForEntity(url + "/accounts?username=" + username, Account[].class);
             Account[] body = getBodyOrThrow(response);
             if (body.length == 0) {
-                return null;
+                return Empty.account();
             } else {
                 return body[0];
             }
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.account();
         }
     }
 
@@ -57,13 +58,13 @@ public class AccountServiceRest implements AccountService {
             ResponseEntity<Account[]> response = restTemplate.getForEntity(url + "/accounts?username=" + username + "&hashedPassword=" + hashedPassword, Account[].class);
             Account[] body = getBodyOrThrow(response);
             if (body.length == 0) {
-                return null;
+                return Empty.account();
             } else {
                 return body[0];
             }
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.account();
         }
     }
 
@@ -74,7 +75,7 @@ public class AccountServiceRest implements AccountService {
             Account body = getBodyOrThrow(response);
             return body;
         } catch (RestClientException e) {
-            return null;
+            return Empty.account();
         }
     }
 
@@ -86,7 +87,7 @@ public class AccountServiceRest implements AccountService {
             return List.of(body);
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return List.of();
         }
     }
 

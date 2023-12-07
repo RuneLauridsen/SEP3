@@ -1,6 +1,7 @@
 package boardgames.logic.services;
 
 import boardgames.shared.dto.CreateParticipantParam;
+import boardgames.shared.dto.Empty;
 import boardgames.shared.dto.Participant;
 import boardgames.shared.util.Log;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class ParticipantServiceRest implements ParticipantService {
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.participant();
         }
     }
 
@@ -61,7 +62,7 @@ public class ParticipantServiceRest implements ParticipantService {
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.participant();
         }
     }
 
