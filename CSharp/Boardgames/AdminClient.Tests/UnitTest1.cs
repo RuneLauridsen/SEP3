@@ -37,7 +37,7 @@ public class UnitTest1 {
             Assert.Equal("Can't find account, invalid credentials",res.errorReason);
         }
         {
-            LoginRequest req = new LoginRequest("Bob", "boberikkesej", true);
+            LoginRequest req = new LoginRequest("Marie", "ikkebruger", true);
             LoginResponse res = await client.AuthService.LoginAsync(req);
             Assert.False(res.loginSuccessful);
             Assert.Equal("Can't find account, invalid credentials",res.errorReason);
