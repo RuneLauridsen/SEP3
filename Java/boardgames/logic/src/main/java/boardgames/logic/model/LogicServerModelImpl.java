@@ -132,7 +132,11 @@ public class LogicServerModelImpl implements LogicServerModel {
             ret = h.handle(request, jwt, clientIdent);
         } catch (NotAuthorizedException e) {
             ret = new NotAuthorizedResponse();
+        } catch (Exception e) {
+            Log.error(e);
+            return null;
         }
+
         return ret;
     }
 

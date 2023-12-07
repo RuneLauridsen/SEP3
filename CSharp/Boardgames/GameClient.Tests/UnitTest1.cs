@@ -56,7 +56,17 @@ public class UnitTest1 {
         Assert.Equal(res.errorReason, "Game id 93718239 not found.");
     }
 
-    // TODO(rune): Test_GetMyMatches
+    [Fact]
+    public async Task Test_GetMyMatches() {
+        await client.GameService.CreateMatchAsync(new(TICTACTOE_ID));
+        await client.GameService.CreateMatchAsync(new(TICTACTOE_ID));
+        await client.GameService.CreateMatchAsync(new(TICTACTOE_ID));
+
+        var res = await client.GameService.GetMyMatchesAsync(new());
+
+        Assert.Equal(3, res.matches.Count);
+    }
+
     // TODO(rune): Test_AddParticipant
     // TODO(rune): Test_GetParticipants
     // TODO(rune): Test_GetPending
