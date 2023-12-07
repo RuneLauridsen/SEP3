@@ -105,14 +105,27 @@ public class UnitTest1 {
         Assert.Equal(after.Participants[1].AccountId, RUNE_ID);
     }
 
-    // TODO(simon): Test Simon inviterer sig selv.
+    [Fact]
+    private async Task Test_AddParticipant_InviteSelf() {
+        int matchId;
+        {
+            // Create match.
+            var res = await client.GameService.CreateMatchAsync(new(TICTACTOE_ID));
+            var m = res.match;
+            matchId = m.MatchId;
+        }
 
-    // TODO(rune): Test_AddParticipant
-    // TODO(rune): Test_GetParticipants
+        {
+            // Add participant.
+            var res = await client.GameService.AddParticipantAsync(new(matchId, SIMON_ID));
+            Assert.Equal(res.errorReason, "Account id " + SIMON_ID + " is already invited.");
+        }
+    }
+
     // TODO(rune): Test_GetPending
     // TODO(rune): Test_DecidePending
     // TODO(rune): Test_GetAccount
-    
+
     [Fact]
     public void Test_GetAccount() {
         var req = new GetAccountRequest(1);
@@ -120,7 +133,7 @@ public class UnitTest1 {
         var account = res.account;
         Assert.Equal(1, account.AccountId);
     }
-    
+
     [Fact]
     public void Test_GetAccounts()
     {
@@ -130,7 +143,7 @@ public class UnitTest1 {
         Assert.Equal(5, accounts.Count);
         Assert.Equal(SIMON_ID, accounts[2].AccountId);
     }
-    
+
     // TODO(rune): Test_UpdateAccount
     // TODO(rune): Test_Move
     // TODO(rune): Test_ImpatientWin
