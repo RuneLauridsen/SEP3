@@ -21,11 +21,31 @@ public class UnitTest1 {
         authService.LoginAsync(new LoginRequest("Minii", "simon", false)).Wait();
     }
 
+    // TODO(rune): Test_Login
+    // TODO(rune): Test_Register
+
     [Fact]
-    public void Test1() {
+    public void Test_GetGames() {
         var req = new GetGamesRequest();
         var res = gameService.GetGamesAsync(req).Result;
         var games = res.games;
         Assert.Equal(2, games.Count);
     }
+
+    // TODO(rune): Test_GetMatch
+    // TODO(rune): Test_GetMyMatches
+    // TODO(rune): Test_CreateMatch
+    // TODO(rune): Test_AddParticipant
+    // TODO(rune): Test_GetParticipants
+    // TODO(rune): Test_GetPending
+    // TODO(rune): Test_DecidePending
+    // TODO(rune): Test_GetAccount
+    // TODO(rune): Test_GetAccounts
+    // TODO(rune): Test_UpdateAccount
+    // TODO(rune): Test_Move
+    // TODO(rune): Test_ImpatientWin
+    // TODO(rune): Test_GetScoreSums
+    // TODO(rune): Test_GetMatchHistory
+    // TODO(rune): Test_BeginLiveUpdate
+    // TODO(rune): Test_UpdateUserStatus
 }
