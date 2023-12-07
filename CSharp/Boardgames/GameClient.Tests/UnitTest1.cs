@@ -62,15 +62,15 @@ public class UnitTest1 {
     // TODO(rune): Test_GetPending
     // TODO(rune): Test_DecidePending
     // TODO(rune): Test_GetAccount
-    
+
     [Fact]
     public void Test_GetAccount()
     {
         var req = new GetAccountRequest(1);
-        var res = gameService.GetAccountAsync(req).Result;
+        var res = client.GameService.GetAccountAsync(req).Result;
         var account = res.account;
         Assert.Equal(1, account.AccountId);
-        
+
     }
     // TODO(rune): Test_GetAccounts
     // TODO(rune): Test_UpdateAccount
