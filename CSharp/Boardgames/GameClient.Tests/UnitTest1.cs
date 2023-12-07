@@ -165,6 +165,11 @@ public class UnitTest1 {
         var upReq = new UpdateAccountRequest(bimon);
         var upRes = client.GameService.UpdateAccountAsync(upReq).Result;
         Assert.Equal("", upRes.errorReason);
+        
+        var uppedReq = new GetAccountRequest(SIMON_ID);
+        var uppedRes = client.GameService.GetAccountAsync(uppedReq).Result;
+        var uppedBimon = uppedRes.account;
+        Assert.Equal("Mai", uppedBimon.LastName);
 
     }
     // TODO(rune): Test_Move
