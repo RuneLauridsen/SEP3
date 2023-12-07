@@ -532,7 +532,8 @@ public class LogicServerModelImpl implements LogicServerModel {
             v.mustBeShorterThan(fromClient, Account::description, "description", 500);
         }
 
-        if (withSameUsername != null) {
+        if (withSameUsername != null &&
+            withSameUsername.accountId() != req.account().accountId()) {
             v.reportInvalid("Username already taken.");
         }
 
