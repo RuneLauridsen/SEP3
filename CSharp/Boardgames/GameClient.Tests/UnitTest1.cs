@@ -112,7 +112,7 @@ public class UnitTest1 {
     // TODO(rune): Test_GetPending
     // TODO(rune): Test_DecidePending
     // TODO(rune): Test_GetAccount
-
+    
     [Fact]
     public void Test_GetAccount() {
         var req = new GetAccountRequest(1);
@@ -120,7 +120,17 @@ public class UnitTest1 {
         var account = res.account;
         Assert.Equal(1, account.AccountId);
     }
-    // TODO(rune): Test_GetAccounts
+    
+    [Fact]
+    public void Test_GetAccounts()
+    {
+        var req = new GetAccountsRequest();
+        var res = client.GameService.GetAccountsAsync(req).Result;
+        var accounts = res.accounts.OrderBy(x => x.AccountId).ToList();
+        Assert.Equal(5, accounts.Count);
+        Assert.Equal(SIMON_ID, accounts[2].AccountId);
+    }
+    
     // TODO(rune): Test_UpdateAccount
     // TODO(rune): Test_Move
     // TODO(rune): Test_ImpatientWin
