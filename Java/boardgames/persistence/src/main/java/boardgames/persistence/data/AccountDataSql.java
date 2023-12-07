@@ -2,14 +2,14 @@ package boardgames.persistence.data;
 
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.RegisterAccountParam;
+import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import static boardgames.persistence.data.SqlUtil.close;
-import static boardgames.persistence.data.SqlUtil.openConnection;
+import static boardgames.shared.util.SqlUtil.close;
+import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class AccountDataSql implements AccountData {
@@ -80,11 +80,11 @@ public class AccountDataSql implements AccountData {
     @Override
     public Account create(RegisterAccountParam param) {
         Sql sql = new Sql(conn, """
-        INSERT INTO boardgames.account 
-        (account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description)
-        VALUES (default, ?,?,?,?,Default,?,?,Default,default, default)
-        RETURNING account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description
-        """);
+            INSERT INTO boardgames.account 
+            (account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description)
+            VALUES (default, ?,?,?,?,Default,?,?,Default,default, default)
+            RETURNING account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description
+            """);
         sql.set(param.getUsername());
         sql.set(param.getFirstName());
         sql.set(param.getLastName());

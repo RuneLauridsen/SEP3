@@ -2,12 +2,13 @@ package boardgames.persistence.data;
 
 import boardgames.shared.dto.FinishedMatchScore;
 import boardgames.shared.dto.ScoreSum;
+import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.util.List;
 
-import static boardgames.persistence.data.SqlUtil.openConnection;
+import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class ScoreDataSql implements ScoreData {

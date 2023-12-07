@@ -1,7 +1,5 @@
-package boardgames.persistence.data;
+package boardgames.shared.util;
 
-import boardgames.shared.util.Log;
-import boardgames.shared.util.Timer;
 import org.intellij.lang.annotations.Language;
 
 import java.sql.Connection;
@@ -394,6 +392,12 @@ public class Sql {
         }
 
         return ret;
+    }
+
+    public void throwIfFailed() throws SQLException {
+        if (caughtException != null) {
+            throw caughtException;
+        }
     }
 
     public void close() {

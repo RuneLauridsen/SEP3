@@ -18,7 +18,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LogicServerModelImpl implements LogicServerModel, Runnable {
+public class LogicServerModelImpl implements LogicServerModel {
     private final AccountService accountService;
     private final MatchService matchService;
     private final GameService gameService;
@@ -86,6 +86,10 @@ public class LogicServerModelImpl implements LogicServerModel, Runnable {
         // NOTE: Vi kunne i princippet starte X tråde her, da model er trådsikret
         // med f.eks. matchMutexes, men skal testes bedre.
         handlerThreadProc();
+    }
+
+    public void shutdown() {
+        // NOTE(rune): Hvis vi havde flere tråde skal de interupt'es her.
     }
 
     private void handlerThreadProc() {

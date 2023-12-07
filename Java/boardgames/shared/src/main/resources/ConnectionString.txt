@@ -1,0 +1,1 @@
+jdbc:postgresql://localhost:5432/postgres?user=postgres&password=asdasd&currentSchema=boardgames
