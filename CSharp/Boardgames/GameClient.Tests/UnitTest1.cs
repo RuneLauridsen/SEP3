@@ -105,8 +105,6 @@ public class UnitTest1 {
         Assert.Equal(after.Participants[1].AccountId, RUNE_ID);
     }
 
-    // TODO(simon): Test Simon inviterer sig selv.
-
     [Fact]
     private async Task Test_AddParticipant_InviteSelf() {
         int matchId;
@@ -124,8 +122,6 @@ public class UnitTest1 {
         }
     }
 
-    // TODO(rune): Test_AddParticipant
-    // TODO(rune): Test_GetParticipants
     // TODO(rune): Test_GetPending
     // TODO(rune): Test_DecidePending
     // TODO(rune): Test_GetAccount
