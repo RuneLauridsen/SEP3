@@ -31,24 +31,32 @@ public class UnitTest1 {
 
         {
             var res = client.GameService.CreateMatchAsync(new(TICTACTOE_ID)).Result;
-
             Assert.Equal(res.errorReason, "");
+            Assert.NotEqual(res.match.MatchId, 0);
             matchId = res.match.MatchId;
         }
 
         {
             var res = client.GameService.GetMatchAsync(new(matchId)).Result;
+            var m = res.match;
 
-            Assert.Equal(res.match.Participants.Count, 1);
-            Assert.Equal(res.match.Participants[0].AccountId, SIMON_ID);
-            Assert.Equal(res.match.Participants[0].Status, Participant.STATUS_ACCEPTED);
+            Assert.Equal(m.MatchId, matchId);
+            Assert.Equal(m.GameId, TICTACTOE_ID);
+            Assert.Equal(m.OwnerId, SIMON_ID);
+            Assert.Equal(m.Participants.Count, 1);
+            Assert.Equal(m.Participants[0].AccountId, SIMON_ID);
+            Assert.Equal(m.Participants[0].Status, Participant.STATUS_ACCEPTED);
         }
-
     }
 
-    // TODO(rune): Test_GetMatch
+    [Fact]
+    public void Test_CreateMatch_GameNotFound() {
+        var res = client.GameService.CreateMatchAsync(new(93718239)).Result;
+        Assert.Equal(res.match.MatchId, 0);
+        Assert.Equal(res.errorReason, "Game id 93718239 not found.");
+    }
+
     // TODO(rune): Test_GetMyMatches
-    // TODO(rune): Test_CreateMatch
     // TODO(rune): Test_AddParticipant
     // TODO(rune): Test_GetParticipants
     // TODO(rune): Test_GetPending
