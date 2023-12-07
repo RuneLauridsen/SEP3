@@ -81,6 +81,16 @@ public class UnitTest1 {
         var account = res.account;
         Assert.Equal(1, account.AccountId);
     }
+
+    [Fact]
+    public void Test_GetNonExistentAccount()
+    {
+        var req = new GetAccountRequest(999);
+        var res = client.GameService.GetAccountAsync(req).Result;
+        var account = res.account;
+        Assert.Equal(0, account.AccountId); 
+        Assert.Equal("?", account.Username);
+    }
     
     [Fact]
     public void Test_GetAccounts()
