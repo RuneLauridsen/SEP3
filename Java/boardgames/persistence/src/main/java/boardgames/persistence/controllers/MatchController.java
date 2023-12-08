@@ -5,7 +5,6 @@ import boardgames.persistence.data.GameData;
 import boardgames.persistence.data.MatchData;
 import boardgames.persistence.data.ParticipantData;
 import boardgames.shared.dto.*;
-import org.postgresql.jdbc.PreferQueryMode;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +23,20 @@ public class MatchController {
         this.accountData = accountData;
         this.gameData = gameData;
         this.participantData = participantData;
+    }
+
+    private void includeParticipants(Match m) {
+        List<Participant> participants = participantData.getAll(m.matchId(), -1, -1);
+        m.setParticipants(participants);
+        for (Participant p : participants) {
+            Account a = accountData.get(p.accountId());
+            p.setAccount(a);
+        }
+    }
+
+    private void includeGame(Match match) {
+        Game game = gameData.get(match.gameId());
+        match.setGame(game);
     }
 
     @PostMapping("matches")
@@ -46,17 +59,8 @@ public class MatchController {
         Match match = matchData.get(matchId);
         throwIfNotFound(matchId, match);
 
-        // Include participants.
-        List<Participant> participants = participantData.getAll(matchId, -1, -1);
-        match.setParticipants(participants);
-        for (Participant p : participants) {
-            Account a = accountData.get(p.accountId());
-            p.setAccount(a);
-        }
-
-        // Include game.
-        Game game = gameData.get(match.gameId());
-        match.setGame(game);
+        includeParticipants(match);
+        includeGame(match);
 
         return match;
     }
@@ -76,6 +80,12 @@ public class MatchController {
     public List<Match> getAll(@RequestParam(defaultValue = "-1") int accountId,
                               @RequestParam(defaultValue = "-1") int status) {
         List<Match> matches = matchData.getAll(accountId, status);
+
+        for (Match m : matches) {
+            includeGame(m);
+            includeParticipants(m);
+        }
+
         return matches;
     }
 }
