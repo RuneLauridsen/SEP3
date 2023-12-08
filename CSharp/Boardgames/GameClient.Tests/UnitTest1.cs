@@ -52,7 +52,14 @@ public class UnitTest1 {
             LoginRequest req = new LoginRequest("Sundar", "sundar", false);
             LoginResponse res = await client.AuthService.LoginAsync(req);
             Assert.False(res.loginSuccessful);
-            Assert.Equal("",res.errorReason);
+            Assert.Equal("Account awaiting admin approval",res.errorReason);
+        }
+        {
+            //login med registreret bruger ikke godkendt af admin account 
+            LoginRequest req = new LoginRequest("ToBeDeleted", "ToBeDeleted", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.False(res.loginSuccessful);
+            Assert.Equal("Account is no longer active",res.errorReason);
         }
         
     }
