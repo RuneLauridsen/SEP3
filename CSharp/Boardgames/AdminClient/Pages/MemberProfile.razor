@@ -41,6 +41,10 @@
 {
     <div class="alert alert-danger">@_errorReason</div>
 }
+@if (changeOkay)
+{
+    <div class="alert alert-success">Changes are saved</div>
+}
 
 @code{
     [Parameter]
@@ -49,6 +53,7 @@
     private string _imgSrc = "";
     private IBrowserFile? _uploadedProfilePicture = null;
     private string _errorReason = "";
+    bool changeOkay;
 
 
     protected override async Task OnInitializedAsync() {
@@ -84,8 +89,10 @@
         var res = await adminService.UpdateAccountAsync(req);
 
         _errorReason = res.errorReason;
-        if (_errorReason == "") {
+        if (_errorReason == "")
+        {
             await OnParametersSetAsync();
+            changeOkay = true;
         }
     }
 

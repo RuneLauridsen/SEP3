@@ -34,7 +34,7 @@ tr:nth-child(even) {
             <th>Username</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Register Date</th>
+            <th>Applied on date</th>
             <th>Confirm</th>
         </tr>
         @foreach (Account member in applicants)
@@ -43,7 +43,7 @@ tr:nth-child(even) {
                 <td>@(member.Username)</td>
                 <td>@(member.FirstName) @(member.LastName)</td>
                 <td>@(member.Email)</td>
-                <td>@(member.RegisterDateTime)</td>
+                <td>@(member.CreatedOn)</td>
                 <td>
                     <button style="background-color: #84e387" width:5px height:5px @onclick="() => ApplicantAccept(member)">Accept</button>
                     <button style="background-color: #f25555" width:5px height:5px @onclick="() => ApplicantReject(member)">Reject</button>
