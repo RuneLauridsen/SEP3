@@ -60,7 +60,7 @@ public class AccountServiceRest implements AccountService {
             if (body.length == 0) {
                 return Empty.account();
             } else {
-                return body[0];
+                return coalesce(body[0], Empty.account());
             }
         } catch (RestClientException e) {
             Log.error(e);
