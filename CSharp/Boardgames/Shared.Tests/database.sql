@@ -72,6 +72,8 @@ VALUES
     ('rune',                'Rune', 'Lauridsen', 'rune@runemail.dk',   now(),'bab432c8f61b2be04113e49c595cc29a0ed57179a105fa098c270cf0dff3ddee',    2, false),    -- password = 'runerune'
     ('Bob',                'Bob', 'III', 'bobsep3bob@gmail.com',        now(),'6340a7a742bb4e89ff6e7b106548ba4f9fa29b44d7cd205f5f490ffb01215f7d',   2, true),     -- password = 'bobersej'
     ('Sundar',             'Sundar', 'Pichai', 'sundar@gmail.com',        now(),'89beafb3790f2fb5917de6baea168ad7d4b9bfa9a4e8961997cb532f561b28d7', 1, true);    -- password = 'sundar'
+('ToBeDeleted',             'ToBeDeleted', 'ToBeDeleted', 'ToBeDeleted',        now(),'0435b6d56222cde1f740441f8b4448180bea8817ba87abe004cd773e36f03232', 3, true);    -- password = 'ToBeDeleted'
+
 
 INSERT INTO game
     (name, game_picture_type, game_picture )
