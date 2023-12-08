@@ -105,9 +105,16 @@
                             <h3><a href="match/@m.MatchId">@gameDicPic[m.GameId].Name</a></h3>
                             <img style="width:100%; height: 100%;"  src="@HtmlUtil.ToImgSrcString(gameDicPic[m.GameId].GamePicture, gameDicPic[m.GameId].GamePictureType)" alt="game picture"/>
                             <p>Participents: 
-                                @foreach (Participant p  in m.Participants)
+                                @for (int i = 0; i < m.Participants.Count; i++)
                                 {
-                                    @p.Account.Username;
+                                    if (i == m.Participants.Count-1)
+                                    {
+                                        @:@m.Participants[i].Account.Username
+                                    }
+                                    else
+                                    {
+                                        @:@m.Participants[i].Account.Username, 
+                                    }
                                 }</p>
                         </div>
 
