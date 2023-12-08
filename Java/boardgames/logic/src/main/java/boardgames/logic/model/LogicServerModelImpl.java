@@ -198,11 +198,19 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     private RegisterResponse createAccount(RegisterRequest req, String jwt, int clientIdent) {
         //Der kunne muligvis laves bedre errorhandling
-        if (req.username() == null || req.firstName() == null || req.password() == null || req.lastName() == null || req.username().isEmpty() || req.firstName().isEmpty() || req.password().isEmpty() || req.lastName().isEmpty())
+        if (req.username() == null ||
+            req.firstName() == null ||
+            req.password() == null ||
+            req.lastName() == null ||
+            req.username().isEmpty() ||
+            req.firstName().isEmpty() ||
+            req.password().isEmpty() ||
+            req.lastName().isEmpty()) {
             return new RegisterResponse(false, "No parameters can be empty");
+        }
 
         String hashedPassword = PasswordHashing.hash(req.password());
-        if (accountService.get(req.username()) != null)
+        if (accountService.get(req.username()).accountId() != 0)
             return new RegisterResponse(false, "Username Already taken");
 
         RegisterAccountParam param = new RegisterAccountParam(req.username(), req.firstName(), req.lastName(), req.email(), hashedPassword);
@@ -522,13 +530,11 @@ public class LogicServerModelImpl implements LogicServerModel {
             v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
             v.mustBeEqual(fromClient, fromServer, Account::status, "status");
         }
-        
+
         v.mustBeNonEmpty(fromClient, Account::username, "username");
         v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
         v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
         v.mustBeNonEmpty(fromClient, Account::email, "email");
-        v.mustBeShorterThan(fromClient, Account::description, "description", 500);
-
         v.mustBeShorterThan(fromClient, Account::description, "description", 500);
 
         if (withSameUsername.accountId() != 0 &&

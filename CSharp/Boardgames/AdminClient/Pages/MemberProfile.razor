@@ -82,10 +82,10 @@
 
         var req = new Messages.UpdateAccountRequest(_account);
         var res = await adminService.UpdateAccountAsync(req);
-        
+
         _errorReason = res.errorReason;
         if (_errorReason == "") {
-            navMgr.ReloadCurrentPage();
+            await OnParametersSetAsync();
         }
     }
 
