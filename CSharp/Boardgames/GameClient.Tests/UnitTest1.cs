@@ -15,9 +15,79 @@ public class UnitTest1 {
         client = new TestClient(SIMON);
     }
 
-    // TODO(rune): Test_Login
-    // TODO(rune): Test_Register
+    [Fact]
+    public async Task Test_Login()
+    {
+        {
+            //Login med ikke admin bruger
+            LoginRequest req = new LoginRequest("rune", "runerune", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.True(res.loginSuccessful);
+            Assert.Equal("",res.errorReason);
+        }
+        {
+            //Login med admin bruger 
+            LoginRequest req = new LoginRequest("Bob", "bobersej", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.True(res.loginSuccessful);
+            Assert.Equal("",res.errorReason);
+        }
+        {
+            //login med rigtig brugernavn, forkert password
+            LoginRequest req = new LoginRequest("runerune", "boberikkesej", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.False(res.loginSuccessful);
+            Assert.Equal("Can't find account, invalid credentials",res.errorReason);
+        }
+        
+        {
+            //login med ikke registreret account 
+            LoginRequest req = new LoginRequest("Marie", "ikkebruger", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.False(res.loginSuccessful);
+            Assert.Equal("Can't find account, invalid credentials",res.errorReason);
+        }
+        {
+            //login med registreret bruger ikke godkendt af admin account 
+            LoginRequest req = new LoginRequest("Sundar", "sundar", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.False(res.loginSuccessful);
+            Assert.Equal("Account awaiting admin approval",res.errorReason);
+        }
+        {
+            //login med registreret bruger ikke godkendt af admin account 
+            LoginRequest req = new LoginRequest("ToBeDeleted", "ToBeDeleted", false);
+            LoginResponse res = await client.AuthService.LoginAsync(req);
+            Assert.False(res.loginSuccessful);
+            Assert.Equal("Account is no longer active",res.errorReason);
+        }
+        
+    }
 
+    [Fact]
+    public async Task Test_register()
+    {
+        {
+            RegisterRequest req = new RegisterRequest("BenDover", "firstName", "lastName", "email", "password");
+            RegisterResponse res = await client.AuthService.RegisterAsync(req);
+            Assert.False(res.response);
+            Assert.Equal("Username Already taken",res.errorReason);
+        }
+        {
+            RegisterRequest req = new RegisterRequest("", "", "", "", "");
+            RegisterResponse res = await client.AuthService.RegisterAsync(req);
+            Assert.False(res.response);
+            Assert.Equal("No parameters can be empty",res.errorReason);
+        }
+        {
+            RegisterRequest req = new RegisterRequest("username", "firstName", "lastName", "email", "password");
+            RegisterResponse res = await client.AuthService.RegisterAsync(req);
+            Assert.True(res.response);
+            Assert.Equal("",res.errorReason);
+        }
+        
+    }
+    
     [Fact]
     public void Test_GetGames() {
         var res = client.GameService.GetGamesAsync(new()).Result;
@@ -132,17 +202,17 @@ public class UnitTest1 {
         var account = res.account;
         Assert.Equal(1, account.AccountId);
     }
-    
+
     [Fact]
     public void Test_GetNonExistentAccount()
     {
         var req = new GetAccountRequest(999);
         var res = client.GameService.GetAccountAsync(req).Result;
         var account = res.account;
-        Assert.Equal(0, account.AccountId); 
+        Assert.Equal(0, account.AccountId);
         Assert.Equal("?", account.Username);
     }
-    
+
     [Fact]
     public void Test_GetAccounts()
     {
@@ -160,7 +230,7 @@ public class UnitTest1 {
         var res = client.GameService.GetAccountAsync(req).Result;
         var bimon = res.account;
         Assert.Equal("Banh", bimon.LastName);
-        
+
         bimon.LastName = "Mai";
         var upReq = new UpdateAccountRequest(bimon);
         var upRes = client.GameService.UpdateAccountAsync(upReq).Result;
@@ -173,9 +243,6 @@ public class UnitTest1 {
 
     }
     // TODO(rune): Test_Move
-    // TODO(rune): Test_ImpatientWin
     // TODO(rune): Test_GetScoreSums
     // TODO(rune): Test_GetMatchHistory
-    // TODO(rune): Test_BeginLiveUpdate
-    // TODO(rune): Test_UpdateUserStatus
 }

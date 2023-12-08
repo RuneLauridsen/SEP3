@@ -1,6 +1,7 @@
 package boardgames.logic.services;
 
 import boardgames.shared.dto.CreateMatchParam;
+import boardgames.shared.dto.Empty;
 import boardgames.shared.dto.Match;
 import boardgames.shared.util.Log;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class MatchServiceRest implements MatchService {
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.match();
         }
     }
 
@@ -37,7 +38,7 @@ public class MatchServiceRest implements MatchService {
             return getBodyOrThrow(response);
         } catch (RestClientException e) {
             Log.error(e);
-            return null;
+            return Empty.match();
         }
     }
 

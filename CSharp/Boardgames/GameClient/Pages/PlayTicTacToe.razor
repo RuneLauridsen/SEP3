@@ -69,8 +69,8 @@
     <div class="alert alert-danger">@_invalidMoveText</div>
 }
 
-@if (_winnerText != "") {
-    <div class="alert alert-success">@_winnerText</div>
+@if (_finishedText != "") {
+    <div class="alert alert-success">@_finishedText</div>
 }
 
 @code {
@@ -82,7 +82,7 @@
     private int _matchId = 0;
     private DTO.Match _match = Empty.Match();
     private string _invalidMoveText = "";
-    private string _winnerText = "";
+    private string _finishedText = "";
 
     private int remaining = 0;
     private int takeFromIndex = -1;
@@ -117,6 +117,10 @@
 
             if (_match.NextAccountId == _data.AccountIdO) remaining = _data.RemainingO;
             if (_match.NextAccountId == _data.AccountIdX) remaining = _data.RemainingX;
+
+            if (_match.Status == DTO.Match.STATUS_FINISHED) {
+                _finishedText = "Match is finished.";
+            }
         }
 
         takeFromIndex = -1;
@@ -141,7 +145,7 @@
         var res = await GameService.MoveAsync(req);
 
         _invalidMoveText = res.result.InvalidMoveText;
-        _winnerText = res.result.FinishedText;
+        _finishedText = res.result.FinishedText;
 
         await RefreshAsync();
     }
