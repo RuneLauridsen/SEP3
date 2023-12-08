@@ -13,4 +13,12 @@ public class RestUtil {
 
         return body;
     }
+
+    public static <T> T coalesce(T a, T b) {
+        if (a == null) {
+            return b;
+        } else {
+            return a;
+        }
+    }
 }
