@@ -165,9 +165,35 @@ public class UnitTest1 {
     [Fact]
     public async Task Test_User_Status()
     {
-        Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(6));
-        UpdateUserStatusRequest req = new (account, 2);
-        Assert.Equal(2, req.newStatus);
+        //Ændre fra pending til accepted
+        {
+            Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(6));
+            Assert.Equal(Account.STATUS_PENDING,account.Status);
+            UpdateUserStatusResponse res = await client.AdminService.UpdateUserStatusAsync(account, Account.STATUS_ACCEPTED);
+            Assert.True(res.b);
+            Assert.Equal(Account.STATUS_ACCEPTED, client.AdminService.GetAccountAsync(new GetAccountRequest(6)).Result.Status);
+        }
+        
+        //Ændre fra Accepted til Deleted
+        {
+            Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(1));
+            Assert.Equal(Account.STATUS_ACCEPTED,account.Status);
+            UpdateUserStatusResponse res = await client.AdminService.UpdateUserStatusAsync(account, Account.STATUS_DELETED);
+            Assert.True(res.b);
+            Assert.Equal(Account.STATUS_DELETED, client.AdminService.GetAccountAsync(new GetAccountRequest(1)).Result.Status);
+        }
+        TestUtil.ResetDatabase();
+        //Ændre fra pending til deleted
+        {
+            Account account = await client.AdminService.GetAccountAsync(new GetAccountRequest(6));
+            Assert.Equal(Account.STATUS_PENDING,account.Status);
+            UpdateUserStatusResponse res = await client.AdminService.UpdateUserStatusAsync(account, Account.STATUS_DELETED);
+            Assert.True(res.b);
+            Assert.Equal(Account.STATUS_DELETED, client.AdminService.GetAccountAsync(new GetAccountRequest(6)).Result.Status);
+        }
+        
+       
+        
 
     }
 
