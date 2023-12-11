@@ -44,18 +44,25 @@ import java.util.function.Function;
  */
 
 public class Sql {
+    private Connection connection;
+    private ConnectionPool pool;
     private PreparedStatement statement;
     private ResultSet resultSet;
-    private SQLException caughtException;
+    private Exception caughtException;
     private int autoIndex;
 
-    public Sql(Connection connection, @Language("SQL") String sql) {
+    public Sql(ConnectionPool pool, @Language("SQL") String sql) {
         try {
+            this.pool = pool;
+
+            // Det er brugerens ansvar altid at kalde, execute(), querySingle(),
+            // queryAll() eller close(), for at release connection igen.
+            connection = pool.acquireConnection();
             if (connection == null) {
                 throw new SQLException("Connection was null");
             }
             this.statement = connection.prepareStatement(sql);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             this.caughtException = e;
         }
 
@@ -75,7 +82,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 statement.setInt(parameterIndex, v);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -87,7 +94,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 statement.setDouble(parameterIndex, v);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -103,7 +110,7 @@ public class Sql {
                 } else {
                     statement.setInt(parameterIndex, v);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -119,7 +126,7 @@ public class Sql {
                 } else {
                     statement.setDouble(parameterIndex, v);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -135,7 +142,7 @@ public class Sql {
                 } else {
                     statement.setString(parameterIndex, v);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -151,7 +158,7 @@ public class Sql {
                 } else {
                     statement.setDate(parameterIndex, Date.valueOf(v));
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -167,7 +174,7 @@ public class Sql {
                 } else {
                     statement.setTimestamp(parameterIndex, Timestamp.valueOf(v));
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -183,7 +190,7 @@ public class Sql {
                 } else {
                     statement.setBytes(parameterIndex, v);
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -204,7 +211,7 @@ public class Sql {
                 } else {
                     return false;
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -216,7 +223,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 return resultSet.getInt(columnName);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -233,7 +240,7 @@ public class Sql {
                 } else {
                     return i;
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -245,7 +252,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 return resultSet.getDouble(columnName);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -257,7 +264,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 return resultSet.getString(columnName);
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -274,7 +281,7 @@ public class Sql {
                 } else {
                     return v.toLocalDate();
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -291,7 +298,7 @@ public class Sql {
                 } else {
                     return v.toLocalDateTime();
                 }
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -304,7 +311,7 @@ public class Sql {
             try {
                 byte[] bytes = resultSet.getBytes(columnName);
                 return null;
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -317,7 +324,7 @@ public class Sql {
             try {
                 boolean b = resultSet.getBoolean(columnName);
                 return b;
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -329,7 +336,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 resultSet = statement.executeQuery();
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
             }
         }
@@ -342,7 +349,7 @@ public class Sql {
         if (caughtException == null) {
             try {
                 ret = statement.executeUpdate();
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 caughtException = e;
                 Log.error(e);
             }
@@ -394,7 +401,7 @@ public class Sql {
         return ret;
     }
 
-    public void throwIfFailed() throws SQLException {
+    public void throwIfFailed() throws Exception {
         if (caughtException != null) {
             throw caughtException;
         }
@@ -406,5 +413,7 @@ public class Sql {
 
         resultSet = null;
         statement = null;
+
+        pool.releaseConnection(connection);
     }
 }

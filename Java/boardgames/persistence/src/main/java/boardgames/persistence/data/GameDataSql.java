@@ -1,6 +1,7 @@
 package boardgames.persistence.data;
 
 import boardgames.shared.dto.Game;
+import boardgames.shared.util.ConnectionPool;
 import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,10 @@ import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class GameDataSql implements GameData {
-    private final Connection conn;
+    private final ConnectionPool pool;
 
     public GameDataSql() {
-        conn = openConnection();
+        pool = new ConnectionPool(5);
     }
 
     private Game readGame(Sql sql) {
@@ -38,21 +39,21 @@ public class GameDataSql implements GameData {
 
     @Override
     public Game get(int gameId) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.game WHERE game_id = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.game WHERE game_id = ?");
         sql.set(gameId);
         return sql.querySingle(this::readGame);
     }
 
     @Override
     public Game getWithPicture(int gameId) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.game WHERE game_id = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.game WHERE game_id = ?");
         sql.set(gameId);
         return sql.querySingle(this::readGameWithPicture);
     }
 
     @Override
     public List<Game> getAll() {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.game");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.game");
         return sql.queryAll(this::readGameWithPicture);
     }
 }
