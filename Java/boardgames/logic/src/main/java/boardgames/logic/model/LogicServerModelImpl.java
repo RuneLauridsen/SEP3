@@ -161,11 +161,13 @@ public class LogicServerModelImpl implements LogicServerModel {
             return;
         }
 
+        MatchNotification notification = new MatchNotification(matchId);
+        Message message = new Message(notification);
+
         // Broadcast to all clients that listen on each participating account.
+        // No need to broadcast to match.ownerId(), since owner is always a participant.
         for (Participant p : m.participants()) {
             if (p.status() != Participant.STATUS_REJECTED) {
-                MatchNotification response = new MatchNotification(matchId);
-                Message message = new Message(response, 0.0);
                 for (int listeningClientIdent : listeners.get(p.accountId())) {
                     outgoingQueue.post(message, listeningClientIdent);
                 }
@@ -406,7 +408,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
             TurnBasedGameLogic gl = GameCatalog.getLogic(match.gameId());
             MoveResult result = gl.validateMoveAndUpdateData(req, match);
-
+            // ..
             applyMoveResultToMatch(result, match);
 
             MoveResponse response = new MoveResponse(match.matchId(), match.data(), result);
