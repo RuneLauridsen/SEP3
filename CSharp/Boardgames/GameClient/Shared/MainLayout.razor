@@ -27,7 +27,7 @@
             </button>
             <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    
+
 
                     @if (accountId != 0)
                     {
@@ -153,8 +153,8 @@
 
     }
 
-    private async Task UpdateAccount()
-    {
+    private async Task UpdateAccount() {
+        accountId = await authState.GetUserIdAsync();
         if (accountId != 0)
         {
             if (accountId != account.AccountId)
