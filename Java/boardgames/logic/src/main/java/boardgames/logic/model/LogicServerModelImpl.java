@@ -8,7 +8,7 @@ import boardgames.logic.messages.MessageQueue;
 import boardgames.logic.messages.Message;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.messages.MessageHandler;
-import boardgames.logic.messages.MessageHandlers;
+import boardgames.logic.messages.MessageHandlerMap;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
 import boardgames.shared.util.Log;
@@ -29,7 +29,7 @@ public class LogicServerModelImpl implements LogicServerModel {
     private final MessageQueue incomingQueue;
     private final MessageQueue outgoingQueue;
     private final IndexedLocks matchMutexes;
-    private final MessageHandlers handlers;
+    private final MessageHandlerMap handlers;
 
     // NOTE(rune): Key = accountId, value = clientIdent.
     // Viser hvilke clientIdent'er der lytter til en accountId.
@@ -58,7 +58,7 @@ public class LogicServerModelImpl implements LogicServerModel {
         this.matchMutexes = new IndexedLocks();
         this.listeners = new ConcurrentMultiValueHashMap<>();
 
-        this.handlers = new MessageHandlers();
+        this.handlers = new MessageHandlerMap();
         this.handlers.register(LoginRequest.class, this::login);
         this.handlers.register(MoveRequest.class, this::move);
         this.handlers.register(ImpatientWinRequest.class, this::impatientWin);
