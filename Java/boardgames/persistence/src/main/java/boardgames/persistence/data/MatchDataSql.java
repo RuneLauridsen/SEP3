@@ -3,6 +3,7 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Game;
 import boardgames.shared.dto.Match;
+import boardgames.shared.util.ConnectionPool;
 import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,10 @@ import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class MatchDataSql implements MatchData {
-    private final Connection conn;
+    private final ConnectionPool pool;
 
     public MatchDataSql() {
-        conn = openConnection();
+        pool = new ConnectionPool(5);
     }
 
     private Match readMatch(Sql sql) {
@@ -37,7 +38,7 @@ public class MatchDataSql implements MatchData {
 
     @Override
     public Match create(Account owner, Game game, String data) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             INSERT INTO boardgames.match
                 (match_id, status, data, owner_id, game_id, created_on, finished_on, started_on, last_move_on, next_account_id)
             VALUES
@@ -54,7 +55,7 @@ public class MatchDataSql implements MatchData {
 
     @Override
     public void update(Match match) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             UPDATE boardgames.match
             SET data = ?,
                 next_account_id = ?,
@@ -79,21 +80,21 @@ public class MatchDataSql implements MatchData {
 
     @Override
     public void delete(int matchId) {
-        Sql sql = new Sql(conn, "DELETE FROM boardgames.match WHERE match_id = ? ");
+        Sql sql = new Sql(pool, "DELETE FROM boardgames.match WHERE match_id = ? ");
         sql.set(matchId);
         sql.execute();
     }
 
     @Override
     public Match get(int matchId) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.match WHERE match_id = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.match WHERE match_id = ?");
         sql.set(matchId);
         return sql.querySingle(this::readMatch);
     }
 
     @Override
     public List<Match> getAll(int accountId, int status) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             SELECT DISTINCT m.*
             FROM boardgames.match m
             LEFT OUTER JOIN boardgames.participant p ON p.match_id = m.match_id

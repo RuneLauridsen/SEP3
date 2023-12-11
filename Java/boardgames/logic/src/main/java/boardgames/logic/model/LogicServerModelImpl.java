@@ -8,7 +8,7 @@ import boardgames.logic.messages.MessageQueue;
 import boardgames.logic.messages.Message;
 import boardgames.logic.messages.Messages.*;
 import boardgames.logic.messages.MessageHandler;
-import boardgames.logic.messages.MessageHandlers;
+import boardgames.logic.messages.MessageHandlerMap;
 import boardgames.logic.services.*;
 import boardgames.shared.dto.*;
 import boardgames.shared.util.Log;
@@ -29,7 +29,7 @@ public class LogicServerModelImpl implements LogicServerModel {
     private final MessageQueue incomingQueue;
     private final MessageQueue outgoingQueue;
     private final IndexedLocks matchMutexes;
-    private final MessageHandlers handlers;
+    private final MessageHandlerMap handlers;
 
     // NOTE(rune): Key = accountId, value = clientIdent.
     // Viser hvilke clientIdent'er der lytter til en accountId.
@@ -58,7 +58,7 @@ public class LogicServerModelImpl implements LogicServerModel {
         this.matchMutexes = new IndexedLocks();
         this.listeners = new ConcurrentMultiValueHashMap<>();
 
-        this.handlers = new MessageHandlers();
+        this.handlers = new MessageHandlerMap();
         this.handlers.register(LoginRequest.class, this::login);
         this.handlers.register(MoveRequest.class, this::move);
         this.handlers.register(ImpatientWinRequest.class, this::impatientWin);
@@ -161,11 +161,13 @@ public class LogicServerModelImpl implements LogicServerModel {
             return;
         }
 
+        MatchNotification notification = new MatchNotification(matchId);
+        Message message = new Message(notification);
+
         // Broadcast to all clients that listen on each participating account.
+        // No need to broadcast to match.ownerId(), since owner is always a participant.
         for (Participant p : m.participants()) {
             if (p.status() != Participant.STATUS_REJECTED) {
-                MatchNotification response = new MatchNotification(matchId);
-                Message message = new Message(response, 0.0);
                 for (int listeningClientIdent : listeners.get(p.accountId())) {
                     outgoingQueue.post(message, listeningClientIdent);
                 }
@@ -198,11 +200,19 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     private RegisterResponse createAccount(RegisterRequest req, String jwt, int clientIdent) {
         //Der kunne muligvis laves bedre errorhandling
-        if (req.username() == null || req.firstName() == null || req.password() == null || req.lastName() == null || req.username().isEmpty() || req.firstName().isEmpty() || req.password().isEmpty() || req.lastName().isEmpty())
+        if (req.username() == null ||
+            req.firstName() == null ||
+            req.password() == null ||
+            req.lastName() == null ||
+            req.username().isEmpty() ||
+            req.firstName().isEmpty() ||
+            req.password().isEmpty() ||
+            req.lastName().isEmpty()) {
             return new RegisterResponse(false, "No parameters can be empty");
+        }
 
         String hashedPassword = PasswordHashing.hash(req.password());
-        if (accountService.get(req.username()) != null)
+        if (accountService.get(req.username()).accountId() != 0)
             return new RegisterResponse(false, "Username Already taken");
 
         RegisterAccountParam param = new RegisterAccountParam(req.username(), req.firstName(), req.lastName(), req.email(), hashedPassword);
@@ -398,7 +408,7 @@ public class LogicServerModelImpl implements LogicServerModel {
 
             TurnBasedGameLogic gl = GameCatalog.getLogic(match.gameId());
             MoveResult result = gl.validateMoveAndUpdateData(req, match);
-
+            // ..
             applyMoveResultToMatch(result, match);
 
             MoveResponse response = new MoveResponse(match.matchId(), match.data(), result);
@@ -523,13 +533,11 @@ public class LogicServerModelImpl implements LogicServerModel {
             v.mustBeEqual(fromClient, fromServer, Account::createdOn, "created on");
             v.mustBeEqual(fromClient, fromServer, Account::status, "status");
         }
-        
+
         v.mustBeNonEmpty(fromClient, Account::username, "username");
         v.mustBeNonEmpty(fromClient, Account::firstName, "first name");
         v.mustBeNonEmpty(fromClient, Account::lastName, "last name");
         v.mustBeNonEmpty(fromClient, Account::email, "email");
-        v.mustBeShorterThan(fromClient, Account::description, "description", 500);
-
         v.mustBeShorterThan(fromClient, Account::description, "description", 500);
 
         if (withSameUsername.accountId() != 0 &&

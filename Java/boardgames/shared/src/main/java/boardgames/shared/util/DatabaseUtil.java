@@ -11,13 +11,15 @@ public class DatabaseUtil {
     }
 
     public static void reset() {
+        ConnectionPool pool = new ConnectionPool(1);
         try {
-            Connection conn = SqlUtil.openConnection();
-            Sql sql = new Sql(conn, databaseRebuildSql);
+            Sql sql = new Sql(pool, databaseRebuildSql);
             sql.execute();
             sql.throwIfFailed();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
+        } finally {
+            pool.close();
         }
     }
 }
