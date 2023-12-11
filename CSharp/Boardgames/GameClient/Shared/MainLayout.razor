@@ -76,22 +76,18 @@
                                 <img class="rounded-circle border-0 " style="width: 50px; height: 50px;" src="@imgSrc">
                             }
                         </a>
-
                     }
                 </form>
             </div>
         </div>
     </nav>
-
+    
     <div class="page" style="height: 100%">
-
         @if (accountId ==0) {
             <main class="container">
-                    <ChildContent>
-                        <CascadingValue Value=UpdateStyle>
-                            @Body
-                        </CascadingValue>
-                    </ChildContent>
+                <ChildContent>
+                        @Body
+                </ChildContent>
 
             </main>
         } else{
@@ -99,12 +95,10 @@
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
                         <div class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
-                                <ChildContent>
-                                    <CascadingValue Value=UpdateStyle>
-                                        @Body
-                                        <div style="height: 200px"></div> <!-- Empty filler -->
-                                    </CascadingValue>
-                                </ChildContent>
+                            <ChildContent>
+                                    @Body
+                                    <div style="height: 200px"></div> <!-- Empty filler -->
+                            </ChildContent>
 
                         </div>
                         <div class="col-2 p-5 pt-4" style="background-color: #2c3034">
@@ -124,6 +118,7 @@
             </main>
         }
     </div>
+    
 </div>
 
 @code
@@ -137,13 +132,11 @@
     private List<Account> allAccounts = Empty.List<Account>();
     private Account account = Empty.Account();
     int accountId;
-    private EventCallback UpdateStyle => EventCallback.Factory.Create(this, UpdateAccount);
 
 
     protected override async Task OnParametersSetAsync() {
         accountId = await authState.GetUserIdAsync();
         await UpdateAccount();
-
     }
 
     private void ToggleNavMenu()
@@ -173,8 +166,6 @@
 
             imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
         }
-
-
     }
 
     private async Task LogOut()

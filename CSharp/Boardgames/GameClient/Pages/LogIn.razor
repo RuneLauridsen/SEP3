@@ -66,15 +66,13 @@
     private string password;
     private string errorLabel;
 
-    [CascadingParameter]
-    public EventCallback UpdateStyle { get; set; }
+    
 
     private async Task LoginAsync() {
         LoginRequest req = new LoginRequest(userName, password, false);
         LoginResponse res = await authService.LoginAsync(req);
         if (res.loginSuccessful) {
             navMgr.NavigateTo("/");
-            await UpdateStyle.InvokeAsync();
         } else {
             errorLabel = res.errorReason;
         }
