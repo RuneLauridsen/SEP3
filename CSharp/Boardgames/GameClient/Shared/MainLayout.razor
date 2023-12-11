@@ -90,18 +90,19 @@
                 </ChildContent>
 
             </main>
-        } else{
+        } 
+        else{
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
-                        <div class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
+                        <div id="bodyContainer" class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
                             <ChildContent>
                                     @Body
                                     <div style="height: 200px"></div> <!-- Empty filler -->
                             </ChildContent>
 
                         </div>
-                        <div class="col-2 p-5 pt-4" style="background-color: #2c3034">
+                        <div id="sidebar" class="col-2 p-5 pt-4" style="background-color: #2c3034">
                             @if (accountId != 0) {
                                 <h3 style="color: white">Users</h3>
                                 <hr style="color: white"/>
