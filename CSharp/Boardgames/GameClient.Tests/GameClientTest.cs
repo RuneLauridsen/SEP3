@@ -7,10 +7,10 @@ using Shared.Tets;
 
 namespace GameClient.Tests;
 
-public class UnitTest1 {
+public class GameClientTest {
     private TestClient client;
 
-    public UnitTest1() {
+    public GameClientTest() {
         TestUtil.ResetDatabase();
         client = new TestClient(SIMON);
     }

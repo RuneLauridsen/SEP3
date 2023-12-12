@@ -9,7 +9,12 @@ import java.util.concurrent.locks.ReentrantLock;
 // Mange ting vi laver i LogicServerModelImpl på Match'es er ikke atomiske,
 // bla. fordi de kører mere end ét SQL statement og sender http request/resopnse
 // over netværk. I stedet for at fixe problemet bruger vi IndexedMutexes
-// til at låse per. matchId.
+// til at låse per. matchId :)
+
+// TODO(rune):
+// Undsøg hvor dyr 'new ReetrantLock()' er. Hvis den f.eks. kalder CreateMutexW()
+// hver gang, er det nok ikke en god idé at gøre det for hver lock(int) kald,
+// men ved ikke hvor tæt en ReetrantLock mapper til en OS lås.
 
 public class IndexedLocks {
     private final Map<Integer, Lock> map;

@@ -7,10 +7,10 @@ using Shared.Tets;
 
 namespace AdminClient.Tests;
 
-public class UnitTest1 {
+public class AdminClientTest {
     private TestClient client;
 
-    public UnitTest1() {
+    public AdminClientTest() {
         TestUtil.ResetDatabase();
         client = new TestClient(BOB);
     }

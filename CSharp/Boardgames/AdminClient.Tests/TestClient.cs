@@ -10,9 +10,14 @@ public class TestClient {
     public IAuthService AuthService { get; }
 
     public TestClient(TestUser user) {
+        Config config = new Config {
+            LogicAddress = "localhost",
+            LogicPort = 1234
+        };
+
         AuthState = new AuthStateInMemory();
-        AuthService = new JwtAuthService(AuthState);
-        AdminService = new AdminService(AuthState);
+        AuthService = new JwtAuthService(AuthState, config);
+        AdminService = new AdminService(AuthState, config);
         AuthService.LoginAsync(new LoginRequest(user.Username, user.Password, true)).Wait();
     }
 }

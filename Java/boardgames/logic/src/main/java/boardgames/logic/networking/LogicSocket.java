@@ -84,9 +84,9 @@ public class LogicSocket {
     private void quit() {
         quit = true;
 
-        // NOTE: I tilfælde af at socket bliver abrudt, poster vi altid en QuitNotification
-        // (også selvom klient selv allerede har sendt en), så LogicServerModelImpl ved at denne
-        // clientIdent ikke længere lytter.
+        // I tilfælde af at socket bliver abrudt, poster vi altid en QuitNotification
+        // (også selvom klient selv allerede har sendt en), så LogicServerModelImpl ved
+        // at denne clientIdent ikke længere lytter.
         incomingQueue.post(new Message(new QuitNotification(), 0), clientIdent);
     }
 

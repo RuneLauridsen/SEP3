@@ -9,7 +9,7 @@ public class Account {
     public required string Email { get; set; }
     public required string Description { get; set; }
     public required int Status { get; set; }
-    public required DateTime RegisterDateTime { get; set; }
+    public DateTime RegisterDateTime { get; set; }
     public required DateTime CreatedOn { get; set; }
 
     public String? ProfilePicture { get; set; }     // NOTE(rune): Som base 64

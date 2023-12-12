@@ -2,6 +2,7 @@ package boardgames.persistence.data;
 
 import boardgames.shared.dto.FinishedMatchScore;
 import boardgames.shared.dto.ScoreSum;
+import boardgames.shared.util.ConnectionPool;
 import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,10 @@ import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class ScoreDataSql implements ScoreData {
-    private final Connection conn;
+    private final ConnectionPool pool;
 
     public ScoreDataSql() {
-        conn = openConnection();
+        pool = new ConnectionPool(5);
     }
 
     private ScoreSum readScoreSum(Sql sql) {
@@ -40,7 +41,7 @@ public class ScoreDataSql implements ScoreData {
 
     @Override
     public List<ScoreSum> getSums(int gameId) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             SELECT g.game_id,
                    a.account_id,
                    a.username AS account_name,
@@ -65,7 +66,7 @@ public class ScoreDataSql implements ScoreData {
     }
     @Override
     public List<FinishedMatchScore> getScores(int accountId) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             SELECT g.game_id        AS game_id,
                    g.name           AS game_name,
                    m.match_id       AS match_id,

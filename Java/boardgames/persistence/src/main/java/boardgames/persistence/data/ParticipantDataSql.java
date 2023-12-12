@@ -3,6 +3,7 @@ package boardgames.persistence.data;
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.Match;
 import boardgames.shared.dto.Participant;
+import boardgames.shared.util.ConnectionPool;
 import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,10 @@ import static boardgames.shared.util.SqlUtil.openConnection;
 
 @Service
 public class ParticipantDataSql implements ParticipantData {
-    private final Connection conn;
+    private final ConnectionPool pool;
 
     public ParticipantDataSql() {
-        conn = openConnection();
+        pool = new ConnectionPool(5);
     }
 
     private Participant readParticipant(Sql sql) {
@@ -33,7 +34,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public Participant create(Account account, Match match, int status) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             INSERT INTO boardgames.participant
                 (participant_id, match_id, account_id, status, created_on, score)
             VALUES
@@ -50,7 +51,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public Participant get(int participantId) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             SELECT p.*
             FROM boardgames.participant p
             WHERE p.participant_id = ?
@@ -62,7 +63,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public List<Participant> getAll(int matchId, int accountId, int status) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             SELECT p.*
             FROM boardgames.participant p
             WHERE (? = -1 OR p.match_id = ?)
@@ -83,7 +84,7 @@ public class ParticipantDataSql implements ParticipantData {
     public void update(Participant participant) {
         // NOTE(m2dx): Opdaterer kun status og score, da det giver ikke mening
         // at opdatere match eller account (brug createParticipant() i stedet).
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             UPDATE boardgames.participant
             SET status = ?,
                 score = ?
@@ -98,7 +99,7 @@ public class ParticipantDataSql implements ParticipantData {
 
     @Override
     public void delete(int participantId) {
-        Sql sql = new Sql(conn, "DELETE FROM boardgames.participant WHERE participant_id = ?");
+        Sql sql = new Sql(pool, "DELETE FROM boardgames.participant WHERE participant_id = ?");
         sql.set(participantId);
         sql.execute();
     }

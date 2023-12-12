@@ -27,7 +27,7 @@
             </button>
             <div class="collapse navbar-collapse @NavBarCssClass" id="navbarCollapse" @onclick="ToggleNavMenu">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    
+
 
                     @if (accountId != 0)
                     {
@@ -76,38 +76,33 @@
                                 <img class="rounded-circle border-0 " style="width: 50px; height: 50px;" src="@imgSrc">
                             }
                         </a>
-
                     }
                 </form>
             </div>
         </div>
     </nav>
-
+    
     <div class="page" style="height: 100%">
-
         @if (accountId ==0) {
             <main class="container">
-                    <ChildContent>
-                        <CascadingValue Value=UpdateStyle>
-                            @Body
-                        </CascadingValue>
-                    </ChildContent>
+                <ChildContent>
+                        @Body
+                </ChildContent>
 
             </main>
-        } else{
+        } 
+        else{
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
                     <div class="row" style="height: 100%;">
-                        <div class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
-                                <ChildContent>
-                                    <CascadingValue Value=UpdateStyle>
-                                        @Body
-                                        <div style="height: 200px"></div> <!-- Empty filler -->
-                                    </CascadingValue>
-                                </ChildContent>
+                        <div id="bodyContainer" class="col-10 p-5 pt-4" style="overflow: auto; height: 100%;">
+                            <ChildContent>
+                                    @Body
+                                    <div style="height: 200px"></div> <!-- Empty filler -->
+                            </ChildContent>
 
                         </div>
-                        <div class="col-2 p-5 pt-4" style="background-color: #2c3034">
+                        <div id="sidebar" class="col-2 p-5 pt-4" style="background-color: #2c3034">
                             @if (accountId != 0) {
                                 <h3 style="color: white">Users</h3>
                                 <hr style="color: white"/>
@@ -124,6 +119,7 @@
             </main>
         }
     </div>
+    
 </div>
 
 @code
@@ -137,13 +133,11 @@
     private List<Account> allAccounts = Empty.List<Account>();
     private Account account = Empty.Account();
     int accountId;
-    private EventCallback UpdateStyle => EventCallback.Factory.Create(this, UpdateAccount);
 
 
     protected override async Task OnParametersSetAsync() {
         accountId = await authState.GetUserIdAsync();
         await UpdateAccount();
-
     }
 
     private void ToggleNavMenu()
@@ -153,8 +147,8 @@
 
     }
 
-    private async Task UpdateAccount()
-    {
+    private async Task UpdateAccount() {
+        accountId = await authState.GetUserIdAsync();
         if (accountId != 0)
         {
             if (accountId != account.AccountId)
@@ -173,8 +167,6 @@
 
             imgSrc = @HtmlUtil.ToImgSrcString(account.ProfilePicture, account.ProfilePictureType);
         }
-
-
     }
 
     private async Task LogOut()

@@ -13,7 +13,6 @@ public class MessageSerializer {
         if (idx > 0 && idx < s.length() - 1) {
             String headString = s.substring(0, idx);
             String bodyString = s.substring(idx + 1);
-
             try {
                 Messages.Head head = JsonUtil.fromJson(headString, Messages.Head.class);
                 String bodyTypeName = Messages.class.getName() + "$" + head.bodyType(); // NOTE(rune): "$" betyder nested class.

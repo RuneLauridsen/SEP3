@@ -2,6 +2,7 @@ package boardgames.persistence.data;
 
 import boardgames.shared.dto.Account;
 import boardgames.shared.dto.RegisterAccountParam;
+import boardgames.shared.util.ConnectionPool;
 import boardgames.shared.util.Sql;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,10 @@ import static boardgames.shared.util.SqlUtil.openConnection;
 @Service
 public class AccountDataSql implements AccountData {
 
-    private final Connection conn;
+    private ConnectionPool pool;
 
     public AccountDataSql() {
-        conn = openConnection();
+        this.pool = new ConnectionPool(5);
     }
 
     private Account readAccount(Sql sql) {
@@ -44,28 +45,28 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public Account getWithPicture(int accountId) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE account_id = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.account WHERE account_id = ?");
         sql.set(accountId);
         return sql.querySingle(this::readAccountWithProfilePicture);
     }
 
     @Override
     public Account get(int accountId) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE account_id = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.account WHERE account_id = ?");
         sql.set(accountId);
         return sql.querySingle(this::readAccount);
     }
 
     @Override
     public Account get(String username) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE username = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.account WHERE username = ?");
         sql.set(username);
         return sql.querySingle(this::readAccountWithProfilePicture);
     }
 
     @Override
     public Account get(String username, String hashedPassword) {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE username = ? AND hashed_password = ?");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.account WHERE username = ? AND hashed_password = ?");
         sql.set(username);
         sql.set(hashedPassword);
         return sql.querySingle(this::readAccountWithProfilePicture);
@@ -73,13 +74,13 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public List<Account> getAll() {
-        Sql sql = new Sql(conn, "SELECT * FROM boardgames.account WHERE status <> 3 -- STATUS_DELETED");
+        Sql sql = new Sql(pool, "SELECT * FROM boardgames.account WHERE status <> 3 -- STATUS_DELETED");
         return sql.queryAll(this::readAccount);
     }
 
     @Override
     public Account create(RegisterAccountParam param) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             INSERT INTO boardgames.account 
             (account_id,username, first_name, last_name, email, registration_datetime, hashed_password, status, is_admin, created_on, description)
             VALUES (default, ?,?,?,?,Default,?,?,Default,default, default)
@@ -96,7 +97,7 @@ public class AccountDataSql implements AccountData {
 
     @Override
     public void update(Account account) {
-        Sql sql = new Sql(conn, """
+        Sql sql = new Sql(pool, """
             UPDATE boardgames.account
             SET username = ?,
                 first_name = ?,
@@ -120,7 +121,7 @@ public class AccountDataSql implements AccountData {
 
         if (account.profilePicture() != null &&
             account.profilePictureType() != null) {
-            sql = new Sql(conn, """
+            sql = new Sql(pool, """
                 UPDATE boardgames.account
                 SET profile_picture = ?,
                     profile_picture_type = ?

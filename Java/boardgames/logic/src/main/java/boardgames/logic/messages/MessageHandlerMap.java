@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 // NOTE(rune): Dispatch tabel til message typer.
-public class MessageHandlers {
+public class MessageHandlerMap {
     private final Map<Class<?>, MessageHandler<?>> map;
 
-    public MessageHandlers() {
+    public MessageHandlerMap() {
         map = new HashMap<>();
     }
 
