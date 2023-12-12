@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="namespace_shared_1_1_data" kind="namespace" language="C#">
+    <compoundname>Shared::Data</compoundname>
+    <innerclass refid="class_shared_1_1_data_1_1_messages" prot="public">Shared::Data::Messages</innerclass>
+    <innerclass refid="class_shared_1_1_data_1_1_message_serializer" prot="public">Shared::Data::MessageSerializer</innerclass>
+    <innerclass refid="class_shared_1_1_data_1_1_network_exception" prot="public">Shared::Data::NetworkException</innerclass>
+    <innerclass refid="class_shared_1_1_data_1_1_service_socket" prot="public">Shared::Data::ServiceSocket</innerclass>
+    <innerclass refid="class_shared_1_1_data_1_1_string_streamer" prot="public">Shared::Data::StringStreamer</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/Messages.cs" line="8" column="1"/>
+  </compounddef>
+</doxygen>

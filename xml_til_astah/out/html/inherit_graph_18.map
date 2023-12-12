@@ -1,0 +1,7 @@
+<map id="Grafisk klassehierarki" name="Grafisk klassehierarki">
+<area shape="rect" id="Node000000" href="$interface_shared_1_1_auth_state_1_1_i_auth_state.html" title=" " alt="" coords="5,47,195,73"/>
+<area shape="rect" id="Node000001" href="$class_shared_1_1_auth_state_1_1_auth_state_in_memory.html" title=" " alt="" coords="243,5,429,48"/>
+<area shape="poly" id="edge10_Node000000_Node000001" title=" " alt="" coords="210,42,242,37,243,42,211,47"/>
+<area shape="rect" id="Node000002" href="$class_shared_1_1_auth_state_1_1_auth_state_session_storage.html" title=" " alt="" coords="243,72,429,115"/>
+<area shape="poly" id="edge11_Node000000_Node000002" title=" " alt="" coords="211,73,243,78,242,83,210,78"/>
+</map>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_admin_client_8_tests_2_global_usings_8cs" kind="file" language="C#">
+    <compoundname>GlobalUsings.cs</compoundname>
+    <innernamespace refid="namespace_xunit">Xunit</innernamespace>
+    <innernamespace refid="namespacestatic">static</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_data_1_1_messages">Shared::Data::Messages</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_tets_1_1_test_data">Shared::Tets::TestData</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Xunit;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">static<sp/><ref refid="namespace_shared" kindref="compound">Shared</ref>.<ref refid="namespace_shared_1_1_data" kindref="compound">Data</ref>.<ref refid="class_shared_1_1_data_1_1_messages" kindref="compound">Messages</ref>;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">static<sp/><ref refid="namespace_shared" kindref="compound">Shared</ref>.<ref refid="namespace_shared_1_1_tets" kindref="compound">Tets</ref>.<ref refid="class_shared_1_1_tets_1_1_test_data" kindref="compound">TestData</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/AdminClient.Tests/GlobalUsings.cs"/>
+  </compounddef>
+</doxygen>

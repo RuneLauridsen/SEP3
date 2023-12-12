@@ -1,0 +1,359 @@
+\doxysection{Shared.\+Data.\+Messages Klasse-\/reference}
+\hypertarget{class_shared_1_1_data_1_1_messages}{}\label{class_shared_1_1_data_1_1_messages}\index{Shared.Data.Messages@{Shared.Data.Messages}}
+
+
+Samarbejdsdiagram for Shared.\+Data.\+Messages\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{class_shared_1_1_data_1_1_messages__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Offentlige metoder}
+\begin{DoxyCompactItemize}
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a31baadd636b27e9ec1934d24b0a952fe}{Head}} (String body\+Type, String jwt, double elapsed\+Server\+Millis)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_adaef689cb56b40333309ebc3c4d5b6c3}{Login\+Request}} (String username, String password, \mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}} admin\+Client)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a64dbcd47fcbd3bac780838614e41352e}{Login\+Response}} (\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}} login\+Successful, \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}} account, String jwt, String error\+Reason)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ad2c1731b7f88dcbdc4f88d156c570578}{Register\+Request}} (String username, String first\+Name, String last\+Name, String email, String password)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a6ac930c356a2ccfcb379a1e15739ac2c}{Register\+Response}} (\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}} response, String error\+Reason)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ad581ae05d5a0a836ecf6074f0ab6cda8}{Get\+Games\+Request}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_aa398119a0988e914d14b63e7aaee71f0}{Get\+Games\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_game}{Game}} $>$ games)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a9377692ad5fa9e99266e23ee93e49946}{Get\+Match\+Request}} (int match\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ac078479b5d3f196daeeeb1bbf11aec2d}{Get\+Match\+Response}} (\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_match}{Match}} match)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a1f200329a9fa29e2e8c5b754865357e0}{Get\+My\+Matches\+Request}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_aa8d568e0f08fd41702c39497df03271a}{Get\+My\+Matches\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_match}{Match}} $>$ matches)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a5bfa141a8cd0f7622a80d4f8c22e8db9}{Create\+Match\+Request}} (int game\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_af526bfbb78087441eeda96c7e4294c3f}{Create\+Match\+Response}} (String error\+Reason, \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_match}{Match}} match)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a4557db927769e106fc2d4868fe1d8881}{Add\+Participant\+Request}} (int match\+Id, int account\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_af1dd9cf9ada7916a4a20206552fe5bb8}{Add\+Participant\+Response}} (\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_participant}{Participant}} participant, String error\+Reason)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ad193fe4f99821b75961b9a65c516b91b}{Get\+Participants\+Request}} (int match\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a7f65cd43bbd8115ad27ad40740ae42f5}{Get\+Participants\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_participant}{Participant}} $>$ participants)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_aea68f6e1c7dfbf5b2f2eb6bda11283a7}{Get\+Pending\+Request}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a4efa5443f6f398160aee386eff174c24}{Get\+Pending\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_participant}{Participant}} $>$ participants)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a57f3604402d2ed238b015c7bf34ece5a}{Decide\+Pending\+Request}} (int match\+Id, int participant\+Id, int status)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a70fc5be810abd3667ac8a82c9a128f3c}{Decide\+Pending\+Response}} (String error\+Reason)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ab72575301e5a462dd2f952dce6bbc329}{Get\+Account\+Request}} (int account\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a5e9ca18d9b5619212d0303df51b380c2}{Get\+Account\+Response}} (\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}} account)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ad17a4a70b989409dfddf0b36edc3b75c}{Get\+Accounts\+Request}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a75ad8ae2009850cf2a5dfdd35de1f857}{Get\+Accounts\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}} $>$ accounts)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_aab788c4857d3c4dce24b01afe7464e05}{Update\+Account\+Request}} (\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}} account)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a4ad4407da8cb562b81915f3d210830d9}{Update\+Account\+Response}} (String error\+Reason)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a16ba96b8fd4f9ca2f289a2278462c7cb}{Move\+Request}} (int match\+Id, String move\+Data)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_afb2016ae92d7d4462a3b05265fef8668}{Move\+Response}} (int match\+Id, String game\+Data, \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_move_result}{Move\+Result}} result)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ac47da168e00f717a9c33f9f73690a458}{Impatient\+Win\+Request}} (int match\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_aabcb6689d3a802f9a7b3c4d6e8aef7ef}{Impatient\+Win\+Response}} (int match\+Id, String error\+Reason)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ad173834478e2bab0606a382357176fcb}{Get\+Score\+Sums\+Request}} (int game\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ade82d72364d0cea5e6d63d5d0fdc1db0}{Get\+Score\+Sums\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_score_sum}{Score\+Sum}} $>$ sums)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a8aea8e8a8714a895cf2cdfbf4ea1814b}{Get\+Match\+History\+Request}} (int account\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a6f735e5add0733af8713da9454382e7d}{Get\+Match\+History\+Response}} (List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_finished_match_score}{Finished\+Match\+Score}} $>$ scores)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a5574479ca11df1c32212081900c61359}{Begin\+Live\+Update\+Request}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_ae5aead886c76b0003e89cd7a585605ef}{Begin\+Live\+Update\+Response}} (\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}} success)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a6b1908fc9be660470e68612f1c6d9da5}{Match\+Notification}} (int match\+Id)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a70f6cb44662775f7d5446b54043b9a12}{Quit\+Notification}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_acb64795b4203bd591b0bd5e7f21d23ad}{Not\+Authorized\+Response}} ()
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_a6ae9fc19d43ac55e3e7bf8b75b9735ca}{Update\+User\+Status\+Request}} (\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}} \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}}, int new\+Status)
+\item 
+record \mbox{\hyperlink{class_shared_1_1_data_1_1_messages_aff0fcfd505f32e06ee8ccd1bfd87358d}{Update\+User\+Status\+Response}} (\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}} b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentation af medlemsfunktioner}
+\Hypertarget{class_shared_1_1_data_1_1_messages_a4557db927769e106fc2d4868fe1d8881}\label{class_shared_1_1_data_1_1_messages_a4557db927769e106fc2d4868fe1d8881} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!AddParticipantRequest@{AddParticipantRequest}}
+\index{AddParticipantRequest@{AddParticipantRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{AddParticipantRequest()}{AddParticipantRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Add\+Participant\+Request (\begin{DoxyParamCaption}\item[{int}]{match\+Id,  }\item[{int}]{account\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_af1dd9cf9ada7916a4a20206552fe5bb8}\label{class_shared_1_1_data_1_1_messages_af1dd9cf9ada7916a4a20206552fe5bb8} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!AddParticipantResponse@{AddParticipantResponse}}
+\index{AddParticipantResponse@{AddParticipantResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{AddParticipantResponse()}{AddParticipantResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Add\+Participant\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_participant}{Participant}}}]{participant,  }\item[{String}]{error\+Reason }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a5574479ca11df1c32212081900c61359}\label{class_shared_1_1_data_1_1_messages_a5574479ca11df1c32212081900c61359} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!BeginLiveUpdateRequest@{BeginLiveUpdateRequest}}
+\index{BeginLiveUpdateRequest@{BeginLiveUpdateRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{BeginLiveUpdateRequest()}{BeginLiveUpdateRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Begin\+Live\+Update\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ae5aead886c76b0003e89cd7a585605ef}\label{class_shared_1_1_data_1_1_messages_ae5aead886c76b0003e89cd7a585605ef} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!BeginLiveUpdateResponse@{BeginLiveUpdateResponse}}
+\index{BeginLiveUpdateResponse@{BeginLiveUpdateResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{BeginLiveUpdateResponse()}{BeginLiveUpdateResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Begin\+Live\+Update\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}}}]{success }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a5bfa141a8cd0f7622a80d4f8c22e8db9}\label{class_shared_1_1_data_1_1_messages_a5bfa141a8cd0f7622a80d4f8c22e8db9} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!CreateMatchRequest@{CreateMatchRequest}}
+\index{CreateMatchRequest@{CreateMatchRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{CreateMatchRequest()}{CreateMatchRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Create\+Match\+Request (\begin{DoxyParamCaption}\item[{int}]{game\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_af526bfbb78087441eeda96c7e4294c3f}\label{class_shared_1_1_data_1_1_messages_af526bfbb78087441eeda96c7e4294c3f} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!CreateMatchResponse@{CreateMatchResponse}}
+\index{CreateMatchResponse@{CreateMatchResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{CreateMatchResponse()}{CreateMatchResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Create\+Match\+Response (\begin{DoxyParamCaption}\item[{String}]{error\+Reason,  }\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_match}{Match}}}]{match }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a57f3604402d2ed238b015c7bf34ece5a}\label{class_shared_1_1_data_1_1_messages_a57f3604402d2ed238b015c7bf34ece5a} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!DecidePendingRequest@{DecidePendingRequest}}
+\index{DecidePendingRequest@{DecidePendingRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{DecidePendingRequest()}{DecidePendingRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Decide\+Pending\+Request (\begin{DoxyParamCaption}\item[{int}]{match\+Id,  }\item[{int}]{participant\+Id,  }\item[{int}]{status }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a70fc5be810abd3667ac8a82c9a128f3c}\label{class_shared_1_1_data_1_1_messages_a70fc5be810abd3667ac8a82c9a128f3c} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!DecidePendingResponse@{DecidePendingResponse}}
+\index{DecidePendingResponse@{DecidePendingResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{DecidePendingResponse()}{DecidePendingResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Decide\+Pending\+Response (\begin{DoxyParamCaption}\item[{String}]{error\+Reason }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ab72575301e5a462dd2f952dce6bbc329}\label{class_shared_1_1_data_1_1_messages_ab72575301e5a462dd2f952dce6bbc329} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetAccountRequest@{GetAccountRequest}}
+\index{GetAccountRequest@{GetAccountRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetAccountRequest()}{GetAccountRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Account\+Request (\begin{DoxyParamCaption}\item[{int}]{account\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a5e9ca18d9b5619212d0303df51b380c2}\label{class_shared_1_1_data_1_1_messages_a5e9ca18d9b5619212d0303df51b380c2} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetAccountResponse@{GetAccountResponse}}
+\index{GetAccountResponse@{GetAccountResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetAccountResponse()}{GetAccountResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Account\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}}}]{account }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ad17a4a70b989409dfddf0b36edc3b75c}\label{class_shared_1_1_data_1_1_messages_ad17a4a70b989409dfddf0b36edc3b75c} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetAccountsRequest@{GetAccountsRequest}}
+\index{GetAccountsRequest@{GetAccountsRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetAccountsRequest()}{GetAccountsRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Accounts\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a75ad8ae2009850cf2a5dfdd35de1f857}\label{class_shared_1_1_data_1_1_messages_a75ad8ae2009850cf2a5dfdd35de1f857} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetAccountsResponse@{GetAccountsResponse}}
+\index{GetAccountsResponse@{GetAccountsResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetAccountsResponse()}{GetAccountsResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Accounts\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}} $>$}]{accounts }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ad581ae05d5a0a836ecf6074f0ab6cda8}\label{class_shared_1_1_data_1_1_messages_ad581ae05d5a0a836ecf6074f0ab6cda8} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetGamesRequest@{GetGamesRequest}}
+\index{GetGamesRequest@{GetGamesRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetGamesRequest()}{GetGamesRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Games\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_aa398119a0988e914d14b63e7aaee71f0}\label{class_shared_1_1_data_1_1_messages_aa398119a0988e914d14b63e7aaee71f0} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetGamesResponse@{GetGamesResponse}}
+\index{GetGamesResponse@{GetGamesResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetGamesResponse()}{GetGamesResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Games\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_game}{Game}} $>$}]{games }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a8aea8e8a8714a895cf2cdfbf4ea1814b}\label{class_shared_1_1_data_1_1_messages_a8aea8e8a8714a895cf2cdfbf4ea1814b} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetMatchHistoryRequest@{GetMatchHistoryRequest}}
+\index{GetMatchHistoryRequest@{GetMatchHistoryRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetMatchHistoryRequest()}{GetMatchHistoryRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Match\+History\+Request (\begin{DoxyParamCaption}\item[{int}]{account\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a6f735e5add0733af8713da9454382e7d}\label{class_shared_1_1_data_1_1_messages_a6f735e5add0733af8713da9454382e7d} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetMatchHistoryResponse@{GetMatchHistoryResponse}}
+\index{GetMatchHistoryResponse@{GetMatchHistoryResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetMatchHistoryResponse()}{GetMatchHistoryResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Match\+History\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_finished_match_score}{Finished\+Match\+Score}} $>$}]{scores }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a9377692ad5fa9e99266e23ee93e49946}\label{class_shared_1_1_data_1_1_messages_a9377692ad5fa9e99266e23ee93e49946} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetMatchRequest@{GetMatchRequest}}
+\index{GetMatchRequest@{GetMatchRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetMatchRequest()}{GetMatchRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Match\+Request (\begin{DoxyParamCaption}\item[{int}]{match\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ac078479b5d3f196daeeeb1bbf11aec2d}\label{class_shared_1_1_data_1_1_messages_ac078479b5d3f196daeeeb1bbf11aec2d} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetMatchResponse@{GetMatchResponse}}
+\index{GetMatchResponse@{GetMatchResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetMatchResponse()}{GetMatchResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Match\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_match}{Match}}}]{match }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a1f200329a9fa29e2e8c5b754865357e0}\label{class_shared_1_1_data_1_1_messages_a1f200329a9fa29e2e8c5b754865357e0} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetMyMatchesRequest@{GetMyMatchesRequest}}
+\index{GetMyMatchesRequest@{GetMyMatchesRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetMyMatchesRequest()}{GetMyMatchesRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+My\+Matches\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_aa8d568e0f08fd41702c39497df03271a}\label{class_shared_1_1_data_1_1_messages_aa8d568e0f08fd41702c39497df03271a} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetMyMatchesResponse@{GetMyMatchesResponse}}
+\index{GetMyMatchesResponse@{GetMyMatchesResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetMyMatchesResponse()}{GetMyMatchesResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+My\+Matches\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_match}{Match}} $>$}]{matches }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ad193fe4f99821b75961b9a65c516b91b}\label{class_shared_1_1_data_1_1_messages_ad193fe4f99821b75961b9a65c516b91b} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetParticipantsRequest@{GetParticipantsRequest}}
+\index{GetParticipantsRequest@{GetParticipantsRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetParticipantsRequest()}{GetParticipantsRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Participants\+Request (\begin{DoxyParamCaption}\item[{int}]{match\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a7f65cd43bbd8115ad27ad40740ae42f5}\label{class_shared_1_1_data_1_1_messages_a7f65cd43bbd8115ad27ad40740ae42f5} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetParticipantsResponse@{GetParticipantsResponse}}
+\index{GetParticipantsResponse@{GetParticipantsResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetParticipantsResponse()}{GetParticipantsResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Participants\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_participant}{Participant}} $>$}]{participants }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_aea68f6e1c7dfbf5b2f2eb6bda11283a7}\label{class_shared_1_1_data_1_1_messages_aea68f6e1c7dfbf5b2f2eb6bda11283a7} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetPendingRequest@{GetPendingRequest}}
+\index{GetPendingRequest@{GetPendingRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetPendingRequest()}{GetPendingRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Pending\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a4efa5443f6f398160aee386eff174c24}\label{class_shared_1_1_data_1_1_messages_a4efa5443f6f398160aee386eff174c24} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetPendingResponse@{GetPendingResponse}}
+\index{GetPendingResponse@{GetPendingResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetPendingResponse()}{GetPendingResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Pending\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_participant}{Participant}} $>$}]{participants }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ad173834478e2bab0606a382357176fcb}\label{class_shared_1_1_data_1_1_messages_ad173834478e2bab0606a382357176fcb} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetScoreSumsRequest@{GetScoreSumsRequest}}
+\index{GetScoreSumsRequest@{GetScoreSumsRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetScoreSumsRequest()}{GetScoreSumsRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Score\+Sums\+Request (\begin{DoxyParamCaption}\item[{int}]{game\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ade82d72364d0cea5e6d63d5d0fdc1db0}\label{class_shared_1_1_data_1_1_messages_ade82d72364d0cea5e6d63d5d0fdc1db0} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!GetScoreSumsResponse@{GetScoreSumsResponse}}
+\index{GetScoreSumsResponse@{GetScoreSumsResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{GetScoreSumsResponse()}{GetScoreSumsResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Get\+Score\+Sums\+Response (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_score_sum}{Score\+Sum}} $>$}]{sums }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a31baadd636b27e9ec1934d24b0a952fe}\label{class_shared_1_1_data_1_1_messages_a31baadd636b27e9ec1934d24b0a952fe} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!Head@{Head}}
+\index{Head@{Head}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{Head()}{Head()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Head (\begin{DoxyParamCaption}\item[{String}]{body\+Type,  }\item[{String}]{jwt,  }\item[{double}]{elapsed\+Server\+Millis }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ac47da168e00f717a9c33f9f73690a458}\label{class_shared_1_1_data_1_1_messages_ac47da168e00f717a9c33f9f73690a458} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!ImpatientWinRequest@{ImpatientWinRequest}}
+\index{ImpatientWinRequest@{ImpatientWinRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{ImpatientWinRequest()}{ImpatientWinRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Impatient\+Win\+Request (\begin{DoxyParamCaption}\item[{int}]{match\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_aabcb6689d3a802f9a7b3c4d6e8aef7ef}\label{class_shared_1_1_data_1_1_messages_aabcb6689d3a802f9a7b3c4d6e8aef7ef} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!ImpatientWinResponse@{ImpatientWinResponse}}
+\index{ImpatientWinResponse@{ImpatientWinResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{ImpatientWinResponse()}{ImpatientWinResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Impatient\+Win\+Response (\begin{DoxyParamCaption}\item[{int}]{match\+Id,  }\item[{String}]{error\+Reason }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_adaef689cb56b40333309ebc3c4d5b6c3}\label{class_shared_1_1_data_1_1_messages_adaef689cb56b40333309ebc3c4d5b6c3} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!LoginRequest@{LoginRequest}}
+\index{LoginRequest@{LoginRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{LoginRequest()}{LoginRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Login\+Request (\begin{DoxyParamCaption}\item[{String}]{username,  }\item[{String}]{password,  }\item[{\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}}}]{admin\+Client }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a64dbcd47fcbd3bac780838614e41352e}\label{class_shared_1_1_data_1_1_messages_a64dbcd47fcbd3bac780838614e41352e} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!LoginResponse@{LoginResponse}}
+\index{LoginResponse@{LoginResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{LoginResponse()}{LoginResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Login\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}}}]{login\+Successful,  }\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}}}]{account,  }\item[{String}]{jwt,  }\item[{String}]{error\+Reason }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a6b1908fc9be660470e68612f1c6d9da5}\label{class_shared_1_1_data_1_1_messages_a6b1908fc9be660470e68612f1c6d9da5} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!MatchNotification@{MatchNotification}}
+\index{MatchNotification@{MatchNotification}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{MatchNotification()}{MatchNotification()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Match\+Notification (\begin{DoxyParamCaption}\item[{int}]{match\+Id }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a16ba96b8fd4f9ca2f289a2278462c7cb}\label{class_shared_1_1_data_1_1_messages_a16ba96b8fd4f9ca2f289a2278462c7cb} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!MoveRequest@{MoveRequest}}
+\index{MoveRequest@{MoveRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{MoveRequest()}{MoveRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Move\+Request (\begin{DoxyParamCaption}\item[{int}]{match\+Id,  }\item[{String}]{move\+Data }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_afb2016ae92d7d4462a3b05265fef8668}\label{class_shared_1_1_data_1_1_messages_afb2016ae92d7d4462a3b05265fef8668} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!MoveResponse@{MoveResponse}}
+\index{MoveResponse@{MoveResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{MoveResponse()}{MoveResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Move\+Response (\begin{DoxyParamCaption}\item[{int}]{match\+Id,  }\item[{String}]{game\+Data,  }\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_move_result}{Move\+Result}}}]{result }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_acb64795b4203bd591b0bd5e7f21d23ad}\label{class_shared_1_1_data_1_1_messages_acb64795b4203bd591b0bd5e7f21d23ad} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!NotAuthorizedResponse@{NotAuthorizedResponse}}
+\index{NotAuthorizedResponse@{NotAuthorizedResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{NotAuthorizedResponse()}{NotAuthorizedResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Not\+Authorized\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a70f6cb44662775f7d5446b54043b9a12}\label{class_shared_1_1_data_1_1_messages_a70f6cb44662775f7d5446b54043b9a12} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!QuitNotification@{QuitNotification}}
+\index{QuitNotification@{QuitNotification}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{QuitNotification()}{QuitNotification()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Quit\+Notification (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_ad2c1731b7f88dcbdc4f88d156c570578}\label{class_shared_1_1_data_1_1_messages_ad2c1731b7f88dcbdc4f88d156c570578} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!RegisterRequest@{RegisterRequest}}
+\index{RegisterRequest@{RegisterRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{RegisterRequest()}{RegisterRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Register\+Request (\begin{DoxyParamCaption}\item[{String}]{username,  }\item[{String}]{first\+Name,  }\item[{String}]{last\+Name,  }\item[{String}]{email,  }\item[{String}]{password }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a6ac930c356a2ccfcb379a1e15739ac2c}\label{class_shared_1_1_data_1_1_messages_a6ac930c356a2ccfcb379a1e15739ac2c} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!RegisterResponse@{RegisterResponse}}
+\index{RegisterResponse@{RegisterResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{RegisterResponse()}{RegisterResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Register\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}}}]{response,  }\item[{String}]{error\+Reason }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_aab788c4857d3c4dce24b01afe7464e05}\label{class_shared_1_1_data_1_1_messages_aab788c4857d3c4dce24b01afe7464e05} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!UpdateAccountRequest@{UpdateAccountRequest}}
+\index{UpdateAccountRequest@{UpdateAccountRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{UpdateAccountRequest()}{UpdateAccountRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Update\+Account\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}}}]{account }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a4ad4407da8cb562b81915f3d210830d9}\label{class_shared_1_1_data_1_1_messages_a4ad4407da8cb562b81915f3d210830d9} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!UpdateAccountResponse@{UpdateAccountResponse}}
+\index{UpdateAccountResponse@{UpdateAccountResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{UpdateAccountResponse()}{UpdateAccountResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Update\+Account\+Response (\begin{DoxyParamCaption}\item[{String}]{error\+Reason }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_a6ae9fc19d43ac55e3e7bf8b75b9735ca}\label{class_shared_1_1_data_1_1_messages_a6ae9fc19d43ac55e3e7bf8b75b9735ca} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!UpdateUserStatusRequest@{UpdateUserStatusRequest}}
+\index{UpdateUserStatusRequest@{UpdateUserStatusRequest}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{UpdateUserStatusRequest()}{UpdateUserStatusRequest()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Update\+User\+Status\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_client_1_1_d_t_o_1_1_account}{Account}}}]{Account,  }\item[{int}]{new\+Status }\end{DoxyParamCaption})}
+
+\Hypertarget{class_shared_1_1_data_1_1_messages_aff0fcfd505f32e06ee8ccd1bfd87358d}\label{class_shared_1_1_data_1_1_messages_aff0fcfd505f32e06ee8ccd1bfd87358d} 
+\index{Shared.Data.Messages@{Shared.Data.Messages}!UpdateUserStatusResponse@{UpdateUserStatusResponse}}
+\index{UpdateUserStatusResponse@{UpdateUserStatusResponse}!Shared.Data.Messages@{Shared.Data.Messages}}
+\doxysubsubsection{\texorpdfstring{UpdateUserStatusResponse()}{UpdateUserStatusResponse()}}
+{\footnotesize\ttfamily record Shared.\+Data.\+Messages.\+Update\+User\+Status\+Response (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_messages_8cs_a1ce92468c782831f2a1b04ecae777077}{boolean}}}]{b }\end{DoxyParamCaption})}
+
+
+
+Dokumentationen for denne klasse blev genereret ud fra filen\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+SEP3/\+CSharp/\+Boardgames/\+Shared/\mbox{\hyperlink{_messages_8cs}{Messages.\+cs}}\end{DoxyCompactItemize}

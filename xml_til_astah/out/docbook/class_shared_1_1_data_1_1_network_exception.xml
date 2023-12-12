@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_data_1_1_network_exception" xml:lang="da">
+<title>Shared.Data.NetworkException Klasse-reference</title>
+<indexterm><primary>Shared.Data.NetworkException</primary></indexterm>
+Stamtræ for Shared.Data.NetworkException:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_network_exception__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for Shared.Data.NetworkException:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_network_exception__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_shared_1_1_data_1_1_network_exception_1a7d496611e22a994718a8c80bc670a445">NetworkException</link> (string? message, Exception? innerException)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_shared_1_1_data_1_1_network_exception_1a7d496611e22a994718a8c80bc670a445"/><section>
+    <title>NetworkException()</title>
+<indexterm><primary>NetworkException</primary><secondary>Shared.Data.NetworkException</secondary></indexterm>
+<indexterm><primary>Shared.Data.NetworkException</primary><secondary>NetworkException</secondary></indexterm>
+<para><computeroutput>Shared.Data.NetworkException.NetworkException (string? message, Exception? innerException)</computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/Networking/<link linkend="__service_socket_8cs">ServiceSocket.cs</link></section>
+</section>

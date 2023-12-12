@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_services_1_1_live_service" xml:lang="da">
+<title>GameClient.Services.LiveService Klasse-reference</title>
+<indexterm><primary>GameClient.Services.LiveService</primary></indexterm>
+Stamtræ for GameClient.Services.LiveService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_services_1_1_live_service__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for GameClient.Services.LiveService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_services_1_1_live_service__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_game_client_1_1_services_1_1_live_service_1a0a884ff2ed3a47b4f3e43f014691b9d4">LiveService</link> (<link linkend="_interface_shared_1_1_auth_state_1_1_i_auth_state">IAuthState</link> authState, <link linkend="_class_shared_1_1_config">Config</link> config)</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f">LiveUpdateTask</link> (CancellationToken ct)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_services_1_1_live_service_1ab3751be27002ddc764d2480cb0e2b194">Dispose</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Begivenheder    </title>
+        <itemizedlist>
+            <listitem><para>EventHandler&lt; int &gt;? <link linkend="_class_game_client_1_1_services_1_1_live_service_1af01ffaed959b1249b090186b83961a8c">MatchUpdated</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+Begivenheder inherited from <link linkend="_interface_game_client_1_1_services_1_1_i_live_service">GameClient.Services.ILiveService</link>        <itemizedlist>
+            <listitem><para>EventHandler&lt; int &gt;? <link linkend="_interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141">MatchUpdated</link></para>
+</listitem>
+        </itemizedlist>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_game_client_1_1_services_1_1_live_service_1a0a884ff2ed3a47b4f3e43f014691b9d4"/><section>
+    <title>LiveService()</title>
+<indexterm><primary>LiveService</primary><secondary>GameClient.Services.LiveService</secondary></indexterm>
+<indexterm><primary>GameClient.Services.LiveService</primary><secondary>LiveService</secondary></indexterm>
+<para><computeroutput>GameClient.Services.LiveService.LiveService (<link linkend="_interface_shared_1_1_auth_state_1_1_i_auth_state">IAuthState</link> authState, <link linkend="_class_shared_1_1_config">Config</link> config)</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_services_1_1_live_service_a0a884ff2ed3a47b4f3e43f014691b9d4_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_game_client_1_1_services_1_1_live_service_1ab3751be27002ddc764d2480cb0e2b194"/><section>
+    <title>Dispose()</title>
+<indexterm><primary>Dispose</primary><secondary>GameClient.Services.LiveService</secondary></indexterm>
+<indexterm><primary>GameClient.Services.LiveService</primary><secondary>Dispose</secondary></indexterm>
+<para><computeroutput>void GameClient.Services.LiveService.Dispose ( )</computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f"/><section>
+    <title>LiveUpdateTask()</title>
+<indexterm><primary>LiveUpdateTask</primary><secondary>GameClient.Services.LiveService</secondary></indexterm>
+<indexterm><primary>GameClient.Services.LiveService</primary><secondary>LiveUpdateTask</secondary></indexterm>
+<para><computeroutput>async Task GameClient.Services.LiveService.LiveUpdateTask (CancellationToken ct)</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_services_1_1_live_service_ac90a03d1ee99f1963ac3a43ce9b5b20f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_services_1_1_live_service_ac90a03d1ee99f1963ac3a43ce9b5b20f_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Begivenhedsdokumentation</title>
+<anchor xml:id="_class_game_client_1_1_services_1_1_live_service_1af01ffaed959b1249b090186b83961a8c"/><section>
+    <title>MatchUpdated</title>
+<indexterm><primary>MatchUpdated</primary><secondary>GameClient.Services.LiveService</secondary></indexterm>
+<indexterm><primary>GameClient.Services.LiveService</primary><secondary>MatchUpdated</secondary></indexterm>
+<para><computeroutput>EventHandler&lt;int&gt;? GameClient.Services.LiveService.MatchUpdated</computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/GameClient/Services/<link linkend="__live_service_8cs">LiveService.cs</link></section>
+</section>

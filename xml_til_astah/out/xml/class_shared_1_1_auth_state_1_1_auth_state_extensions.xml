@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_shared_1_1_auth_state_1_1_auth_state_extensions" kind="class" language="C#" prot="public">
+    <compoundname>Shared::AuthState::AuthStateExtensions</compoundname>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_state_extensions_1a2f8f88bae6968cd7cc43179414281d40" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; int &gt;</type>
+        <definition>static async Task&lt; int &gt; Shared.AuthState.AuthStateExtensions.GetUserIdAsync</definition>
+        <argsstring>(this IAuthState a)</argsstring>
+        <name>GetUserIdAsync</name>
+        <qualifiedname>Shared.AuthState.AuthStateExtensions.GetUserIdAsync</qualifiedname>
+        <param>
+          <type>this <ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs" line="13" column="30" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs" bodystart="13" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_state_extensions_1ae68730f5f6182eb76103fd2ad89b4bba" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; string &gt;</type>
+        <definition>static async Task&lt; string &gt; Shared.AuthState.AuthStateExtensions.GetUsernameAsync</definition>
+        <argsstring>(this IAuthState a)</argsstring>
+        <name>GetUsernameAsync</name>
+        <qualifiedname>Shared.AuthState.AuthStateExtensions.GetUsernameAsync</qualifiedname>
+        <param>
+          <type>this <ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs" line="20" column="30" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs" bodystart="20" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Shared.AuthState.AuthStateExtensions</label>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs" line="12" column="15" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs" bodystart="12" bodyend="25"/>
+    <listofallmembers>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_extensions_1a2f8f88bae6968cd7cc43179414281d40" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthStateExtensions</scope><name>GetUserIdAsync</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_extensions_1ae68730f5f6182eb76103fd2ad89b4bba" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthStateExtensions</scope><name>GetUsernameAsync</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_i_auth_service_8cs" kind="file" language="C#">
+    <compoundname>IAuthService.cs</compoundname>
+    <innerclass refid="interface_shared_1_1_auth_service_1_1_i_auth_service" prot="public">Shared::AuthService::IAuthService</innerclass>
+    <innernamespace refid="namespace_shared">Shared</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_auth_service">Shared::AuthService</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespace_shared_1_1_auth_service" refkind="compound"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_shared_1_1_auth_service" kindref="compound">Shared.AuthService</ref>;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="interface_shared_1_1_auth_service_1_1_i_auth_service" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interface_shared_1_1_auth_service_1_1_i_auth_service" kindref="compound">IAuthService</ref><sp/>{</highlight></codeline>
+<codeline lineno="4" refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1a515f39d912118a8aa4efa8401258e4c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;LoginResponse&gt;<sp/><ref refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1a515f39d912118a8aa4efa8401258e4c6" kindref="member">LoginAsync</ref>(LoginRequest<sp/>req);</highlight></codeline>
+<codeline lineno="5" refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1ad570943d51fa4469959e9a6ef2583144" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task<sp/><ref refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1ad570943d51fa4469959e9a6ef2583144" kindref="member">LogoutAsync</ref>();</highlight></codeline>
+<codeline lineno="6" refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1a02db9f05d0156df0007187361c817e7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;RegisterResponse?&gt;<sp/><ref refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1a02db9f05d0156df0007187361c817e7b" kindref="member">RegisterAsync</ref>(RegisterRequest<sp/>req);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthService/IAuthService.cs"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_not_authorized_exception_8cs" kind="file" language="C#">
+    <compoundname>NotAuthorizedException.cs</compoundname>
+    <innerclass refid="class_game_client_1_1_data_1_1_not_authorized_exception" prot="public">GameClient::Data::NotAuthorizedException</innerclass>
+    <innernamespace refid="namespace_game_client">GameClient</innernamespace>
+    <innernamespace refid="namespace_game_client_1_1_data">GameClient::Data</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespace_game_client_1_1_data" refkind="compound"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_game_client_1_1_data" kindref="compound">GameClient.Data</ref>;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="class_game_client_1_1_data_1_1_not_authorized_exception" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_game_client_1_1_data_1_1_not_authorized_exception" kindref="compound">NotAuthorizedException</ref><sp/>:<sp/>Exception<sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/NotAuthorizedException.cs"/>
+  </compounddef>
+</doxygen>

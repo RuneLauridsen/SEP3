@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_01685e9e87318b084115a826d884486e" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/Shared.Tests</compoundname>
+    <innerdir refid="dir_4443d913112c7d025fa2ea587b7f60cd">W:/SEP3/CSharp/Boardgames/Shared.Tests/obj</innerdir>
+    <innerfile refid="_test_data_8cs">TestData.cs</innerfile>
+    <innerfile refid="_test_util_8cs">TestUtil.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared.Tests/"/>
+  </compounddef>
+</doxygen>

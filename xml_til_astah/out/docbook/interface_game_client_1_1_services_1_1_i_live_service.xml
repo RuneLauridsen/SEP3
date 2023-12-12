@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_game_client_1_1_services_1_1_i_live_service" xml:lang="da">
+<title>GameClient.Services.ILiveService Grænseflade-reference</title>
+<indexterm><primary>GameClient.Services.ILiveService</primary></indexterm>
+Stamtræ for GameClient.Services.ILiveService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_game_client_1_1_services_1_1_i_live_service__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for GameClient.Services.ILiveService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_game_client_1_1_services_1_1_i_live_service__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Begivenheder    </title>
+        <itemizedlist>
+            <listitem><para>EventHandler&lt; int &gt;? <link linkend="_interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141">MatchUpdated</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Begivenhedsdokumentation</title>
+<anchor xml:id="_interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141"/><section>
+    <title>MatchUpdated</title>
+<indexterm><primary>MatchUpdated</primary><secondary>GameClient.Services.ILiveService</secondary></indexterm>
+<indexterm><primary>GameClient.Services.ILiveService</primary><secondary>MatchUpdated</secondary></indexterm>
+<para><computeroutput>EventHandler&lt;int&gt;? GameClient.Services.ILiveService.MatchUpdated</computeroutput></para></section>
+<para>
+Dokumentationen for denne grænseflade blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/GameClient/Services/<link linkend="__i_live_service_8cs">ILiveService.cs</link></section>
+</section>

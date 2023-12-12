@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="namespace_shared_1_1_auth_service" kind="namespace" language="C#">
+    <compoundname>Shared::AuthService</compoundname>
+    <innerclass refid="interface_shared_1_1_auth_service_1_1_i_auth_service" prot="public">Shared::AuthService::IAuthService</innerclass>
+    <innerclass refid="class_shared_1_1_auth_service_1_1_jwt_auth_service" prot="public">Shared::AuthService::JwtAuthService</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthService/IAuthService.cs" line="1" column="1"/>
+  </compounddef>
+</doxygen>

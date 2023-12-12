@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_8aaefde65067a8faa4f8c4efce45cf0e" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/GameClient.Tests</compoundname>
+    <innerdir refid="dir_d0b5247a6462560b10ffef2d58f30354">W:/SEP3/CSharp/Boardgames/GameClient.Tests/obj</innerdir>
+    <innerfile refid="_game_client_test_8cs">GameClientTest.cs</innerfile>
+    <innerfile refid="_game_client_8_tests_2_global_usings_8cs">GlobalUsings.cs</innerfile>
+    <innerfile refid="_game_client_8_tests_2_test_client_8cs">TestClient.cs</innerfile>
+    <innerfile refid="_test_invites_8cs">TestInvites.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient.Tests/"/>
+  </compounddef>
+</doxygen>

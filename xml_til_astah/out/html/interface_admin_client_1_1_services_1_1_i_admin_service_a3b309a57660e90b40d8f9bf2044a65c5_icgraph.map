@@ -1,0 +1,9 @@
+<map id="AdminClient.Services.IAdminService.GetAccountAsync" name="AdminClient.Services.IAdminService.GetAccountAsync">
+<area shape="rect" id="Node000001" title=" " alt="" coords="255,72,443,115"/>
+<area shape="rect" id="Node000002" href="$class_admin_client_1_1_tests_1_1_admin_client_test.html#af26ea7b78a9176e7ce45fc9e5fbd1b5f" title=" " alt="" coords="5,5,207,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="253,70,186,51,187,46,255,65"/>
+<area shape="rect" id="Node000003" href="$class_admin_client_1_1_tests_1_1_admin_client_test.html#a1b543fcad00e0b6a2ca285ceb497069e" title=" " alt="" coords="5,72,207,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,96,207,96,207,91,239,91"/>
+<area shape="rect" id="Node000004" href="$class_admin_client_1_1_tests_1_1_admin_client_test.html#adc37296cb6a4136097864c99d3766428" title=" " alt="" coords="5,139,207,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="255,122,187,141,186,135,253,117"/>
+</map>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_shared" xml:lang="da">
+<title>Shared namespace-reference</title>
+<indexterm><primary>Shared</primary></indexterm>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_shared_1_1_auth_service">AuthService</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_shared_1_1_auth_state">AuthState</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_shared_1_1_data">Data</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_shared_1_1_tets">Tets</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_shared_1_1_config">Config</link></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">Extensions</emphasis></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">HtmlUtil</emphasis></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">Log</emphasis></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_shared_1_1_message">Message</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_shared_1_1_parse_util">ParseUtil</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

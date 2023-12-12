@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_game_client_2_global_usings_8cs" kind="file" language="C#">
+    <compoundname>GlobalUsings.cs</compoundname>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="_game_client_2_global_usings_8cs_1acccd6ed812a9a5c3514e4544e565d071" prot="public" static="no">
+        <type><ref refid="class_game_client_1_1_d_t_o_1_1_match" kindref="compound">GameClient.DTO.Match</ref></type>
+        <definition>using Match =  GameClient.DTO.Match</definition>
+        <argsstring></argsstring>
+        <name>Match</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/GlobalUsings.cs" line="2" column="8" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/GlobalUsings.cs" bodystart="2" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="_game_client_2_global_usings_8cs_1ad86f9d223a10dabf7abfe50445f66ddf" prot="public" static="no">
+        <type><ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">GameClient.DTO.Account</ref></type>
+        <definition>using Account =  GameClient.DTO.Account</definition>
+        <argsstring></argsstring>
+        <name>Account</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/GlobalUsings.cs" line="3" column="8" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/GlobalUsings.cs" bodystart="3" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">static<sp/><ref refid="namespace_shared" kindref="compound">Shared</ref>.<ref refid="namespace_shared_1_1_data" kindref="compound">Data</ref>.<ref refid="class_shared_1_1_data_1_1_messages" kindref="compound">Messages</ref>;</highlight></codeline>
+<codeline lineno="2" refid="_game_client_2_global_usings_8cs_1acccd6ed812a9a5c3514e4544e565d071" refkind="member"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="_admin_client_2_global_usings_8cs_1acccd6ed812a9a5c3514e4544e565d071" kindref="member">Match</ref><sp/>=<sp/><ref refid="namespace_game_client" kindref="compound">GameClient</ref>.<ref refid="namespace_game_client_1_1_d_t_o" kindref="compound">DTO</ref>.<ref refid="class_game_client_1_1_d_t_o_1_1_match" kindref="compound">Match</ref>;</highlight></codeline>
+<codeline lineno="3" refid="_game_client_2_global_usings_8cs_1ad86f9d223a10dabf7abfe50445f66ddf" refkind="member"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="_admin_client_2_global_usings_8cs_1ad86f9d223a10dabf7abfe50445f66ddf" kindref="member">Account</ref><sp/>=<sp/><ref refid="namespace_game_client" kindref="compound">GameClient</ref>.<ref refid="namespace_game_client_1_1_d_t_o" kindref="compound">DTO</ref>.<ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">Account</ref>;</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/GlobalUsings.cs"/>
+  </compounddef>
+</doxygen>

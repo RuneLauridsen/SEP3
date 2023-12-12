@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="interface_game_client_1_1_services_1_1_i_live_service" kind="interface" language="C#" prot="public">
+    <compoundname>GameClient::Services::ILiveService</compoundname>
+    <derivedcompoundref refid="class_game_client_1_1_services_1_1_live_service" prot="public" virt="non-virtual">GameClient.Services.LiveService</derivedcompoundref>
+    <sectiondef kind="event">
+      <memberdef kind="event" id="interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; int &gt;?</type>
+        <definition>EventHandler&lt;int&gt;? GameClient.Services.ILiveService.MatchUpdated</definition>
+        <argsstring></argsstring>
+        <name>MatchUpdated</name>
+        <qualifiedname>GameClient.Services.ILiveService.MatchUpdated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/ILiveService.cs" line="4" column="31" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/ILiveService.cs" bodystart="4" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>GameClient.Services.ILiveService</label>
+        <link refid="interface_game_client_1_1_services_1_1_i_live_service"/>
+      </node>
+      <node id="2">
+        <label>GameClient.Services.LiveService</label>
+        <link refid="class_game_client_1_1_services_1_1_live_service"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.Services.ILiveService</label>
+        <link refid="interface_game_client_1_1_services_1_1_i_live_service"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/ILiveService.cs" line="3" column="18" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/ILiveService.cs" bodystart="3" bodyend="5"/>
+    <listofallmembers>
+      <member refid="interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141" prot="public" virt="non-virtual"><scope>GameClient::Services::ILiveService</scope><name>MatchUpdated</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

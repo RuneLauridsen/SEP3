@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_297a5e8080223b2ce7b3ede89268e18a" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/Shared</compoundname>
+    <innerdir refid="dir_bbbde8088f05e49d9f9dea9d999efe9f">W:/SEP3/CSharp/Boardgames/Shared/AuthService</innerdir>
+    <innerdir refid="dir_03f2346b7b8ecd5eb153508cbe5cde04">W:/SEP3/CSharp/Boardgames/Shared/AuthState</innerdir>
+    <innerdir refid="dir_227f13e24dfeeca7bd447e6fd5067f53">W:/SEP3/CSharp/Boardgames/Shared/DTO</innerdir>
+    <innerdir refid="dir_d7f993ea9e2f3968a6f93eb11c63fbbe">W:/SEP3/CSharp/Boardgames/Shared/Networking</innerdir>
+    <innerdir refid="dir_96d1d7867fc521ad4d2fc483d872ed08">W:/SEP3/CSharp/Boardgames/Shared/obj</innerdir>
+    <innerfile refid="_config_8cs">Config.cs</innerfile>
+    <innerfile refid="_extensions_8cs">Extensions.cs</innerfile>
+    <innerfile refid="_html_util_8cs">HtmlUtil.cs</innerfile>
+    <innerfile refid="_json_util_8cs">JsonUtil.cs</innerfile>
+    <innerfile refid="_log_8cs">Log.cs</innerfile>
+    <innerfile refid="_message_8cs">Message.cs</innerfile>
+    <innerfile refid="_messages_8cs">Messages.cs</innerfile>
+    <innerfile refid="_not_authorized_exception_8cs">NotAuthorizedException.cs</innerfile>
+    <innerfile refid="_parse_util_8cs">ParseUtil.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/"/>
+  </compounddef>
+</doxygen>

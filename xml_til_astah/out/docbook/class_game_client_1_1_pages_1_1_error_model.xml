@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_pages_1_1_error_model" xml:lang="da">
+<title>GameClient.Pages.ErrorModel Klasse-reference</title>
+<indexterm><primary>GameClient.Pages.ErrorModel</primary></indexterm>
+Stamtræ for GameClient.Pages.ErrorModel:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_pages_1_1_error_model__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for GameClient.Pages.ErrorModel:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_pages_1_1_error_model__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_game_client_1_1_pages_1_1_error_model_1a206ff739abd1ea8e2af882ee69542b82">ErrorModel</link> (ILogger&lt; <link linkend="_class_game_client_1_1_pages_1_1_error_model">ErrorModel</link> &gt; logger)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_pages_1_1_error_model_1a2e037d5bb25adc25cacc7fa28d56bd73">OnGet</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>string? <link linkend="_class_game_client_1_1_pages_1_1_error_model_1a74feee7f9af271ec294c9c95ea418970">RequestId</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_game_client_1_1_pages_1_1_error_model_1a6da7b9d0a383f2e4d8072b060509d386">ShowRequestId</link><computeroutput> [get]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_game_client_1_1_pages_1_1_error_model_1a206ff739abd1ea8e2af882ee69542b82"/><section>
+    <title>ErrorModel()</title>
+<indexterm><primary>ErrorModel</primary><secondary>GameClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>GameClient.Pages.ErrorModel</primary><secondary>ErrorModel</secondary></indexterm>
+<para><computeroutput>GameClient.Pages.ErrorModel.ErrorModel (ILogger&lt; <link linkend="_class_game_client_1_1_pages_1_1_error_model">ErrorModel</link> &gt; logger)</computeroutput></para></section>
+</section>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_game_client_1_1_pages_1_1_error_model_1a2e037d5bb25adc25cacc7fa28d56bd73"/><section>
+    <title>OnGet()</title>
+<indexterm><primary>OnGet</primary><secondary>GameClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>GameClient.Pages.ErrorModel</primary><secondary>OnGet</secondary></indexterm>
+<para><computeroutput>void GameClient.Pages.ErrorModel.OnGet ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_game_client_1_1_pages_1_1_error_model_1a74feee7f9af271ec294c9c95ea418970"/><section>
+    <title>RequestId</title>
+<indexterm><primary>RequestId</primary><secondary>GameClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>GameClient.Pages.ErrorModel</primary><secondary>RequestId</secondary></indexterm>
+<para><computeroutput>string? GameClient.Pages.ErrorModel.RequestId<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_pages_1_1_error_model_1a6da7b9d0a383f2e4d8072b060509d386"/><section>
+    <title>ShowRequestId</title>
+<indexterm><primary>ShowRequestId</primary><secondary>GameClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>GameClient.Pages.ErrorModel</primary><secondary>ShowRequestId</secondary></indexterm>
+<para><computeroutput>bool GameClient.Pages.ErrorModel.ShowRequestId<computeroutput>[get]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/GameClient/Pages/<link linkend="__game_client_2_pages_2_error_8cshtml_8cs">Error.cshtml.cs</link></section>
+</section>

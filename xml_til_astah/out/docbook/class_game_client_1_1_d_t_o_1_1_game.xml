@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_d_t_o_1_1_game" xml:lang="da">
+<title>GameClient.DTO.Game Klasse-reference</title>
+<indexterm><primary>GameClient.DTO.Game</primary></indexterm>
+Samarbejdsdiagram for GameClient.DTO.Game:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_d_t_o_1_1_game__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_d_t_o_1_1_game_1a40bfa37d885f64cdec9d7efed813a5ee">GameId</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_game_1a5516aa7b88c8ebac59d173fb016c5665">Name</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_game_1aad2a784c0436a6437c242870aacc4d7b">GamePicture</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_game_1a79d6470bd74eaf2c80fd795924c7e4a6">GamePictureType</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_game_1a40bfa37d885f64cdec9d7efed813a5ee"/><section>
+    <title>GameId</title>
+<indexterm><primary>GameId</primary><secondary>GameClient.DTO.Game</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.Game</primary><secondary>GameId</secondary></indexterm>
+<para><computeroutput>required int GameClient.DTO.Game.GameId<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_game_1aad2a784c0436a6437c242870aacc4d7b"/><section>
+    <title>GamePicture</title>
+<indexterm><primary>GamePicture</primary><secondary>GameClient.DTO.Game</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.Game</primary><secondary>GamePicture</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.Game.GamePicture<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_game_1a79d6470bd74eaf2c80fd795924c7e4a6"/><section>
+    <title>GamePictureType</title>
+<indexterm><primary>GamePictureType</primary><secondary>GameClient.DTO.Game</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.Game</primary><secondary>GamePictureType</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.Game.GamePictureType<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_game_1a5516aa7b88c8ebac59d173fb016c5665"/><section>
+    <title>Name</title>
+<indexterm><primary>Name</primary><secondary>GameClient.DTO.Game</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.Game</primary><secondary>Name</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.Game.Name<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/DTO/<link linkend="__game_8cs">Game.cs</link></section>
+</section>

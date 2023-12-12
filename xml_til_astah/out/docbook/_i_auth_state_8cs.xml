@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__i_auth_state_8cs" xml:lang="da">
+<title>W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs filreference</title>
+<indexterm><primary>W:/SEP3/CSharp/Boardgames/Shared/AuthState/IAuthState.cs</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>interface <link linkend="_interface_shared_1_1_auth_state_1_1_i_auth_state">Shared.AuthState.IAuthState</link></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">Shared.AuthState.AuthStateExtensions</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_shared">Shared</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_shared_1_1_auth_state">Shared.AuthState</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

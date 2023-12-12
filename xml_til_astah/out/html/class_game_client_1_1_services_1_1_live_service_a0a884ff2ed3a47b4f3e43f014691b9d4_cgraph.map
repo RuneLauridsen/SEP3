@@ -1,0 +1,13 @@
+<map id="GameClient.Services.LiveService.LiveService" name="GameClient.Services.LiveService.LiveService">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,93,174,136"/>
+<area shape="rect" id="Node000002" href="$class_game_client_1_1_services_1_1_live_service.html#ac90a03d1ee99f1963ac3a43ce9b5b20f" title=" " alt="" coords="222,93,390,136"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,112,206,112,206,117,174,117"/>
+<area shape="rect" id="Node000003" href="$class_shared_1_1_data_1_1_service_socket.html#a79cc6032e20a1ba2cc01a97a3345cba8" title=" " alt="" coords="454,5,638,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="355,90,437,58,456,51,458,56,439,62,357,95"/>
+<area shape="rect" id="Node000004" href="$class_shared_1_1_data_1_1_service_socket.html#a157a472beb8cc05aa9b3af3784601b07" title=" " alt="" coords="438,72,653,99"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="390,102,422,98,423,103,391,107"/>
+<area shape="rect" id="Node000005" href="$class_shared_1_1_data_1_1_service_socket.html#adb235456ebdbc0b88e1c9253c1b25599" title=" " alt="" coords="454,123,638,165"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="391,122,438,128,438,133,390,128"/>
+<area shape="rect" id="Node000006" href="$class_shared_1_1_data_1_1_service_socket.html#a973877fd60c8001a6c11a84e9cf41109" title=" " alt="" coords="454,189,638,232"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="350,134,439,175,456,181,454,186,437,180,348,139"/>
+</map>

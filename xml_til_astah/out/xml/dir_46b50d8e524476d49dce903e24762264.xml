@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_46b50d8e524476d49dce903e24762264" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/GameClient/wwwroot/css</compoundname>
+    <innerdir refid="dir_d5f2bca260c137cfba7af24120c913c6">W:/SEP3/CSharp/Boardgames/GameClient/wwwroot/css/open-iconic</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/wwwroot/css/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_game_client_1_1_d_t_o_1_1_game" kind="class" language="C#" prot="public">
+    <compoundname>GameClient::DTO::Game</compoundname>
+    <sectiondef kind="property">
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_game_1a40bfa37d885f64cdec9d7efed813a5ee" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required int</type>
+        <definition>required int GameClient.DTO.Game.GameId</definition>
+        <argsstring></argsstring>
+        <name>GameId</name>
+        <qualifiedname>GameClient.DTO.Game.GameId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" line="5" column="25" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" bodystart="5" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_game_1a5516aa7b88c8ebac59d173fb016c5665" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required string</type>
+        <definition>required string GameClient.DTO.Game.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <qualifiedname>GameClient.DTO.Game.Name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" line="6" column="28" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" bodystart="6" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_game_1aad2a784c0436a6437c242870aacc4d7b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required string</type>
+        <definition>required string GameClient.DTO.Game.GamePicture</definition>
+        <argsstring></argsstring>
+        <name>GamePicture</name>
+        <qualifiedname>GameClient.DTO.Game.GamePicture</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" line="7" column="28" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" bodystart="7" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_game_1a79d6470bd74eaf2c80fd795924c7e4a6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required string</type>
+        <definition>required string GameClient.DTO.Game.GamePictureType</definition>
+        <argsstring></argsstring>
+        <name>GamePictureType</name>
+        <qualifiedname>GameClient.DTO.Game.GamePictureType</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" line="8" column="28" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" bodystart="8" bodyend="8"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.DTO.Game</label>
+        <link refid="class_game_client_1_1_d_t_o_1_1_game"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" line="4" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/Game.cs" bodystart="4" bodyend="9"/>
+    <listofallmembers>
+      <member refid="class_game_client_1_1_d_t_o_1_1_game_1a40bfa37d885f64cdec9d7efed813a5ee" prot="public" virt="non-virtual"><scope>GameClient::DTO::Game</scope><name>GameId</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_game_1aad2a784c0436a6437c242870aacc4d7b" prot="public" virt="non-virtual"><scope>GameClient::DTO::Game</scope><name>GamePicture</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_game_1a79d6470bd74eaf2c80fd795924c7e4a6" prot="public" virt="non-virtual"><scope>GameClient::DTO::Game</scope><name>GamePictureType</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_game_1a5516aa7b88c8ebac59d173fb016c5665" prot="public" virt="non-virtual"><scope>GameClient::DTO::Game</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

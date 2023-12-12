@@ -1,0 +1,62 @@
+.TH "AdminClient.Services.AdminService" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AdminClient.Services.AdminService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Nedarver \fBAdminClient\&.Services\&.IAdminService\fP\&.
+.SS "Offentlige metoder"
+
+.in +1c
+.ti -1c
+.RI "\fBAdminService\fP (\fBIAuthState\fP authState, \fBConfig\fP config)"
+.br
+.ti -1c
+.RI "async Task< UpdateUserStatusResponse > \fBUpdateUserStatusAsync\fP (\fBAccount\fP account, int newStatus)"
+.br
+.ti -1c
+.RI "async Task< List< \fBAccount\fP > > \fBGetUsersWaitingForApprovalAsync\fP ()"
+.br
+.ti -1c
+.RI "async Task< \fBAccount\fP > \fBGetAccountAsync\fP (GetAccountRequest request)"
+.br
+.ti -1c
+.RI "async Task< UpdateAccountResponse > \fBUpdateAccountAsync\fP (UpdateAccountRequest request)"
+.br
+.ti -1c
+.RI "async Task< IEnumerable< \fBAccount\fP > > \fBGetApprovedUsersAsync\fP ()"
+.br
+.in -1c
+.SH "Dokumentation af konstruktører og destruktører"
+.PP 
+.SS "AdminClient\&.Services\&.AdminService\&.AdminService (\fBIAuthState\fP authState, \fBConfig\fP config)"
+
+.SH "Dokumentation af medlemsfunktioner"
+.PP 
+.SS "async Task< \fBAccount\fP > AdminClient\&.Services\&.AdminService\&.GetAccountAsync (GetAccountRequest request)"
+
+.PP
+Implementerer \fBAdminClient\&.Services\&.IAdminService\fP\&.
+.SS "async Task< IEnumerable< \fBAccount\fP > > AdminClient\&.Services\&.AdminService\&.GetApprovedUsersAsync ()"
+
+.PP
+Implementerer \fBAdminClient\&.Services\&.IAdminService\fP\&.
+.SS "async Task< List< \fBAccount\fP > > AdminClient\&.Services\&.AdminService\&.GetUsersWaitingForApprovalAsync ()"
+
+.PP
+Implementerer \fBAdminClient\&.Services\&.IAdminService\fP\&.
+.SS "async Task< UpdateAccountResponse > AdminClient\&.Services\&.AdminService\&.UpdateAccountAsync (UpdateAccountRequest request)"
+
+.PP
+Implementerer \fBAdminClient\&.Services\&.IAdminService\fP\&.
+.SS "async Task< UpdateUserStatusResponse > AdminClient\&.Services\&.AdminService\&.UpdateUserStatusAsync (\fBAccount\fP account, int newStatus)"
+
+.PP
+Implementerer \fBAdminClient\&.Services\&.IAdminService\fP\&.
+
+.SH "Forfatter"
+.PP 
+Automatisk genereret af Doxygen for My Project ud fra kildekoden\&.

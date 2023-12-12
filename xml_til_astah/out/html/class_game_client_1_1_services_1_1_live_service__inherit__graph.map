@@ -1,0 +1,7 @@
+<map id="GameClient.Services.LiveService" name="GameClient.Services.LiveService">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,191,283"/>
+<area shape="rect" id="Node000002" href="$interface_game_client_1_1_services_1_1_i_live_service.html" title=" " alt="" coords="6,5,86,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,88,75,122,70,124,59,90"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,5,190,75"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,90,126,124,121,122,132,88"/>
+</map>

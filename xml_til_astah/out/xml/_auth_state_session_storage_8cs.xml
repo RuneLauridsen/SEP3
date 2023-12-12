@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_auth_state_session_storage_8cs" kind="file" language="C#">
+    <compoundname>AuthStateSessionStorage.cs</compoundname>
+    <innerclass refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage" prot="public">Shared::AuthState::AuthStateSessionStorage</innerclass>
+    <innernamespace refid="namespace_shared">Shared</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_auth_state">Shared::AuthState</innernamespace>
+    <innernamespace refid="namespace_microsoft_1_1_asp_net_core_1_1_components_1_1_server_1_1_protected_browser_storage">Microsoft::AspNetCore::Components::Server::ProtectedBrowserStorage</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Security.Claims;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_shared_1_1_auth_state" kindref="compound">Shared.AuthState</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage" kindref="compound">AuthStateSessionStorage</ref><sp/>:<sp/><ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>lookedInSessionStorage<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>_jwt<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>ClaimsPrincipal<sp/>_claims<sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal">;<sp/>}<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal">();</highlight></codeline>
+<codeline lineno="10" refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a17d0d66ceb8f458c3ac3701a05bf769d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal"><sp/>EventHandler&lt;string&gt;?<sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a17d0d66ceb8f458c3ac3701a05bf769d" kindref="member">AuthStateChanged</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>readonly<sp/>ProtectedSessionStorage<sp/>sessionStorage;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a207e5786d3c025c8720e9a7f41b57634" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a207e5786d3c025c8720e9a7f41b57634" kindref="member">AuthStateSessionStorage</ref>(ProtectedSessionStorage<sp/>sessionStorage)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this.sessionStorage<sp/>=<sp/>sessionStorage;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a1d057a0a1babb53ff16a5a6025fc508e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>async<sp/>Task&lt;string&gt;<sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a1d057a0a1babb53ff16a5a6025fc508e" kindref="member">GetJwtAsync</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>await<sp/>LoadFromSessionStorage();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_jwt;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1afb9ca1c03b44769c340f904189a8d77b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>async<sp/>Task&lt;ClaimsPrincipal&gt;<sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1afb9ca1c03b44769c340f904189a8d77b" kindref="member">GetClaimsAsync</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>await<sp/>LoadFromSessionStorage();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_claims;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>async<sp/>Task<sp/>LoadFromSessionStorage()<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lookedInSessionStorage)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>fromStorage<sp/>=<sp/>await<sp/>sessionStorage.GetAsync&lt;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;(</highlight><highlight class="stringliteral">&quot;jwt&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>await<sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1ae7ab0e43cc62616a75a0d6f2a5ad368f" kindref="member">SetAuthStateAsync</ref>(fromStorage.Value<sp/>??<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lookedInSessionStorage<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(Exception<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOTE(rune):<sp/>Ikke<sp/>nogen<sp/>alvorlig<sp/>fejl.<sp/>Beytder<sp/>bare<sp/>at<sp/>bruger<sp/>skal<sp/>logge<sp/>ind<sp/>igen<sp/>ved<sp/>næste<sp/>page<sp/>refresh.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Log.Error(e);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1ae7ab0e43cc62616a75a0d6f2a5ad368f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>async<sp/>Task<sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1ae7ab0e43cc62616a75a0d6f2a5ad368f" kindref="member">SetAuthStateAsync</ref>(String<sp/>jwt)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_jwt<sp/>=<sp/>jwt;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_claims<sp/>=<sp/>AuthUtil.ParseClaimsFromJwt(jwt);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>await<sp/>sessionStorage.SetAsync(</highlight><highlight class="stringliteral">&quot;jwt&quot;</highlight><highlight class="normal">,<sp/>jwt);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(Exception<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NOTE(rune):<sp/>Ikke<sp/>nogen<sp/>alvorlig<sp/>fejl.<sp/>Beytder<sp/>bare<sp/>at<sp/>bruger<sp/>skal<sp/>logge<sp/>ind<sp/>igen<sp/>ved<sp/>næste<sp/>page<sp/>refresh.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Log.Error(e);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a17d0d66ceb8f458c3ac3701a05bf769d" kindref="member">AuthStateChanged</ref>?.Invoke(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>jwt);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateSessionStorage.cs"/>
+  </compounddef>
+</doxygen>

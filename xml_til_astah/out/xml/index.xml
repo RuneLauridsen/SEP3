@@ -1,0 +1,818 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="da">
+  <compound refid="class_game_client_1_1_d_t_o_1_1_account" kind="class"><name>GameClient::DTO::Account</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a9359c3fab9fc2a3c2a71c290b014bdc2" kind="property"><name>AccountId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1aeb4ac084f79a6212ced1873f0455fcd7" kind="property"><name>Username</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a627febbf954ee83e9d5b59bcb58272ba" kind="property"><name>FirstName</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1ad59e4886c0fb28ea16ee5eb8937ab9ea" kind="property"><name>LastName</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a6dffa9254cc2f00a23ba14331b96f520" kind="property"><name>Email</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1af7d434567eea7161f71b3b094ce136c2" kind="property"><name>Description</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a70df56b081bec898c6c218c33b5914b8" kind="property"><name>Status</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1aae7cce2607d1a8772c3d3884135159e1" kind="property"><name>RegisterDateTime</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a987743edf94f3697f52470ebe18da51e" kind="property"><name>CreatedOn</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a82c3a67c57c45a774fb9507a7b423a62" kind="property"><name>ProfilePicture</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a3821a38ca01da0595afac8696b245fd1" kind="property"><name>ProfilePictureType</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a31bf896c088bec2cd152007f61302006" kind="variable"><name>STATUS_NONE</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a26e138d51fc43d79bdf5d203bac55dd9" kind="variable"><name>STATUS_PENDING</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1aedd68104de4d5bf55cc8582018d45f06" kind="variable"><name>STATUS_ACCEPTED</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1a28c4d6d42c75a0cd55c25a9a87cb31b5" kind="variable"><name>STATUS_DELETED</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_account_1ae65f9dde3024d2fef5307237e01d830d" kind="function"><name>StatusName</name></member>
+  </compound>
+  <compound refid="class_admin_client_1_1_tests_1_1_admin_client_test" kind="class"><name>AdminClient::Tests::AdminClientTest</name>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1add8747021bda3774e5a78c6538ec95b7" kind="variable"><name>client</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1ace9a11a65bb85b797e1bdf135e832aaf" kind="function"><name>AdminClientTest</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1af26ea7b78a9176e7ce45fc9e5fbd1b5f" kind="function"><name>Test_Get_Account</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a1b543fcad00e0b6a2ca285ceb497069e" kind="function"><name>Test_updateAccount</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a1cea775d05249773df36b2b97a6c6e69" kind="function"><name>Test_getAllApprovedUsers</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a3f73296e3007b27942355b8dae6f14ee" kind="function"><name>Test_GetUsersWaitingForApproval</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a94b4e0c3b8cba655faa79642a2331c89" kind="function"><name>Test_AdminLogin</name></member>
+    <member refid="class_admin_client_1_1_tests_1_1_admin_client_test_1adc37296cb6a4136097864c99d3766428" kind="function"><name>Test_User_Status</name></member>
+  </compound>
+  <compound refid="class_admin_client_1_1_services_1_1_admin_service" kind="class"><name>AdminClient::Services::AdminService</name>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1a0875bb992d28a5415f519a8ff65225e0" kind="variable"><name>_authState</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1a5a1a428e9bb6c191582448c064a0d802" kind="variable"><name>_config</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1a6d2f9ee8dd80f5f941a3d121227d48fe" kind="function"><name>AdminService</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1a6295f53f4ed0e1974ac746b0c2f60112" kind="function"><name>UpdateUserStatusAsync</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1a9fb13bda7e87d62b5c256b1298377ff9" kind="function"><name>GetUsersWaitingForApprovalAsync</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1ac11231129bcf0ecc9eeba714a60e8bc0" kind="function"><name>GetAccountAsync</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1adb3e6fa024486dc8bf9f95e06d0cca03" kind="function"><name>UpdateAccountAsync</name></member>
+    <member refid="class_admin_client_1_1_services_1_1_admin_service_1ae1987c3db025d08a7be39b317cbbd300" kind="function"><name>GetApprovedUsersAsync</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_auth_state_1_1_auth_state_extensions" kind="class"><name>Shared::AuthState::AuthStateExtensions</name>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_extensions_1a2f8f88bae6968cd7cc43179414281d40" kind="function"><name>GetUserIdAsync</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_extensions_1ae68730f5f6182eb76103fd2ad89b4bba" kind="function"><name>GetUsernameAsync</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory" kind="class"><name>Shared::AuthState::AuthStateInMemory</name>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1adfa9e844fcc75d13182a7e7b796fdd57" kind="variable"><name>_jwt</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a4c08f6ef9af86f0b631955841b0700f3" kind="property"><name>_claims</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a35c4eab341dfd3164d854989ae018ced" kind="event"><name>AuthStateChanged</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1afba10780df3c6cf33bc2b1f220a54d11" kind="function"><name>GetJwtAsync</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1aec946ae6951f1442fe57529472a16193" kind="function"><name>GetClaimsAsync</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a811d3e8c50598da6208459b8743c3a97" kind="function"><name>SetAuthStateAsync</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage" kind="class"><name>Shared::AuthState::AuthStateSessionStorage</name>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a3f3a16040fbd8140c9eaa80503a7f3b1" kind="variable"><name>lookedInSessionStorage</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1abe5d0e5dd558f6e38a94e8821de5d7ca" kind="variable"><name>_jwt</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a02b1bdf78652f7312d19ca4a4ad5d82d" kind="variable"><name>sessionStorage</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1acd003ee073c26c84fdbf3e7adddb15bf" kind="property"><name>_claims</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a17d0d66ceb8f458c3ac3701a05bf769d" kind="event"><name>AuthStateChanged</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a207e5786d3c025c8720e9a7f41b57634" kind="function"><name>AuthStateSessionStorage</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a1d057a0a1babb53ff16a5a6025fc508e" kind="function"><name>GetJwtAsync</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1afb9ca1c03b44769c340f904189a8d77b" kind="function"><name>GetClaimsAsync</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1ae7ab0e43cc62616a75a0d6f2a5ad368f" kind="function"><name>SetAuthStateAsync</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage_1a6099cdc068a5f629c7bcfbed4e6fa919" kind="function"><name>LoadFromSessionStorage</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_auth_state_1_1_auth_util" kind="class"><name>Shared::AuthState::AuthUtil</name>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_util_1a9347718e7ce6c68674b616d7e22e71e1" kind="function"><name>ParseClaimsFromJwt</name></member>
+    <member refid="class_shared_1_1_auth_state_1_1_auth_util_1af26c834bdfe56a9338871eb00797c249" kind="function"><name>ParseBase64WithoutPadding</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_config" kind="class"><name>Shared::Config</name>
+    <member refid="class_shared_1_1_config_1aba66463188cc139f0e1937714dfc0a2d" kind="property"><name>LogicAddress</name></member>
+    <member refid="class_shared_1_1_config_1a366453d54409f8a09e40752296dcbcf1" kind="property"><name>LogicPort</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_empty" kind="class"><name>GameClient::DTO::Empty</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1a8237112d015720414f0fe0ba675a0b26" kind="function"><name>Account</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1a6c43c5fc521ef72a81feeded59f824b5" kind="function"><name>Match</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1a715bfc5ec9bc20bc326eedd450510b5a" kind="function"><name>Game</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1ab38a7a210c90b83b9185927339b438ba" kind="function"><name>Participant</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1a80ce7c82a537e94363950adb718240de" kind="function"><name>DateTime</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1a7ebd058951dea501c3e162e4aee64406" kind="function"><name>List&lt; T &gt;</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_empty_1a353600c62c63940dbdaa2f4114400660" kind="function"><name>Enumerable&lt; T &gt;</name></member>
+  </compound>
+  <compound refid="class_admin_client_1_1_pages_1_1_error_model" kind="class"><name>AdminClient::Pages::ErrorModel</name>
+    <member refid="class_admin_client_1_1_pages_1_1_error_model_1a95c295c31c05ea5c5a1c10e14b8f30cc" kind="property"><name>RequestId</name></member>
+    <member refid="class_admin_client_1_1_pages_1_1_error_model_1a5975cf6899800c0394aaacd048eafd3f" kind="property"><name>ShowRequestId</name></member>
+    <member refid="class_admin_client_1_1_pages_1_1_error_model_1a2c4ced10492a8663c6141f11edaf3d2f" kind="variable"><name>_logger</name></member>
+    <member refid="class_admin_client_1_1_pages_1_1_error_model_1a389de2011762f1af416a3ef77bfa3f22" kind="function"><name>ErrorModel</name></member>
+    <member refid="class_admin_client_1_1_pages_1_1_error_model_1a53354e74832863dd57f99d95197e75f5" kind="function"><name>OnGet</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_pages_1_1_error_model" kind="class"><name>GameClient::Pages::ErrorModel</name>
+    <member refid="class_game_client_1_1_pages_1_1_error_model_1a74feee7f9af271ec294c9c95ea418970" kind="property"><name>RequestId</name></member>
+    <member refid="class_game_client_1_1_pages_1_1_error_model_1a6da7b9d0a383f2e4d8072b060509d386" kind="property"><name>ShowRequestId</name></member>
+    <member refid="class_game_client_1_1_pages_1_1_error_model_1ab625b257b88f1adac28852739ac036b4" kind="variable"><name>_logger</name></member>
+    <member refid="class_game_client_1_1_pages_1_1_error_model_1a206ff739abd1ea8e2af882ee69542b82" kind="function"><name>ErrorModel</name></member>
+    <member refid="class_game_client_1_1_pages_1_1_error_model_1a2e037d5bb25adc25cacc7fa28d56bd73" kind="function"><name>OnGet</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_extensions" kind="class"><name>Shared::Extensions</name>
+    <member refid="class_shared_1_1_extensions_1aa6ddeff62ebc2cb32758beed44991c06" kind="function"><name>GetOrDefault</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_finished_match_score" kind="class"><name>GameClient::DTO::FinishedMatchScore</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_finished_match_score_1a52f45528fa1b04875a7609c4a806c43c" kind="property"><name>GameId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_finished_match_score_1a64e0ff604697545d66ba57b6e52cc2a8" kind="property"><name>GameName</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_finished_match_score_1a11e5ce8173fcaf9db27cae108197ba77" kind="property"><name>MatchId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_finished_match_score_1a5bbc020bc296b4b79f917b0739660c0f" kind="property"><name>MatchFinishedOn</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_finished_match_score_1a2c13fd16a0ea26bd90a0560cdf1b9368" kind="property"><name>Score</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_game" kind="class"><name>GameClient::DTO::Game</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_game_1a40bfa37d885f64cdec9d7efed813a5ee" kind="property"><name>GameId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_game_1a5516aa7b88c8ebac59d173fb016c5665" kind="property"><name>Name</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_game_1aad2a784c0436a6437c242870aacc4d7b" kind="property"><name>GamePicture</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_game_1a79d6470bd74eaf2c80fd795924c7e4a6" kind="property"><name>GamePictureType</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_tests_1_1_game_client_test" kind="class"><name>GameClient::Tests::GameClientTest</name>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a45d6766698dc58af0018147591d14cbf" kind="variable"><name>client</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1ae8c3cadc6c444308d1cb592011c9262e" kind="function"><name>GameClientTest</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a450bf7730d5ac3355a5c74adf35db522" kind="function"><name>Test_Login</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1ac2ee98eec1088666b2e2efb4ddde65fb" kind="function"><name>Test_register</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a26dbeb4d8b05422fa3848bddcead1d3a" kind="function"><name>Test_GetGames</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a365135ff20cf688032ec134d722b766b" kind="function"><name>Test_CreateMatch_GetMatch</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a506757660f184b694723d9af1ccbefbe" kind="function"><name>Test_CreateMatch_GameNotFound</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1ad327d01382fb5f778d909a8db3beb1a3" kind="function"><name>Test_GetMyMatches</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1aa707311778df64ab50624ec17f6d5452" kind="function"><name>Test_AddParticipant_GetParticipants</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a20110e14ade995c264474cf7d0784c8b" kind="function"><name>Test_GetAccount</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1add7648f2e8d28e18ddab8c55b44746f5" kind="function"><name>Test_GetNonExistentAccount</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a50752599fd3ab1a1bef1266a5611d119" kind="function"><name>Test_GetAccounts</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1ad713931884818e8b45ae24a1ffb5a8a5" kind="function"><name>Test_UpdateAccount</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_game_client_test_1a345e687ee2c91e2bd256158efa6da782" kind="function"><name>Test_AddParticipant_InviteSelf</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_services_1_1_game_service" kind="class"><name>GameClient::Services::GameService</name>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a8507413f51a8c16817b7080c5213c824" kind="variable"><name>_authState</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1afb1d20695cda9edcc8ce31d31df195dd" kind="variable"><name>_config</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a1c09e588e2bb951900bcfd45dcd766dd" kind="function"><name>GameService</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1af460e9acaf0d56e01eee2e879c9a2813" kind="function"><name>LoginAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a708ac54a296f8e01014ae483a002d593" kind="function"><name>MoveAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a001c93d9ebcd92b6d0cb9d5466bf1ae7" kind="function"><name>GetMatchAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a333ca9977e1b2bdea5a5fa99e2bed4b8" kind="function"><name>GetMyMatchesAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1aabecb9f72272fd89a20cfb0f1c0e3654" kind="function"><name>CreateMatchAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1ae545e0b61e503891d7c1b6685762efc9" kind="function"><name>GetGamesAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1aed5ff70a9d3953858d9e34f40e2d3709" kind="function"><name>GetAccountAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a9a5405d10d8d635144b26c3acf041cb0" kind="function"><name>GetAccountsAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1ab3c93a133a3de78d15198524f3516c94" kind="function"><name>AddParticipantAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a60c4f338d419471bd92b247cb5b4d146" kind="function"><name>GetParticipantsAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a39530a05664f8ab4005ef41a9eaf6883" kind="function"><name>GetPendingAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a64deeb6376babe464fb53b0ebc302f0b" kind="function"><name>DecidePendingAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1a952a85929f8c8270c61323d84ff176b9" kind="function"><name>UpdateAccountAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1ab7efa82d604ef4db18cd21a821de8e2b" kind="function"><name>GetScoreSumsAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1aaecb153b802bcae5c7774de9a2e09263" kind="function"><name>GetMatchHistoryAsync</name></member>
+    <member refid="class_game_client_1_1_services_1_1_game_service_1ad15b444b96f1cefa71f2e686d46446a8" kind="function"><name>ImpatientWinAsync</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_html_util" kind="class"><name>Shared::HtmlUtil</name>
+    <member refid="class_shared_1_1_html_util_1a5060fd4899ed3ae5b09ad5dbf3b80147" kind="function"><name>ToImgSrcString</name></member>
+  </compound>
+  <compound refid="interface_admin_client_1_1_services_1_1_i_admin_service" kind="interface"><name>AdminClient::Services::IAdminService</name>
+    <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1af4eca6855d05e5052fc14429f4a1f742" kind="function"><name>UpdateUserStatusAsync</name></member>
+    <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1ab24ad2ae40da8a79e16c98cd199a7331" kind="function"><name>GetUsersWaitingForApprovalAsync</name></member>
+    <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a3b309a57660e90b40d8f9bf2044a65c5" kind="function"><name>GetAccountAsync</name></member>
+    <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a74d4895bc3a088e1725cc83122824c7d" kind="function"><name>UpdateAccountAsync</name></member>
+    <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a5165cca9d5161d99f6e1d36234c932be" kind="function"><name>GetApprovedUsersAsync</name></member>
+  </compound>
+  <compound refid="interface_shared_1_1_auth_service_1_1_i_auth_service" kind="interface"><name>Shared::AuthService::IAuthService</name>
+    <member refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1a515f39d912118a8aa4efa8401258e4c6" kind="function"><name>LoginAsync</name></member>
+    <member refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1ad570943d51fa4469959e9a6ef2583144" kind="function"><name>LogoutAsync</name></member>
+    <member refid="interface_shared_1_1_auth_service_1_1_i_auth_service_1a02db9f05d0156df0007187361c817e7b" kind="function"><name>RegisterAsync</name></member>
+  </compound>
+  <compound refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kind="interface"><name>Shared::AuthState::IAuthState</name>
+    <member refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1a301897121ef1b48c000f20dc14b8eb46" kind="event"><name>AuthStateChanged</name></member>
+    <member refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1a93a9c84a2f30954ba93a6d504687b016" kind="function"><name>GetJwtAsync</name></member>
+    <member refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1aa30957e33f998159df96a75874926f4e" kind="function"><name>GetClaimsAsync</name></member>
+    <member refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1a17a9ebad49d497f7757331b27ec9d1cf" kind="function"><name>SetAuthStateAsync</name></member>
+  </compound>
+  <compound refid="interface_game_client_1_1_services_1_1_i_game_service" kind="interface"><name>GameClient::Services::IGameService</name>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ae061f58fbb7555ddf726f8b6b54e2191" kind="function"><name>LoginAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1a250271b6d1eb60a9b414283c46d74d73" kind="function"><name>MoveAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ab0eff4d18f750e3bc684b07937501b00" kind="function"><name>GetMatchAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ad7452790f78e64d306aff81b3ebef841" kind="function"><name>GetMyMatchesAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ad898319936905e7bcbd56dd12455c5ae" kind="function"><name>CreateMatchAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1a0f36301c5139d11d1e0b47f42f36e9a5" kind="function"><name>GetGamesAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1aae00f69db1f98e63ccf1bd0ae74c354b" kind="function"><name>GetAccountAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1a757919cddb46ae6a93590e850ffed3fa" kind="function"><name>GetAccountsAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1a0b799b8dc3bfaa47d0c67409a051070c" kind="function"><name>AddParticipantAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ab8c1e738f772a5d11c0d44972d293f1c" kind="function"><name>GetParticipantsAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ad915a2f187d92b8d492805a86f4b0cc0" kind="function"><name>GetPendingAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1a862a39d6eb51ab4b71d2124d5e7a139b" kind="function"><name>DecidePendingAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1af8e26f8d08854063334c45d69e5f3115" kind="function"><name>UpdateAccountAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ae0d4f685eab7f4d86cf377b599e49b45" kind="function"><name>GetScoreSumsAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1ae5f11cf4f9bd4a2c575b3d9794e95e4b" kind="function"><name>GetMatchHistoryAsync</name></member>
+    <member refid="interface_game_client_1_1_services_1_1_i_game_service_1a916bd70a8c60c0a794ed51e7bbf7f9f4" kind="function"><name>ImpatientWinAsync</name></member>
+  </compound>
+  <compound refid="interface_game_client_1_1_services_1_1_i_live_service" kind="interface"><name>GameClient::Services::ILiveService</name>
+    <member refid="interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141" kind="event"><name>MatchUpdated</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_json_util" kind="class"><name>GameClient::JsonUtil</name>
+    <member refid="class_game_client_1_1_json_util_1a4b6dd4e1cad5a9f853b5639637e94165" kind="variable"><name>options</name></member>
+    <member refid="class_game_client_1_1_json_util_1a377cc1bb3f67983f4109c7211cc5731d" kind="function"><name>ToJson&lt; T &gt;</name></member>
+    <member refid="class_game_client_1_1_json_util_1af3cf2867257456b92eb4f6979471a097" kind="function"><name>FromJson&lt; T &gt;</name></member>
+    <member refid="class_game_client_1_1_json_util_1ac181f579d5956fd9cdffce8e901bc038" kind="function"><name>FromJson</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_auth_service_1_1_jwt_auth_service" kind="class"><name>Shared::AuthService::JwtAuthService</name>
+    <member refid="class_shared_1_1_auth_service_1_1_jwt_auth_service_1acdc440077bbc7cc32617b69aca820700" kind="variable"><name>authState</name></member>
+    <member refid="class_shared_1_1_auth_service_1_1_jwt_auth_service_1ae69c360a1489a548f74853b7f10e88a0" kind="variable"><name>config</name></member>
+    <member refid="class_shared_1_1_auth_service_1_1_jwt_auth_service_1a1cb04486d0bc78c43e678f8e0242c1a2" kind="function"><name>JwtAuthService</name></member>
+    <member refid="class_shared_1_1_auth_service_1_1_jwt_auth_service_1ab531f16b5bfa129d18bdd82ea76c6280" kind="function"><name>LoginAsync</name></member>
+    <member refid="class_shared_1_1_auth_service_1_1_jwt_auth_service_1a9c69e48102870c0f9b5bbe137f2c5ab8" kind="function"><name>LogoutAsync</name></member>
+    <member refid="class_shared_1_1_auth_service_1_1_jwt_auth_service_1a50de56cc8b843752f79cdfc76818d094" kind="function"><name>RegisterAsync</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_services_1_1_live_service" kind="class"><name>GameClient::Services::LiveService</name>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1af01ffaed959b1249b090186b83961a8c" kind="event"><name>MatchUpdated</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1a9f71e6ebdd978536c2720082d8d3dc0d" kind="variable"><name>_authState</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1a15a96679b7c60eb33269ab2ae6338a71" kind="variable"><name>_config</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1abdea3fd9ec3e6a5880c845e16850f12b" kind="variable"><name>_task</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1a66ed64ccb74649c59c086c97d71b1c76" kind="variable"><name>_cts</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1a55082242907553e47b0441587d99faa7" kind="variable"><name>_hasSentLiveRequest</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1a0a884ff2ed3a47b4f3e43f014691b9d4" kind="function"><name>LiveService</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f" kind="function"><name>LiveUpdateTask</name></member>
+    <member refid="class_game_client_1_1_services_1_1_live_service_1ab3751be27002ddc764d2480cb0e2b194" kind="function"><name>Dispose</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_log" kind="class"><name>Shared::Log</name>
+    <member refid="class_shared_1_1_log_1adac06b0816e807cca0a3a58506d5bdbf" kind="enum"><name>Severity</name></member>
+    <member refid="class_shared_1_1_log_1adac06b0816e807cca0a3a58506d5bdbfa551b723eafd6a31d444fcb2f5920fbd3" kind="enumvalue"><name>INFO</name></member>
+    <member refid="class_shared_1_1_log_1adac06b0816e807cca0a3a58506d5bdbfabb1ca97ec761fc37101737ba0aa2e7c5" kind="enumvalue"><name>ERROR</name></member>
+    <member refid="class_shared_1_1_log_1aaa5b58085bd46758c51632022ee9582e" kind="function"><name>Info</name></member>
+    <member refid="class_shared_1_1_log_1aea9556649bda998e32f13277b17e5ace" kind="function"><name>Error</name></member>
+    <member refid="class_shared_1_1_log_1aa51675cc003725189e5d20f094b37f29" kind="function"><name>Error</name></member>
+    <member refid="class_shared_1_1_log_1af68c3f42e331821badce8cf8ae13ad73" kind="function"><name>Msg</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_match" kind="class"><name>GameClient::DTO::Match</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a566070c9b2a8d8f38f2568eb5227749b" kind="property"><name>MatchId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a0c1d8b5506accf2c3820baf3c551a0fb" kind="property"><name>Status</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a9a8d9a52bd5fb890ae75ddc80b8c6021" kind="property"><name>Data</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a2f913007c7d6619d0df31587800549df" kind="property"><name>OwnerId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a3ad14374aa2c262eb4a998966cb87bb1" kind="property"><name>GameId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a5492ae9356d25a537a00fcae6ef21a21" kind="property"><name>CreatedOn</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a57c4142ece59a45c188ee7acc1228713" kind="property"><name>StartedOn</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a7f26b7cd9bcfe9642255e6cc016885a7" kind="property"><name>LastMoveOn</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a47a50f16c198b7507df0149754a589ff" kind="property"><name>NextAccountId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1af86f75c69303da2af893ac6940d6292e" kind="property"><name>Participants</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1ab380d31562e6ef600ec0f5d6045ad022" kind="property"><name>Owner</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a545e87e51a58dea2d9c98b3d4e544b9d" kind="property"><name>Game</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a94f71bc2a42e0044f736661e0a03b178" kind="variable"><name>STATUS_NONE</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a1caaae17193aa226498538dcd390d370" kind="variable"><name>STATUS_PENDING</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1af33a9628657cfc065b2e40abbd2073fc" kind="variable"><name>STATUS_ONGOING</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a2c9e28ed6f8f3dd8cb9df755fb65570f" kind="variable"><name>STATUS_FINISHED</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a673e5d53f3a379bb8df1c84e1f4aabdc" kind="function"><name>StatusName</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1ae7fce53bd3c276a8dc9d05f9c8d7c9cd" kind="function"><name>StatusDisplayName</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_match_1a0f4ae99f8cc1c52aadd864a878d26cfd" kind="function"><name>ToString</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_message" kind="class"><name>Shared::Message</name>
+    <member refid="class_shared_1_1_message_1ad4bb95b3c5c03a7681c3f17281d7a08e" kind="property"><name>Head</name></member>
+    <member refid="class_shared_1_1_message_1a163ce4d2dcdb57321747fb9c91f4a81e" kind="property"><name>Body</name></member>
+    <member refid="class_shared_1_1_message_1aa52d63fdd48ca6bff385c38b8106bb2d" kind="function"><name>Message</name></member>
+    <member refid="class_shared_1_1_message_1adc754d672b89cd6e61b5f7b000aea7c1" kind="function"><name>Message</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_data_1_1_messages" kind="class"><name>Shared::Data::Messages</name>
+    <member refid="class_shared_1_1_data_1_1_messages_1a31baadd636b27e9ec1934d24b0a952fe" kind="function"><name>Head</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1adaef689cb56b40333309ebc3c4d5b6c3" kind="function"><name>LoginRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a64dbcd47fcbd3bac780838614e41352e" kind="function"><name>LoginResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ad2c1731b7f88dcbdc4f88d156c570578" kind="function"><name>RegisterRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a6ac930c356a2ccfcb379a1e15739ac2c" kind="function"><name>RegisterResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ad581ae05d5a0a836ecf6074f0ab6cda8" kind="function"><name>GetGamesRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1aa398119a0988e914d14b63e7aaee71f0" kind="function"><name>GetGamesResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a9377692ad5fa9e99266e23ee93e49946" kind="function"><name>GetMatchRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ac078479b5d3f196daeeeb1bbf11aec2d" kind="function"><name>GetMatchResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a1f200329a9fa29e2e8c5b754865357e0" kind="function"><name>GetMyMatchesRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1aa8d568e0f08fd41702c39497df03271a" kind="function"><name>GetMyMatchesResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a5bfa141a8cd0f7622a80d4f8c22e8db9" kind="function"><name>CreateMatchRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1af526bfbb78087441eeda96c7e4294c3f" kind="function"><name>CreateMatchResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a4557db927769e106fc2d4868fe1d8881" kind="function"><name>AddParticipantRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1af1dd9cf9ada7916a4a20206552fe5bb8" kind="function"><name>AddParticipantResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ad193fe4f99821b75961b9a65c516b91b" kind="function"><name>GetParticipantsRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a7f65cd43bbd8115ad27ad40740ae42f5" kind="function"><name>GetParticipantsResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1aea68f6e1c7dfbf5b2f2eb6bda11283a7" kind="function"><name>GetPendingRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a4efa5443f6f398160aee386eff174c24" kind="function"><name>GetPendingResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a57f3604402d2ed238b015c7bf34ece5a" kind="function"><name>DecidePendingRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a70fc5be810abd3667ac8a82c9a128f3c" kind="function"><name>DecidePendingResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ab72575301e5a462dd2f952dce6bbc329" kind="function"><name>GetAccountRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a5e9ca18d9b5619212d0303df51b380c2" kind="function"><name>GetAccountResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ad17a4a70b989409dfddf0b36edc3b75c" kind="function"><name>GetAccountsRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a75ad8ae2009850cf2a5dfdd35de1f857" kind="function"><name>GetAccountsResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1aab788c4857d3c4dce24b01afe7464e05" kind="function"><name>UpdateAccountRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a4ad4407da8cb562b81915f3d210830d9" kind="function"><name>UpdateAccountResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a16ba96b8fd4f9ca2f289a2278462c7cb" kind="function"><name>MoveRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1afb2016ae92d7d4462a3b05265fef8668" kind="function"><name>MoveResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ac47da168e00f717a9c33f9f73690a458" kind="function"><name>ImpatientWinRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1aabcb6689d3a802f9a7b3c4d6e8aef7ef" kind="function"><name>ImpatientWinResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ad173834478e2bab0606a382357176fcb" kind="function"><name>GetScoreSumsRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ade82d72364d0cea5e6d63d5d0fdc1db0" kind="function"><name>GetScoreSumsResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a8aea8e8a8714a895cf2cdfbf4ea1814b" kind="function"><name>GetMatchHistoryRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a6f735e5add0733af8713da9454382e7d" kind="function"><name>GetMatchHistoryResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a5574479ca11df1c32212081900c61359" kind="function"><name>BeginLiveUpdateRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1ae5aead886c76b0003e89cd7a585605ef" kind="function"><name>BeginLiveUpdateResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a6b1908fc9be660470e68612f1c6d9da5" kind="function"><name>MatchNotification</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a70f6cb44662775f7d5446b54043b9a12" kind="function"><name>QuitNotification</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1acb64795b4203bd591b0bd5e7f21d23ad" kind="function"><name>NotAuthorizedResponse</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1a6ae9fc19d43ac55e3e7bf8b75b9735ca" kind="function"><name>UpdateUserStatusRequest</name></member>
+    <member refid="class_shared_1_1_data_1_1_messages_1aff0fcfd505f32e06ee8ccd1bfd87358d" kind="function"><name>UpdateUserStatusResponse</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_data_1_1_message_serializer" kind="class"><name>Shared::Data::MessageSerializer</name>
+    <member refid="class_shared_1_1_data_1_1_message_serializer_1aae3836e3958b829a591b22bee8ac225b" kind="function"><name>Deserialize</name></member>
+    <member refid="class_shared_1_1_data_1_1_message_serializer_1a69b5ce8230d29270f758f8df0623b3f9" kind="function"><name>Serialize</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_move_result" kind="class"><name>GameClient::DTO::MoveResult</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1ac2e7e0fa4e9157d8faa7c245c47760bf" kind="property"><name>Outcome</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1ac3fe1b33218c6c318510b770e8304f38" kind="property"><name>NextAccountId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1afcde49a3e47ffb65cd614a4720cc2fb3" kind="property"><name>NextData</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a05081767798f371d6086d770b29f27fa" kind="property"><name>InvalidMoveText</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a11ff95e4a153351f5f57ea02a99ebccc" kind="property"><name>FinishedText</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1aaf537f32c0b1e982c27ea1443d3cfb2b" kind="property"><name>Scores</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a56d913727b906c4a62bc3414e5b67f90" kind="variable"><name>OUTCOME_VALID</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a85c651a5ae9c0947e3b88791a0d4e343" kind="variable"><name>OUTCOME_INVALID</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a9af31d68b4c304ae9a69aa34ad97e6fb" kind="variable"><name>OUTCOME_FINISHED</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_data_1_1_network_exception" kind="class"><name>Shared::Data::NetworkException</name>
+    <member refid="class_shared_1_1_data_1_1_network_exception_1a7d496611e22a994718a8c80bc670a445" kind="function"><name>NetworkException</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_data_1_1_not_authorized_exception" kind="class"><name>GameClient::Data::NotAuthorizedException</name>
+  </compound>
+  <compound refid="class_shared_1_1_parse_util" kind="class"><name>Shared::ParseUtil</name>
+    <member refid="class_shared_1_1_parse_util_1ab842cc62e6b55a8dac1489863aae1e0d" kind="function"><name>ParseIntOrDefault</name></member>
+    <member refid="class_shared_1_1_parse_util_1a9e18b2aefa8b7ad90cc3c3f6ea66e9c9" kind="function"><name>ParseIntOrDefault</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_participant" kind="class"><name>GameClient::DTO::Participant</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1af3e263c379c943529b709ab409d0d1cc" kind="property"><name>ParticipantId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1af294e74aed0dd1987e64abca5746e045" kind="property"><name>Status</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1ae0e410333070bab4a5dc3fa4cc3da7a6" kind="property"><name>MatchId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a6ab8b5b7ca37608eb99b475106629d1e" kind="property"><name>AccountId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a5c71d77b2cbdf91620f3a29f3899bda0" kind="property"><name>CreatedOn</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1afcb9dd97bbcf50d10f70363032a4aff4" kind="property"><name>Match</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a87a06bd3a3d294156d1217fe8b26e914" kind="property"><name>Account</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a9762b289537fac7dcd8715997c0cfd05" kind="property"><name>Score</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1ad118d43942d814b810b2363a604af938" kind="variable"><name>STATUS_NONE</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a9212183c6469936459bd2df080a4b7f8" kind="variable"><name>STATUS_PENDING</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1aaf455c88a79d57196f9cb5452585ecc0" kind="variable"><name>STATUS_REJECTED</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a8b8dacace3843a0ec327e33fcddda72d" kind="variable"><name>STATUS_ACCEPTED</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1adb40bb94028d215edbe11c2f7989b2a8" kind="variable"><name>STATUS_FINISHED</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_participant_1a0900077cd460a49eef6abb747e1c210b" kind="function"><name>StatusName</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_d_t_o_1_1_score_sum" kind="class"><name>GameClient::DTO::ScoreSum</name>
+    <member refid="class_game_client_1_1_d_t_o_1_1_score_sum_1ac26483b7d657fd4f69f4ea3ac8740f17" kind="property"><name>GameId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_score_sum_1a08c9dc006d7fdff2a2861e50ce915716" kind="property"><name>AccountId</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_score_sum_1a354ddbb45e6e284ea4a793378a823857" kind="property"><name>AccountName</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_score_sum_1aa24c2cde4c11b7c11d79bbbdc185c3e1" kind="property"><name>Score</name></member>
+    <member refid="class_game_client_1_1_d_t_o_1_1_score_sum_1a123b632e3560c72d25974abf8ba0dd1f" kind="property"><name>Count</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_data_1_1_service_socket" kind="class"><name>Shared::Data::ServiceSocket</name>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a9205d14f248a1bf085a74e05386152da" kind="variable"><name>_url</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a95bde4ae646b8cefa3a7b064bb49bc19" kind="variable"><name>_port</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a1687498ab1b650a5fc613cc5b28e5e11" kind="variable"><name>_authState</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1ae9b53a8b756a75f1cb4b969e9fae480b" kind="variable"><name>_blocking</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a81c7bd3e22c0c97836247a7f8b1ccc4d" kind="variable"><name>_socket</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a4bf77ce15b863d211076a15b10c07f0d" kind="variable"><name>_stream</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1ac236ced48a915e14829039e199843bd6" kind="function"><name>ServiceSocket</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a157a472beb8cc05aa9b3af3784601b07" kind="function"><name>Open</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a79cc6032e20a1ba2cc01a97a3345cba8" kind="function"><name>Close</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a973877fd60c8001a6c11a84e9cf41109" kind="function"><name>SendMessageAsync</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1adb235456ebdbc0b88e1c9253c1b25599" kind="function"><name>ReadMessageAsync</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a26be6546dc82632ddc7162d04a4651d5" kind="function"><name>SendAndReceiveAsync&lt; T &gt;</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a48943a8611e55daffe34de5d6898a852" kind="function"><name>SendAndReceiveAsync&lt; T &gt;</name></member>
+    <member refid="class_shared_1_1_data_1_1_service_socket_1a16cf2828088181ff5d6d306f2dfe45e1" kind="function"><name>LogSendAndReceive</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_data_1_1_string_streamer" kind="class"><name>Shared::Data::StringStreamer</name>
+    <member refid="class_shared_1_1_data_1_1_string_streamer_1a04781ea1587e2ceac1493bd15b0a3a56" kind="function"><name>SendStringAsync</name></member>
+    <member refid="class_shared_1_1_data_1_1_string_streamer_1a76af7d0aa6682d42a9c9066d1bc786ce" kind="function"><name>ReadStringAsync</name></member>
+    <member refid="class_shared_1_1_data_1_1_string_streamer_1ab70f262deba9d61754e3c5e303028dd4" kind="function"><name>ReadBytesAsync</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_tets_1_1_test_client" kind="class"><name>Shared::Tets::TestClient</name>
+    <member refid="class_shared_1_1_tets_1_1_test_client_1a5842f41f36752b820aa9efcf5bbde0d8" kind="property"><name>AuthState</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_client_1a05ccdc739c3b2ecb320d8ec015762d38" kind="property"><name>AdminService</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_client_1a79d5f70b3a1ba2cf2b2681a87a362b1a" kind="property"><name>AuthService</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_client_1acb1c0994b766d9c7f0c7c3ba581d2af5" kind="property"><name>GameService</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_client_1ac155d4951a9680405e51dc33b8af9e03" kind="function"><name>TestClient</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_client_1ac155d4951a9680405e51dc33b8af9e03" kind="function"><name>TestClient</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_tets_1_1_test_data" kind="class"><name>Shared::Tets::TestData</name>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a28b758457093eee44347ad1525283d1f" kind="variable"><name>JULIE_ID</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a547c1199db87e6e4b54a1e2c2c31065d" kind="variable"><name>MAJA_ID</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a7f804c3613affa6b970891ca58f50d3e" kind="variable"><name>SIMON_ID</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a9c9eba39374e4111a9016324ef411021" kind="variable"><name>RUNE_ID</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a27f3afdb14ea3a4031dedc0c9022f5a6" kind="variable"><name>BOB_ID</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1ae65255b43076ebcda1d7d06a338ea007" kind="variable"><name>JULIE</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a9001ff6fa6bd18f506416d4f2f159c8a" kind="variable"><name>MAJA</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1adc87c51f1e732a64e876bd58af76328f" kind="variable"><name>SIMON</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1afb09d9bfdf8b51eb94aa3827c40cf37e" kind="variable"><name>RUNE</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a0c3016e8c77c03c5a39df3df51b6681d" kind="variable"><name>BOB</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1a57158531ebb892e1c0fb637c2295a366" kind="variable"><name>TICTACTOE_ID</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_data_1ab2e1f585c0dce9ef4d353b15e95e6070" kind="variable"><name>STRATEGO_ID</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_tests_1_1_test_invites" kind="class"><name>GameClient::Tests::TestInvites</name>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1abca49f4043018ba647a9577c0d292e33" kind="variable"><name>simon</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1a0eb63037902ffe8257a2ad85cacd6169" kind="variable"><name>maja</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1ad330bb2ce65ff5a9b7720aecfdedb636" kind="variable"><name>matchId</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1af9b876bd5ab2dc73c19278bcc9ed71fd" kind="variable"><name>participantId</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1a3c755e1a5c370affaa082696cf9b6df5" kind="function"><name>TestInvites</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1a7c99e25baa45af625d78d834c7c911ac" kind="function"><name>Test_AcceptInvite</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1a2ce9bdffe3ee319dcc1aa3b88a60adde" kind="function"><name>Test_RejectInvite</name></member>
+    <member refid="class_game_client_1_1_tests_1_1_test_invites_1a600343e79380acf48b463f5a95b9bc84" kind="function"><name>Test_CheckBeforeAfterDecide</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_tets_1_1_test_user" kind="class"><name>Shared::Tets::TestUser</name>
+    <member refid="class_shared_1_1_tets_1_1_test_user_1a012c3069ea213cef4c6f3590daafe04d" kind="property"><name>AccountId</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_user_1afce350093d45e706c02af4650596e0f8" kind="property"><name>Username</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_user_1adabbc8fd4a5b0873dc01e24ae41ed2fc" kind="property"><name>Password</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_user_1a9b7369e1e46e49b07dc8dbe62d64a3e8" kind="property"><name>IsAdmin</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_user_1ac78ebfe3f38463561daf2fa48ec9cc82" kind="function"><name>TestUser</name></member>
+  </compound>
+  <compound refid="class_shared_1_1_tets_1_1_test_util" kind="class"><name>Shared::Tets::TestUtil</name>
+    <member refid="class_shared_1_1_tets_1_1_test_util_1aed0a2a8aa16d3ec0ce0170a8f719594c" kind="function"><name>ResetDatabase</name></member>
+    <member refid="class_shared_1_1_tets_1_1_test_util_1aa69266c40f9bf17d5c19f1811845c624" kind="function"><name>ExecuteSql</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_games_1_1_tic_tac_toe_data" kind="class"><name>GameClient::Games::TicTacToeData</name>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1a502d6118adf8f6b9a152dc782e49a4bb" kind="property"><name>PiecesO</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1a0abd87091e197fbb548f5c8fcee1f1a1" kind="property"><name>PiecesX</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1aca8a9e0cf62ee94fc7add8f2fa264dfe" kind="property"><name>AccountIdO</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1a4544a57e693d806eacca71f90e631fa5" kind="property"><name>AccountIdX</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1a8ec20a8eb49ab166e1424420c623d6ef" kind="property"><name>RemainingO</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1a104fb3526df14bbbeb0779e06f1d5b46" kind="property"><name>RemainingX</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_data_1a8154393b56354bb3fb2f8f5827cd5c40" kind="property"><name>MoveCount</name></member>
+  </compound>
+  <compound refid="class_game_client_1_1_games_1_1_tic_tac_toe_move" kind="class"><name>GameClient::Games::TicTacToeMove</name>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_move_1abdf69198748180f650f09bdf940530a9" kind="property"><name>PlaceOnIndex</name></member>
+    <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_move_1a2cab90ace42c81673b3a598eda9ea910" kind="property"><name>TakeFromIndex</name></member>
+  </compound>
+  <compound refid="namespace_account" kind="namespace"><name>Account</name>
+  </compound>
+  <compound refid="namespace_admin_client" kind="namespace"><name>AdminClient</name>
+  </compound>
+  <compound refid="namespace_admin_client_1_1_pages" kind="namespace"><name>AdminClient::Pages</name>
+  </compound>
+  <compound refid="namespace_admin_client_1_1_services" kind="namespace"><name>AdminClient::Services</name>
+  </compound>
+  <compound refid="namespace_admin_client_1_1_tests" kind="namespace"><name>AdminClient::Tests</name>
+  </compound>
+  <compound refid="namespaceboolean" kind="namespace"><name>boolean</name>
+  </compound>
+  <compound refid="namespace_game_client" kind="namespace"><name>GameClient</name>
+  </compound>
+  <compound refid="namespace_game_client_1_1_data" kind="namespace"><name>GameClient::Data</name>
+  </compound>
+  <compound refid="namespace_game_client_1_1_d_t_o" kind="namespace"><name>GameClient::DTO</name>
+  </compound>
+  <compound refid="namespace_game_client_1_1_games" kind="namespace"><name>GameClient::Games</name>
+  </compound>
+  <compound refid="namespace_game_client_1_1_pages" kind="namespace"><name>GameClient::Pages</name>
+  </compound>
+  <compound refid="namespace_game_client_1_1_services" kind="namespace"><name>GameClient::Services</name>
+  </compound>
+  <compound refid="namespace_game_client_1_1_tests" kind="namespace"><name>GameClient::Tests</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_asp_net_core_1_1_builder" kind="namespace"><name>global::Microsoft::AspNetCore::Builder</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_asp_net_core_1_1_hosting" kind="namespace"><name>global::Microsoft::AspNetCore::Hosting</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_asp_net_core_1_1_http" kind="namespace"><name>global::Microsoft::AspNetCore::Http</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_asp_net_core_1_1_routing" kind="namespace"><name>global::Microsoft::AspNetCore::Routing</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_extensions_1_1_configuration" kind="namespace"><name>global::Microsoft::Extensions::Configuration</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_extensions_1_1_dependency_injection" kind="namespace"><name>global::Microsoft::Extensions::DependencyInjection</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_extensions_1_1_hosting" kind="namespace"><name>global::Microsoft::Extensions::Hosting</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_microsoft_1_1_extensions_1_1_logging" kind="namespace"><name>global::Microsoft::Extensions::Logging</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system" kind="namespace"><name>global::System</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_collections_1_1_generic" kind="namespace"><name>global::System::Collections::Generic</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_i_o" kind="namespace"><name>global::System::IO</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_linq" kind="namespace"><name>global::System::Linq</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_net_1_1_http" kind="namespace"><name>global::System::Net::Http</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_net_1_1_http_1_1_json" kind="namespace"><name>global::System::Net::Http::Json</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_threading" kind="namespace"><name>global::System::Threading</name>
+  </compound>
+  <compound refid="namespaceglobal_1_1_system_1_1_threading_1_1_tasks" kind="namespace"><name>global::System::Threading::Tasks</name>
+  </compound>
+  <compound refid="namespace_match" kind="namespace"><name>Match</name>
+  </compound>
+  <compound refid="namespace_microsoft_1_1_asp_net_core_1_1_components" kind="namespace"><name>Microsoft::AspNetCore::Components</name>
+  </compound>
+  <compound refid="namespace_microsoft_1_1_asp_net_core_1_1_components_1_1_server_1_1_protected_browser_storage" kind="namespace"><name>Microsoft::AspNetCore::Components::Server::ProtectedBrowserStorage</name>
+  </compound>
+  <compound refid="namespace_microsoft_1_1_asp_net_core_1_1_components_1_1_web" kind="namespace"><name>Microsoft::AspNetCore::Components::Web</name>
+  </compound>
+  <compound refid="namespace_microsoft_1_1_asp_net_core_1_1_mvc" kind="namespace"><name>Microsoft::AspNetCore::Mvc</name>
+  </compound>
+  <compound refid="namespace_microsoft_1_1_asp_net_core_1_1_mvc_1_1_razor_pages" kind="namespace"><name>Microsoft::AspNetCore::Mvc::RazorPages</name>
+  </compound>
+  <compound refid="namespace_microsoft_1_1_extensions_1_1_configuration" kind="namespace"><name>Microsoft::Extensions::Configuration</name>
+  </compound>
+  <compound refid="namespace_npgsql" kind="namespace"><name>Npgsql</name>
+  </compound>
+  <compound refid="namespace_shared" kind="namespace"><name>Shared</name>
+  </compound>
+  <compound refid="namespace_shared_1_1_auth_service" kind="namespace"><name>Shared::AuthService</name>
+  </compound>
+  <compound refid="namespace_shared_1_1_auth_state" kind="namespace"><name>Shared::AuthState</name>
+  </compound>
+  <compound refid="namespace_shared_1_1_data" kind="namespace"><name>Shared::Data</name>
+  </compound>
+  <compound refid="namespace_shared_1_1_data_1_1_messages" kind="namespace"><name>Shared::Data::Messages</name>
+  </compound>
+  <compound refid="namespace_shared_1_1_tets" kind="namespace"><name>Shared::Tets</name>
+  </compound>
+  <compound refid="namespace_shared_1_1_tets_1_1_test_data" kind="namespace"><name>Shared::Tets::TestData</name>
+  </compound>
+  <compound refid="namespacestatic" kind="namespace"><name>static</name>
+  </compound>
+  <compound refid="namespace_system" kind="namespace"><name>System</name>
+  </compound>
+  <compound refid="namespace_system_1_1_data_1_1_sql_client" kind="namespace"><name>System::Data::SqlClient</name>
+  </compound>
+  <compound refid="namespace_system_1_1_diagnostics" kind="namespace"><name>System::Diagnostics</name>
+  </compound>
+  <compound refid="namespace_system_1_1_net_1_1_sockets" kind="namespace"><name>System::Net::Sockets</name>
+  </compound>
+  <compound refid="namespace_system_1_1_reflection" kind="namespace"><name>System::Reflection</name>
+  </compound>
+  <compound refid="namespace_system_1_1_runtime_1_1_compiler_services" kind="namespace"><name>System::Runtime::CompilerServices</name>
+  </compound>
+  <compound refid="namespace_system_1_1_runtime_1_1_interop_services_1_1_java_script" kind="namespace"><name>System::Runtime::InteropServices::JavaScript</name>
+  </compound>
+  <compound refid="namespace_system_1_1_security_1_1_claims" kind="namespace"><name>System::Security::Claims</name>
+  </compound>
+  <compound refid="namespace_system_1_1_text" kind="namespace"><name>System::Text</name>
+  </compound>
+  <compound refid="namespace_system_1_1_text_1_1_json" kind="namespace"><name>System::Text::Json</name>
+  </compound>
+  <compound refid="namespace_system_1_1_transactions" kind="namespace"><name>System::Transactions</name>
+  </compound>
+  <compound refid="namespace_xunit" kind="namespace"><name>Xunit</name>
+  </compound>
+  <compound refid="_admin_client_test_8cs" kind="file"><name>AdminClientTest.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_tests_8_assembly_info_8cs" kind="file"><name>AdminClient.Tests.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_tests_8_global_usings_8g_8cs" kind="file"><name>AdminClient.Tests.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_tests_2_test_client_8cs" kind="file"><name>TestClient.cs</name>
+  </compound>
+  <compound refid="_game_client_8_tests_2_test_client_8cs" kind="file"><name>TestClient.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_tests_2_global_usings_8cs" kind="file"><name>GlobalUsings.cs</name>
+  </compound>
+  <compound refid="_admin_client_2_global_usings_8cs" kind="file"><name>GlobalUsings.cs</name>
+    <member refid="_admin_client_2_global_usings_8cs_1acccd6ed812a9a5c3514e4544e565d071" kind="typedef"><name>Match</name></member>
+    <member refid="_admin_client_2_global_usings_8cs_1ad86f9d223a10dabf7abfe50445f66ddf" kind="typedef"><name>Account</name></member>
+  </compound>
+  <compound refid="_game_client_8_tests_2_global_usings_8cs" kind="file"><name>GlobalUsings.cs</name>
+  </compound>
+  <compound refid="_game_client_2_global_usings_8cs" kind="file"><name>GlobalUsings.cs</name>
+    <member refid="_game_client_2_global_usings_8cs_1acccd6ed812a9a5c3514e4544e565d071" kind="typedef"><name>Match</name></member>
+    <member refid="_game_client_2_global_usings_8cs_1ad86f9d223a10dabf7abfe50445f66ddf" kind="typedef"><name>Account</name></member>
+  </compound>
+  <compound refid="_admin_client_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs" kind="file"><name>.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</name>
+  </compound>
+  <compound refid="_admin_client_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs" kind="file"><name>.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</name>
+  </compound>
+  <compound refid="_game_client_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs" kind="file"><name>.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</name>
+  </compound>
+  <compound refid="_game_client_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs" kind="file"><name>.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</name>
+  </compound>
+  <compound refid="_shared_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs" kind="file"><name>.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</name>
+  </compound>
+  <compound refid="_shared_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs" kind="file"><name>.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_assembly_info_8cs" kind="file"><name>AdminClient.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_global_usings_8g_8cs" kind="file"><name>AdminClient.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_admin_client_8_razor_assembly_info_8cs" kind="file"><name>AdminClient.RazorAssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_admin_client_2_pages_2_error_8cshtml_8cs" kind="file"><name>Error.cshtml.cs</name>
+  </compound>
+  <compound refid="_game_client_2_pages_2_error_8cshtml_8cs" kind="file"><name>Error.cshtml.cs</name>
+  </compound>
+  <compound refid="_admin_client_2_program_8cs" kind="file"><name>Program.cs</name>
+    <member refid="_admin_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kind="variable"><name>builder</name></member>
+    <member refid="_admin_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kind="variable"><name>app</name></member>
+    <member refid="_admin_client_2_program_8cs_1a50ac3cc59e3f8d9e5c1a2734bd14b7f5" kind="function"><name>AddRazorPages</name></member>
+    <member refid="_admin_client_2_program_8cs_1abda56024f5b832bc28b5198cc50fbf0f" kind="function"><name>AddServerSideBlazor</name></member>
+    <member refid="_admin_client_2_program_8cs_1ac66ba3d2449715a67800a74ac20d9e5f" kind="function"><name>AddSingleton&lt; Config &gt;</name></member>
+    <member refid="_admin_client_2_program_8cs_1aad4d97c760d74e83e033d929dcc87a6f" kind="function"><name>AddScoped&lt; IAuthState, AuthStateSessionStorage &gt;</name></member>
+    <member refid="_admin_client_2_program_8cs_1ae14ea207d2637a339741660d3f70d58c" kind="function"><name>AddScoped&lt; IAuthService, JwtAuthService &gt;</name></member>
+    <member refid="_admin_client_2_program_8cs_1a56c6c8051d8496c0798b698b1a35b67f" kind="function"><name>AddScoped&lt; IAdminService, AdminService &gt;</name></member>
+    <member refid="_admin_client_2_program_8cs_1af2d0c02efe3fbc2d94e5b6e316777c4d" kind="function"><name>if</name></member>
+    <member refid="_admin_client_2_program_8cs_1aa4d447fc3129a3aa301d736b8bd04ae9" kind="function"><name>UseHttpsRedirection</name></member>
+    <member refid="_admin_client_2_program_8cs_1a906a3ce545279a7a73941f1d7b64d7cf" kind="function"><name>UseStaticFiles</name></member>
+    <member refid="_admin_client_2_program_8cs_1a94c810d266751293a2d511a720a5625f" kind="function"><name>UseRouting</name></member>
+    <member refid="_admin_client_2_program_8cs_1aca87b3198658808e3036d7020473bd72" kind="function"><name>MapBlazorHub</name></member>
+    <member refid="_admin_client_2_program_8cs_1a1f15df377aa44cd5787b1691a857bce7" kind="function"><name>MapFallbackToPage</name></member>
+    <member refid="_admin_client_2_program_8cs_1aaa3dbf02e269c3ef7e8546d290c6b3dd" kind="function"><name>Run</name></member>
+  </compound>
+  <compound refid="_game_client_2_program_8cs" kind="file"><name>Program.cs</name>
+    <member refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kind="variable"><name>builder</name></member>
+    <member refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kind="variable"><name>app</name></member>
+    <member refid="_game_client_2_program_8cs_1a50ac3cc59e3f8d9e5c1a2734bd14b7f5" kind="function"><name>AddRazorPages</name></member>
+    <member refid="_game_client_2_program_8cs_1abda56024f5b832bc28b5198cc50fbf0f" kind="function"><name>AddServerSideBlazor</name></member>
+    <member refid="_game_client_2_program_8cs_1ac66ba3d2449715a67800a74ac20d9e5f" kind="function"><name>AddSingleton&lt; Config &gt;</name></member>
+    <member refid="_game_client_2_program_8cs_1aad4d97c760d74e83e033d929dcc87a6f" kind="function"><name>AddScoped&lt; IAuthState, AuthStateSessionStorage &gt;</name></member>
+    <member refid="_game_client_2_program_8cs_1aef982317e0274811e6d6029e5062e848" kind="function"><name>AddTransient&lt; IAuthService, JwtAuthService &gt;</name></member>
+    <member refid="_game_client_2_program_8cs_1a5bd1d2a364c47843f4ea740ec484eefe" kind="function"><name>AddTransient&lt; IGameService, GameService &gt;</name></member>
+    <member refid="_game_client_2_program_8cs_1aeaace5fc63570323f7b5004058af2547" kind="function"><name>AddScoped&lt; ILiveService, LiveService &gt;</name></member>
+    <member refid="_game_client_2_program_8cs_1af2d0c02efe3fbc2d94e5b6e316777c4d" kind="function"><name>if</name></member>
+    <member refid="_game_client_2_program_8cs_1aa4d447fc3129a3aa301d736b8bd04ae9" kind="function"><name>UseHttpsRedirection</name></member>
+    <member refid="_game_client_2_program_8cs_1a906a3ce545279a7a73941f1d7b64d7cf" kind="function"><name>UseStaticFiles</name></member>
+    <member refid="_game_client_2_program_8cs_1a94c810d266751293a2d511a720a5625f" kind="function"><name>UseRouting</name></member>
+    <member refid="_game_client_2_program_8cs_1aca87b3198658808e3036d7020473bd72" kind="function"><name>MapBlazorHub</name></member>
+    <member refid="_game_client_2_program_8cs_1a1f15df377aa44cd5787b1691a857bce7" kind="function"><name>MapFallbackToPage</name></member>
+    <member refid="_game_client_2_program_8cs_1aaa3dbf02e269c3ef7e8546d290c6b3dd" kind="function"><name>Run</name></member>
+  </compound>
+  <compound refid="_admin_service_8cs" kind="file"><name>AdminService.cs</name>
+  </compound>
+  <compound refid="_i_admin_service_8cs" kind="file"><name>IAdminService.cs</name>
+  </compound>
+  <compound refid="_admin_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="_game_client_2bin_2_debug_2net7_80_2publish_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="_game_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="_game_client_test_8cs" kind="file"><name>GameClientTest.cs</name>
+  </compound>
+  <compound refid="_game_client_8_tests_8_assembly_info_8cs" kind="file"><name>GameClient.Tests.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_game_client_8_tests_8_global_usings_8g_8cs" kind="file"><name>GameClient.Tests.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_test_invites_8cs" kind="file"><name>TestInvites.cs</name>
+  </compound>
+  <compound refid="_tic_tac_toe_8cs" kind="file"><name>TicTacToe.cs</name>
+  </compound>
+  <compound refid="_game_client_8_assembly_info_8cs" kind="file"><name>GameClient.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_game_client_8_global_usings_8g_8cs" kind="file"><name>GameClient.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_game_client_8_razor_assembly_info_8cs" kind="file"><name>GameClient.RazorAssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_game_service_8cs" kind="file"><name>GameService.cs</name>
+  </compound>
+  <compound refid="_i_game_service_8cs" kind="file"><name>IGameService.cs</name>
+  </compound>
+  <compound refid="_i_live_service_8cs" kind="file"><name>ILiveService.cs</name>
+  </compound>
+  <compound refid="_live_service_8cs" kind="file"><name>LiveService.cs</name>
+  </compound>
+  <compound refid="_shared_8_tests_8_assembly_info_8cs" kind="file"><name>Shared.Tests.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_shared_8_tests_8_global_usings_8g_8cs" kind="file"><name>Shared.Tests.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_shared_8_tets_8_assembly_info_8cs" kind="file"><name>Shared.Tets.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_shared_8_tets_8_global_usings_8g_8cs" kind="file"><name>Shared.Tets.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_test_data_8cs" kind="file"><name>TestData.cs</name>
+  </compound>
+  <compound refid="_test_util_8cs" kind="file"><name>TestUtil.cs</name>
+  </compound>
+  <compound refid="_i_auth_service_8cs" kind="file"><name>IAuthService.cs</name>
+  </compound>
+  <compound refid="_jwt_auth_service_8cs" kind="file"><name>JwtAuthService.cs</name>
+  </compound>
+  <compound refid="_auth_state_in_memory_8cs" kind="file"><name>AuthStateInMemory.cs</name>
+  </compound>
+  <compound refid="_auth_state_session_storage_8cs" kind="file"><name>AuthStateSessionStorage.cs</name>
+  </compound>
+  <compound refid="_auth_util_8cs" kind="file"><name>AuthUtil.cs</name>
+  </compound>
+  <compound refid="_i_auth_state_8cs" kind="file"><name>IAuthState.cs</name>
+  </compound>
+  <compound refid="_config_8cs" kind="file"><name>Config.cs</name>
+  </compound>
+  <compound refid="_account_8cs" kind="file"><name>Account.cs</name>
+  </compound>
+  <compound refid="_empty_8cs" kind="file"><name>Empty.cs</name>
+  </compound>
+  <compound refid="_finished_match_score_8cs" kind="file"><name>FinishedMatchScore.cs</name>
+  </compound>
+  <compound refid="_game_8cs" kind="file"><name>Game.cs</name>
+  </compound>
+  <compound refid="_match_8cs" kind="file"><name>Match.cs</name>
+  </compound>
+  <compound refid="_move_result_8cs" kind="file"><name>MoveResult.cs</name>
+  </compound>
+  <compound refid="_participant_8cs" kind="file"><name>Participant.cs</name>
+  </compound>
+  <compound refid="_score_sum_8cs" kind="file"><name>ScoreSum.cs</name>
+  </compound>
+  <compound refid="_extensions_8cs" kind="file"><name>Extensions.cs</name>
+  </compound>
+  <compound refid="_html_util_8cs" kind="file"><name>HtmlUtil.cs</name>
+  </compound>
+  <compound refid="_json_util_8cs" kind="file"><name>JsonUtil.cs</name>
+  </compound>
+  <compound refid="_log_8cs" kind="file"><name>Log.cs</name>
+  </compound>
+  <compound refid="_message_8cs" kind="file"><name>Message.cs</name>
+  </compound>
+  <compound refid="_messages_8cs" kind="file"><name>Messages.cs</name>
+    <member refid="_messages_8cs_1a1ce92468c782831f2a1b04ecae777077" kind="typedef"><name>boolean</name></member>
+  </compound>
+  <compound refid="_message_serializer_8cs" kind="file"><name>MessageSerializer.cs</name>
+  </compound>
+  <compound refid="_service_socket_8cs" kind="file"><name>ServiceSocket.cs</name>
+  </compound>
+  <compound refid="_string_streamer_8cs" kind="file"><name>StringStreamer.cs</name>
+  </compound>
+  <compound refid="_not_authorized_exception_8cs" kind="file"><name>NotAuthorizedException.cs</name>
+  </compound>
+  <compound refid="_shared_8_assembly_info_8cs" kind="file"><name>Shared.AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_shared_8_global_usings_8g_8cs" kind="file"><name>Shared.GlobalUsings.g.cs</name>
+  </compound>
+  <compound refid="_parse_util_8cs" kind="file"><name>ParseUtil.cs</name>
+  </compound>
+  <compound refid="md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_admin_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e" kind="page"><name>md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_admin_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e</name>
+  </compound>
+  <compound refid="md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_game_client_2bin_2_debug_2net7_80_2publish_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e" kind="page"><name>md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_game_client_2bin_2_debug_2net7_80_2publish_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e</name>
+  </compound>
+  <compound refid="md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_game_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e" kind="page"><name>md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_game_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e</name>
+  </compound>
+  <compound refid="dir_7c659529580f41078ee68f9145f59f7a" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient</name>
+  </compound>
+  <compound refid="dir_41880dcbb4f0e25ee3ebaf42a74a0599" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient.Tests</name>
+  </compound>
+  <compound refid="dir_bbbde8088f05e49d9f9dea9d999efe9f" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/AuthService</name>
+  </compound>
+  <compound refid="dir_03f2346b7b8ecd5eb153508cbe5cde04" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/AuthState</name>
+  </compound>
+  <compound refid="dir_1563f67c54accb8fbe2416da8009ce9a" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin</name>
+  </compound>
+  <compound refid="dir_2c33f1583eeaa3b68a9fb05dc49e4ee9" kind="dir"><name>W:/SEP3/CSharp/Boardgames</name>
+  </compound>
+  <compound refid="dir_2358508cf2cd3f735687a956f2da4c3a" kind="dir"><name>W:/SEP3/CSharp</name>
+  </compound>
+  <compound refid="dir_9892aa67910d7d210ba6344e5ecb32dc" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/wwwroot/css</name>
+  </compound>
+  <compound refid="dir_55cf4d39195e553c0cc4b063cf732e61" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin/Debug/net7.0/publish/wwwroot/css</name>
+  </compound>
+  <compound refid="dir_46b50d8e524476d49dce903e24762264" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/wwwroot/css</name>
+  </compound>
+  <compound refid="dir_d5bac93afb7fe31a099004af2cfbb1e2" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient.Tests/obj/Debug</name>
+  </compound>
+  <compound refid="dir_71befd5db401ff33d94ef35e6c3d7edd" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/obj/Debug</name>
+  </compound>
+  <compound refid="dir_7e5b74150434a5a603ceb81a104b5da3" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient.Tests/obj/Debug</name>
+  </compound>
+  <compound refid="dir_90c43a95e57b62081976c5c6fd1ff006" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin/Debug</name>
+  </compound>
+  <compound refid="dir_c7daa7c6910703e8eccd5679897075f1" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/obj/Debug</name>
+  </compound>
+  <compound refid="dir_595be5eba68d9245ef4ae4718c1cd75d" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared.Tests/obj/Debug</name>
+  </compound>
+  <compound refid="dir_8b88bf878422543d322d6658494cbf04" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/obj/Debug</name>
+  </compound>
+  <compound refid="dir_227f13e24dfeeca7bd447e6fd5067f53" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/DTO</name>
+  </compound>
+  <compound refid="dir_83afd3aaeca90b817b8d2bb2fe0a5c99" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient</name>
+  </compound>
+  <compound refid="dir_8aaefde65067a8faa4f8c4efce45cf0e" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient.Tests</name>
+  </compound>
+  <compound refid="dir_9d094db19f1790064a264b05d9b58517" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/Games</name>
+  </compound>
+  <compound refid="dir_f777dd18fa6b1a8f86957f2078b1d5c1" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient.Tests/obj/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_f72924b83856348d1491e379996237cf" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/obj/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_d93dcbff0bb0b2d4269869c005701cf1" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient.Tests/obj/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_4441483dd97dc8188b80fa902d963473" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_2b0f3d0c0f28c13d379d74502e2bc657" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/obj/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_b8ac570ebd6b325f27516102e29fb2ef" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared.Tests/obj/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_0361f271a2cc62b6793840019d451670" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/obj/Debug/net7.0</name>
+  </compound>
+  <compound refid="dir_d7f993ea9e2f3968a6f93eb11c63fbbe" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/Networking</name>
+  </compound>
+  <compound refid="dir_e43c600dbcda0241549bdf27fc1e1315" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient.Tests/obj</name>
+  </compound>
+  <compound refid="dir_1c496739b82dff99af3c59092afe5434" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/obj</name>
+  </compound>
+  <compound refid="dir_d0b5247a6462560b10ffef2d58f30354" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient.Tests/obj</name>
+  </compound>
+  <compound refid="dir_9faebfc157daf887e19615bc618dfdca" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/obj</name>
+  </compound>
+  <compound refid="dir_4443d913112c7d025fa2ea587b7f60cd" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared.Tests/obj</name>
+  </compound>
+  <compound refid="dir_96d1d7867fc521ad4d2fc483d872ed08" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared/obj</name>
+  </compound>
+  <compound refid="dir_6da1cf0da5536b3660977dd8b3f92cde" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/wwwroot/css/open-iconic</name>
+  </compound>
+  <compound refid="dir_97a62c4880fd03cb442c340aa14ae4ae" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin/Debug/net7.0/publish/wwwroot/css/open-iconic</name>
+  </compound>
+  <compound refid="dir_d5f2bca260c137cfba7af24120c913c6" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/wwwroot/css/open-iconic</name>
+  </compound>
+  <compound refid="dir_24214b58e5e8f9aeecee2c5580055daa" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/Pages</name>
+  </compound>
+  <compound refid="dir_f75f66fbdfd3c69ceaa0453a8ee88d74" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/Pages</name>
+  </compound>
+  <compound refid="dir_59809f241ae5b3a2eaf4c91560a09ad9" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin/Debug/net7.0/publish</name>
+  </compound>
+  <compound refid="dir_62eaff9c2ec3cfc55e3b022a0335eda4" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/Services</name>
+  </compound>
+  <compound refid="dir_c3d68072126a30de6ffa9f9db60b23ec" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/Services</name>
+  </compound>
+  <compound refid="dir_297a5e8080223b2ce7b3ede89268e18a" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared</name>
+  </compound>
+  <compound refid="dir_01685e9e87318b084115a826d884486e" kind="dir"><name>W:/SEP3/CSharp/Boardgames/Shared.Tests</name>
+  </compound>
+  <compound refid="dir_55a5b385120a2f37a8ee516e77fd61da" kind="dir"><name>W:/SEP3/CSharp/Boardgames/AdminClient/wwwroot</name>
+  </compound>
+  <compound refid="dir_798b3e2afa4b8d4aef2480f04d315c3c" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/bin/Debug/net7.0/publish/wwwroot</name>
+  </compound>
+  <compound refid="dir_ab2f43384dd9f7db1503695a44fd4f50" kind="dir"><name>W:/SEP3/CSharp/Boardgames/GameClient/wwwroot</name>
+  </compound>
+</doxygenindex>

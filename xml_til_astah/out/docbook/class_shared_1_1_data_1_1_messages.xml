@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_data_1_1_messages" xml:lang="da">
+<title>Shared.Data.Messages Klasse-reference</title>
+<indexterm><primary>Shared.Data.Messages</primary></indexterm>
+Samarbejdsdiagram for Shared.Data.Messages:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_messages__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a31baadd636b27e9ec1934d24b0a952fe">Head</link> (String bodyType, String jwt, double elapsedServerMillis)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1adaef689cb56b40333309ebc3c4d5b6c3">LoginRequest</link> (String username, String password, <link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> adminClient)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a64dbcd47fcbd3bac780838614e41352e">LoginResponse</link> (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> loginSuccessful, <link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> account, String jwt, String errorReason)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ad2c1731b7f88dcbdc4f88d156c570578">RegisterRequest</link> (String username, String firstName, String lastName, String email, String password)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a6ac930c356a2ccfcb379a1e15739ac2c">RegisterResponse</link> (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> response, String errorReason)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ad581ae05d5a0a836ecf6074f0ab6cda8">GetGamesRequest</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1aa398119a0988e914d14b63e7aaee71f0">GetGamesResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_game">Game</link> &gt; games)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a9377692ad5fa9e99266e23ee93e49946">GetMatchRequest</link> (int matchId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ac078479b5d3f196daeeeb1bbf11aec2d">GetMatchResponse</link> (<link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link> match)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a1f200329a9fa29e2e8c5b754865357e0">GetMyMatchesRequest</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1aa8d568e0f08fd41702c39497df03271a">GetMyMatchesResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link> &gt; matches)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a5bfa141a8cd0f7622a80d4f8c22e8db9">CreateMatchRequest</link> (int gameId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1af526bfbb78087441eeda96c7e4294c3f">CreateMatchResponse</link> (String errorReason, <link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link> match)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a4557db927769e106fc2d4868fe1d8881">AddParticipantRequest</link> (int matchId, int accountId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1af1dd9cf9ada7916a4a20206552fe5bb8">AddParticipantResponse</link> (<link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link> participant, String errorReason)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ad193fe4f99821b75961b9a65c516b91b">GetParticipantsRequest</link> (int matchId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a7f65cd43bbd8115ad27ad40740ae42f5">GetParticipantsResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link> &gt; participants)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1aea68f6e1c7dfbf5b2f2eb6bda11283a7">GetPendingRequest</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a4efa5443f6f398160aee386eff174c24">GetPendingResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link> &gt; participants)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a57f3604402d2ed238b015c7bf34ece5a">DecidePendingRequest</link> (int matchId, int participantId, int status)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a70fc5be810abd3667ac8a82c9a128f3c">DecidePendingResponse</link> (String errorReason)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ab72575301e5a462dd2f952dce6bbc329">GetAccountRequest</link> (int accountId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a5e9ca18d9b5619212d0303df51b380c2">GetAccountResponse</link> (<link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> account)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ad17a4a70b989409dfddf0b36edc3b75c">GetAccountsRequest</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a75ad8ae2009850cf2a5dfdd35de1f857">GetAccountsResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> &gt; accounts)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1aab788c4857d3c4dce24b01afe7464e05">UpdateAccountRequest</link> (<link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> account)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a4ad4407da8cb562b81915f3d210830d9">UpdateAccountResponse</link> (String errorReason)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a16ba96b8fd4f9ca2f289a2278462c7cb">MoveRequest</link> (int matchId, String moveData)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1afb2016ae92d7d4462a3b05265fef8668">MoveResponse</link> (int matchId, String gameData, <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result">MoveResult</link> result)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ac47da168e00f717a9c33f9f73690a458">ImpatientWinRequest</link> (int matchId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1aabcb6689d3a802f9a7b3c4d6e8aef7ef">ImpatientWinResponse</link> (int matchId, String errorReason)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ad173834478e2bab0606a382357176fcb">GetScoreSumsRequest</link> (int gameId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ade82d72364d0cea5e6d63d5d0fdc1db0">GetScoreSumsResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_score_sum">ScoreSum</link> &gt; sums)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a8aea8e8a8714a895cf2cdfbf4ea1814b">GetMatchHistoryRequest</link> (int accountId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a6f735e5add0733af8713da9454382e7d">GetMatchHistoryResponse</link> (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score">FinishedMatchScore</link> &gt; scores)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a5574479ca11df1c32212081900c61359">BeginLiveUpdateRequest</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1ae5aead886c76b0003e89cd7a585605ef">BeginLiveUpdateResponse</link> (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> success)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a6b1908fc9be660470e68612f1c6d9da5">MatchNotification</link> (int matchId)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a70f6cb44662775f7d5446b54043b9a12">QuitNotification</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1acb64795b4203bd591b0bd5e7f21d23ad">NotAuthorizedResponse</link> ()</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1a6ae9fc19d43ac55e3e7bf8b75b9735ca">UpdateUserStatusRequest</link> (<link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> <link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link>, int newStatus)</para>
+</listitem>
+            <listitem><para>record <link linkend="_class_shared_1_1_data_1_1_messages_1aff0fcfd505f32e06ee8ccd1bfd87358d">UpdateUserStatusResponse</link> (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> b)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a4557db927769e106fc2d4868fe1d8881"/><section>
+    <title>AddParticipantRequest()</title>
+<indexterm><primary>AddParticipantRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>AddParticipantRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.AddParticipantRequest (int matchId, int accountId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1af1dd9cf9ada7916a4a20206552fe5bb8"/><section>
+    <title>AddParticipantResponse()</title>
+<indexterm><primary>AddParticipantResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>AddParticipantResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.AddParticipantResponse (<link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link> participant, String errorReason)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a5574479ca11df1c32212081900c61359"/><section>
+    <title>BeginLiveUpdateRequest()</title>
+<indexterm><primary>BeginLiveUpdateRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>BeginLiveUpdateRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.BeginLiveUpdateRequest ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ae5aead886c76b0003e89cd7a585605ef"/><section>
+    <title>BeginLiveUpdateResponse()</title>
+<indexterm><primary>BeginLiveUpdateResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>BeginLiveUpdateResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.BeginLiveUpdateResponse (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> success)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a5bfa141a8cd0f7622a80d4f8c22e8db9"/><section>
+    <title>CreateMatchRequest()</title>
+<indexterm><primary>CreateMatchRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>CreateMatchRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.CreateMatchRequest (int gameId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1af526bfbb78087441eeda96c7e4294c3f"/><section>
+    <title>CreateMatchResponse()</title>
+<indexterm><primary>CreateMatchResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>CreateMatchResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.CreateMatchResponse (String errorReason, <link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link> match)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a57f3604402d2ed238b015c7bf34ece5a"/><section>
+    <title>DecidePendingRequest()</title>
+<indexterm><primary>DecidePendingRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>DecidePendingRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.DecidePendingRequest (int matchId, int participantId, int status)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a70fc5be810abd3667ac8a82c9a128f3c"/><section>
+    <title>DecidePendingResponse()</title>
+<indexterm><primary>DecidePendingResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>DecidePendingResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.DecidePendingResponse (String errorReason)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ab72575301e5a462dd2f952dce6bbc329"/><section>
+    <title>GetAccountRequest()</title>
+<indexterm><primary>GetAccountRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetAccountRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetAccountRequest (int accountId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a5e9ca18d9b5619212d0303df51b380c2"/><section>
+    <title>GetAccountResponse()</title>
+<indexterm><primary>GetAccountResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetAccountResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetAccountResponse (<link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> account)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ad17a4a70b989409dfddf0b36edc3b75c"/><section>
+    <title>GetAccountsRequest()</title>
+<indexterm><primary>GetAccountsRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetAccountsRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetAccountsRequest ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a75ad8ae2009850cf2a5dfdd35de1f857"/><section>
+    <title>GetAccountsResponse()</title>
+<indexterm><primary>GetAccountsResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetAccountsResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetAccountsResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> &gt; accounts)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ad581ae05d5a0a836ecf6074f0ab6cda8"/><section>
+    <title>GetGamesRequest()</title>
+<indexterm><primary>GetGamesRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetGamesRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetGamesRequest ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1aa398119a0988e914d14b63e7aaee71f0"/><section>
+    <title>GetGamesResponse()</title>
+<indexterm><primary>GetGamesResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetGamesResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetGamesResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_game">Game</link> &gt; games)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a8aea8e8a8714a895cf2cdfbf4ea1814b"/><section>
+    <title>GetMatchHistoryRequest()</title>
+<indexterm><primary>GetMatchHistoryRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetMatchHistoryRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetMatchHistoryRequest (int accountId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a6f735e5add0733af8713da9454382e7d"/><section>
+    <title>GetMatchHistoryResponse()</title>
+<indexterm><primary>GetMatchHistoryResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetMatchHistoryResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetMatchHistoryResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score">FinishedMatchScore</link> &gt; scores)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a9377692ad5fa9e99266e23ee93e49946"/><section>
+    <title>GetMatchRequest()</title>
+<indexterm><primary>GetMatchRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetMatchRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetMatchRequest (int matchId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ac078479b5d3f196daeeeb1bbf11aec2d"/><section>
+    <title>GetMatchResponse()</title>
+<indexterm><primary>GetMatchResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetMatchResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetMatchResponse (<link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link> match)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a1f200329a9fa29e2e8c5b754865357e0"/><section>
+    <title>GetMyMatchesRequest()</title>
+<indexterm><primary>GetMyMatchesRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetMyMatchesRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetMyMatchesRequest ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1aa8d568e0f08fd41702c39497df03271a"/><section>
+    <title>GetMyMatchesResponse()</title>
+<indexterm><primary>GetMyMatchesResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetMyMatchesResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetMyMatchesResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link> &gt; matches)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ad193fe4f99821b75961b9a65c516b91b"/><section>
+    <title>GetParticipantsRequest()</title>
+<indexterm><primary>GetParticipantsRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetParticipantsRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetParticipantsRequest (int matchId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a7f65cd43bbd8115ad27ad40740ae42f5"/><section>
+    <title>GetParticipantsResponse()</title>
+<indexterm><primary>GetParticipantsResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetParticipantsResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetParticipantsResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link> &gt; participants)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1aea68f6e1c7dfbf5b2f2eb6bda11283a7"/><section>
+    <title>GetPendingRequest()</title>
+<indexterm><primary>GetPendingRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetPendingRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetPendingRequest ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a4efa5443f6f398160aee386eff174c24"/><section>
+    <title>GetPendingResponse()</title>
+<indexterm><primary>GetPendingResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetPendingResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetPendingResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link> &gt; participants)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ad173834478e2bab0606a382357176fcb"/><section>
+    <title>GetScoreSumsRequest()</title>
+<indexterm><primary>GetScoreSumsRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetScoreSumsRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetScoreSumsRequest (int gameId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ade82d72364d0cea5e6d63d5d0fdc1db0"/><section>
+    <title>GetScoreSumsResponse()</title>
+<indexterm><primary>GetScoreSumsResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>GetScoreSumsResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.GetScoreSumsResponse (List&lt; <link linkend="_class_game_client_1_1_d_t_o_1_1_score_sum">ScoreSum</link> &gt; sums)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a31baadd636b27e9ec1934d24b0a952fe"/><section>
+    <title>Head()</title>
+<indexterm><primary>Head</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>Head</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.Head (String bodyType, String jwt, double elapsedServerMillis)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ac47da168e00f717a9c33f9f73690a458"/><section>
+    <title>ImpatientWinRequest()</title>
+<indexterm><primary>ImpatientWinRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>ImpatientWinRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.ImpatientWinRequest (int matchId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1aabcb6689d3a802f9a7b3c4d6e8aef7ef"/><section>
+    <title>ImpatientWinResponse()</title>
+<indexterm><primary>ImpatientWinResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>ImpatientWinResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.ImpatientWinResponse (int matchId, String errorReason)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1adaef689cb56b40333309ebc3c4d5b6c3"/><section>
+    <title>LoginRequest()</title>
+<indexterm><primary>LoginRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>LoginRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.LoginRequest (String username, String password, <link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> adminClient)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a64dbcd47fcbd3bac780838614e41352e"/><section>
+    <title>LoginResponse()</title>
+<indexterm><primary>LoginResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>LoginResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.LoginResponse (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> loginSuccessful, <link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> account, String jwt, String errorReason)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a6b1908fc9be660470e68612f1c6d9da5"/><section>
+    <title>MatchNotification()</title>
+<indexterm><primary>MatchNotification</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>MatchNotification</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.MatchNotification (int matchId)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a16ba96b8fd4f9ca2f289a2278462c7cb"/><section>
+    <title>MoveRequest()</title>
+<indexterm><primary>MoveRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>MoveRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.MoveRequest (int matchId, String moveData)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1afb2016ae92d7d4462a3b05265fef8668"/><section>
+    <title>MoveResponse()</title>
+<indexterm><primary>MoveResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>MoveResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.MoveResponse (int matchId, String gameData, <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result">MoveResult</link> result)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1acb64795b4203bd591b0bd5e7f21d23ad"/><section>
+    <title>NotAuthorizedResponse()</title>
+<indexterm><primary>NotAuthorizedResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>NotAuthorizedResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.NotAuthorizedResponse ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a70f6cb44662775f7d5446b54043b9a12"/><section>
+    <title>QuitNotification()</title>
+<indexterm><primary>QuitNotification</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>QuitNotification</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.QuitNotification ( )</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1ad2c1731b7f88dcbdc4f88d156c570578"/><section>
+    <title>RegisterRequest()</title>
+<indexterm><primary>RegisterRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>RegisterRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.RegisterRequest (String username, String firstName, String lastName, String email, String password)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a6ac930c356a2ccfcb379a1e15739ac2c"/><section>
+    <title>RegisterResponse()</title>
+<indexterm><primary>RegisterResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>RegisterResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.RegisterResponse (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> response, String errorReason)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1aab788c4857d3c4dce24b01afe7464e05"/><section>
+    <title>UpdateAccountRequest()</title>
+<indexterm><primary>UpdateAccountRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>UpdateAccountRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.UpdateAccountRequest (<link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> account)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a4ad4407da8cb562b81915f3d210830d9"/><section>
+    <title>UpdateAccountResponse()</title>
+<indexterm><primary>UpdateAccountResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>UpdateAccountResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.UpdateAccountResponse (String errorReason)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1a6ae9fc19d43ac55e3e7bf8b75b9735ca"/><section>
+    <title>UpdateUserStatusRequest()</title>
+<indexterm><primary>UpdateUserStatusRequest</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>UpdateUserStatusRequest</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.UpdateUserStatusRequest (<link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link> Account, int newStatus)</computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_data_1_1_messages_1aff0fcfd505f32e06ee8ccd1bfd87358d"/><section>
+    <title>UpdateUserStatusResponse()</title>
+<indexterm><primary>UpdateUserStatusResponse</primary><secondary>Shared.Data.Messages</secondary></indexterm>
+<indexterm><primary>Shared.Data.Messages</primary><secondary>UpdateUserStatusResponse</secondary></indexterm>
+<para><computeroutput>record Shared.Data.Messages.UpdateUserStatusResponse (<link linkend="__messages_8cs_1a1ce92468c782831f2a1b04ecae777077">boolean</link> b)</computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/<link linkend="__messages_8cs">Messages.cs</link></section>
+</section>

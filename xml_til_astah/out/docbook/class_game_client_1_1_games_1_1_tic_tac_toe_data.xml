@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data" xml:lang="da">
+<title>GameClient.Games.TicTacToeData Klasse-reference</title>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary></indexterm>
+Samarbejdsdiagram for GameClient.Games.TicTacToeData:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_games_1_1_tic_tac_toe_data__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a502d6118adf8f6b9a152dc782e49a4bb">PiecesO</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a0abd87091e197fbb548f5c8fcee1f1a1">PiecesX</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1aca8a9e0cf62ee94fc7add8f2fa264dfe">AccountIdO</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a4544a57e693d806eacca71f90e631fa5">AccountIdX</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a8ec20a8eb49ab166e1424420c623d6ef">RemainingO</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a104fb3526df14bbbeb0779e06f1d5b46">RemainingX</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a8154393b56354bb3fb2f8f5827cd5c40">MoveCount</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1aca8a9e0cf62ee94fc7add8f2fa264dfe"/><section>
+    <title>AccountIdO</title>
+<indexterm><primary>AccountIdO</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>AccountIdO</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.AccountIdO<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a4544a57e693d806eacca71f90e631fa5"/><section>
+    <title>AccountIdX</title>
+<indexterm><primary>AccountIdX</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>AccountIdX</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.AccountIdX<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a8154393b56354bb3fb2f8f5827cd5c40"/><section>
+    <title>MoveCount</title>
+<indexterm><primary>MoveCount</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>MoveCount</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.MoveCount<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a502d6118adf8f6b9a152dc782e49a4bb"/><section>
+    <title>PiecesO</title>
+<indexterm><primary>PiecesO</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>PiecesO</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.PiecesO<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a0abd87091e197fbb548f5c8fcee1f1a1"/><section>
+    <title>PiecesX</title>
+<indexterm><primary>PiecesX</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>PiecesX</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.PiecesX<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a8ec20a8eb49ab166e1424420c623d6ef"/><section>
+    <title>RemainingO</title>
+<indexterm><primary>RemainingO</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>RemainingO</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.RemainingO<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_games_1_1_tic_tac_toe_data_1a104fb3526df14bbbeb0779e06f1d5b46"/><section>
+    <title>RemainingX</title>
+<indexterm><primary>RemainingX</primary><secondary>GameClient.Games.TicTacToeData</secondary></indexterm>
+<indexterm><primary>GameClient.Games.TicTacToeData</primary><secondary>RemainingX</secondary></indexterm>
+<para><computeroutput>required int GameClient.Games.TicTacToeData.RemainingX<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/GameClient/Games/<link linkend="__tic_tac_toe_8cs">TicTacToe.cs</link></section>
+</section>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_parse_util" xml:lang="da">
+<title>Shared.ParseUtil Klasse-reference</title>
+<indexterm><primary>Shared.ParseUtil</primary></indexterm>
+Samarbejdsdiagram for Shared.ParseUtil:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_parse_util__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Statiske, offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para>static int <link linkend="_class_shared_1_1_parse_util_1ab842cc62e6b55a8dac1489863aae1e0d">ParseIntOrDefault</link> (string s, int whenNotParsed=default)</para>
+</listitem>
+            <listitem><para>static int <link linkend="_class_shared_1_1_parse_util_1a9e18b2aefa8b7ad90cc3c3f6ea66e9c9">ParseIntOrDefault</link> (object? o, int whenNotParsed=default)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_shared_1_1_parse_util_1a9e18b2aefa8b7ad90cc3c3f6ea66e9c9"/><section>
+    <title>ParseIntOrDefault()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>ParseIntOrDefault</primary><secondary>Shared.ParseUtil</secondary></indexterm>
+<indexterm><primary>Shared.ParseUtil</primary><secondary>ParseIntOrDefault</secondary></indexterm>
+<para><computeroutput>static int Shared.ParseUtil.ParseIntOrDefault (object? o, int whenNotParsed = <computeroutput>default</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_parse_util_a9e18b2aefa8b7ad90cc3c3f6ea66e9c9_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_parse_util_1ab842cc62e6b55a8dac1489863aae1e0d"/><section>
+    <title>ParseIntOrDefault()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>ParseIntOrDefault</primary><secondary>Shared.ParseUtil</secondary></indexterm>
+<indexterm><primary>Shared.ParseUtil</primary><secondary>ParseIntOrDefault</secondary></indexterm>
+<para><computeroutput>static int Shared.ParseUtil.ParseIntOrDefault (string s, int whenNotParsed = <computeroutput>default</computeroutput>
+)<computeroutput>[static]</computeroutput></computeroutput></para>Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_parse_util_ab842cc62e6b55a8dac1489863aae1e0d_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/<link linkend="__parse_util_8cs">ParseUtil.cs</link></section>
+</section>

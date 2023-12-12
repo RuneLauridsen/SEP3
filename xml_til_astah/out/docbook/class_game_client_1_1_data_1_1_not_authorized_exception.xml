@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_data_1_1_not_authorized_exception" xml:lang="da">
+<title>GameClient.Data.NotAuthorizedException Klasse-reference</title>
+<indexterm><primary>GameClient.Data.NotAuthorizedException</primary></indexterm>
+Stamtræ for GameClient.Data.NotAuthorizedException:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_data_1_1_not_authorized_exception__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for GameClient.Data.NotAuthorizedException:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_data_1_1_not_authorized_exception__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/<link linkend="__not_authorized_exception_8cs">NotAuthorizedException.cs</link></section>

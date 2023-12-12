@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_d_t_o_1_1_move_result" xml:lang="da">
+<title>GameClient.DTO.MoveResult Klasse-reference</title>
+<indexterm><primary>GameClient.DTO.MoveResult</primary></indexterm>
+Samarbejdsdiagram for GameClient.DTO.MoveResult:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_d_t_o_1_1_move_result__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Statiske, offentlige attributter    </title>
+        <itemizedlist>
+            <listitem><para>const int <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1a56d913727b906c4a62bc3414e5b67f90">OUTCOME_VALID</link> = 1</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1a85c651a5ae9c0947e3b88791a0d4e343">OUTCOME_INVALID</link> = 2</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1a9af31d68b4c304ae9a69aa34ad97e6fb">OUTCOME_FINISHED</link> = 3</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1ac2e7e0fa4e9157d8faa7c245c47760bf">Outcome</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1ac3fe1b33218c6c318510b770e8304f38">NextAccountId</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1afcde49a3e47ffb65cd614a4720cc2fb3">NextData</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1a05081767798f371d6086d770b29f27fa">InvalidMoveText</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1a11ff95e4a153351f5f57ea02a99ebccc">FinishedText</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required Dictionary&lt; int, int &gt; <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result_1aaf537f32c0b1e982c27ea1443d3cfb2b">Scores</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af feltvariable</title>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1a9af31d68b4c304ae9a69aa34ad97e6fb"/><section>
+    <title>OUTCOME_FINISHED</title>
+<indexterm><primary>OUTCOME_FINISHED</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>OUTCOME_FINISHED</secondary></indexterm>
+<para><computeroutput>const int GameClient.DTO.MoveResult.OUTCOME_FINISHED = 3<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1a85c651a5ae9c0947e3b88791a0d4e343"/><section>
+    <title>OUTCOME_INVALID</title>
+<indexterm><primary>OUTCOME_INVALID</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>OUTCOME_INVALID</secondary></indexterm>
+<para><computeroutput>const int GameClient.DTO.MoveResult.OUTCOME_INVALID = 2<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1a56d913727b906c4a62bc3414e5b67f90"/><section>
+    <title>OUTCOME_VALID</title>
+<indexterm><primary>OUTCOME_VALID</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>OUTCOME_VALID</secondary></indexterm>
+<para><computeroutput>const int GameClient.DTO.MoveResult.OUTCOME_VALID = 1<computeroutput>[static]</computeroutput></computeroutput></para></section>
+</section>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1a11ff95e4a153351f5f57ea02a99ebccc"/><section>
+    <title>FinishedText</title>
+<indexterm><primary>FinishedText</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>FinishedText</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.MoveResult.FinishedText<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1a05081767798f371d6086d770b29f27fa"/><section>
+    <title>InvalidMoveText</title>
+<indexterm><primary>InvalidMoveText</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>InvalidMoveText</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.MoveResult.InvalidMoveText<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1ac3fe1b33218c6c318510b770e8304f38"/><section>
+    <title>NextAccountId</title>
+<indexterm><primary>NextAccountId</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>NextAccountId</secondary></indexterm>
+<para><computeroutput>required int GameClient.DTO.MoveResult.NextAccountId<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1afcde49a3e47ffb65cd614a4720cc2fb3"/><section>
+    <title>NextData</title>
+<indexterm><primary>NextData</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>NextData</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.MoveResult.NextData<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1ac2e7e0fa4e9157d8faa7c245c47760bf"/><section>
+    <title>Outcome</title>
+<indexterm><primary>Outcome</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>Outcome</secondary></indexterm>
+<para><computeroutput>required int GameClient.DTO.MoveResult.Outcome<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_move_result_1aaf537f32c0b1e982c27ea1443d3cfb2b"/><section>
+    <title>Scores</title>
+<indexterm><primary>Scores</primary><secondary>GameClient.DTO.MoveResult</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.MoveResult</primary><secondary>Scores</secondary></indexterm>
+<para><computeroutput>required Dictionary&lt;int, int&gt; GameClient.DTO.MoveResult.Scores<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/DTO/<link linkend="__move_result_8cs">MoveResult.cs</link></section>
+</section>

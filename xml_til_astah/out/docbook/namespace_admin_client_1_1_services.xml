@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_admin_client_1_1_services" xml:lang="da">
+<title>AdminClient.Services namespace-reference</title>
+<indexterm><primary>AdminClient.Services</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_admin_client_1_1_services_1_1_admin_service">AdminService</link></para>
+</listitem>
+            <listitem><para>interface <link linkend="_interface_admin_client_1_1_services_1_1_i_admin_service">IAdminService</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

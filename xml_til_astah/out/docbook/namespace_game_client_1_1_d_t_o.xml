@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_game_client_1_1_d_t_o" xml:lang="da">
+<title>GameClient.DTO namespace-reference</title>
+<indexterm><primary>GameClient.DTO</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_account">Account</link></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">Empty</emphasis></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score">FinishedMatchScore</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_game">Game</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_match">Match</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_move_result">MoveResult</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_participant">Participant</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_score_sum">ScoreSum</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

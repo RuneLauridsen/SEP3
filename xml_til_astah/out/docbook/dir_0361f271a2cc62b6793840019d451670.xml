@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_0361f271a2cc62b6793840019d451670" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared/obj/Debug/net7.0</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared/obj/Debug/net7.0</primary></indexterm>
+Afhængighedsgraf for katalog net7.0:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_0361f271a2cc62b6793840019d451670_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Filer    </title>
+        <itemizedlist>
+            <listitem><para>fil <link linkend="__shared_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs">.NETCoreApp,Version=v7.0.AssemblyAttributes.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__shared_8_assembly_info_8cs">Shared.AssemblyInfo.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__shared_8_global_usings_8g_8cs">Shared.GlobalUsings.g.cs</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

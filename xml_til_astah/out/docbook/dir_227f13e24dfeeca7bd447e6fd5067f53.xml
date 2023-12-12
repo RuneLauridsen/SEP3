@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_227f13e24dfeeca7bd447e6fd5067f53" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared/DTO</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared/DTO</primary></indexterm>
+Afhængighedsgraf for katalog DTO:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_227f13e24dfeeca7bd447e6fd5067f53_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Filer    </title>
+        <itemizedlist>
+            <listitem><para>fil <link linkend="__account_8cs">Account.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__empty_8cs">Empty.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__finished_match_score_8cs">FinishedMatchScore.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__game_8cs">Game.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__match_8cs">Match.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__move_result_8cs">MoveResult.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__participant_8cs">Participant.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__score_sum_8cs">ScoreSum.cs</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

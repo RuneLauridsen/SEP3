@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_data_1_1_service_socket" xml:lang="da">
+<title>Shared.Data.ServiceSocket Klasse-reference</title>
+<indexterm><primary>Shared.Data.ServiceSocket</primary></indexterm>
+Samarbejdsdiagram for Shared.Data.ServiceSocket:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_shared_1_1_data_1_1_service_socket_1ac236ced48a915e14829039e199843bd6">ServiceSocket</link> (string url, int port, <link linkend="_interface_shared_1_1_auth_state_1_1_i_auth_state">IAuthState</link> authState)</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_shared_1_1_data_1_1_service_socket_1a157a472beb8cc05aa9b3af3784601b07">Open</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_shared_1_1_data_1_1_service_socket_1a79cc6032e20a1ba2cc01a97a3345cba8">Close</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_shared_1_1_data_1_1_service_socket_1a973877fd60c8001a6c11a84e9cf41109">SendMessageAsync</link> (object body, CancellationToken ct)</para>
+</listitem>
+            <listitem><para>async Task&lt; <link linkend="_class_shared_1_1_message">Message</link> &gt; <link linkend="_class_shared_1_1_data_1_1_service_socket_1adb235456ebdbc0b88e1c9253c1b25599">ReadMessageAsync</link> (CancellationToken ct)</para>
+</listitem>
+            <listitem><para>Task&lt; T?&gt; <link linkend="_class_shared_1_1_data_1_1_service_socket_1a26be6546dc82632ddc7162d04a4651d5">SendAndReceiveAsync&lt; T &gt;</link> (object requestBody)</para>
+</listitem>
+            <listitem><para>async Task&lt; T?&gt; <link linkend="_class_shared_1_1_data_1_1_service_socket_1a48943a8611e55daffe34de5d6898a852">SendAndReceiveAsync&lt; T &gt;</link> (object requestBody, CancellationToken ct)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1ac236ced48a915e14829039e199843bd6"/><section>
+    <title>ServiceSocket()</title>
+<indexterm><primary>ServiceSocket</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>ServiceSocket</secondary></indexterm>
+<para><computeroutput>Shared.Data.ServiceSocket.ServiceSocket (string url, int port, <link linkend="_interface_shared_1_1_auth_state_1_1_i_auth_state">IAuthState</link> authState)</computeroutput></para></section>
+</section>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1a79cc6032e20a1ba2cc01a97a3345cba8"/><section>
+    <title>Close()</title>
+<indexterm><primary>Close</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>Close</secondary></indexterm>
+<para><computeroutput>void Shared.Data.ServiceSocket.Close ( )</computeroutput></para>Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_a79cc6032e20a1ba2cc01a97a3345cba8_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1a157a472beb8cc05aa9b3af3784601b07"/><section>
+    <title>Open()</title>
+<indexterm><primary>Open</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>Open</secondary></indexterm>
+<para><computeroutput>async Task Shared.Data.ServiceSocket.Open ( )</computeroutput></para>Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_a157a472beb8cc05aa9b3af3784601b07_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1adb235456ebdbc0b88e1c9253c1b25599"/><section>
+    <title>ReadMessageAsync()</title>
+<indexterm><primary>ReadMessageAsync</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>ReadMessageAsync</secondary></indexterm>
+<para><computeroutput>async Task&lt; <link linkend="_class_shared_1_1_message">Message</link> &gt; Shared.Data.ServiceSocket.ReadMessageAsync (CancellationToken ct)</computeroutput></para>Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_adb235456ebdbc0b88e1c9253c1b25599_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1a26be6546dc82632ddc7162d04a4651d5"/><section>
+    <title>SendAndReceiveAsync&lt; T &gt;()<computeroutput>[1/2]</computeroutput></title>
+<indexterm><primary>SendAndReceiveAsync&lt; T &gt;</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>SendAndReceiveAsync&lt; T &gt;</secondary></indexterm>
+<para><computeroutput>Task&lt; T?&gt; Shared.Data.ServiceSocket.SendAndReceiveAsync&lt; T &gt; (object requestBody)</computeroutput></para><simplesect><title>typebegrænsninger</title>
+<para><emphasis role="strong">T:class</emphasis></para>
+</simplesect>
+Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1a48943a8611e55daffe34de5d6898a852"/><section>
+    <title>SendAndReceiveAsync&lt; T &gt;()<computeroutput>[2/2]</computeroutput></title>
+<indexterm><primary>SendAndReceiveAsync&lt; T &gt;</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>SendAndReceiveAsync&lt; T &gt;</secondary></indexterm>
+<para><computeroutput>async Task&lt; T?&gt; Shared.Data.ServiceSocket.SendAndReceiveAsync&lt; T &gt; (object requestBody, CancellationToken ct)</computeroutput></para><simplesect><title>typebegrænsninger</title>
+<para><emphasis role="strong">T:class</emphasis></para>
+</simplesect>
+Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_a48943a8611e55daffe34de5d6898a852_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_data_1_1_service_socket_1a973877fd60c8001a6c11a84e9cf41109"/><section>
+    <title>SendMessageAsync()</title>
+<indexterm><primary>SendMessageAsync</primary><secondary>Shared.Data.ServiceSocket</secondary></indexterm>
+<indexterm><primary>Shared.Data.ServiceSocket</primary><secondary>SendMessageAsync</secondary></indexterm>
+<para><computeroutput>async Task Shared.Data.ServiceSocket.SendMessageAsync (object body, CancellationToken ct)</computeroutput></para>Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_data_1_1_service_socket_a973877fd60c8001a6c11a84e9cf41109_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/Networking/<link linkend="__service_socket_8cs">ServiceSocket.cs</link></section>
+</section>

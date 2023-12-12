@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_admin_client_1_1_pages_1_1_error_model" xml:lang="da">
+<title>AdminClient.Pages.ErrorModel Klasse-reference</title>
+<indexterm><primary>AdminClient.Pages.ErrorModel</primary></indexterm>
+Stamtræ for AdminClient.Pages.ErrorModel:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_pages_1_1_error_model__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for AdminClient.Pages.ErrorModel:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_pages_1_1_error_model__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_admin_client_1_1_pages_1_1_error_model_1a389de2011762f1af416a3ef77bfa3f22">ErrorModel</link> (ILogger&lt; <link linkend="_class_admin_client_1_1_pages_1_1_error_model">ErrorModel</link> &gt; logger)</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_admin_client_1_1_pages_1_1_error_model_1a53354e74832863dd57f99d95197e75f5">OnGet</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>string? <link linkend="_class_admin_client_1_1_pages_1_1_error_model_1a95c295c31c05ea5c5a1c10e14b8f30cc">RequestId</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_admin_client_1_1_pages_1_1_error_model_1a5975cf6899800c0394aaacd048eafd3f">ShowRequestId</link><computeroutput> [get]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_admin_client_1_1_pages_1_1_error_model_1a389de2011762f1af416a3ef77bfa3f22"/><section>
+    <title>ErrorModel()</title>
+<indexterm><primary>ErrorModel</primary><secondary>AdminClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>AdminClient.Pages.ErrorModel</primary><secondary>ErrorModel</secondary></indexterm>
+<para><computeroutput>AdminClient.Pages.ErrorModel.ErrorModel (ILogger&lt; <link linkend="_class_admin_client_1_1_pages_1_1_error_model">ErrorModel</link> &gt; logger)</computeroutput></para></section>
+</section>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_admin_client_1_1_pages_1_1_error_model_1a53354e74832863dd57f99d95197e75f5"/><section>
+    <title>OnGet()</title>
+<indexterm><primary>OnGet</primary><secondary>AdminClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>AdminClient.Pages.ErrorModel</primary><secondary>OnGet</secondary></indexterm>
+<para><computeroutput>void AdminClient.Pages.ErrorModel.OnGet ( )</computeroutput></para></section>
+</section>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_admin_client_1_1_pages_1_1_error_model_1a95c295c31c05ea5c5a1c10e14b8f30cc"/><section>
+    <title>RequestId</title>
+<indexterm><primary>RequestId</primary><secondary>AdminClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>AdminClient.Pages.ErrorModel</primary><secondary>RequestId</secondary></indexterm>
+<para><computeroutput>string? AdminClient.Pages.ErrorModel.RequestId<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_admin_client_1_1_pages_1_1_error_model_1a5975cf6899800c0394aaacd048eafd3f"/><section>
+    <title>ShowRequestId</title>
+<indexterm><primary>ShowRequestId</primary><secondary>AdminClient.Pages.ErrorModel</secondary></indexterm>
+<indexterm><primary>AdminClient.Pages.ErrorModel</primary><secondary>ShowRequestId</secondary></indexterm>
+<para><computeroutput>bool AdminClient.Pages.ErrorModel.ShowRequestId<computeroutput>[get]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/AdminClient/Pages/<link linkend="__admin_client_2_pages_2_error_8cshtml_8cs">Error.cshtml.cs</link></section>
+</section>

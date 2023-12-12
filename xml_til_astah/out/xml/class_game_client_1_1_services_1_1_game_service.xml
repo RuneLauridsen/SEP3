@@ -1,0 +1,415 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_game_client_1_1_services_1_1_game_service" kind="class" language="C#" prot="public">
+    <compoundname>GameClient::Services::GameService</compoundname>
+    <basecompoundref refid="interface_game_client_1_1_services_1_1_i_game_service" prot="public" virt="non-virtual">GameClient.Services.IGameService</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_game_service_1a8507413f51a8c16817b7080c5213c824" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref></type>
+        <definition>readonly IAuthState GameClient.Services.GameService._authState</definition>
+        <argsstring></argsstring>
+        <name>_authState</name>
+        <qualifiedname>GameClient.Services.GameService._authState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="10" column="33" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_game_service_1afb1d20695cda9edcc8ce31d31df195dd" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="class_shared_1_1_config" kindref="compound">Config</ref></type>
+        <definition>readonly Config GameClient.Services.GameService._config</definition>
+        <argsstring></argsstring>
+        <name>_config</name>
+        <qualifiedname>GameClient.Services.GameService._config</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="11" column="29" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a1c09e588e2bb951900bcfd45dcd766dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GameClient.Services.GameService.GameService</definition>
+        <argsstring>(IAuthState authState, Config config)</argsstring>
+        <name>GameService</name>
+        <qualifiedname>GameClient.Services.GameService.GameService</qualifiedname>
+        <param>
+          <type><ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref></type>
+          <declname>authState</declname>
+        </param>
+        <param>
+          <type><ref refid="class_shared_1_1_config" kindref="compound">Config</ref></type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="13" column="12" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1af460e9acaf0d56e01eee2e879c9a2813" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; LoginResponse &gt;</type>
+        <definition>async Task&lt; LoginResponse &gt; GameClient.Services.GameService.LoginAsync</definition>
+        <argsstring>(LoginRequest request)</argsstring>
+        <name>LoginAsync</name>
+        <qualifiedname>GameClient.Services.GameService.LoginAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ae061f58fbb7555ddf726f8b6b54e2191">LoginAsync</reimplements>
+        <param>
+          <type>LoginRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="18" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a708ac54a296f8e01014ae483a002d593" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; MoveResponse &gt;</type>
+        <definition>async Task&lt; MoveResponse &gt; GameClient.Services.GameService.MoveAsync</definition>
+        <argsstring>(MoveRequest request)</argsstring>
+        <name>MoveAsync</name>
+        <qualifiedname>GameClient.Services.GameService.MoveAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1a250271b6d1eb60a9b414283c46d74d73">MoveAsync</reimplements>
+        <param>
+          <type>MoveRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="23" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a001c93d9ebcd92b6d0cb9d5466bf1ae7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetMatchResponse &gt;</type>
+        <definition>async Task&lt; GetMatchResponse &gt; GameClient.Services.GameService.GetMatchAsync</definition>
+        <argsstring>(GetMatchRequest request)</argsstring>
+        <name>GetMatchAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetMatchAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ab0eff4d18f750e3bc684b07937501b00">GetMatchAsync</reimplements>
+        <param>
+          <type>GetMatchRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="28" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a333ca9977e1b2bdea5a5fa99e2bed4b8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetMyMatchesResponse &gt;</type>
+        <definition>async Task&lt; GetMyMatchesResponse &gt; GameClient.Services.GameService.GetMyMatchesAsync</definition>
+        <argsstring>(GetMyMatchesRequest request)</argsstring>
+        <name>GetMyMatchesAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetMyMatchesAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ad7452790f78e64d306aff81b3ebef841">GetMyMatchesAsync</reimplements>
+        <param>
+          <type>GetMyMatchesRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="33" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1aabecb9f72272fd89a20cfb0f1c0e3654" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; CreateMatchResponse &gt;</type>
+        <definition>async Task&lt; CreateMatchResponse &gt; GameClient.Services.GameService.CreateMatchAsync</definition>
+        <argsstring>(CreateMatchRequest request)</argsstring>
+        <name>CreateMatchAsync</name>
+        <qualifiedname>GameClient.Services.GameService.CreateMatchAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ad898319936905e7bcbd56dd12455c5ae">CreateMatchAsync</reimplements>
+        <param>
+          <type>CreateMatchRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="38" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1ae545e0b61e503891d7c1b6685762efc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetGamesResponse &gt;</type>
+        <definition>async Task&lt; GetGamesResponse &gt; GameClient.Services.GameService.GetGamesAsync</definition>
+        <argsstring>(GetGamesRequest request)</argsstring>
+        <name>GetGamesAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetGamesAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1a0f36301c5139d11d1e0b47f42f36e9a5">GetGamesAsync</reimplements>
+        <param>
+          <type>GetGamesRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="43" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1aed5ff70a9d3953858d9e34f40e2d3709" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetAccountResponse &gt;</type>
+        <definition>async Task&lt; GetAccountResponse &gt; GameClient.Services.GameService.GetAccountAsync</definition>
+        <argsstring>(GetAccountRequest request)</argsstring>
+        <name>GetAccountAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetAccountAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1aae00f69db1f98e63ccf1bd0ae74c354b">GetAccountAsync</reimplements>
+        <param>
+          <type>GetAccountRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="48" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a9a5405d10d8d635144b26c3acf041cb0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetAccountsResponse &gt;</type>
+        <definition>async Task&lt; GetAccountsResponse &gt; GameClient.Services.GameService.GetAccountsAsync</definition>
+        <argsstring>(GetAccountsRequest request)</argsstring>
+        <name>GetAccountsAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetAccountsAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1a757919cddb46ae6a93590e850ffed3fa">GetAccountsAsync</reimplements>
+        <param>
+          <type>GetAccountsRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="53" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1ab3c93a133a3de78d15198524f3516c94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; AddParticipantResponse &gt;</type>
+        <definition>async Task&lt; AddParticipantResponse &gt; GameClient.Services.GameService.AddParticipantAsync</definition>
+        <argsstring>(AddParticipantRequest request)</argsstring>
+        <name>AddParticipantAsync</name>
+        <qualifiedname>GameClient.Services.GameService.AddParticipantAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1a0b799b8dc3bfaa47d0c67409a051070c">AddParticipantAsync</reimplements>
+        <param>
+          <type>AddParticipantRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="58" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a60c4f338d419471bd92b247cb5b4d146" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetParticipantsResponse &gt;</type>
+        <definition>async Task&lt; GetParticipantsResponse &gt; GameClient.Services.GameService.GetParticipantsAsync</definition>
+        <argsstring>(GetParticipantsRequest request)</argsstring>
+        <name>GetParticipantsAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetParticipantsAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ab8c1e738f772a5d11c0d44972d293f1c">GetParticipantsAsync</reimplements>
+        <param>
+          <type>GetParticipantsRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="63" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a39530a05664f8ab4005ef41a9eaf6883" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetPendingResponse &gt;</type>
+        <definition>async Task&lt; GetPendingResponse &gt; GameClient.Services.GameService.GetPendingAsync</definition>
+        <argsstring>(GetPendingRequest request)</argsstring>
+        <name>GetPendingAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetPendingAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ad915a2f187d92b8d492805a86f4b0cc0">GetPendingAsync</reimplements>
+        <param>
+          <type>GetPendingRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="68" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a64deeb6376babe464fb53b0ebc302f0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; DecidePendingResponse &gt;</type>
+        <definition>async Task&lt; DecidePendingResponse &gt; GameClient.Services.GameService.DecidePendingAsync</definition>
+        <argsstring>(DecidePendingRequest request)</argsstring>
+        <name>DecidePendingAsync</name>
+        <qualifiedname>GameClient.Services.GameService.DecidePendingAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1a862a39d6eb51ab4b71d2124d5e7a139b">DecidePendingAsync</reimplements>
+        <param>
+          <type>DecidePendingRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="73" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="73" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1a952a85929f8c8270c61323d84ff176b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; UpdateAccountResponse &gt;</type>
+        <definition>async Task&lt; UpdateAccountResponse &gt; GameClient.Services.GameService.UpdateAccountAsync</definition>
+        <argsstring>(UpdateAccountRequest request)</argsstring>
+        <name>UpdateAccountAsync</name>
+        <qualifiedname>GameClient.Services.GameService.UpdateAccountAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1af8e26f8d08854063334c45d69e5f3115">UpdateAccountAsync</reimplements>
+        <param>
+          <type>UpdateAccountRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="78" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1ab7efa82d604ef4db18cd21a821de8e2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetScoreSumsResponse &gt;</type>
+        <definition>async Task&lt; GetScoreSumsResponse &gt; GameClient.Services.GameService.GetScoreSumsAsync</definition>
+        <argsstring>(GetScoreSumsRequest req)</argsstring>
+        <name>GetScoreSumsAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetScoreSumsAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ae0d4f685eab7f4d86cf377b599e49b45">GetScoreSumsAsync</reimplements>
+        <param>
+          <type>GetScoreSumsRequest</type>
+          <declname>req</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="83" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1aaecb153b802bcae5c7774de9a2e09263" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; GetMatchHistoryResponse &gt;</type>
+        <definition>async Task&lt; GetMatchHistoryResponse &gt; GameClient.Services.GameService.GetMatchHistoryAsync</definition>
+        <argsstring>(GetMatchHistoryRequest req)</argsstring>
+        <name>GetMatchHistoryAsync</name>
+        <qualifiedname>GameClient.Services.GameService.GetMatchHistoryAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1ae5f11cf4f9bd4a2c575b3d9794e95e4b">GetMatchHistoryAsync</reimplements>
+        <param>
+          <type>GetMatchHistoryRequest</type>
+          <declname>req</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="88" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_game_service_1ad15b444b96f1cefa71f2e686d46446a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; ImpatientWinResponse &gt;</type>
+        <definition>async Task&lt; ImpatientWinResponse &gt; GameClient.Services.GameService.ImpatientWinAsync</definition>
+        <argsstring>(ImpatientWinRequest req)</argsstring>
+        <name>ImpatientWinAsync</name>
+        <qualifiedname>GameClient.Services.GameService.ImpatientWinAsync</qualifiedname>
+        <reimplements refid="interface_game_client_1_1_services_1_1_i_game_service_1a916bd70a8c60c0a794ed51e7bbf7f9f4">ImpatientWinAsync</reimplements>
+        <param>
+          <type>ImpatientWinRequest</type>
+          <declname>req</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="93" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="93" bodyend="96"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>GameClient.Services.GameService</label>
+        <link refid="class_game_client_1_1_services_1_1_game_service"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IGameService</label>
+        <link refid="interface_game_client_1_1_services_1_1_i_game_service"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.Services.GameService</label>
+        <link refid="class_game_client_1_1_services_1_1_game_service"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>IGameService</label>
+        <link refid="interface_game_client_1_1_services_1_1_i_game_service"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" line="9" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/GameService.cs" bodystart="9" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a8507413f51a8c16817b7080c5213c824" prot="private" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>_authState</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1afb1d20695cda9edcc8ce31d31df195dd" prot="private" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>_config</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1ab3c93a133a3de78d15198524f3516c94" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>AddParticipantAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1aabecb9f72272fd89a20cfb0f1c0e3654" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>CreateMatchAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a64deeb6376babe464fb53b0ebc302f0b" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>DecidePendingAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a1c09e588e2bb951900bcfd45dcd766dd" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GameService</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1aed5ff70a9d3953858d9e34f40e2d3709" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetAccountAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a9a5405d10d8d635144b26c3acf041cb0" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetAccountsAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1ae545e0b61e503891d7c1b6685762efc9" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetGamesAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a001c93d9ebcd92b6d0cb9d5466bf1ae7" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetMatchAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1aaecb153b802bcae5c7774de9a2e09263" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetMatchHistoryAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a333ca9977e1b2bdea5a5fa99e2bed4b8" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetMyMatchesAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a60c4f338d419471bd92b247cb5b4d146" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetParticipantsAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a39530a05664f8ab4005ef41a9eaf6883" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetPendingAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1ab7efa82d604ef4db18cd21a821de8e2b" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>GetScoreSumsAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1ad15b444b96f1cefa71f2e686d46446a8" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>ImpatientWinAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1af460e9acaf0d56e01eee2e879c9a2813" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>LoginAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a708ac54a296f8e01014ae483a002d593" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>MoveAsync</name></member>
+      <member refid="class_game_client_1_1_services_1_1_game_service_1a952a85929f8c8270c61323d84ff176b9" prot="public" virt="non-virtual"><scope>GameClient::Services::GameService</scope><name>UpdateAccountAsync</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

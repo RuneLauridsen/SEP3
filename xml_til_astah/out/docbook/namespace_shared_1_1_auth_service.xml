@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_shared_1_1_auth_service" xml:lang="da">
+<title>Shared.AuthService namespace-reference</title>
+<indexterm><primary>Shared.AuthService</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>interface <link linkend="_interface_shared_1_1_auth_service_1_1_i_auth_service">IAuthService</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_shared_1_1_auth_service_1_1_jwt_auth_service">JwtAuthService</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_f75f66fbdfd3c69ceaa0453a8ee88d74" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/GameClient/Pages</compoundname>
+    <innerfile refid="_game_client_2_pages_2_error_8cshtml_8cs">Error.cshtml.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Pages/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="namespace_admin_client_1_1_services" kind="namespace" language="C#">
+    <compoundname>AdminClient::Services</compoundname>
+    <innerclass refid="class_admin_client_1_1_services_1_1_admin_service" prot="public">AdminClient::Services::AdminService</innerclass>
+    <innerclass refid="interface_admin_client_1_1_services_1_1_i_admin_service" prot="public">AdminClient::Services::IAdminService</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/AdminService.cs" line="7" column="1"/>
+  </compounddef>
+</doxygen>

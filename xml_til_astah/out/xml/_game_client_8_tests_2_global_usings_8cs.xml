@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_game_client_8_tests_2_global_usings_8cs" kind="file" language="C#">
+    <compoundname>GlobalUsings.cs</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Xunit;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">static<sp/><ref refid="namespace_shared" kindref="compound">Shared</ref>.<ref refid="namespace_shared_1_1_data" kindref="compound">Data</ref>.<ref refid="class_shared_1_1_data_1_1_messages" kindref="compound">Messages</ref>;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal">global<sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">static<sp/><ref refid="namespace_shared" kindref="compound">Shared</ref>.<ref refid="namespace_shared_1_1_tets" kindref="compound">Tets</ref>.<ref refid="class_shared_1_1_tets_1_1_test_data" kindref="compound">TestData</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NOTE(rune):<sp/>Kør<sp/>ikke<sp/>test<sp/>parallelt,<sp/>da<sp/>de<sp/>alle<sp/>bruger<sp/>samme<sp/>SQL<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>https://stackoverflow.com/questions/1408175/execute-unit-tests-serially-rather-than-in-parallel</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal">[assembly:<sp/>CollectionBehavior(DisableTestParallelization<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)]</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient.Tests/GlobalUsings.cs"/>
+  </compounddef>
+</doxygen>

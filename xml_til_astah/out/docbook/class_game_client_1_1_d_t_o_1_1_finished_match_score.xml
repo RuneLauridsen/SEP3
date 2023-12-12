@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_d_t_o_1_1_finished_match_score" xml:lang="da">
+<title>GameClient.DTO.FinishedMatchScore Klasse-reference</title>
+<indexterm><primary>GameClient.DTO.FinishedMatchScore</primary></indexterm>
+Samarbejdsdiagram for GameClient.DTO.FinishedMatchScore:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_d_t_o_1_1_finished_match_score__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a52f45528fa1b04875a7609c4a806c43c">GameId</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required string <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a64e0ff604697545d66ba57b6e52cc2a8">GameName</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a11e5ce8173fcaf9db27cae108197ba77">MatchId</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required DateTime <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a5bbc020bc296b4b79f917b0739660c0f">MatchFinishedOn</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>required int <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a2c13fd16a0ea26bd90a0560cdf1b9368">Score</link><computeroutput> [get, set]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a52f45528fa1b04875a7609c4a806c43c"/><section>
+    <title>GameId</title>
+<indexterm><primary>GameId</primary><secondary>GameClient.DTO.FinishedMatchScore</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.FinishedMatchScore</primary><secondary>GameId</secondary></indexterm>
+<para><computeroutput>required int GameClient.DTO.FinishedMatchScore.GameId<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a64e0ff604697545d66ba57b6e52cc2a8"/><section>
+    <title>GameName</title>
+<indexterm><primary>GameName</primary><secondary>GameClient.DTO.FinishedMatchScore</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.FinishedMatchScore</primary><secondary>GameName</secondary></indexterm>
+<para><computeroutput>required string GameClient.DTO.FinishedMatchScore.GameName<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a5bbc020bc296b4b79f917b0739660c0f"/><section>
+    <title>MatchFinishedOn</title>
+<indexterm><primary>MatchFinishedOn</primary><secondary>GameClient.DTO.FinishedMatchScore</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.FinishedMatchScore</primary><secondary>MatchFinishedOn</secondary></indexterm>
+<para><computeroutput>required DateTime GameClient.DTO.FinishedMatchScore.MatchFinishedOn<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a11e5ce8173fcaf9db27cae108197ba77"/><section>
+    <title>MatchId</title>
+<indexterm><primary>MatchId</primary><secondary>GameClient.DTO.FinishedMatchScore</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.FinishedMatchScore</primary><secondary>MatchId</secondary></indexterm>
+<para><computeroutput>required int GameClient.DTO.FinishedMatchScore.MatchId<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_game_client_1_1_d_t_o_1_1_finished_match_score_1a2c13fd16a0ea26bd90a0560cdf1b9368"/><section>
+    <title>Score</title>
+<indexterm><primary>Score</primary><secondary>GameClient.DTO.FinishedMatchScore</secondary></indexterm>
+<indexterm><primary>GameClient.DTO.FinishedMatchScore</primary><secondary>Score</secondary></indexterm>
+<para><computeroutput>required int GameClient.DTO.FinishedMatchScore.Score<computeroutput>[get]</computeroutput>, <computeroutput>[set]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/DTO/<link linkend="__finished_match_score_8cs">FinishedMatchScore.cs</link></section>
+</section>

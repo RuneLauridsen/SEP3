@@ -1,0 +1,300 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_game_client_2_program_8cs" kind="file" language="C#">
+    <compoundname>Program.cs</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" prot="public" static="no" mutable="no">
+        <type>var</type>
+        <definition>var builder</definition>
+        <argsstring></argsstring>
+        <name>builder</name>
+        <initializer>= WebApplication.CreateBuilder(args)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="11" column="5" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" prot="public" static="no" mutable="no">
+        <type>var</type>
+        <definition>var app</definition>
+        <argsstring></argsstring>
+        <name>app</name>
+        <initializer>= builder.Build()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="41" column="5" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" bodystart="41" bodyend="-1"/>
+        <referencedby refid="_game_client_2_program_8cs_1af2d0c02efe3fbc2d94e5b6e316777c4d" compoundref="_game_client_2_program_8cs" startline="44" endline="48">if</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="_game_client_2_program_8cs_1a50ac3cc59e3f8d9e5c1a2734bd14b7f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddRazorPages</definition>
+        <argsstring>()</argsstring>
+        <name>AddRazorPages</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="27" column="16" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="27" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1abda56024f5b832bc28b5198cc50fbf0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddServerSideBlazor</definition>
+        <argsstring>()</argsstring>
+        <name>AddServerSideBlazor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="28" column="16" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="28" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1ac66ba3d2449715a67800a74ac20d9e5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddSingleton&lt; Config &gt;</definition>
+        <argsstring>(new Config { LogicAddress=&quot;localhost&quot;, LogicPort=1234 })</argsstring>
+        <name>AddSingleton&lt; Config &gt;</name>
+        <param>
+          <type>new <ref refid="class_shared_1_1_config" kindref="compound">Config</ref> { LogicAddress=&quot;localhost&quot;, LogicPort=1234 }</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="30" column="8" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="30" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1aad4d97c760d74e83e033d929dcc87a6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddScoped&lt; IAuthState, AuthStateSessionStorage &gt;</definition>
+        <argsstring>()</argsstring>
+        <name>AddScoped&lt; IAuthState, AuthStateSessionStorage &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="34" column="8" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="34" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1aef982317e0274811e6d6029e5062e848" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddTransient&lt; IAuthService, JwtAuthService &gt;</definition>
+        <argsstring>()</argsstring>
+        <name>AddTransient&lt; IAuthService, JwtAuthService &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="35" column="8" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="35" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1a5bd1d2a364c47843f4ea740ec484eefe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddTransient&lt; IGameService, GameService &gt;</definition>
+        <argsstring>()</argsstring>
+        <name>AddTransient&lt; IGameService, GameService &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="36" column="8" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="36" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1aeaace5fc63570323f7b5004058af2547" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>builder.Services.</type>
+        <definition>builder.Services. AddScoped&lt; ILiveService, LiveService &gt;</definition>
+        <argsstring>()</argsstring>
+        <name>AddScoped&lt; ILiveService, LiveService &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="37" column="8" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="37" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1af2d0c02efe3fbc2d94e5b6e316777c4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>if</definition>
+        <argsstring>(!app.Environment.IsDevelopment())</argsstring>
+        <name>if</name>
+        <param>
+          <type>!app.Environment.</type>
+          <declname>IsDevelopment</declname>
+          <defname>app::Environment::IsDevelopment</defname>
+          <array>()</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="44" column="1" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" bodystart="44" bodyend="48"/>
+        <references refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" compoundref="_game_client_2_program_8cs" startline="41">app</references>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1aa4d447fc3129a3aa301d736b8bd04ae9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>app.</type>
+        <definition>app. UseHttpsRedirection</definition>
+        <argsstring>()</argsstring>
+        <name>UseHttpsRedirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="50" column="4" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="50" declcolumn="4"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1a906a3ce545279a7a73941f1d7b64d7cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>app.</type>
+        <definition>app. UseStaticFiles</definition>
+        <argsstring>()</argsstring>
+        <name>UseStaticFiles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="52" column="4" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="52" declcolumn="4"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1a94c810d266751293a2d511a720a5625f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>app.</type>
+        <definition>app. UseRouting</definition>
+        <argsstring>()</argsstring>
+        <name>UseRouting</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="54" column="4" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="54" declcolumn="4"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1aca87b3198658808e3036d7020473bd72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>app.</type>
+        <definition>app. MapBlazorHub</definition>
+        <argsstring>()</argsstring>
+        <name>MapBlazorHub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="56" column="4" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="56" declcolumn="4"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1a1f15df377aa44cd5787b1691a857bce7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>app.</type>
+        <definition>app. MapFallbackToPage</definition>
+        <argsstring>(&quot;/_Host&quot;)</argsstring>
+        <name>MapFallbackToPage</name>
+        <param>
+          <type>&quot;/_Host&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="57" column="4" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="57" declcolumn="4"/>
+      </memberdef>
+      <memberdef kind="function" id="_game_client_2_program_8cs_1aaa3dbf02e269c3ef7e8546d290c6b3dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>app.</type>
+        <definition>app. Run</definition>
+        <argsstring>()</argsstring>
+        <name>Run</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" line="59" column="4" declfile="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs" declline="59" declcolumn="4"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_game_client" kindref="compound">GameClient</ref>;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_game_client_1_1_d_t_o" kindref="compound">GameClient.DTO</ref>;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_game_client_1_1_services" kindref="compound">GameClient.Services</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_shared" kindref="compound">Shared</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_shared_1_1_auth_service" kindref="compound">Shared.AuthService</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_shared_1_1_auth_state" kindref="compound">Shared.AuthState</ref>;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_shared_1_1_data" kindref="compound">Shared.Data</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" refkind="member"><highlight class="normal">var<sp/><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref><sp/>=<sp/>WebApplication.CreateBuilder(args);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Add<sp/>services<sp/>to<sp/>the<sp/>container.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="_game_client_2_program_8cs_1a50ac3cc59e3f8d9e5c1a2734bd14b7f5" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddRazorPages();</highlight></codeline>
+<codeline lineno="28" refid="_game_client_2_program_8cs_1abda56024f5b832bc28b5198cc50fbf0f" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddServerSideBlazor();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Add<sp/>our<sp/>Config<sp/>object<sp/>so<sp/>it<sp/>can<sp/>be<sp/>injected</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="_game_client_2_program_8cs_1ac66ba3d2449715a67800a74ac20d9e5f" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddSingleton&lt;<ref refid="class_shared_1_1_config" kindref="compound">Config</ref>&gt;(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_shared_1_1_config" kindref="compound">Config</ref><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>LogicAddress<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;localhost&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>LogicPort<sp/>=<sp/>1234</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">});</highlight></codeline>
+<codeline lineno="34" refid="_game_client_2_program_8cs_1aad4d97c760d74e83e033d929dcc87a6f" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddScoped&lt;<ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref>,<sp/><ref refid="class_shared_1_1_auth_state_1_1_auth_state_session_storage" kindref="compound">AuthStateSessionStorage</ref>&gt;();</highlight></codeline>
+<codeline lineno="35" refid="_game_client_2_program_8cs_1aef982317e0274811e6d6029e5062e848" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddTransient&lt;<ref refid="interface_shared_1_1_auth_service_1_1_i_auth_service" kindref="compound">IAuthService</ref>,<sp/><ref refid="class_shared_1_1_auth_service_1_1_jwt_auth_service" kindref="compound">JwtAuthService</ref>&gt;();</highlight></codeline>
+<codeline lineno="36" refid="_game_client_2_program_8cs_1a5bd1d2a364c47843f4ea740ec484eefe" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddTransient&lt;<ref refid="interface_game_client_1_1_services_1_1_i_game_service" kindref="compound">IGameService</ref>,<sp/><ref refid="class_game_client_1_1_services_1_1_game_service" kindref="compound">GameService</ref>&gt;();</highlight></codeline>
+<codeline lineno="37" refid="_game_client_2_program_8cs_1aeaace5fc63570323f7b5004058af2547" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Services.AddScoped&lt;<ref refid="interface_game_client_1_1_services_1_1_i_live_service" kindref="compound">ILiveService</ref>,<sp/><ref refid="class_game_client_1_1_services_1_1_live_service" kindref="compound">LiveService</ref>&gt;();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" refkind="member"><highlight class="normal">var<sp/><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref><sp/>=<sp/><ref refid="_game_client_2_program_8cs_1a2f78352277081c620fd4cf92a5ce15e5" kindref="member">builder</ref>.Build();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Configure<sp/>the<sp/>HTTP<sp/>request<sp/>pipeline.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="_game_client_2_program_8cs_1af2d0c02efe3fbc2d94e5b6e316777c4d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.Environment.IsDevelopment())<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.UseExceptionHandler(</highlight><highlight class="stringliteral">&quot;/Error&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>default<sp/>HSTS<sp/>value<sp/>is<sp/>30<sp/>days.<sp/>You<sp/>may<sp/>want<sp/>to<sp/>change<sp/>this<sp/>for<sp/>production<sp/>scenarios,<sp/>see<sp/>https://aka.ms/aspnetcore-hsts.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.UseHsts();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="_game_client_2_program_8cs_1aa4d447fc3129a3aa301d736b8bd04ae9" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.UseHttpsRedirection();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="_game_client_2_program_8cs_1a906a3ce545279a7a73941f1d7b64d7cf" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.UseStaticFiles();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="_game_client_2_program_8cs_1a94c810d266751293a2d511a720a5625f" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.UseRouting();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="_game_client_2_program_8cs_1aca87b3198658808e3036d7020473bd72" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.MapBlazorHub();</highlight></codeline>
+<codeline lineno="57" refid="_game_client_2_program_8cs_1a1f15df377aa44cd5787b1691a857bce7" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.MapFallbackToPage(</highlight><highlight class="stringliteral">&quot;/_Host&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="_game_client_2_program_8cs_1aaa3dbf02e269c3ef7e8546d290c6b3dd" refkind="member"><highlight class="normal"><ref refid="_game_client_2_program_8cs_1a7b225fcb720e4d5ed2bbf60e28a25e6d" kindref="member">app</ref>.Run();</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Program.cs"/>
+  </compounddef>
+</doxygen>

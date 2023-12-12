@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_tets_1_1_test_user" xml:lang="da">
+<title>Shared.Tets.TestUser Klasse-reference</title>
+<indexterm><primary>Shared.Tets.TestUser</primary></indexterm>
+Samarbejdsdiagram for Shared.Tets.TestUser:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_tets_1_1_test_user__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_shared_1_1_tets_1_1_test_user_1ac78ebfe3f38463561daf2fa48ec9cc82">TestUser</link> (int accountId, string username, string password, bool isAdmin)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Egenskaber    </title>
+        <itemizedlist>
+            <listitem><para>int <link linkend="_class_shared_1_1_tets_1_1_test_user_1a012c3069ea213cef4c6f3590daafe04d">AccountId</link><computeroutput> [get]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>string <link linkend="_class_shared_1_1_tets_1_1_test_user_1afce350093d45e706c02af4650596e0f8">Username</link><computeroutput> [get]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>string <link linkend="_class_shared_1_1_tets_1_1_test_user_1adabbc8fd4a5b0873dc01e24ae41ed2fc">Password</link><computeroutput> [get]</computeroutput>
+</para>
+</listitem>
+            <listitem><para>bool <link linkend="_class_shared_1_1_tets_1_1_test_user_1a9b7369e1e46e49b07dc8dbe62d64a3e8">IsAdmin</link><computeroutput> [get]</computeroutput>
+</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_user_1ac78ebfe3f38463561daf2fa48ec9cc82"/><section>
+    <title>TestUser()</title>
+<indexterm><primary>TestUser</primary><secondary>Shared.Tets.TestUser</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUser</primary><secondary>TestUser</secondary></indexterm>
+<para><computeroutput>Shared.Tets.TestUser.TestUser (int accountId, string username, string password, bool isAdmin)</computeroutput></para></section>
+</section>
+<section>
+<title>Egenskabsdokumentation</title>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_user_1a012c3069ea213cef4c6f3590daafe04d"/><section>
+    <title>AccountId</title>
+<indexterm><primary>AccountId</primary><secondary>Shared.Tets.TestUser</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUser</primary><secondary>AccountId</secondary></indexterm>
+<para><computeroutput>int Shared.Tets.TestUser.AccountId<computeroutput>[get]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_user_1a9b7369e1e46e49b07dc8dbe62d64a3e8"/><section>
+    <title>IsAdmin</title>
+<indexterm><primary>IsAdmin</primary><secondary>Shared.Tets.TestUser</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUser</primary><secondary>IsAdmin</secondary></indexterm>
+<para><computeroutput>bool Shared.Tets.TestUser.IsAdmin<computeroutput>[get]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_user_1adabbc8fd4a5b0873dc01e24ae41ed2fc"/><section>
+    <title>Password</title>
+<indexterm><primary>Password</primary><secondary>Shared.Tets.TestUser</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUser</primary><secondary>Password</secondary></indexterm>
+<para><computeroutput>string Shared.Tets.TestUser.Password<computeroutput>[get]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_user_1afce350093d45e706c02af4650596e0f8"/><section>
+    <title>Username</title>
+<indexterm><primary>Username</primary><secondary>Shared.Tets.TestUser</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUser</primary><secondary>Username</secondary></indexterm>
+<para><computeroutput>string Shared.Tets.TestUser.Username<computeroutput>[get]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared.Tests/<link linkend="__test_data_8cs">TestData.cs</link></section>
+</section>

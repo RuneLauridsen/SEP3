@@ -1,0 +1,63 @@
+.TH "Shared.Data.ServiceSocket" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Shared.Data.ServiceSocket
+.SH SYNOPSIS
+.br
+.PP
+.SS "Offentlige metoder"
+
+.in +1c
+.ti -1c
+.RI "\fBServiceSocket\fP (string url, int port, \fBIAuthState\fP authState)"
+.br
+.ti -1c
+.RI "async Task \fBOpen\fP ()"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "async Task \fBSendMessageAsync\fP (object body, CancellationToken ct)"
+.br
+.ti -1c
+.RI "async Task< \fBMessage\fP > \fBReadMessageAsync\fP (CancellationToken ct)"
+.br
+.ti -1c
+.RI "Task< T?> \fBSendAndReceiveAsync< T >\fP (object requestBody)"
+.br
+.ti -1c
+.RI "async Task< T?> \fBSendAndReceiveAsync< T >\fP (object requestBody, CancellationToken ct)"
+.br
+.in -1c
+.SH "Dokumentation af konstruktører og destruktører"
+.PP 
+.SS "Shared\&.Data\&.ServiceSocket\&.ServiceSocket (string url, int port, \fBIAuthState\fP authState)"
+
+.SH "Dokumentation af medlemsfunktioner"
+.PP 
+.SS "void Shared\&.Data\&.ServiceSocket\&.Close ()"
+
+.SS "async Task Shared\&.Data\&.ServiceSocket\&.Open ()"
+
+.SS "async Task< \fBMessage\fP > Shared\&.Data\&.ServiceSocket\&.ReadMessageAsync (CancellationToken ct)"
+
+.SS "Task< T?> Shared\&.Data\&.ServiceSocket\&.SendAndReceiveAsync< T > (object requestBody)"
+
+.PP
+\fBtypebegrænsninger\fP
+.TP
+\fIT\fP : \fIclass\fP
+.SS "async Task< T?> Shared\&.Data\&.ServiceSocket\&.SendAndReceiveAsync< T > (object requestBody, CancellationToken ct)"
+
+.PP
+\fBtypebegrænsninger\fP
+.TP
+\fIT\fP : \fIclass\fP
+.SS "async Task Shared\&.Data\&.ServiceSocket\&.SendMessageAsync (object body, CancellationToken ct)"
+
+
+.SH "Forfatter"
+.PP 
+Automatisk genereret af Doxygen for My Project ud fra kildekoden\&.

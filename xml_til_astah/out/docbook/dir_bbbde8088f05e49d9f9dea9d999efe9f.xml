@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_bbbde8088f05e49d9f9dea9d999efe9f" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared/AuthService</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared/AuthService</primary></indexterm>
+Afhængighedsgraf for katalog AuthService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_bbbde8088f05e49d9f9dea9d999efe9f_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Filer    </title>
+        <itemizedlist>
+            <listitem><para>fil <link linkend="__i_auth_service_8cs">IAuthService.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__jwt_auth_service_8cs">JwtAuthService.cs</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

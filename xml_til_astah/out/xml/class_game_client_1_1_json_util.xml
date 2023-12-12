@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_game_client_1_1_json_util" kind="class" language="C#" prot="public">
+    <compoundname>GameClient::JsonUtil</compoundname>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_game_client_1_1_json_util_1a4b6dd4e1cad5a9f853b5639637e94165" prot="private" static="yes" mutable="no">
+        <type>readonly JsonSerializerOptions</type>
+        <definition>readonly JsonSerializerOptions GameClient.JsonUtil.options</definition>
+        <argsstring></argsstring>
+        <name>options</name>
+        <qualifiedname>GameClient.JsonUtil.options</qualifiedname>
+        <initializer>= new() {
+        PropertyNameCaseInsensitive = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+    }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" line="7" column="51" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" bodystart="7" bodyend="10"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_game_client_1_1_json_util_1a377cc1bb3f67983f4109c7211cc5731d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>static string GameClient.JsonUtil.ToJson&lt; T &gt;</definition>
+        <argsstring>(T t)</argsstring>
+        <name>ToJson&lt; T &gt;</name>
+        <qualifiedname>GameClient.JsonUtil.ToJson&lt; T &gt;</qualifiedname>
+        <param>
+          <type>T</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" line="12" column="19" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" bodystart="12" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_json_util_1af3cf2867257456b92eb4f6979471a097" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>static T GameClient.JsonUtil.FromJson&lt; T &gt;</definition>
+        <argsstring>(string json)</argsstring>
+        <name>FromJson&lt; T &gt;</name>
+        <qualifiedname>GameClient.JsonUtil.FromJson&lt; T &gt;</qualifiedname>
+        <param>
+          <type>string</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" line="17" column="19" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_json_util_1ac181f579d5956fd9cdffce8e901bc038" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>object</type>
+        <definition>static object GameClient.JsonUtil.FromJson</definition>
+        <argsstring>(string json, Type type)</argsstring>
+        <name>FromJson</name>
+        <qualifiedname>GameClient.JsonUtil.FromJson</qualifiedname>
+        <param>
+          <type>string</type>
+          <declname>json</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" line="22" column="26" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" bodystart="22" bodyend="25"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.JsonUtil</label>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" line="6" column="15" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/JsonUtil.cs" bodystart="6" bodyend="26"/>
+    <listofallmembers>
+      <member refid="class_game_client_1_1_json_util_1ac181f579d5956fd9cdffce8e901bc038" prot="public" virt="non-virtual"><scope>GameClient::JsonUtil</scope><name>FromJson</name></member>
+      <member refid="class_game_client_1_1_json_util_1af3cf2867257456b92eb4f6979471a097" prot="public" virt="non-virtual"><scope>GameClient::JsonUtil</scope><name>FromJson&lt; T &gt;</name></member>
+      <member refid="class_game_client_1_1_json_util_1a4b6dd4e1cad5a9f853b5639637e94165" prot="private" virt="non-virtual"><scope>GameClient::JsonUtil</scope><name>options</name></member>
+      <member refid="class_game_client_1_1_json_util_1a377cc1bb3f67983f4109c7211cc5731d" prot="public" virt="non-virtual"><scope>GameClient::JsonUtil</scope><name>ToJson&lt; T &gt;</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

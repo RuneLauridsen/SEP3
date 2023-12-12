@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_i_admin_service_8cs" kind="file" language="C#">
+    <compoundname>IAdminService.cs</compoundname>
+    <innerclass refid="interface_admin_client_1_1_services_1_1_i_admin_service" prot="public">AdminClient::Services::IAdminService</innerclass>
+    <innernamespace refid="namespace_admin_client">AdminClient</innernamespace>
+    <innernamespace refid="namespace_admin_client_1_1_services">AdminClient::Services</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_game_client_1_1_d_t_o" kindref="compound">GameClient.DTO</ref>;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_shared_1_1_data" kindref="compound">Shared.Data</ref>;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">static<sp/><ref refid="namespace_shared" kindref="compound">Shared</ref>.<ref refid="namespace_shared_1_1_data" kindref="compound">Data</ref>.<ref refid="class_shared_1_1_data_1_1_messages" kindref="compound">Messages</ref>;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_admin_client_1_1_services" kindref="compound">AdminClient.Services</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="interface_admin_client_1_1_services_1_1_i_admin_service" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interface_admin_client_1_1_services_1_1_i_admin_service" kindref="compound">IAdminService</ref></highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9" refid="interface_admin_client_1_1_services_1_1_i_admin_service_1af4eca6855d05e5052fc14429f4a1f742" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;UpdateUserStatusResponse&gt;<sp/><ref refid="interface_admin_client_1_1_services_1_1_i_admin_service_1af4eca6855d05e5052fc14429f4a1f742" kindref="member">UpdateUserStatusAsync</ref>(<ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">Account</ref><sp/>account,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>newStatus);</highlight></codeline>
+<codeline lineno="10" refid="interface_admin_client_1_1_services_1_1_i_admin_service_1ab24ad2ae40da8a79e16c98cd199a7331" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;List&lt;Account&gt;&gt;<sp/><ref refid="interface_admin_client_1_1_services_1_1_i_admin_service_1ab24ad2ae40da8a79e16c98cd199a7331" kindref="member">GetUsersWaitingForApprovalAsync</ref>();</highlight></codeline>
+<codeline lineno="11" refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a3b309a57660e90b40d8f9bf2044a65c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;Account&gt;<sp/><ref refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a3b309a57660e90b40d8f9bf2044a65c5" kindref="member">GetAccountAsync</ref>(GetAccountRequest<sp/>request);</highlight></codeline>
+<codeline lineno="12" refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a74d4895bc3a088e1725cc83122824c7d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;UpdateAccountResponse&gt;<sp/><ref refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a74d4895bc3a088e1725cc83122824c7d" kindref="member">UpdateAccountAsync</ref>(UpdateAccountRequest<sp/>request);</highlight></codeline>
+<codeline lineno="13" refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a5165cca9d5161d99f6e1d36234c932be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Task&lt;IEnumerable&lt;Account&gt;&gt;<sp/><ref refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a5165cca9d5161d99f6e1d36234c932be" kindref="member">GetApprovedUsersAsync</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs"/>
+  </compounddef>
+</doxygen>

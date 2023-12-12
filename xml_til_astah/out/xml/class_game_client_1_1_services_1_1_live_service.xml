@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_game_client_1_1_services_1_1_live_service" kind="class" language="C#" prot="public">
+    <compoundname>GameClient::Services::LiveService</compoundname>
+    <basecompoundref refid="interface_game_client_1_1_services_1_1_i_live_service" prot="public" virt="non-virtual">GameClient.Services.ILiveService</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">IDisposable</basecompoundref>
+    <sectiondef kind="event">
+      <memberdef kind="event" id="class_game_client_1_1_services_1_1_live_service_1af01ffaed959b1249b090186b83961a8c" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; int &gt;?</type>
+        <definition>EventHandler&lt;int&gt;? GameClient.Services.LiveService.MatchUpdated</definition>
+        <argsstring></argsstring>
+        <name>MatchUpdated</name>
+        <qualifiedname>GameClient.Services.LiveService.MatchUpdated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="8" column="31" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="8" bodyend="-1"/>
+        <referencedby refid="class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f" compoundref="_live_service_8cs" startline="28" endline="55">GameClient.Services.LiveService.LiveUpdateTask</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_live_service_1a9f71e6ebdd978536c2720082d8d3dc0d" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref></type>
+        <definition>readonly IAuthState GameClient.Services.LiveService._authState</definition>
+        <argsstring></argsstring>
+        <name>_authState</name>
+        <qualifiedname>GameClient.Services.LiveService._authState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="10" column="33" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_live_service_1a15a96679b7c60eb33269ab2ae6338a71" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="class_shared_1_1_config" kindref="compound">Config</ref></type>
+        <definition>readonly Config GameClient.Services.LiveService._config</definition>
+        <argsstring></argsstring>
+        <name>_config</name>
+        <qualifiedname>GameClient.Services.LiveService._config</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="11" column="29" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_live_service_1abdea3fd9ec3e6a5880c845e16850f12b" prot="private" static="no" mutable="no">
+        <type>Task?</type>
+        <definition>Task? GameClient.Services.LiveService._task</definition>
+        <argsstring></argsstring>
+        <name>_task</name>
+        <qualifiedname>GameClient.Services.LiveService._task</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="12" column="18" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_live_service_1a66ed64ccb74649c59c086c97d71b1c76" prot="private" static="no" mutable="no">
+        <type>CancellationTokenSource</type>
+        <definition>CancellationTokenSource GameClient.Services.LiveService._cts</definition>
+        <argsstring></argsstring>
+        <name>_cts</name>
+        <qualifiedname>GameClient.Services.LiveService._cts</qualifiedname>
+        <initializer>= new()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="14" column="37" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_services_1_1_live_service_1a55082242907553e47b0441587d99faa7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool GameClient.Services.LiveService._hasSentLiveRequest</definition>
+        <argsstring></argsstring>
+        <name>_hasSentLiveRequest</name>
+        <qualifiedname>GameClient.Services.LiveService._hasSentLiveRequest</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="16" column="18" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="16" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_live_service_1a0a884ff2ed3a47b4f3e43f014691b9d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GameClient.Services.LiveService.LiveService</definition>
+        <argsstring>(IAuthState authState, Config config)</argsstring>
+        <name>LiveService</name>
+        <qualifiedname>GameClient.Services.LiveService.LiveService</qualifiedname>
+        <param>
+          <type><ref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" kindref="compound">IAuthState</ref></type>
+          <declname>authState</declname>
+        </param>
+        <param>
+          <type><ref refid="class_shared_1_1_config" kindref="compound">Config</ref></type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="18" column="12" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="18" bodyend="26"/>
+        <references refid="class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f" compoundref="_live_service_8cs" startline="28" endline="55">GameClient.Services.LiveService.LiveUpdateTask</references>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task</type>
+        <definition>async Task GameClient.Services.LiveService.LiveUpdateTask</definition>
+        <argsstring>(CancellationToken ct)</argsstring>
+        <name>LiveUpdateTask</name>
+        <qualifiedname>GameClient.Services.LiveService.LiveUpdateTask</qualifiedname>
+        <param>
+          <type>CancellationToken</type>
+          <declname>ct</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="28" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="28" bodyend="55"/>
+        <references refid="class_shared_1_1_message_1a163ce4d2dcdb57321747fb9c91f4a81e" compoundref="_message_8cs" startline="5" endline="5">Shared.Message.Body</references>
+        <references refid="class_shared_1_1_data_1_1_service_socket_1a79cc6032e20a1ba2cc01a97a3345cba8" compoundref="_service_socket_8cs" startline="32" endline="38">Shared.Data.ServiceSocket.Close</references>
+        <references refid="class_game_client_1_1_services_1_1_live_service_1af01ffaed959b1249b090186b83961a8c" compoundref="_live_service_8cs" startline="8">GameClient.Services.LiveService.MatchUpdated</references>
+        <references refid="class_shared_1_1_data_1_1_service_socket_1a157a472beb8cc05aa9b3af3784601b07" compoundref="_service_socket_8cs" startline="26" endline="30">Shared.Data.ServiceSocket.Open</references>
+        <references refid="class_shared_1_1_data_1_1_service_socket_1adb235456ebdbc0b88e1c9253c1b25599" compoundref="_service_socket_8cs" startline="47" endline="51">Shared.Data.ServiceSocket.ReadMessageAsync</references>
+        <references refid="class_shared_1_1_data_1_1_service_socket_1a973877fd60c8001a6c11a84e9cf41109" compoundref="_service_socket_8cs" startline="40" endline="45">Shared.Data.ServiceSocket.SendMessageAsync</references>
+        <referencedby refid="class_game_client_1_1_services_1_1_live_service_1a0a884ff2ed3a47b4f3e43f014691b9d4" compoundref="_live_service_8cs" startline="18" endline="26">GameClient.Services.LiveService.LiveService</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_game_client_1_1_services_1_1_live_service_1ab3751be27002ddc764d2480cb0e2b194" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameClient.Services.LiveService.Dispose</definition>
+        <argsstring>()</argsstring>
+        <name>Dispose</name>
+        <qualifiedname>GameClient.Services.LiveService.Dispose</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="57" column="17" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="57" bodyend="59"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>GameClient.Services.LiveService</label>
+        <link refid="class_game_client_1_1_services_1_1_live_service"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IDisposable</label>
+      </node>
+      <node id="2">
+        <label>ILiveService</label>
+        <link refid="interface_game_client_1_1_services_1_1_i_live_service"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.Services.LiveService</label>
+        <link refid="class_game_client_1_1_services_1_1_live_service"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IDisposable</label>
+      </node>
+      <node id="2">
+        <label>ILiveService</label>
+        <link refid="interface_game_client_1_1_services_1_1_i_live_service"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" line="7" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Services/LiveService.cs" bodystart="7" bodyend="60"/>
+    <listofallmembers>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1a9f71e6ebdd978536c2720082d8d3dc0d" prot="private" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>_authState</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1a15a96679b7c60eb33269ab2ae6338a71" prot="private" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>_config</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1a66ed64ccb74649c59c086c97d71b1c76" prot="private" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>_cts</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1a55082242907553e47b0441587d99faa7" prot="private" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>_hasSentLiveRequest</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1abdea3fd9ec3e6a5880c845e16850f12b" prot="private" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>_task</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1ab3751be27002ddc764d2480cb0e2b194" prot="public" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>Dispose</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1a0a884ff2ed3a47b4f3e43f014691b9d4" prot="public" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>LiveService</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1ac90a03d1ee99f1963ac3a43ce9b5b20f" prot="public" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>LiveUpdateTask</name></member>
+      <member refid="class_game_client_1_1_services_1_1_live_service_1af01ffaed959b1249b090186b83961a8c" prot="public" virt="non-virtual"><scope>GameClient::Services::LiveService</scope><name>MatchUpdated</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

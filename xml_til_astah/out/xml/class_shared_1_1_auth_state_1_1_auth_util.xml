@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_shared_1_1_auth_state_1_1_auth_util" kind="class" language="C#" prot="public">
+    <compoundname>Shared::AuthState::AuthUtil</compoundname>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_util_1a9347718e7ce6c68674b616d7e22e71e1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>ClaimsPrincipal</type>
+        <definition>static ClaimsPrincipal Shared.AuthState.AuthUtil.ParseClaimsFromJwt</definition>
+        <argsstring>(string jwt)</argsstring>
+        <name>ParseClaimsFromJwt</name>
+        <qualifiedname>Shared.AuthState.AuthUtil.ParseClaimsFromJwt</qualifiedname>
+        <param>
+          <type>string</type>
+          <declname>jwt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthUtil.cs" line="7" column="35" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthUtil.cs" bodystart="7" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_util_1af26c834bdfe56a9338871eb00797c249" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>static byte[] Shared.AuthState.AuthUtil.ParseBase64WithoutPadding</definition>
+        <argsstring>(string base64)</argsstring>
+        <name>ParseBase64WithoutPadding</name>
+        <qualifiedname>Shared.AuthState.AuthUtil.ParseBase64WithoutPadding</qualifiedname>
+        <param>
+          <type>string</type>
+          <declname>base64</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthUtil.cs" line="23" column="25" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthUtil.cs" bodystart="23" bodyend="34"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Shared.AuthState.AuthUtil</label>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthUtil.cs" line="6" column="15" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthUtil.cs" bodystart="6" bodyend="35"/>
+    <listofallmembers>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_util_1af26c834bdfe56a9338871eb00797c249" prot="private" virt="non-virtual"><scope>Shared::AuthState::AuthUtil</scope><name>ParseBase64WithoutPadding</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_util_1a9347718e7ce6c68674b616d7e22e71e1" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthUtil</scope><name>ParseClaimsFromJwt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

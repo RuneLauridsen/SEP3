@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_1c496739b82dff99af3c59092afe5434" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/AdminClient/obj</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/AdminClient/obj</primary></indexterm>
+Afhængighedsgraf for katalog obj:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_1c496739b82dff99af3c59092afe5434_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Kataloger    </title>
+        <itemizedlist>
+            <listitem><para>katalog <link linkend="_dir_71befd5db401ff33d94ef35e6c3d7edd">Debug</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

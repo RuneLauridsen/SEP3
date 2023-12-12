@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_shared_1_1_data_1_1_network_exception" kind="class" language="C#" prot="public">
+    <compoundname>Shared::Data::NetworkException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Exception</basecompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_shared_1_1_data_1_1_network_exception_1a7d496611e22a994718a8c80bc670a445" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shared.Data.NetworkException.NetworkException</definition>
+        <argsstring>(string? message, Exception? innerException)</argsstring>
+        <name>NetworkException</name>
+        <qualifiedname>Shared.Data.NetworkException.NetworkException</qualifiedname>
+        <param>
+          <type>string?</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception?</type>
+          <declname>innerException</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/Networking/ServiceSocket.cs" line="96" column="12" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/Networking/ServiceSocket.cs" bodystart="96" bodyend="96"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Exception</label>
+      </node>
+      <node id="1">
+        <label>Shared.Data.NetworkException</label>
+        <link refid="class_shared_1_1_data_1_1_network_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Exception</label>
+      </node>
+      <node id="1">
+        <label>Shared.Data.NetworkException</label>
+        <link refid="class_shared_1_1_data_1_1_network_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/Networking/ServiceSocket.cs" line="95" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/Networking/ServiceSocket.cs" bodystart="95" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_shared_1_1_data_1_1_network_exception_1a7d496611e22a994718a8c80bc670a445" prot="public" virt="non-virtual"><scope>Shared::Data::NetworkException</scope><name>NetworkException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

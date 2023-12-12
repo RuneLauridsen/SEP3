@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_62eaff9c2ec3cfc55e3b022a0335eda4" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/AdminClient/Services</compoundname>
+    <innerfile refid="_admin_service_8cs">AdminService.cs</innerfile>
+    <innerfile refid="_i_admin_service_8cs">IAdminService.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/"/>
+  </compounddef>
+</doxygen>

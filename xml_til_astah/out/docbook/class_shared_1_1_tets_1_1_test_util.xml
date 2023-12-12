@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_tets_1_1_test_util" xml:lang="da">
+<title>Shared.Tets.TestUtil Klasse-reference</title>
+<indexterm><primary>Shared.Tets.TestUtil</primary></indexterm>
+Samarbejdsdiagram for Shared.Tets.TestUtil:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_tets_1_1_test_util__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Statiske, offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para>static void <link linkend="_class_shared_1_1_tets_1_1_test_util_1aed0a2a8aa16d3ec0ce0170a8f719594c">ResetDatabase</link> ()</para>
+</listitem>
+            <listitem><para>static void <link linkend="_class_shared_1_1_tets_1_1_test_util_1aa69266c40f9bf17d5c19f1811845c624">ExecuteSql</link> (string sql)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_util_1aa69266c40f9bf17d5c19f1811845c624"/><section>
+    <title>ExecuteSql()</title>
+<indexterm><primary>ExecuteSql</primary><secondary>Shared.Tets.TestUtil</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUtil</primary><secondary>ExecuteSql</secondary></indexterm>
+<para><computeroutput>static void Shared.Tets.TestUtil.ExecuteSql (string sql)<computeroutput>[static]</computeroutput></computeroutput></para>Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_tets_1_1_test_util_aa69266c40f9bf17d5c19f1811845c624_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_util_1aed0a2a8aa16d3ec0ce0170a8f719594c"/><section>
+    <title>ResetDatabase()</title>
+<indexterm><primary>ResetDatabase</primary><secondary>Shared.Tets.TestUtil</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestUtil</primary><secondary>ResetDatabase</secondary></indexterm>
+<para><computeroutput>static void Shared.Tets.TestUtil.ResetDatabase ( )<computeroutput>[static]</computeroutput></computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_tets_1_1_test_util_aed0a2a8aa16d3ec0ce0170a8f719594c_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_tets_1_1_test_util_aed0a2a8aa16d3ec0ce0170a8f719594c_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared.Tests/<link linkend="__test_util_8cs">TestUtil.cs</link></section>
+</section>

@@ -1,0 +1,83 @@
+\doxysection{Shared.\+Auth\+State.\+IAuth\+State Grænseflade-\/reference}
+\hypertarget{interface_shared_1_1_auth_state_1_1_i_auth_state}{}\label{interface_shared_1_1_auth_state_1_1_i_auth_state}\index{Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}}
+
+
+Stamtræ for Shared.\+Auth\+State.\+IAuth\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interface_shared_1_1_auth_state_1_1_i_auth_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Samarbejdsdiagram for Shared.\+Auth\+State.\+IAuth\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{interface_shared_1_1_auth_state_1_1_i_auth_state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Offentlige metoder}
+\begin{DoxyCompactItemize}
+\item 
+Task$<$ string $>$ \mbox{\hyperlink{interface_shared_1_1_auth_state_1_1_i_auth_state_a93a9c84a2f30954ba93a6d504687b016}{Get\+Jwt\+Async}} ()
+\item 
+Task$<$ Claims\+Principal $>$ \mbox{\hyperlink{interface_shared_1_1_auth_state_1_1_i_auth_state_aa30957e33f998159df96a75874926f4e}{Get\+Claims\+Async}} ()
+\item 
+Task \mbox{\hyperlink{interface_shared_1_1_auth_state_1_1_i_auth_state_a17a9ebad49d497f7757331b27ec9d1cf}{Set\+Auth\+State\+Async}} (String jwt)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Begivenheder}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ string $>$? \mbox{\hyperlink{interface_shared_1_1_auth_state_1_1_i_auth_state_a301897121ef1b48c000f20dc14b8eb46}{Auth\+State\+Changed}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentation af medlemsfunktioner}
+\Hypertarget{interface_shared_1_1_auth_state_1_1_i_auth_state_aa30957e33f998159df96a75874926f4e}\label{interface_shared_1_1_auth_state_1_1_i_auth_state_aa30957e33f998159df96a75874926f4e} 
+\index{Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}!GetClaimsAsync@{GetClaimsAsync}}
+\index{GetClaimsAsync@{GetClaimsAsync}!Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}}
+\doxysubsubsection{\texorpdfstring{GetClaimsAsync()}{GetClaimsAsync()}}
+{\footnotesize\ttfamily Task$<$ Claims\+Principal $>$ Shared.\+Auth\+State.\+IAuth\+State.\+Get\+Claims\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implementeret i \mbox{\hyperlink{class_shared_1_1_auth_state_1_1_auth_state_in_memory_aec946ae6951f1442fe57529472a16193}{Shared.\+Auth\+State.\+Auth\+State\+In\+Memory}} og \mbox{\hyperlink{class_shared_1_1_auth_state_1_1_auth_state_session_storage_afb9ca1c03b44769c340f904189a8d77b}{Shared.\+Auth\+State.\+Auth\+State\+Session\+Storage}}.
+
+\Hypertarget{interface_shared_1_1_auth_state_1_1_i_auth_state_a93a9c84a2f30954ba93a6d504687b016}\label{interface_shared_1_1_auth_state_1_1_i_auth_state_a93a9c84a2f30954ba93a6d504687b016} 
+\index{Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}!GetJwtAsync@{GetJwtAsync}}
+\index{GetJwtAsync@{GetJwtAsync}!Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}}
+\doxysubsubsection{\texorpdfstring{GetJwtAsync()}{GetJwtAsync()}}
+{\footnotesize\ttfamily Task$<$ string $>$ Shared.\+Auth\+State.\+IAuth\+State.\+Get\+Jwt\+Async (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Implementeret i \mbox{\hyperlink{class_shared_1_1_auth_state_1_1_auth_state_in_memory_afba10780df3c6cf33bc2b1f220a54d11}{Shared.\+Auth\+State.\+Auth\+State\+In\+Memory}} og \mbox{\hyperlink{class_shared_1_1_auth_state_1_1_auth_state_session_storage_a1d057a0a1babb53ff16a5a6025fc508e}{Shared.\+Auth\+State.\+Auth\+State\+Session\+Storage}}.
+
+\Hypertarget{interface_shared_1_1_auth_state_1_1_i_auth_state_a17a9ebad49d497f7757331b27ec9d1cf}\label{interface_shared_1_1_auth_state_1_1_i_auth_state_a17a9ebad49d497f7757331b27ec9d1cf} 
+\index{Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}!SetAuthStateAsync@{SetAuthStateAsync}}
+\index{SetAuthStateAsync@{SetAuthStateAsync}!Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}}
+\doxysubsubsection{\texorpdfstring{SetAuthStateAsync()}{SetAuthStateAsync()}}
+{\footnotesize\ttfamily Task Shared.\+Auth\+State.\+IAuth\+State.\+Set\+Auth\+State\+Async (\begin{DoxyParamCaption}\item[{String}]{jwt }\end{DoxyParamCaption})}
+
+
+
+Implementeret i \mbox{\hyperlink{class_shared_1_1_auth_state_1_1_auth_state_in_memory_a811d3e8c50598da6208459b8743c3a97}{Shared.\+Auth\+State.\+Auth\+State\+In\+Memory}} og \mbox{\hyperlink{class_shared_1_1_auth_state_1_1_auth_state_session_storage_ae7ab0e43cc62616a75a0d6f2a5ad368f}{Shared.\+Auth\+State.\+Auth\+State\+Session\+Storage}}.
+
+
+
+\doxysubsection{Begivenhedsdokumentation}
+\Hypertarget{interface_shared_1_1_auth_state_1_1_i_auth_state_a301897121ef1b48c000f20dc14b8eb46}\label{interface_shared_1_1_auth_state_1_1_i_auth_state_a301897121ef1b48c000f20dc14b8eb46} 
+\index{Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}!AuthStateChanged@{AuthStateChanged}}
+\index{AuthStateChanged@{AuthStateChanged}!Shared.AuthState.IAuthState@{Shared.AuthState.IAuthState}}
+\doxysubsubsection{\texorpdfstring{AuthStateChanged}{AuthStateChanged}}
+{\footnotesize\ttfamily Event\+Handler$<$string$>$? Shared.\+Auth\+State.\+IAuth\+State.\+Auth\+State\+Changed}
+
+
+
+Dokumentationen for denne grænseflade blev genereret ud fra filen\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+SEP3/\+CSharp/\+Boardgames/\+Shared/\+Auth\+State/\mbox{\hyperlink{_i_auth_state_8cs}{IAuth\+State.\+cs}}\end{DoxyCompactItemize}

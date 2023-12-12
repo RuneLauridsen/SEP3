@@ -1,0 +1,7 @@
+<map id="GameClient.Tests.GameClientTest.Test_UpdateAccount" name="GameClient.Tests.GameClientTest.Test_UpdateAccount">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,203,81"/>
+<area shape="rect" id="Node000002" href="$interface_game_client_1_1_services_1_1_i_game_service.html#aae00f69db1f98e63ccf1bd0ae74c354b" title=" " alt="" coords="255,5,440,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,44,239,39,240,44,204,49"/>
+<area shape="rect" id="Node000003" href="$interface_game_client_1_1_services_1_1_i_game_service.html#af8e26f8d08854063334c45d69e5f3115" title=" " alt="" coords="251,72,444,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,71,236,75,235,81,203,76"/>
+</map>

@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_game_client_1_1_tests_1_1_game_client_test" xml:lang="da">
+<title>GameClient.Tests.GameClientTest Klasse-reference</title>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary></indexterm>
+Samarbejdsdiagram for GameClient.Tests.GameClientTest:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1ae8c3cadc6c444308d1cb592011c9262e">GameClientTest</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1a450bf7730d5ac3355a5c74adf35db522">Test_Login</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1ac2ee98eec1088666b2e2efb4ddde65fb">Test_register</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1a26dbeb4d8b05422fa3848bddcead1d3a">Test_GetGames</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1a365135ff20cf688032ec134d722b766b">Test_CreateMatch_GetMatch</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1a506757660f184b694723d9af1ccbefbe">Test_CreateMatch_GameNotFound</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1ad327d01382fb5f778d909a8db3beb1a3">Test_GetMyMatches</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1aa707311778df64ab50624ec17f6d5452">Test_AddParticipant_GetParticipants</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1a20110e14ade995c264474cf7d0784c8b">Test_GetAccount</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1add7648f2e8d28e18ddab8c55b44746f5">Test_GetNonExistentAccount</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1a50752599fd3ab1a1bef1266a5611d119">Test_GetAccounts</link> ()</para>
+</listitem>
+            <listitem><para>void <link linkend="_class_game_client_1_1_tests_1_1_game_client_test_1ad713931884818e8b45ae24a1ffb5a8a5">Test_UpdateAccount</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1ae8c3cadc6c444308d1cb592011c9262e"/><section>
+    <title>GameClientTest()</title>
+<indexterm><primary>GameClientTest</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>GameClientTest</secondary></indexterm>
+<para><computeroutput>GameClient.Tests.GameClientTest.GameClientTest ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_ae8c3cadc6c444308d1cb592011c9262e_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1aa707311778df64ab50624ec17f6d5452"/><section>
+    <title>Test_AddParticipant_GetParticipants()</title>
+<indexterm><primary>Test_AddParticipant_GetParticipants</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_AddParticipant_GetParticipants</secondary></indexterm>
+<para><computeroutput>async Task GameClient.Tests.GameClientTest.Test_AddParticipant_GetParticipants ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_aa707311778df64ab50624ec17f6d5452_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1a506757660f184b694723d9af1ccbefbe"/><section>
+    <title>Test_CreateMatch_GameNotFound()</title>
+<indexterm><primary>Test_CreateMatch_GameNotFound</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_CreateMatch_GameNotFound</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_CreateMatch_GameNotFound ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_a506757660f184b694723d9af1ccbefbe_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1a365135ff20cf688032ec134d722b766b"/><section>
+    <title>Test_CreateMatch_GetMatch()</title>
+<indexterm><primary>Test_CreateMatch_GetMatch</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_CreateMatch_GetMatch</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_CreateMatch_GetMatch ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_a365135ff20cf688032ec134d722b766b_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1a20110e14ade995c264474cf7d0784c8b"/><section>
+    <title>Test_GetAccount()</title>
+<indexterm><primary>Test_GetAccount</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_GetAccount</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_GetAccount ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_a20110e14ade995c264474cf7d0784c8b_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1a50752599fd3ab1a1bef1266a5611d119"/><section>
+    <title>Test_GetAccounts()</title>
+<indexterm><primary>Test_GetAccounts</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_GetAccounts</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_GetAccounts ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_a50752599fd3ab1a1bef1266a5611d119_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1a26dbeb4d8b05422fa3848bddcead1d3a"/><section>
+    <title>Test_GetGames()</title>
+<indexterm><primary>Test_GetGames</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_GetGames</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_GetGames ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_a26dbeb4d8b05422fa3848bddcead1d3a_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1ad327d01382fb5f778d909a8db3beb1a3"/><section>
+    <title>Test_GetMyMatches()</title>
+<indexterm><primary>Test_GetMyMatches</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_GetMyMatches</secondary></indexterm>
+<para><computeroutput>async Task GameClient.Tests.GameClientTest.Test_GetMyMatches ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_ad327d01382fb5f778d909a8db3beb1a3_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1add7648f2e8d28e18ddab8c55b44746f5"/><section>
+    <title>Test_GetNonExistentAccount()</title>
+<indexterm><primary>Test_GetNonExistentAccount</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_GetNonExistentAccount</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_GetNonExistentAccount ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_add7648f2e8d28e18ddab8c55b44746f5_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1a450bf7730d5ac3355a5c74adf35db522"/><section>
+    <title>Test_Login()</title>
+<indexterm><primary>Test_Login</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_Login</secondary></indexterm>
+<para><computeroutput>async Task GameClient.Tests.GameClientTest.Test_Login ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_a450bf7730d5ac3355a5c74adf35db522_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1ac2ee98eec1088666b2e2efb4ddde65fb"/><section>
+    <title>Test_register()</title>
+<indexterm><primary>Test_register</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_register</secondary></indexterm>
+<para><computeroutput>async Task GameClient.Tests.GameClientTest.Test_register ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_ac2ee98eec1088666b2e2efb4ddde65fb_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_game_client_1_1_tests_1_1_game_client_test_1ad713931884818e8b45ae24a1ffb5a8a5"/><section>
+    <title>Test_UpdateAccount()</title>
+<indexterm><primary>Test_UpdateAccount</primary><secondary>GameClient.Tests.GameClientTest</secondary></indexterm>
+<indexterm><primary>GameClient.Tests.GameClientTest</primary><secondary>Test_UpdateAccount</secondary></indexterm>
+<para><computeroutput>void GameClient.Tests.GameClientTest.Test_UpdateAccount ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_game_client_1_1_tests_1_1_game_client_test_ad713931884818e8b45ae24a1ffb5a8a5_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/GameClient.Tests/<link linkend="__game_client_test_8cs">GameClientTest.cs</link></section>
+</section>

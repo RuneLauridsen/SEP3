@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_shared_1_1_auth_state_1_1_auth_state_in_memory" kind="class" language="C#" prot="public">
+    <compoundname>Shared::AuthState::AuthStateInMemory</compoundname>
+    <basecompoundref refid="interface_shared_1_1_auth_state_1_1_i_auth_state" prot="public" virt="non-virtual">Shared.AuthState.IAuthState</basecompoundref>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1adfa9e844fcc75d13182a7e7b796fdd57" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Shared.AuthState.AuthStateInMemory._jwt</definition>
+        <argsstring></argsstring>
+        <name>_jwt</name>
+        <qualifiedname>Shared.AuthState.AuthStateInMemory._jwt</qualifiedname>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="6" column="20" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="6" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="property">
+      <memberdef kind="property" id="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a4c08f6ef9af86f0b631955841b0700f3" prot="private" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>ClaimsPrincipal</type>
+        <definition>ClaimsPrincipal Shared.AuthState.AuthStateInMemory._claims</definition>
+        <argsstring></argsstring>
+        <name>_claims</name>
+        <qualifiedname>Shared.AuthState.AuthStateInMemory._claims</qualifiedname>
+        <initializer>= new()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="7" column="29" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="7" bodyend="7"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="event">
+      <memberdef kind="event" id="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a35c4eab341dfd3164d854989ae018ced" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>EventHandler&lt; string &gt;?</type>
+        <definition>EventHandler&lt;string&gt;? Shared.AuthState.AuthStateInMemory.AuthStateChanged</definition>
+        <argsstring></argsstring>
+        <name>AuthStateChanged</name>
+        <qualifiedname>Shared.AuthState.AuthStateInMemory.AuthStateChanged</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="8" column="31" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="8" bodyend="-1"/>
+        <referencedby refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a811d3e8c50598da6208459b8743c3a97" compoundref="_auth_state_in_memory_8cs" startline="18" endline="22">Shared.AuthState.AuthStateInMemory.SetAuthStateAsync</referencedby>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1afba10780df3c6cf33bc2b1f220a54d11" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; string &gt;</type>
+        <definition>async Task&lt; string &gt; Shared.AuthState.AuthStateInMemory.GetJwtAsync</definition>
+        <argsstring>()</argsstring>
+        <name>GetJwtAsync</name>
+        <qualifiedname>Shared.AuthState.AuthStateInMemory.GetJwtAsync</qualifiedname>
+        <reimplements refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1a93a9c84a2f30954ba93a6d504687b016">GetJwtAsync</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="10" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1aec946ae6951f1442fe57529472a16193" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task&lt; ClaimsPrincipal &gt;</type>
+        <definition>async Task&lt; ClaimsPrincipal &gt; Shared.AuthState.AuthStateInMemory.GetClaimsAsync</definition>
+        <argsstring>()</argsstring>
+        <name>GetClaimsAsync</name>
+        <qualifiedname>Shared.AuthState.AuthStateInMemory.GetClaimsAsync</qualifiedname>
+        <reimplements refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1aa30957e33f998159df96a75874926f4e">GetClaimsAsync</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="14" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="14" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a811d3e8c50598da6208459b8743c3a97" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>async Task</type>
+        <definition>async Task Shared.AuthState.AuthStateInMemory.SetAuthStateAsync</definition>
+        <argsstring>(String jwt)</argsstring>
+        <name>SetAuthStateAsync</name>
+        <qualifiedname>Shared.AuthState.AuthStateInMemory.SetAuthStateAsync</qualifiedname>
+        <reimplements refid="interface_shared_1_1_auth_state_1_1_i_auth_state_1a17a9ebad49d497f7757331b27ec9d1cf">SetAuthStateAsync</reimplements>
+        <param>
+          <type>String</type>
+          <declname>jwt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="18" column="23" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="18" bodyend="22"/>
+        <references refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a35c4eab341dfd3164d854989ae018ced" compoundref="_auth_state_in_memory_8cs" startline="8">Shared.AuthState.AuthStateInMemory.AuthStateChanged</references>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>IAuthState</label>
+        <link refid="interface_shared_1_1_auth_state_1_1_i_auth_state"/>
+      </node>
+      <node id="1">
+        <label>Shared.AuthState.AuthStateInMemory</label>
+        <link refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>IAuthState</label>
+        <link refid="interface_shared_1_1_auth_state_1_1_i_auth_state"/>
+      </node>
+      <node id="1">
+        <label>Shared.AuthState.AuthStateInMemory</label>
+        <link refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" line="5" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/AuthState/AuthStateInMemory.cs" bodystart="5" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a4c08f6ef9af86f0b631955841b0700f3" prot="private" virt="non-virtual"><scope>Shared::AuthState::AuthStateInMemory</scope><name>_claims</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1adfa9e844fcc75d13182a7e7b796fdd57" prot="private" virt="non-virtual"><scope>Shared::AuthState::AuthStateInMemory</scope><name>_jwt</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a35c4eab341dfd3164d854989ae018ced" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthStateInMemory</scope><name>AuthStateChanged</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1aec946ae6951f1442fe57529472a16193" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthStateInMemory</scope><name>GetClaimsAsync</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1afba10780df3c6cf33bc2b1f220a54d11" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthStateInMemory</scope><name>GetJwtAsync</name></member>
+      <member refid="class_shared_1_1_auth_state_1_1_auth_state_in_memory_1a811d3e8c50598da6208459b8743c3a97" prot="public" virt="non-virtual"><scope>Shared::AuthState::AuthStateInMemory</scope><name>SetAuthStateAsync</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

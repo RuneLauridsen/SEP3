@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="interface_admin_client_1_1_services_1_1_i_admin_service" kind="interface" language="C#" prot="public">
+    <compoundname>AdminClient::Services::IAdminService</compoundname>
+    <derivedcompoundref refid="class_admin_client_1_1_services_1_1_admin_service" prot="public" virt="non-virtual">AdminClient.Services.AdminService</derivedcompoundref>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_admin_client_1_1_services_1_1_i_admin_service_1af4eca6855d05e5052fc14429f4a1f742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Task&lt; UpdateUserStatusResponse &gt;</type>
+        <definition>Task&lt; UpdateUserStatusResponse &gt; AdminClient.Services.IAdminService.UpdateUserStatusAsync</definition>
+        <argsstring>(Account account, int newStatus)</argsstring>
+        <name>UpdateUserStatusAsync</name>
+        <qualifiedname>AdminClient.Services.IAdminService.UpdateUserStatusAsync</qualifiedname>
+        <reimplementedby refid="class_admin_client_1_1_services_1_1_admin_service_1a6295f53f4ed0e1974ac746b0c2f60112">UpdateUserStatusAsync</reimplementedby>
+        <param>
+          <type><ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">Account</ref></type>
+          <declname>account</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>newStatus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" line="9" column="17"/>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1adc37296cb6a4136097864c99d3766428" compoundref="_admin_client_test_8cs" startline="166" endline="198">AdminClient.Tests.AdminClientTest.Test_User_Status</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="interface_admin_client_1_1_services_1_1_i_admin_service_1ab24ad2ae40da8a79e16c98cd199a7331" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Task&lt; List&lt; <ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">Account</ref> &gt; &gt;</type>
+        <definition>Task&lt; List&lt; Account &gt; &gt; AdminClient.Services.IAdminService.GetUsersWaitingForApprovalAsync</definition>
+        <argsstring>()</argsstring>
+        <name>GetUsersWaitingForApprovalAsync</name>
+        <qualifiedname>AdminClient.Services.IAdminService.GetUsersWaitingForApprovalAsync</qualifiedname>
+        <reimplementedby refid="class_admin_client_1_1_services_1_1_admin_service_1a9fb13bda7e87d62b5c256b1298377ff9">GetUsersWaitingForApprovalAsync</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" line="10" column="17"/>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a3f73296e3007b27942355b8dae6f14ee" compoundref="_admin_client_test_8cs" startline="117" endline="125">AdminClient.Tests.AdminClientTest.Test_GetUsersWaitingForApproval</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="interface_admin_client_1_1_services_1_1_i_admin_service_1a3b309a57660e90b40d8f9bf2044a65c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Task&lt; <ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">Account</ref> &gt;</type>
+        <definition>Task&lt; Account &gt; AdminClient.Services.IAdminService.GetAccountAsync</definition>
+        <argsstring>(GetAccountRequest request)</argsstring>
+        <name>GetAccountAsync</name>
+        <qualifiedname>AdminClient.Services.IAdminService.GetAccountAsync</qualifiedname>
+        <reimplementedby refid="class_admin_client_1_1_services_1_1_admin_service_1ac11231129bcf0ecc9eeba714a60e8bc0">GetAccountAsync</reimplementedby>
+        <param>
+          <type>GetAccountRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" line="11" column="17"/>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1af26ea7b78a9176e7ce45fc9e5fbd1b5f" compoundref="_admin_client_test_8cs" startline="20" endline="31">AdminClient.Tests.AdminClientTest.Test_Get_Account</referencedby>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a1b543fcad00e0b6a2ca285ceb497069e" compoundref="_admin_client_test_8cs" startline="36" endline="98">AdminClient.Tests.AdminClientTest.Test_updateAccount</referencedby>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1adc37296cb6a4136097864c99d3766428" compoundref="_admin_client_test_8cs" startline="166" endline="198">AdminClient.Tests.AdminClientTest.Test_User_Status</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="interface_admin_client_1_1_services_1_1_i_admin_service_1a74d4895bc3a088e1725cc83122824c7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Task&lt; UpdateAccountResponse &gt;</type>
+        <definition>Task&lt; UpdateAccountResponse &gt; AdminClient.Services.IAdminService.UpdateAccountAsync</definition>
+        <argsstring>(UpdateAccountRequest request)</argsstring>
+        <name>UpdateAccountAsync</name>
+        <qualifiedname>AdminClient.Services.IAdminService.UpdateAccountAsync</qualifiedname>
+        <reimplementedby refid="class_admin_client_1_1_services_1_1_admin_service_1adb3e6fa024486dc8bf9f95e06d0cca03">UpdateAccountAsync</reimplementedby>
+        <param>
+          <type>UpdateAccountRequest</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" line="12" column="17"/>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a1b543fcad00e0b6a2ca285ceb497069e" compoundref="_admin_client_test_8cs" startline="36" endline="98">AdminClient.Tests.AdminClientTest.Test_updateAccount</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="interface_admin_client_1_1_services_1_1_i_admin_service_1a5165cca9d5161d99f6e1d36234c932be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Task&lt; IEnumerable&lt; <ref refid="class_game_client_1_1_d_t_o_1_1_account" kindref="compound">Account</ref> &gt; &gt;</type>
+        <definition>Task&lt; IEnumerable&lt; Account &gt; &gt; AdminClient.Services.IAdminService.GetApprovedUsersAsync</definition>
+        <argsstring>()</argsstring>
+        <name>GetApprovedUsersAsync</name>
+        <qualifiedname>AdminClient.Services.IAdminService.GetApprovedUsersAsync</qualifiedname>
+        <reimplementedby refid="class_admin_client_1_1_services_1_1_admin_service_1ae1987c3db025d08a7be39b317cbbd300">GetApprovedUsersAsync</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" line="13" column="17"/>
+        <referencedby refid="class_admin_client_1_1_tests_1_1_admin_client_test_1a1cea775d05249773df36b2b97a6c6e69" compoundref="_admin_client_test_8cs" startline="104" endline="113">AdminClient.Tests.AdminClientTest.Test_getAllApprovedUsers</referencedby>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>AdminClient.Services.IAdminService</label>
+        <link refid="interface_admin_client_1_1_services_1_1_i_admin_service"/>
+      </node>
+      <node id="2">
+        <label>AdminClient.Services.AdminService</label>
+        <link refid="class_admin_client_1_1_services_1_1_admin_service"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>AdminClient.Services.IAdminService</label>
+        <link refid="interface_admin_client_1_1_services_1_1_i_admin_service"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" line="7" column="18" bodyfile="W:/SEP3/CSharp/Boardgames/AdminClient/Services/IAdminService.cs" bodystart="8" bodyend="14"/>
+    <listofallmembers>
+      <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a3b309a57660e90b40d8f9bf2044a65c5" prot="public" virt="non-virtual"><scope>AdminClient::Services::IAdminService</scope><name>GetAccountAsync</name></member>
+      <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a5165cca9d5161d99f6e1d36234c932be" prot="public" virt="non-virtual"><scope>AdminClient::Services::IAdminService</scope><name>GetApprovedUsersAsync</name></member>
+      <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1ab24ad2ae40da8a79e16c98cd199a7331" prot="public" virt="non-virtual"><scope>AdminClient::Services::IAdminService</scope><name>GetUsersWaitingForApprovalAsync</name></member>
+      <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1a74d4895bc3a088e1725cc83122824c7d" prot="public" virt="non-virtual"><scope>AdminClient::Services::IAdminService</scope><name>UpdateAccountAsync</name></member>
+      <member refid="interface_admin_client_1_1_services_1_1_i_admin_service_1af4eca6855d05e5052fc14429f4a1f742" prot="public" virt="non-virtual"><scope>AdminClient::Services::IAdminService</scope><name>UpdateUserStatusAsync</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

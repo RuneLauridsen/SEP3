@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_c7daa7c6910703e8eccd5679897075f1" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/GameClient/obj/Debug</compoundname>
+    <innerdir refid="dir_2b0f3d0c0f28c13d379d74502e2bc657">W:/SEP3/CSharp/Boardgames/GameClient/obj/Debug/net7.0</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/obj/Debug/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,7 @@
+<map id="Grafisk klassehierarki" name="Grafisk klassehierarki">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,43,85,69"/>
+<area shape="rect" id="Node000001" href="$class_game_client_1_1_data_1_1_not_authorized_exception.html" title=" " alt="" coords="133,5,339,48"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="100,45,132,40,133,45,101,50"/>
+<area shape="rect" id="Node000002" href="$class_shared_1_1_data_1_1_network_exception.html" title=" " alt="" coords="135,72,337,99"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="101,62,145,69,144,74,100,67"/>
+</map>

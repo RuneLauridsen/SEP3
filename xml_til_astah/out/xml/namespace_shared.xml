@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="namespace_shared" kind="namespace" language="C#">
+    <compoundname>Shared</compoundname>
+    <innerclass refid="class_shared_1_1_config" prot="public">Shared::Config</innerclass>
+    <innerclass refid="class_shared_1_1_extensions" prot="public">Shared::Extensions</innerclass>
+    <innerclass refid="class_shared_1_1_html_util" prot="public">Shared::HtmlUtil</innerclass>
+    <innerclass refid="class_shared_1_1_log" prot="public">Shared::Log</innerclass>
+    <innerclass refid="class_shared_1_1_message" prot="public">Shared::Message</innerclass>
+    <innerclass refid="class_shared_1_1_parse_util" prot="public">Shared::ParseUtil</innerclass>
+    <innernamespace refid="namespace_shared_1_1_auth_service">Shared::AuthService</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_auth_state">Shared::AuthState</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_data">Shared::Data</innernamespace>
+    <innernamespace refid="namespace_shared_1_1_tets">Shared::Tets</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/AdminClient.Tests/TestClient.cs" line="5" column="1"/>
+  </compounddef>
+</doxygen>

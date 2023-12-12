@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_interface_shared_1_1_auth_service_1_1_i_auth_service" xml:lang="da">
+<title>Shared.AuthService.IAuthService Grænseflade-reference</title>
+<indexterm><primary>Shared.AuthService.IAuthService</primary></indexterm>
+Stamtræ for Shared.AuthService.IAuthService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_shared_1_1_auth_service_1_1_i_auth_service__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Samarbejdsdiagram for Shared.AuthService.IAuthService:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_shared_1_1_auth_service_1_1_i_auth_service__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para>Task&lt; LoginResponse &gt; <link linkend="_interface_shared_1_1_auth_service_1_1_i_auth_service_1a515f39d912118a8aa4efa8401258e4c6">LoginAsync</link> (LoginRequest req)</para>
+</listitem>
+            <listitem><para>Task <link linkend="_interface_shared_1_1_auth_service_1_1_i_auth_service_1ad570943d51fa4469959e9a6ef2583144">LogoutAsync</link> ()</para>
+</listitem>
+            <listitem><para>Task&lt; RegisterResponse?&gt; <link linkend="_interface_shared_1_1_auth_service_1_1_i_auth_service_1a02db9f05d0156df0007187361c817e7b">RegisterAsync</link> (RegisterRequest req)</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_interface_shared_1_1_auth_service_1_1_i_auth_service_1a515f39d912118a8aa4efa8401258e4c6"/><section>
+    <title>LoginAsync()</title>
+<indexterm><primary>LoginAsync</primary><secondary>Shared.AuthService.IAuthService</secondary></indexterm>
+<indexterm><primary>Shared.AuthService.IAuthService</primary><secondary>LoginAsync</secondary></indexterm>
+<para><computeroutput>Task&lt; LoginResponse &gt; Shared.AuthService.IAuthService.LoginAsync (LoginRequest req)</computeroutput></para><para>
+Implementeret i <link linkend="_class_shared_1_1_auth_service_1_1_jwt_auth_service_1ab531f16b5bfa129d18bdd82ea76c6280">Shared.AuthService.JwtAuthService</link>.</para>
+Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_shared_1_1_auth_service_1_1_i_auth_service_a515f39d912118a8aa4efa8401258e4c6_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_interface_shared_1_1_auth_service_1_1_i_auth_service_1ad570943d51fa4469959e9a6ef2583144"/><section>
+    <title>LogoutAsync()</title>
+<indexterm><primary>LogoutAsync</primary><secondary>Shared.AuthService.IAuthService</secondary></indexterm>
+<indexterm><primary>Shared.AuthService.IAuthService</primary><secondary>LogoutAsync</secondary></indexterm>
+<para><computeroutput>Task Shared.AuthService.IAuthService.LogoutAsync ( )</computeroutput></para><para>
+Implementeret i <link linkend="_class_shared_1_1_auth_service_1_1_jwt_auth_service_1a9c69e48102870c0f9b5bbe137f2c5ab8">Shared.AuthService.JwtAuthService</link>.</para>
+</section>
+<anchor xml:id="_interface_shared_1_1_auth_service_1_1_i_auth_service_1a02db9f05d0156df0007187361c817e7b"/><section>
+    <title>RegisterAsync()</title>
+<indexterm><primary>RegisterAsync</primary><secondary>Shared.AuthService.IAuthService</secondary></indexterm>
+<indexterm><primary>Shared.AuthService.IAuthService</primary><secondary>RegisterAsync</secondary></indexterm>
+<para><computeroutput>Task&lt; RegisterResponse?&gt; Shared.AuthService.IAuthService.RegisterAsync (RegisterRequest req)</computeroutput></para><para>
+Implementeret i <link linkend="_class_shared_1_1_auth_service_1_1_jwt_auth_service_1a50de56cc8b843752f79cdfc76818d094">Shared.AuthService.JwtAuthService</link>.</para>
+Her er kalder-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="interface_shared_1_1_auth_service_1_1_i_auth_service_a02db9f05d0156df0007187361c817e7b_icgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+Dokumentationen for denne grænseflade blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared/AuthService/<link linkend="__i_auth_service_8cs">IAuthService.cs</link></section>
+</section>

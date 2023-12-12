@@ -1,0 +1,228 @@
+.TH "Shared.Data.Messages" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Shared.Data.Messages
+.SH SYNOPSIS
+.br
+.PP
+.SS "Offentlige metoder"
+
+.in +1c
+.ti -1c
+.RI "record \fBHead\fP (String bodyType, String jwt, double elapsedServerMillis)"
+.br
+.ti -1c
+.RI "record \fBLoginRequest\fP (String username, String password, \fBboolean\fP adminClient)"
+.br
+.ti -1c
+.RI "record \fBLoginResponse\fP (\fBboolean\fP loginSuccessful, \fBAccount\fP account, String jwt, String errorReason)"
+.br
+.ti -1c
+.RI "record \fBRegisterRequest\fP (String username, String firstName, String lastName, String email, String password)"
+.br
+.ti -1c
+.RI "record \fBRegisterResponse\fP (\fBboolean\fP response, String errorReason)"
+.br
+.ti -1c
+.RI "record \fBGetGamesRequest\fP ()"
+.br
+.ti -1c
+.RI "record \fBGetGamesResponse\fP (List< \fBGame\fP > games)"
+.br
+.ti -1c
+.RI "record \fBGetMatchRequest\fP (int matchId)"
+.br
+.ti -1c
+.RI "record \fBGetMatchResponse\fP (\fBMatch\fP match)"
+.br
+.ti -1c
+.RI "record \fBGetMyMatchesRequest\fP ()"
+.br
+.ti -1c
+.RI "record \fBGetMyMatchesResponse\fP (List< \fBMatch\fP > matches)"
+.br
+.ti -1c
+.RI "record \fBCreateMatchRequest\fP (int gameId)"
+.br
+.ti -1c
+.RI "record \fBCreateMatchResponse\fP (String errorReason, \fBMatch\fP match)"
+.br
+.ti -1c
+.RI "record \fBAddParticipantRequest\fP (int matchId, int accountId)"
+.br
+.ti -1c
+.RI "record \fBAddParticipantResponse\fP (\fBParticipant\fP participant, String errorReason)"
+.br
+.ti -1c
+.RI "record \fBGetParticipantsRequest\fP (int matchId)"
+.br
+.ti -1c
+.RI "record \fBGetParticipantsResponse\fP (List< \fBParticipant\fP > participants)"
+.br
+.ti -1c
+.RI "record \fBGetPendingRequest\fP ()"
+.br
+.ti -1c
+.RI "record \fBGetPendingResponse\fP (List< \fBParticipant\fP > participants)"
+.br
+.ti -1c
+.RI "record \fBDecidePendingRequest\fP (int matchId, int participantId, int status)"
+.br
+.ti -1c
+.RI "record \fBDecidePendingResponse\fP (String errorReason)"
+.br
+.ti -1c
+.RI "record \fBGetAccountRequest\fP (int accountId)"
+.br
+.ti -1c
+.RI "record \fBGetAccountResponse\fP (\fBAccount\fP account)"
+.br
+.ti -1c
+.RI "record \fBGetAccountsRequest\fP ()"
+.br
+.ti -1c
+.RI "record \fBGetAccountsResponse\fP (List< \fBAccount\fP > accounts)"
+.br
+.ti -1c
+.RI "record \fBUpdateAccountRequest\fP (\fBAccount\fP account)"
+.br
+.ti -1c
+.RI "record \fBUpdateAccountResponse\fP (String errorReason)"
+.br
+.ti -1c
+.RI "record \fBMoveRequest\fP (int matchId, String moveData)"
+.br
+.ti -1c
+.RI "record \fBMoveResponse\fP (int matchId, String gameData, \fBMoveResult\fP result)"
+.br
+.ti -1c
+.RI "record \fBImpatientWinRequest\fP (int matchId)"
+.br
+.ti -1c
+.RI "record \fBImpatientWinResponse\fP (int matchId, String errorReason)"
+.br
+.ti -1c
+.RI "record \fBGetScoreSumsRequest\fP (int gameId)"
+.br
+.ti -1c
+.RI "record \fBGetScoreSumsResponse\fP (List< \fBScoreSum\fP > sums)"
+.br
+.ti -1c
+.RI "record \fBGetMatchHistoryRequest\fP (int accountId)"
+.br
+.ti -1c
+.RI "record \fBGetMatchHistoryResponse\fP (List< \fBFinishedMatchScore\fP > scores)"
+.br
+.ti -1c
+.RI "record \fBBeginLiveUpdateRequest\fP ()"
+.br
+.ti -1c
+.RI "record \fBBeginLiveUpdateResponse\fP (\fBboolean\fP success)"
+.br
+.ti -1c
+.RI "record \fBMatchNotification\fP (int matchId)"
+.br
+.ti -1c
+.RI "record \fBQuitNotification\fP ()"
+.br
+.ti -1c
+.RI "record \fBNotAuthorizedResponse\fP ()"
+.br
+.ti -1c
+.RI "record \fBUpdateUserStatusRequest\fP (\fBAccount\fP \fBAccount\fP, int newStatus)"
+.br
+.ti -1c
+.RI "record \fBUpdateUserStatusResponse\fP (\fBboolean\fP b)"
+.br
+.in -1c
+.SH "Dokumentation af medlemsfunktioner"
+.PP 
+.SS "record Shared\&.Data\&.Messages\&.AddParticipantRequest (int matchId, int accountId)"
+
+.SS "record Shared\&.Data\&.Messages\&.AddParticipantResponse (\fBParticipant\fP participant, String errorReason)"
+
+.SS "record Shared\&.Data\&.Messages\&.BeginLiveUpdateRequest ()"
+
+.SS "record Shared\&.Data\&.Messages\&.BeginLiveUpdateResponse (\fBboolean\fP success)"
+
+.SS "record Shared\&.Data\&.Messages\&.CreateMatchRequest (int gameId)"
+
+.SS "record Shared\&.Data\&.Messages\&.CreateMatchResponse (String errorReason, \fBMatch\fP match)"
+
+.SS "record Shared\&.Data\&.Messages\&.DecidePendingRequest (int matchId, int participantId, int status)"
+
+.SS "record Shared\&.Data\&.Messages\&.DecidePendingResponse (String errorReason)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetAccountRequest (int accountId)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetAccountResponse (\fBAccount\fP account)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetAccountsRequest ()"
+
+.SS "record Shared\&.Data\&.Messages\&.GetAccountsResponse (List< \fBAccount\fP > accounts)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetGamesRequest ()"
+
+.SS "record Shared\&.Data\&.Messages\&.GetGamesResponse (List< \fBGame\fP > games)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetMatchHistoryRequest (int accountId)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetMatchHistoryResponse (List< \fBFinishedMatchScore\fP > scores)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetMatchRequest (int matchId)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetMatchResponse (\fBMatch\fP match)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetMyMatchesRequest ()"
+
+.SS "record Shared\&.Data\&.Messages\&.GetMyMatchesResponse (List< \fBMatch\fP > matches)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetParticipantsRequest (int matchId)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetParticipantsResponse (List< \fBParticipant\fP > participants)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetPendingRequest ()"
+
+.SS "record Shared\&.Data\&.Messages\&.GetPendingResponse (List< \fBParticipant\fP > participants)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetScoreSumsRequest (int gameId)"
+
+.SS "record Shared\&.Data\&.Messages\&.GetScoreSumsResponse (List< \fBScoreSum\fP > sums)"
+
+.SS "record Shared\&.Data\&.Messages\&.Head (String bodyType, String jwt, double elapsedServerMillis)"
+
+.SS "record Shared\&.Data\&.Messages\&.ImpatientWinRequest (int matchId)"
+
+.SS "record Shared\&.Data\&.Messages\&.ImpatientWinResponse (int matchId, String errorReason)"
+
+.SS "record Shared\&.Data\&.Messages\&.LoginRequest (String username, String password, \fBboolean\fP adminClient)"
+
+.SS "record Shared\&.Data\&.Messages\&.LoginResponse (\fBboolean\fP loginSuccessful, \fBAccount\fP account, String jwt, String errorReason)"
+
+.SS "record Shared\&.Data\&.Messages\&.MatchNotification (int matchId)"
+
+.SS "record Shared\&.Data\&.Messages\&.MoveRequest (int matchId, String moveData)"
+
+.SS "record Shared\&.Data\&.Messages\&.MoveResponse (int matchId, String gameData, \fBMoveResult\fP result)"
+
+.SS "record Shared\&.Data\&.Messages\&.NotAuthorizedResponse ()"
+
+.SS "record Shared\&.Data\&.Messages\&.QuitNotification ()"
+
+.SS "record Shared\&.Data\&.Messages\&.RegisterRequest (String username, String firstName, String lastName, String email, String password)"
+
+.SS "record Shared\&.Data\&.Messages\&.RegisterResponse (\fBboolean\fP response, String errorReason)"
+
+.SS "record Shared\&.Data\&.Messages\&.UpdateAccountRequest (\fBAccount\fP account)"
+
+.SS "record Shared\&.Data\&.Messages\&.UpdateAccountResponse (String errorReason)"
+
+.SS "record Shared\&.Data\&.Messages\&.UpdateUserStatusRequest (\fBAccount\fP Account, int newStatus)"
+
+.SS "record Shared\&.Data\&.Messages\&.UpdateUserStatusResponse (\fBboolean\fP b)"
+
+
+.SH "Forfatter"
+.PP 
+Automatisk genereret af Doxygen for My Project ud fra kildekoden\&.

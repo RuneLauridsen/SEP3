@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_shared_1_1_tets_1_1_test_data" xml:lang="da">
+<title>Shared.Tets.TestData Klasse-reference</title>
+<indexterm><primary>Shared.Tets.TestData</primary></indexterm>
+Samarbejdsdiagram for Shared.Tets.TestData:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_shared_1_1_tets_1_1_test_data__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Statiske, offentlige attributter    </title>
+        <itemizedlist>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1a28b758457093eee44347ad1525283d1f">JULIE_ID</link> = 1</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1a547c1199db87e6e4b54a1e2c2c31065d">MAJA_ID</link> = 2</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1a7f804c3613affa6b970891ca58f50d3e">SIMON_ID</link> = 3</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1a9c9eba39374e4111a9016324ef411021">RUNE_ID</link> = 4</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1a27f3afdb14ea3a4031dedc0c9022f5a6">BOB_ID</link> = 5</para>
+</listitem>
+            <listitem><para>static readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> <link linkend="_class_shared_1_1_tets_1_1_test_data_1ae65255b43076ebcda1d7d06a338ea007">JULIE</link> = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a28b758457093eee44347ad1525283d1f">JULIE_ID</link>, &quot;BenDover&quot;, &quot;julie&quot;, false)</para>
+</listitem>
+            <listitem><para>static readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> <link linkend="_class_shared_1_1_tets_1_1_test_data_1a9001ff6fa6bd18f506416d4f2f159c8a">MAJA</link> = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a547c1199db87e6e4b54a1e2c2c31065d">MAJA_ID</link>, &quot;Maja123&quot;, &quot;maja&quot;, false)</para>
+</listitem>
+            <listitem><para>static readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> <link linkend="_class_shared_1_1_tets_1_1_test_data_1adc87c51f1e732a64e876bd58af76328f">SIMON</link> = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a7f804c3613affa6b970891ca58f50d3e">SIMON_ID</link>, &quot;Minii&quot;, &quot;simon&quot;, false)</para>
+</listitem>
+            <listitem><para>static readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> <link linkend="_class_shared_1_1_tets_1_1_test_data_1afb09d9bfdf8b51eb94aa3827c40cf37e">RUNE</link> = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a9c9eba39374e4111a9016324ef411021">RUNE_ID</link>, &quot;rune&quot;, &quot;runerune&quot;, false)</para>
+</listitem>
+            <listitem><para>static readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> <link linkend="_class_shared_1_1_tets_1_1_test_data_1a0c3016e8c77c03c5a39df3df51b6681d">BOB</link> = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a27f3afdb14ea3a4031dedc0c9022f5a6">BOB_ID</link>, &quot;Bob&quot;, &quot;bobersej&quot;, true)</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1a57158531ebb892e1c0fb637c2295a366">TICTACTOE_ID</link> = 1</para>
+</listitem>
+            <listitem><para>const int <link linkend="_class_shared_1_1_tets_1_1_test_data_1ab2e1f585c0dce9ef4d353b15e95e6070">STRATEGO_ID</link> = 2</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af feltvariable</title>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a0c3016e8c77c03c5a39df3df51b6681d"/><section>
+    <title>BOB</title>
+<indexterm><primary>BOB</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>BOB</secondary></indexterm>
+<para><computeroutput>readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> Shared.Tets.TestData.BOB = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a27f3afdb14ea3a4031dedc0c9022f5a6">BOB_ID</link>, &quot;Bob&quot;, &quot;bobersej&quot;, true)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a27f3afdb14ea3a4031dedc0c9022f5a6"/><section>
+    <title>BOB_ID</title>
+<indexterm><primary>BOB_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>BOB_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.BOB_ID = 5<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1ae65255b43076ebcda1d7d06a338ea007"/><section>
+    <title>JULIE</title>
+<indexterm><primary>JULIE</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>JULIE</secondary></indexterm>
+<para><computeroutput>readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> Shared.Tets.TestData.JULIE = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a28b758457093eee44347ad1525283d1f">JULIE_ID</link>, &quot;BenDover&quot;, &quot;julie&quot;, false)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a28b758457093eee44347ad1525283d1f"/><section>
+    <title>JULIE_ID</title>
+<indexterm><primary>JULIE_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>JULIE_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.JULIE_ID = 1<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a9001ff6fa6bd18f506416d4f2f159c8a"/><section>
+    <title>MAJA</title>
+<indexterm><primary>MAJA</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>MAJA</secondary></indexterm>
+<para><computeroutput>readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> Shared.Tets.TestData.MAJA = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a547c1199db87e6e4b54a1e2c2c31065d">MAJA_ID</link>, &quot;Maja123&quot;, &quot;maja&quot;, false)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a547c1199db87e6e4b54a1e2c2c31065d"/><section>
+    <title>MAJA_ID</title>
+<indexterm><primary>MAJA_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>MAJA_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.MAJA_ID = 2<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1afb09d9bfdf8b51eb94aa3827c40cf37e"/><section>
+    <title>RUNE</title>
+<indexterm><primary>RUNE</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>RUNE</secondary></indexterm>
+<para><computeroutput>readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> Shared.Tets.TestData.RUNE = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a9c9eba39374e4111a9016324ef411021">RUNE_ID</link>, &quot;rune&quot;, &quot;runerune&quot;, false)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a9c9eba39374e4111a9016324ef411021"/><section>
+    <title>RUNE_ID</title>
+<indexterm><primary>RUNE_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>RUNE_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.RUNE_ID = 4<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1adc87c51f1e732a64e876bd58af76328f"/><section>
+    <title>SIMON</title>
+<indexterm><primary>SIMON</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>SIMON</secondary></indexterm>
+<para><computeroutput>readonly <link linkend="_class_shared_1_1_tets_1_1_test_user">TestUser</link> Shared.Tets.TestData.SIMON = new(<link linkend="_class_shared_1_1_tets_1_1_test_data_1a7f804c3613affa6b970891ca58f50d3e">SIMON_ID</link>, &quot;Minii&quot;, &quot;simon&quot;, false)<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a7f804c3613affa6b970891ca58f50d3e"/><section>
+    <title>SIMON_ID</title>
+<indexterm><primary>SIMON_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>SIMON_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.SIMON_ID = 3<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1ab2e1f585c0dce9ef4d353b15e95e6070"/><section>
+    <title>STRATEGO_ID</title>
+<indexterm><primary>STRATEGO_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>STRATEGO_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.STRATEGO_ID = 2<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<anchor xml:id="_class_shared_1_1_tets_1_1_test_data_1a57158531ebb892e1c0fb637c2295a366"/><section>
+    <title>TICTACTOE_ID</title>
+<indexterm><primary>TICTACTOE_ID</primary><secondary>Shared.Tets.TestData</secondary></indexterm>
+<indexterm><primary>Shared.Tets.TestData</primary><secondary>TICTACTOE_ID</secondary></indexterm>
+<para><computeroutput>const int Shared.Tets.TestData.TICTACTOE_ID = 1<computeroutput>[static]</computeroutput></computeroutput></para></section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/Shared.Tests/<link linkend="__test_data_8cs">TestData.cs</link></section>
+</section>

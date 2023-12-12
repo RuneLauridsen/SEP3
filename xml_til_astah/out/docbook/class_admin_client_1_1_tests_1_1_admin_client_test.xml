@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test" xml:lang="da">
+<title>AdminClient.Tests.AdminClientTest Klasse-reference</title>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary></indexterm>
+Samarbejdsdiagram for AdminClient.Tests.AdminClientTest:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Offentlige metoder    </title>
+        <itemizedlist>
+            <listitem><para><link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1ace9a11a65bb85b797e1bdf135e832aaf">AdminClientTest</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1af26ea7b78a9176e7ce45fc9e5fbd1b5f">Test_Get_Account</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1a1b543fcad00e0b6a2ca285ceb497069e">Test_updateAccount</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1a1cea775d05249773df36b2b97a6c6e69">Test_getAllApprovedUsers</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1a3f73296e3007b27942355b8dae6f14ee">Test_GetUsersWaitingForApproval</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1a94b4e0c3b8cba655faa79642a2331c89">Test_AdminLogin</link> ()</para>
+</listitem>
+            <listitem><para>async Task <link linkend="_class_admin_client_1_1_tests_1_1_admin_client_test_1adc37296cb6a4136097864c99d3766428">Test_User_Status</link> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Dokumentation af konstruktører og destruktører</title>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1ace9a11a65bb85b797e1bdf135e832aaf"/><section>
+    <title>AdminClientTest()</title>
+<indexterm><primary>AdminClientTest</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>AdminClientTest</secondary></indexterm>
+<para><computeroutput>AdminClient.Tests.AdminClientTest.AdminClientTest ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_ace9a11a65bb85b797e1bdf135e832aaf_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+</section>
+<section>
+<title>Dokumentation af medlemsfunktioner</title>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1a94b4e0c3b8cba655faa79642a2331c89"/><section>
+    <title>Test_AdminLogin()</title>
+<indexterm><primary>Test_AdminLogin</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>Test_AdminLogin</secondary></indexterm>
+<para><computeroutput>async Task AdminClient.Tests.AdminClientTest.Test_AdminLogin ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_a94b4e0c3b8cba655faa79642a2331c89_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1af26ea7b78a9176e7ce45fc9e5fbd1b5f"/><section>
+    <title>Test_Get_Account()</title>
+<indexterm><primary>Test_Get_Account</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>Test_Get_Account</secondary></indexterm>
+<para><computeroutput>async Task AdminClient.Tests.AdminClientTest.Test_Get_Account ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_af26ea7b78a9176e7ce45fc9e5fbd1b5f_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1a1cea775d05249773df36b2b97a6c6e69"/><section>
+    <title>Test_getAllApprovedUsers()</title>
+<indexterm><primary>Test_getAllApprovedUsers</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>Test_getAllApprovedUsers</secondary></indexterm>
+<para><computeroutput>async Task AdminClient.Tests.AdminClientTest.Test_getAllApprovedUsers ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_a1cea775d05249773df36b2b97a6c6e69_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1a3f73296e3007b27942355b8dae6f14ee"/><section>
+    <title>Test_GetUsersWaitingForApproval()</title>
+<indexterm><primary>Test_GetUsersWaitingForApproval</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>Test_GetUsersWaitingForApproval</secondary></indexterm>
+<para><computeroutput>async Task AdminClient.Tests.AdminClientTest.Test_GetUsersWaitingForApproval ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_a3f73296e3007b27942355b8dae6f14ee_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1a1b543fcad00e0b6a2ca285ceb497069e"/><section>
+    <title>Test_updateAccount()</title>
+<indexterm><primary>Test_updateAccount</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>Test_updateAccount</secondary></indexterm>
+<para><computeroutput>async Task AdminClient.Tests.AdminClientTest.Test_updateAccount ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_a1b543fcad00e0b6a2ca285ceb497069e_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<anchor xml:id="_class_admin_client_1_1_tests_1_1_admin_client_test_1adc37296cb6a4136097864c99d3766428"/><section>
+    <title>Test_User_Status()</title>
+<indexterm><primary>Test_User_Status</primary><secondary>AdminClient.Tests.AdminClientTest</secondary></indexterm>
+<indexterm><primary>AdminClient.Tests.AdminClientTest</primary><secondary>Test_User_Status</secondary></indexterm>
+<para><computeroutput>async Task AdminClient.Tests.AdminClientTest.Test_User_Status ( )</computeroutput></para>Her er kald-grafen for denne funktion:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_admin_client_1_1_tests_1_1_admin_client_test_adc37296cb6a4136097864c99d3766428_cgraph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+</section>
+<para>
+Dokumentationen for denne klasse blev genereret ud fra filen:</para>
+W:/SEP3/CSharp/Boardgames/AdminClient.Tests/<link linkend="__admin_client_test_8cs">AdminClientTest.cs</link></section>
+</section>

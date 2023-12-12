@@ -1,0 +1,55 @@
+.TH "GameClient.Services.LiveService" 3 "My Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GameClient.Services.LiveService
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Nedarver \fBGameClient\&.Services\&.ILiveService\fP og IDisposable\&.
+.SS "Offentlige metoder"
+
+.in +1c
+.ti -1c
+.RI "\fBLiveService\fP (\fBIAuthState\fP authState, \fBConfig\fP config)"
+.br
+.ti -1c
+.RI "async Task \fBLiveUpdateTask\fP (CancellationToken ct)"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.in -1c
+.SS "Begivenheder"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< int >? \fBMatchUpdated\fP"
+.br
+.in -1c
+
+Begivenheder inherited from \fBGameClient\&.Services\&.ILiveService\fP
+.in +1c
+.ti -1c
+.RI "EventHandler< int >? \fBMatchUpdated\fP"
+.br
+.in -1c
+.SH "Dokumentation af konstruktører og destruktører"
+.PP 
+.SS "GameClient\&.Services\&.LiveService\&.LiveService (\fBIAuthState\fP authState, \fBConfig\fP config)"
+
+.SH "Dokumentation af medlemsfunktioner"
+.PP 
+.SS "void GameClient\&.Services\&.LiveService\&.Dispose ()"
+
+.SS "async Task GameClient\&.Services\&.LiveService\&.LiveUpdateTask (CancellationToken ct)"
+
+.SH "Begivenhedsdokumentation"
+.PP 
+.SS "EventHandler<int>? GameClient\&.Services\&.LiveService\&.MatchUpdated"
+
+
+.SH "Forfatter"
+.PP 
+Automatisk genereret af Doxygen for My Project ud fra kildekoden\&.

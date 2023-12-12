@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__not_authorized_exception_8cs" xml:lang="da">
+<title>W:/SEP3/CSharp/Boardgames/Shared/NotAuthorizedException.cs filreference</title>
+<indexterm><primary>W:/SEP3/CSharp/Boardgames/Shared/NotAuthorizedException.cs</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_game_client_1_1_data_1_1_not_authorized_exception">GameClient.Data.NotAuthorizedException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_game_client">GameClient</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_data">GameClient.Data</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

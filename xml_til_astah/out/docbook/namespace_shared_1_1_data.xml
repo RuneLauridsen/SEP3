@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_shared_1_1_data" xml:lang="da">
+<title>Shared.Data namespace-reference</title>
+<indexterm><primary>Shared.Data</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_shared_1_1_data_1_1_messages">Messages</link></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">MessageSerializer</emphasis></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_shared_1_1_data_1_1_network_exception">NetworkException</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_shared_1_1_data_1_1_service_socket">ServiceSocket</link></para>
+</listitem>
+            <listitem><para>class <emphasis role="strong">StringStreamer</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

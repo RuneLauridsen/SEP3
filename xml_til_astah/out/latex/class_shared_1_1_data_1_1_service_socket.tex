@@ -1,0 +1,146 @@
+\doxysection{Shared.\+Data.\+Service\+Socket Klasse-\/reference}
+\hypertarget{class_shared_1_1_data_1_1_service_socket}{}\label{class_shared_1_1_data_1_1_service_socket}\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+
+
+Samarbejdsdiagram for Shared.\+Data.\+Service\+Socket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=251pt]{class_shared_1_1_data_1_1_service_socket__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Offentlige metoder}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_ac236ced48a915e14829039e199843bd6}{Service\+Socket}} (string url, int port, \mbox{\hyperlink{interface_shared_1_1_auth_state_1_1_i_auth_state}{IAuth\+State}} auth\+State)
+\item 
+async Task \mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_a157a472beb8cc05aa9b3af3784601b07}{Open}} ()
+\item 
+void \mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_a79cc6032e20a1ba2cc01a97a3345cba8}{Close}} ()
+\item 
+async Task \mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_a973877fd60c8001a6c11a84e9cf41109}{Send\+Message\+Async}} (object body, Cancellation\+Token ct)
+\item 
+async Task$<$ \mbox{\hyperlink{class_shared_1_1_message}{Message}} $>$ \mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_adb235456ebdbc0b88e1c9253c1b25599}{Read\+Message\+Async}} (Cancellation\+Token ct)
+\item 
+Task$<$ T?$>$ \mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5}{Send\+And\+Receive\+Async$<$ T $>$}} (object request\+Body)
+\item 
+async Task$<$ T?$>$ \mbox{\hyperlink{class_shared_1_1_data_1_1_service_socket_a48943a8611e55daffe34de5d6898a852}{Send\+And\+Receive\+Async$<$ T $>$}} (object request\+Body, Cancellation\+Token ct)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Dokumentation af konstruktører og destruktører}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_ac236ced48a915e14829039e199843bd6}\label{class_shared_1_1_data_1_1_service_socket_ac236ced48a915e14829039e199843bd6} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!ServiceSocket@{ServiceSocket}}
+\index{ServiceSocket@{ServiceSocket}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{ServiceSocket()}{ServiceSocket()}}
+{\footnotesize\ttfamily Shared.\+Data.\+Service\+Socket.\+Service\+Socket (\begin{DoxyParamCaption}\item[{string}]{url,  }\item[{int}]{port,  }\item[{\mbox{\hyperlink{interface_shared_1_1_auth_state_1_1_i_auth_state}{IAuth\+State}}}]{auth\+State }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Dokumentation af medlemsfunktioner}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_a79cc6032e20a1ba2cc01a97a3345cba8}\label{class_shared_1_1_data_1_1_service_socket_a79cc6032e20a1ba2cc01a97a3345cba8} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!Close@{Close}}
+\index{Close@{Close}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void Shared.\+Data.\+Service\+Socket.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Her er kalder-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_shared_1_1_data_1_1_service_socket_a79cc6032e20a1ba2cc01a97a3345cba8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_a157a472beb8cc05aa9b3af3784601b07}\label{class_shared_1_1_data_1_1_service_socket_a157a472beb8cc05aa9b3af3784601b07} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!Open@{Open}}
+\index{Open@{Open}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily async Task Shared.\+Data.\+Service\+Socket.\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Her er kalder-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_shared_1_1_data_1_1_service_socket_a157a472beb8cc05aa9b3af3784601b07_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_adb235456ebdbc0b88e1c9253c1b25599}\label{class_shared_1_1_data_1_1_service_socket_adb235456ebdbc0b88e1c9253c1b25599} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!ReadMessageAsync@{ReadMessageAsync}}
+\index{ReadMessageAsync@{ReadMessageAsync}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{ReadMessageAsync()}{ReadMessageAsync()}}
+{\footnotesize\ttfamily async Task$<$ \mbox{\hyperlink{class_shared_1_1_message}{Message}} $>$ Shared.\+Data.\+Service\+Socket.\+Read\+Message\+Async (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{ct }\end{DoxyParamCaption})}
+
+Her er kalder-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_shared_1_1_data_1_1_service_socket_adb235456ebdbc0b88e1c9253c1b25599_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5}\label{class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!SendAndReceiveAsync$<$ T $>$@{SendAndReceiveAsync$<$ T $>$}}
+\index{SendAndReceiveAsync$<$ T $>$@{SendAndReceiveAsync$<$ T $>$}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{SendAndReceiveAsync$<$ T $>$()}{SendAndReceiveAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Task$<$ T?$>$ Shared.\+Data.\+Service\+Socket.\+Send\+And\+Receive\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{object}]{request\+Body }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[typebegrænsninger]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+Her er kald-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5_cgraph}
+\end{center}
+\end{figure}
+Her er kalder-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{class_shared_1_1_data_1_1_service_socket_a26be6546dc82632ddc7162d04a4651d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_a48943a8611e55daffe34de5d6898a852}\label{class_shared_1_1_data_1_1_service_socket_a48943a8611e55daffe34de5d6898a852} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!SendAndReceiveAsync$<$ T $>$@{SendAndReceiveAsync$<$ T $>$}}
+\index{SendAndReceiveAsync$<$ T $>$@{SendAndReceiveAsync$<$ T $>$}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{SendAndReceiveAsync$<$ T $>$()}{SendAndReceiveAsync< T >()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily async Task$<$ T?$>$ Shared.\+Data.\+Service\+Socket.\+Send\+And\+Receive\+Async$<$ T $>$ (\begin{DoxyParamCaption}\item[{object}]{request\+Body,  }\item[{Cancellation\+Token}]{ct }\end{DoxyParamCaption})}
+
+\begin{Desc}
+\item[typebegrænsninger]\begin{description}
+\item[{\em T} : {\em class}]\end{description}
+\end{Desc}
+Her er kald-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_shared_1_1_data_1_1_service_socket_a48943a8611e55daffe34de5d6898a852_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_shared_1_1_data_1_1_service_socket_a973877fd60c8001a6c11a84e9cf41109}\label{class_shared_1_1_data_1_1_service_socket_a973877fd60c8001a6c11a84e9cf41109} 
+\index{Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}!SendMessageAsync@{SendMessageAsync}}
+\index{SendMessageAsync@{SendMessageAsync}!Shared.Data.ServiceSocket@{Shared.Data.ServiceSocket}}
+\doxysubsubsection{\texorpdfstring{SendMessageAsync()}{SendMessageAsync()}}
+{\footnotesize\ttfamily async Task Shared.\+Data.\+Service\+Socket.\+Send\+Message\+Async (\begin{DoxyParamCaption}\item[{object}]{body,  }\item[{Cancellation\+Token}]{ct }\end{DoxyParamCaption})}
+
+Her er kalder-\/grafen for denne funktion\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_shared_1_1_data_1_1_service_socket_a973877fd60c8001a6c11a84e9cf41109_icgraph}
+\end{center}
+\end{figure}
+
+
+Dokumentationen for denne klasse blev genereret ud fra filen\+:\begin{DoxyCompactItemize}
+\item 
+W\+:/\+SEP3/\+CSharp/\+Boardgames/\+Shared/\+Networking/\mbox{\hyperlink{_service_socket_8cs}{Service\+Socket.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_9d094db19f1790064a264b05d9b58517" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/GameClient/Games</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/GameClient/Games</primary></indexterm>
+Afhængighedsgraf for katalog Games:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_9d094db19f1790064a264b05d9b58517_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Filer    </title>
+        <itemizedlist>
+            <listitem><para>fil <link linkend="__tic_tac_toe_8cs">TicTacToe.cs</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

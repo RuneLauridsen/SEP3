@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="da">
+    <info>
+    <title>My Project</title>
+    </info>
+    <xi:include href="md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_admin_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_game_client_2bin_2_debug_2net7_80_2publish_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="md__w_1_2_s_e_p3_2_c_sharp_2_boardgames_2_game_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<chapter>
+    <title>Namespace-dokumentation</title>
+<xi:include href="namespace_admin_client.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_admin_client_1_1_pages.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_admin_client_1_1_services.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_admin_client_1_1_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client_1_1_data.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client_1_1_d_t_o.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client_1_1_games.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client_1_1_pages.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client_1_1_services.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_game_client_1_1_tests.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_shared.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_shared_1_1_auth_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_shared_1_1_auth_state.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_shared_1_1_data.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+<xi:include href="namespace_shared_1_1_tets.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Klasse-dokumentation</title>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_account.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_admin_client_1_1_tests_1_1_admin_client_test.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_admin_client_1_1_services_1_1_admin_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_auth_state_1_1_auth_state_in_memory.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_auth_state_1_1_auth_state_session_storage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_config.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_admin_client_1_1_pages_1_1_error_model.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_pages_1_1_error_model.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_finished_match_score.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_game.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_tests_1_1_game_client_test.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_services_1_1_game_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_admin_client_1_1_services_1_1_i_admin_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_shared_1_1_auth_service_1_1_i_auth_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_shared_1_1_auth_state_1_1_i_auth_state.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_game_client_1_1_services_1_1_i_game_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="interface_game_client_1_1_services_1_1_i_live_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_auth_service_1_1_jwt_auth_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_services_1_1_live_service.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_match.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_message.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_data_1_1_messages.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_move_result.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_data_1_1_network_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_data_1_1_not_authorized_exception.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_parse_util.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_participant.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_d_t_o_1_1_score_sum.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_data_1_1_service_socket.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_tets_1_1_test_client.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_tets_1_1_test_data.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_tests_1_1_test_invites.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_tets_1_1_test_user.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_shared_1_1_tets_1_1_test_util.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_games_1_1_tic_tac_toe_data.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_game_client_1_1_games_1_1_tic_tac_toe_move.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<chapter>
+    <title>Fil-dokumentation</title>
+    <xi:include href="_admin_client_test_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_tests_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_tests_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_tests_2_test_client_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_tests_2_test_client_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_tests_2_global_usings_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_2_global_usings_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_tests_2_global_usings_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_2_global_usings_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_8_razor_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_2_pages_2_error_8cshtml_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_2_pages_2_error_8cshtml_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_2_program_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_2_program_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_i_admin_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_admin_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_2bin_2_debug_2net7_80_2publish_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_2wwwroot_2css_2open-iconic_2_r_e_a_d_m_e_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_test_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_tests_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_tests_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_test_invites_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_tic_tac_toe_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_client_8_razor_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_i_game_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_i_live_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_live_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_tests_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_tests_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_tets_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_tets_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_test_data_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_test_util_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_i_auth_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_jwt_auth_service_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_auth_state_in_memory_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_auth_state_session_storage_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_auth_util_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_i_auth_state_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_config_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_account_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_empty_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_finished_match_score_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_game_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_match_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_move_result_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_participant_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_score_sum_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_extensions_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_html_util_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_json_util_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_log_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_message_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_messages_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_message_serializer_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_service_socket_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_string_streamer_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_not_authorized_exception_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_shared_8_global_usings_8g_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="_parse_util_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

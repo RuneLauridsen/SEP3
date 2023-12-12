@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_01685e9e87318b084115a826d884486e" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared.Tests</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared.Tests</primary></indexterm>
+Afhængighedsgraf for katalog Shared.Tests:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_01685e9e87318b084115a826d884486e_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Kataloger    </title>
+        <itemizedlist>
+            <listitem><para>katalog <link linkend="_dir_4443d913112c7d025fa2ea587b7f60cd">obj</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Filer    </title>
+        <itemizedlist>
+            <listitem><para>fil <link linkend="__test_data_8cs">TestData.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__test_util_8cs">TestUtil.cs</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_595be5eba68d9245ef4ae4718c1cd75d" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared.Tests/obj/Debug</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/Shared.Tests/obj/Debug</primary></indexterm>
+Afhængighedsgraf for katalog Debug:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_595be5eba68d9245ef4ae4718c1cd75d_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Kataloger    </title>
+        <itemizedlist>
+            <listitem><para>katalog <link linkend="_dir_b8ac570ebd6b325f27516102e29fb2ef">net7.0</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

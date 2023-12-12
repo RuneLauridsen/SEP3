@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__finished_match_score_8cs" xml:lang="da">
+<title>W:/SEP3/CSharp/Boardgames/Shared/DTO/FinishedMatchScore.cs filreference</title>
+<indexterm><primary>W:/SEP3/CSharp/Boardgames/Shared/DTO/FinishedMatchScore.cs</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_game_client_1_1_d_t_o_1_1_finished_match_score">GameClient.DTO.FinishedMatchScore</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_game_client">GameClient</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_d_t_o">GameClient.DTO</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

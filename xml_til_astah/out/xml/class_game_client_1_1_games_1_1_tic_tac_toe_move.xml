@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_game_client_1_1_games_1_1_tic_tac_toe_move" kind="class" language="C#" prot="public">
+    <compoundname>GameClient::Games::TicTacToeMove</compoundname>
+    <sectiondef kind="property">
+      <memberdef kind="property" id="class_game_client_1_1_games_1_1_tic_tac_toe_move_1abdf69198748180f650f09bdf940530a9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required int</type>
+        <definition>required int GameClient.Games.TicTacToeMove.PlaceOnIndex</definition>
+        <argsstring></argsstring>
+        <name>PlaceOnIndex</name>
+        <qualifiedname>GameClient.Games.TicTacToeMove.PlaceOnIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Games/TicTacToe.cs" line="16" column="25" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Games/TicTacToe.cs" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_games_1_1_tic_tac_toe_move_1a2cab90ace42c81673b3a598eda9ea910" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required int</type>
+        <definition>required int GameClient.Games.TicTacToeMove.TakeFromIndex</definition>
+        <argsstring></argsstring>
+        <name>TakeFromIndex</name>
+        <qualifiedname>GameClient.Games.TicTacToeMove.TakeFromIndex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/GameClient/Games/TicTacToe.cs" line="17" column="25" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Games/TicTacToe.cs" bodystart="17" bodyend="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.Games.TicTacToeMove</label>
+        <link refid="class_game_client_1_1_games_1_1_tic_tac_toe_move"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Games/TicTacToe.cs" line="15" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/GameClient/Games/TicTacToe.cs" bodystart="15" bodyend="18"/>
+    <listofallmembers>
+      <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_move_1abdf69198748180f650f09bdf940530a9" prot="public" virt="non-virtual"><scope>GameClient::Games::TicTacToeMove</scope><name>PlaceOnIndex</name></member>
+      <member refid="class_game_client_1_1_games_1_1_tic_tac_toe_move_1a2cab90ace42c81673b3a598eda9ea910" prot="public" virt="non-virtual"><scope>GameClient::Games::TicTacToeMove</scope><name>TakeFromIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

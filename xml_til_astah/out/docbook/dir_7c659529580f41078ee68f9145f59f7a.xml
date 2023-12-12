@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_dir_7c659529580f41078ee68f9145f59f7a" xml:lang="da">
+<title>Indhold af kataloget W:/SEP3/CSharp/Boardgames/AdminClient</title>
+<indexterm><primary>Indhold af kataloget W:/SEP3/CSharp/Boardgames/AdminClient</primary></indexterm>
+Afhængighedsgraf for katalog AdminClient:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="dir_7c659529580f41078ee68f9145f59f7a_dep.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Kataloger    </title>
+        <itemizedlist>
+            <listitem><para>katalog <link linkend="_dir_1c496739b82dff99af3c59092afe5434">obj</link></para>
+</listitem>
+            <listitem><para>katalog <link linkend="_dir_24214b58e5e8f9aeecee2c5580055daa">Pages</link></para>
+</listitem>
+            <listitem><para>katalog <link linkend="_dir_62eaff9c2ec3cfc55e3b022a0335eda4">Services</link></para>
+</listitem>
+            <listitem><para>katalog <link linkend="_dir_55a5b385120a2f37a8ee516e77fd61da">wwwroot</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Filer    </title>
+        <itemizedlist>
+            <listitem><para>fil <link linkend="__admin_client_2_global_usings_8cs">GlobalUsings.cs</link></para>
+</listitem>
+            <listitem><para>fil <link linkend="__admin_client_2_program_8cs">Program.cs</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

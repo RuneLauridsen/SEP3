@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__service_socket_8cs" xml:lang="da">
+<title>W:/SEP3/CSharp/Boardgames/Shared/Networking/ServiceSocket.cs filreference</title>
+<indexterm><primary>W:/SEP3/CSharp/Boardgames/Shared/Networking/ServiceSocket.cs</primary></indexterm>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <link linkend="_class_shared_1_1_data_1_1_service_socket">Shared.Data.ServiceSocket</link></para>
+</listitem>
+            <listitem><para>class <link linkend="_class_shared_1_1_data_1_1_network_exception">Shared.Data.NetworkException</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_shared">Shared</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_shared_1_1_data">Shared.Data</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

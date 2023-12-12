@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="dir_9d094db19f1790064a264b05d9b58517" kind="dir">
+    <compoundname>W:/SEP3/CSharp/Boardgames/GameClient/Games</compoundname>
+    <innerfile refid="_tic_tac_toe_8cs">TicTacToe.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Games/"/>
+  </compounddef>
+</doxygen>

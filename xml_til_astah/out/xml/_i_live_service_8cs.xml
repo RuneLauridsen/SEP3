@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="_i_live_service_8cs" kind="file" language="C#">
+    <compoundname>ILiveService.cs</compoundname>
+    <innerclass refid="interface_game_client_1_1_services_1_1_i_live_service" prot="public">GameClient::Services::ILiveService</innerclass>
+    <innernamespace refid="namespace_game_client">GameClient</innernamespace>
+    <innernamespace refid="namespace_game_client_1_1_services">GameClient::Services</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_game_client_1_1_services" kindref="compound">GameClient.Services</ref>;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="interface_game_client_1_1_services_1_1_i_live_service" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">interface<sp/></highlight><highlight class="normal"><ref refid="interface_game_client_1_1_services_1_1_i_live_service" kindref="compound">ILiveService</ref><sp/>{</highlight></codeline>
+<codeline lineno="4" refid="interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">event</highlight><highlight class="normal"><sp/>EventHandler&lt;int&gt;?<sp/><ref refid="interface_game_client_1_1_services_1_1_i_live_service_1a929a518f8c780f57f0bb83ed2fe08141" kindref="member">MatchUpdated</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="W:/SEP3/CSharp/Boardgames/GameClient/Services/ILiveService.cs"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="da">
+  <compounddef id="class_game_client_1_1_d_t_o_1_1_move_result" kind="class" language="C#" prot="public">
+    <compoundname>GameClient::DTO::MoveResult</compoundname>
+    <sectiondef kind="property">
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_move_result_1ac2e7e0fa4e9157d8faa7c245c47760bf" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required int</type>
+        <definition>required int GameClient.DTO.MoveResult.Outcome</definition>
+        <argsstring></argsstring>
+        <name>Outcome</name>
+        <qualifiedname>GameClient.DTO.MoveResult.Outcome</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="5" column="25" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="5" bodyend="5"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_move_result_1ac3fe1b33218c6c318510b770e8304f38" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required int</type>
+        <definition>required int GameClient.DTO.MoveResult.NextAccountId</definition>
+        <argsstring></argsstring>
+        <name>NextAccountId</name>
+        <qualifiedname>GameClient.DTO.MoveResult.NextAccountId</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="6" column="25" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="6" bodyend="6"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_move_result_1afcde49a3e47ffb65cd614a4720cc2fb3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required string</type>
+        <definition>required string GameClient.DTO.MoveResult.NextData</definition>
+        <argsstring></argsstring>
+        <name>NextData</name>
+        <qualifiedname>GameClient.DTO.MoveResult.NextData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="7" column="28" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="7" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_move_result_1a05081767798f371d6086d770b29f27fa" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required string</type>
+        <definition>required string GameClient.DTO.MoveResult.InvalidMoveText</definition>
+        <argsstring></argsstring>
+        <name>InvalidMoveText</name>
+        <qualifiedname>GameClient.DTO.MoveResult.InvalidMoveText</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="8" column="28" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="8" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_move_result_1a11ff95e4a153351f5f57ea02a99ebccc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required string</type>
+        <definition>required string GameClient.DTO.MoveResult.FinishedText</definition>
+        <argsstring></argsstring>
+        <name>FinishedText</name>
+        <qualifiedname>GameClient.DTO.MoveResult.FinishedText</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="9" column="28" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="9" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="property" id="class_game_client_1_1_d_t_o_1_1_move_result_1aaf537f32c0b1e982c27ea1443d3cfb2b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>required Dictionary&lt; int, int &gt;</type>
+        <definition>required Dictionary&lt;int, int&gt; GameClient.DTO.MoveResult.Scores</definition>
+        <argsstring></argsstring>
+        <name>Scores</name>
+        <qualifiedname>GameClient.DTO.MoveResult.Scores</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="10" column="32" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="10" bodyend="10"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_game_client_1_1_d_t_o_1_1_move_result_1a56d913727b906c4a62bc3414e5b67f90" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int GameClient.DTO.MoveResult.OUTCOME_VALID</definition>
+        <argsstring></argsstring>
+        <name>OUTCOME_VALID</name>
+        <qualifiedname>GameClient.DTO.MoveResult.OUTCOME_VALID</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="12" column="22" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_d_t_o_1_1_move_result_1a85c651a5ae9c0947e3b88791a0d4e343" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int GameClient.DTO.MoveResult.OUTCOME_INVALID</definition>
+        <argsstring></argsstring>
+        <name>OUTCOME_INVALID</name>
+        <qualifiedname>GameClient.DTO.MoveResult.OUTCOME_INVALID</qualifiedname>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="13" column="22" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_client_1_1_d_t_o_1_1_move_result_1a9af31d68b4c304ae9a69aa34ad97e6fb" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int GameClient.DTO.MoveResult.OUTCOME_FINISHED</definition>
+        <argsstring></argsstring>
+        <name>OUTCOME_FINISHED</name>
+        <qualifiedname>GameClient.DTO.MoveResult.OUTCOME_FINISHED</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="14" column="22" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>GameClient.DTO.MoveResult</label>
+        <link refid="class_game_client_1_1_d_t_o_1_1_move_result"/>
+      </node>
+    </collaborationgraph>
+    <location file="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" line="4" column="7" bodyfile="W:/SEP3/CSharp/Boardgames/Shared/DTO/MoveResult.cs" bodystart="4" bodyend="15"/>
+    <listofallmembers>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a11ff95e4a153351f5f57ea02a99ebccc" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>FinishedText</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a05081767798f371d6086d770b29f27fa" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>InvalidMoveText</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1ac3fe1b33218c6c318510b770e8304f38" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>NextAccountId</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1afcde49a3e47ffb65cd614a4720cc2fb3" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>NextData</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1ac2e7e0fa4e9157d8faa7c245c47760bf" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>Outcome</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a9af31d68b4c304ae9a69aa34ad97e6fb" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>OUTCOME_FINISHED</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a85c651a5ae9c0947e3b88791a0d4e343" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>OUTCOME_INVALID</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1a56d913727b906c4a62bc3414e5b67f90" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>OUTCOME_VALID</name></member>
+      <member refid="class_game_client_1_1_d_t_o_1_1_move_result_1aaf537f32c0b1e982c27ea1443d3cfb2b" prot="public" virt="non-virtual"><scope>GameClient::DTO::MoveResult</scope><name>Scores</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

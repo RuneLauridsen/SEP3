@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_namespace_game_client" xml:lang="da">
+<title>GameClient namespace-reference</title>
+<indexterm><primary>GameClient</primary></indexterm>
+<simplesect>
+    <title>Namespaces    </title>
+        <itemizedlist>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_data">Data</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_d_t_o">DTO</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_games">Games</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_pages">Pages</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_services">Services</link></para>
+</listitem>
+            <listitem><para>namespace <link linkend="_namespace_game_client_1_1_tests">Tests</link></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Sammensatte typer    </title>
+        <itemizedlist>
+            <listitem><para>class <emphasis role="strong">JsonUtil</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+</section>

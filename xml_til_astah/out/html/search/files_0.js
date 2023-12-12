@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['_2enetcoreapp_2cversion_3dv7_2e0_2eassemblyattributes_2ecs_0',['.netcoreapp,version=v7.0.assemblyattributes.cs',['../_admin_client_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.html',1,'(Globalt Namespace)'],['../_admin_client_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.html',1,'(Globalt Namespace)'],['../_game_client_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.html',1,'(Globalt Namespace)'],['../_game_client_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.html',1,'(Globalt Namespace)'],['../_shared_8_tests_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.html',1,'(Globalt Namespace)'],['../_shared_2obj_2_debug_2net7_80_2_8_n_e_t_core_app_00_version_0av7_80_8_assembly_attributes_8cs.html',1,'(Globalt Namespace)']]]
+];
