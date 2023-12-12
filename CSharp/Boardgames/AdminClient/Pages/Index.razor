@@ -5,9 +5,8 @@
 @using global::Shared.AuthService
 @using global::Shared.AuthState
 @inject IAdminService adminService
+@inject IAuthService authService
 @inject NavigationManager navMgr
-@inject IAuthState authState;
-
 
 <style>
 table {
@@ -83,7 +82,7 @@ else
   protected override async Task OnInitializedAsync()
   {
     await base.OnInitializedAsync();
-    isLoggedIn = await authState.GetUserIdAsync();
+    isLoggedIn = await authService.GetUserIdAsync();
     if (isLoggedIn != 0) {
       var applicants = await adminService.GetUsersWaitingForApprovalAsync();
       numberOfApplicants = applicants.Count;

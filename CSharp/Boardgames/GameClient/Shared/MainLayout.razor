@@ -6,7 +6,6 @@
 @using global::Shared.Data
 @using Microsoft.AspNetCore.Mvc
 @inherits LayoutComponentBase
-@inject IAuthState authState;
 @inject IGameService gameService;
 @inject ILiveService liveService;
 @inject NavigationManager navMgr;
@@ -81,7 +80,7 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="page" style="height: 100%">
         @if (accountId ==0) {
             <main class="container">
@@ -90,7 +89,7 @@
                 </ChildContent>
 
             </main>
-        } 
+        }
         else{
             <main style="height: 100%;">
                 <div class="container-fluid" style="height: 100%;">
@@ -119,7 +118,7 @@
             </main>
         }
     </div>
-    
+
 </div>
 
 @code
@@ -136,7 +135,7 @@
 
 
     protected override async Task OnParametersSetAsync() {
-        accountId = await authState.GetUserIdAsync();
+        accountId = await AuthService.GetUserIdAsync();
         await UpdateAccount();
     }
 
@@ -148,7 +147,7 @@
     }
 
     private async Task UpdateAccount() {
-        accountId = await authState.GetUserIdAsync();
+        accountId = await AuthService.GetUserIdAsync();
         if (accountId != 0)
         {
             if (accountId != account.AccountId)

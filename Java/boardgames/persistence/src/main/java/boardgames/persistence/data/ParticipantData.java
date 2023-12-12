@@ -9,7 +9,7 @@ import java.util.List;
 public interface ParticipantData {
     public Participant get(int participantId);
     public List<Participant> getAll(int matchId, int accountId, int status); // NOTE(rune): -1 hvis filter skal ignorers.
-    public Participant create(Account account, Match match, int status);
+    public Participant create(int matchId, int accountId, int status);
     public void update(Participant participant);
     public void delete(int participantId);
 }

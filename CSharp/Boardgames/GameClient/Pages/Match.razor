@@ -8,7 +8,7 @@
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
-@inject IAuthState AuthState
+@inject IAuthService AuthService
 @inject ILiveService LiveService
 @inject NavigationManager navMgr
 
@@ -136,7 +136,7 @@
             _match = res.match;
         }
 
-        _accountId = await AuthState.GetUserIdAsync();
+        _accountId = await AuthService.GetUserIdAsync();
         _isOwner = _match.OwnerId == _accountId;
         _owner = _allAccounts.FirstOrDefault(x => x.AccountId == _match.OwnerId, Empty.Account());
 
