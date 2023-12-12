@@ -8,7 +8,7 @@
 @using global::Shared.Data
 @using static global::Shared.Data.Messages
 @inject IGameService GameService
-@inject IAuthState AuthState;
+@inject IAuthService AuthService
 @inject NavigationManager navMgr
 
 <PageTitle>@_account.Username</PageTitle>
@@ -149,7 +149,7 @@
 
     protected override async Task OnParametersSetAsync() {
         _isEditing = false;
-        claimAccountId = await AuthState.GetUserIdAsync();
+        claimAccountId = await AuthService.GetUserIdAsync();
         int routeAccountId = ParseUtil.ParseIntOrDefault(AccountId);
         if (routeAccountId != 0) {
             _isOwnProfile = routeAccountId == claimAccountId;
@@ -167,9 +167,9 @@
     }
 
     private async Task OnSaveClicked() {
-        
-        
-        
+
+
+
         if (_uploadedProfilePicture == null) {
             _account.ProfilePicture = null;
         } else {

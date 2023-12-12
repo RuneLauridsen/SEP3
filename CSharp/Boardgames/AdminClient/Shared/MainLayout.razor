@@ -1,6 +1,7 @@
 ﻿@using global::Shared.AuthState
+@using global::Shared.AuthService
 @inherits LayoutComponentBase
-@inject IAuthState authState;
+@inject IAuthService authService;
 
 <PageTitle>AdminClient</PageTitle>
 
@@ -53,7 +54,7 @@
     private bool loggedIn;
 
     protected override async Task OnInitializedAsync() {
-        var accountId = await authState.GetUserIdAsync();
+        var accountId = await authService.GetUserIdAsync();
         loggedIn = accountId != 0;
     }
 }

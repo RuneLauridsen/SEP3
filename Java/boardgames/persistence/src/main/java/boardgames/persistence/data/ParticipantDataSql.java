@@ -33,7 +33,7 @@ public class ParticipantDataSql implements ParticipantData {
     }
 
     @Override
-    public Participant create(Account account, Match match, int status) {
+    public Participant create(int accountId, int matchId, int status) {
         Sql sql = new Sql(pool, """
             INSERT INTO boardgames.participant
                 (participant_id, match_id, account_id, status, created_on, score)
@@ -43,8 +43,8 @@ public class ParticipantDataSql implements ParticipantData {
                 participant_id, match_id, account_id, status, created_on, score
             """);
 
-        sql.set(match.matchId());
-        sql.set(account.accountId());
+        sql.set(matchId);
+        sql.set(accountId);
         sql.set(status);
         return sql.querySingle(this::readParticipant);
     }

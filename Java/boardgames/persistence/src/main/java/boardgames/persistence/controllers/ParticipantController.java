@@ -73,7 +73,7 @@ public class ParticipantController {
         throwIfNotFound(matchId, match);
         throwIfNotFound(accountId, account);
 
-        Participant participant = participantData.create(account, match, Participant.STATUS_PENDING);
+        Participant participant = participantData.create(account.accountId(), match.matchId(), Participant.STATUS_PENDING);
         return participant;
     }
 

@@ -39,7 +39,7 @@ public class GameDataSql implements GameData {
 
     @Override
     public Game get(int gameId) {
-        Sql sql = new Sql(pool, "SELECT * FROM boardgames.game WHERE game_id = ?");
+        Sql sql = new Sql(pool, "SELECT game_id, name FROM boardgames.game WHERE game_id = ?");
         sql.set(gameId);
         return sql.querySingle(this::readGame);
     }

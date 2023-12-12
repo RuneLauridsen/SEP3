@@ -9,9 +9,8 @@
 @using static global::Shared.Data.Messages
 @using System.Collections
 @inject IGameService GameService
+@inject IAuthService AuthService;
 @inject NavigationManager navMgr
-@inject IAuthState authState
-
 
 <style>
     .rejected {
@@ -104,7 +103,7 @@
                         <div class="Match">
                             <h3><a href="match/@m.MatchId">@gameDicPic[m.GameId].Name</a></h3>
                             <img style="width:100%; height: 100%;"  src="@HtmlUtil.ToImgSrcString(gameDicPic[m.GameId].GamePicture, gameDicPic[m.GameId].GamePictureType)" alt="game picture"/>
-                            <p>Participents: 
+                            <p>Participents:
                                 @for (int i = 0; i < m.Participants.Count; i++)
                                 {
                                     if (i == m.Participants.Count-1)
@@ -113,7 +112,7 @@
                                     }
                                     else
                                     {
-                                        @:@m.Participants[i].Account.Username, 
+                                        @:@m.Participants[i].Account.Username,
                                     }
                                 }</p>
                         </div>
@@ -160,7 +159,7 @@
     }
 
     private async Task Refresh() {
-        isLoggedIn = await authState.GetUserIdAsync();
+        isLoggedIn = await AuthService.GetUserIdAsync();
         if (isLoggedIn != 0) {
              _pendingInvites = (await GameService.GetPendingAsync(new GetPendingRequest())).participants;
                     _matches = (await GameService.GetMyMatchesAsync(new GetMyMatchesRequest())).matches;

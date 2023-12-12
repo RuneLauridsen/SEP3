@@ -45,104 +45,42 @@ public final class Account {
         this.isAdmin = isAdmin;
     }
 
-    public int accountId() {
-        return accountId;
-    }
+    public int accountId() { return accountId; }
+    public void setAccountId(int accountId) { this.accountId = accountId; }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
+    public String username() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    public String username() {
-        return username;
-    }
+    public String firstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public String lastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
-    public String firstName() {
-        return firstName;
-    }
+    public String email() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    public String description() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
-    public String lastName() {
-        return lastName;
-    }
+    public LocalDateTime registerDateTime() { return registerDateTime; }
+    public void setRegisterDateTime(LocalDateTime registerDateTime) { this.registerDateTime = registerDateTime; }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public int status() { return status; }
+    public void setStatus(int status) { this.status = status; }
 
-    public String email() {
-        return email;
-    }
+    public LocalDateTime createdOn() { return createdOn; }
+    public void setCreatedOn(LocalDateTime createdOn) { this.createdOn = createdOn; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String profilePicture() { return profilePicture; }
+    public void setProfilePicture(String profilePicture) { this.profilePicture = profilePicture; }
 
-    public String description() {
-        return description;
-    }
+    public String profilePictureType() { return profilePictureType; }
+    public void setProfilePictureType(String profilePictureType) { this.profilePictureType = profilePictureType; }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDateTime registerDateTime() {
-        return registerDateTime;
-    }
-
-    public void setRegisterDateTime(LocalDateTime registerDateTime) {
-        this.registerDateTime = registerDateTime;
-    }
-
-    public int status() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public LocalDateTime createdOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public String profilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
-    }
-
-    public String profilePictureType() {
-        return profilePictureType;
-    }
-
-    public void setProfilePictureType(String profilePictureType) {
-        this.profilePictureType = profilePictureType;
-    }
-
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
+    public boolean isAdmin() { return isAdmin; }
+    public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin; }
 
     @Override
-    public String toString() {
-        return username;
-    }
+    public String toString() { return username; }
 }

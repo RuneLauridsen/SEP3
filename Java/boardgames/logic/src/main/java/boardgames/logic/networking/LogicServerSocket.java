@@ -2,6 +2,7 @@ package boardgames.logic.networking;
 
 import boardgames.logic.messages.MessageQueue;
 import boardgames.logic.messages.QueuedMessage;
+import boardgames.shared.util.Log;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -82,6 +83,7 @@ public class LogicServerSocket implements LogicServer {
     public void distributorThreadProc() {
         while (!quit) {
             QueuedMessage fromQueue = outgoingQueue.pull(10_000);
+            Log.info("Outgoing " + fromQueue.message().head().bodyType() + " to clientIdent " + fromQueue.clientIdent());
             if (fromQueue != null) {
                 LogicSocket client = currentClients.get(fromQueue.clientIdent());
                 if (client != null) {

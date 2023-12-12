@@ -26,7 +26,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-// Add our Config object so it can be injected
 builder.Services.AddSingleton<Config>(new Config {
     LogicAddress = "localhost",
     LogicPort = 1234

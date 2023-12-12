@@ -30,4 +30,11 @@ public class JwtAuthService : IAuthService {
         var socket = new ServiceSocket(config.LogicAddress, config.LogicPort, authState);
         return await socket.SendAndReceiveAsync<RegisterResponse>(req);
     }
+
+    public async Task<int> GetUserIdAsync() {
+        ClaimsPrincipal claims = await authState.GetClaimsAsync();
+        string userIdAsString = claims.GetOrDefault("userId", "");
+        int userIdAsInt = ParseUtil.ParseIntOrDefault(userIdAsString, 0);
+        return userIdAsInt;
+    }
 }
