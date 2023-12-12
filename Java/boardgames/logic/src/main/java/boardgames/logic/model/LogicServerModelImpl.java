@@ -510,10 +510,14 @@ public class LogicServerModelImpl implements LogicServerModel {
 
     private UpdateUserStatusResponse approveUserReg(UpdateUserStatusRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
         Claims claims = jwtService.verify(jwt);
-        req.account().setStatus(req.newStatus());
-        req.account().setRegisterDateTime(LocalDateTime.now());
-        boolean success = accountService.update(req.account());
-        return new UpdateUserStatusResponse(success);
+        if (claims.isAdmin()) {
+            req.account().setStatus(req.newStatus());
+            req.account().setRegisterDateTime(LocalDateTime.now());
+            boolean success = accountService.update(req.account());
+            return new UpdateUserStatusResponse(success);
+        } else {
+            return new UpdateUserStatusResponse(false);
+        }
     }
 
     private UpdateAccountResponse updateAccount(UpdateAccountRequest req, String jwt, int clientIdent) throws NotAuthorizedException {
