@@ -286,6 +286,11 @@ public class LogicServerModelImpl implements LogicServerModel {
 
             Claims claims = jwtService.verify(jwt);
             Match match = matchService.get(req.matchId());
+            Account account = accountService.get(req.accountId());
+
+            if (account.accountId() == 0) {
+                return new AddParticipantResponse(Empty.participant(), String.format("Account id %d does not exist.", req.accountId()));
+            }
 
             // Tjek match ikke er begyndt endnu.
             if (match.status() != Match.STATUS_PENDING) {
