@@ -10,6 +10,7 @@
 @using System.Collections
 @inject IGameService GameService
 @inject IAuthService AuthService;
+@inject ILiveService LiveService;
 @inject NavigationManager navMgr
 
 <style>
@@ -141,12 +142,16 @@
 
 @code {
     private string _errorReason = "";
-    private IEnumerable<Participant> _pendingInvites = Enumerable.Empty<Participant>();
-    private IEnumerable<DTO.Match> _matches = Empty.Enumerable<DTO.Match>();
+    private IEnumerable<Participant> _pendingInvites = Empty.Enumerable<Participant>();
+    private List<DTO.Match> _matches = Empty.List<DTO.Match>();
     private Dictionary<int, Game> gameDicPic;
     private int isLoggedIn;
 
     protected override async Task OnInitializedAsync() {
+        LiveService.MatchUpdated += (s, e) => {
+            InvokeAsync(() => OnMatchLiveUpdatedAsync(e));
+        };
+
         await Refresh();
         await base.OnInitializedAsync();
 
@@ -192,5 +197,22 @@
         if (_errorReason == "") {
             p.Status = status;
         }
+    }
+
+    private async Task OnMatchLiveUpdatedAsync(int matchId) {
+        var req = new GetMatchRequest(matchId);
+        var res = await GameService.GetMatchAsync(req);
+        var m = res.match;
+
+        if (m.MatchId != 0) {
+            var i = _matches.FindIndex(x => x.MatchId == m.MatchId);
+            if (i == -1) {
+                _matches.Add(m);
+            } else {
+                _matches[i] = m;
+            }
+        }
+
+        StateHasChanged();
     }
 }
