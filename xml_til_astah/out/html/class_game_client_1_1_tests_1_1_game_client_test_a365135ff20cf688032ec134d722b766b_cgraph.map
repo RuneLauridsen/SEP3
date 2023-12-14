@@ -1,7 +1,0 @@
-<map id="GameClient.Tests.GameClientTest.Test_CreateMatch_GetMatch" name="GameClient.Tests.GameClientTest.Test_CreateMatch_GetMatch">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,226,81"/>
-<area shape="rect" id="Node000002" href="$interface_game_client_1_1_services_1_1_i_game_service.html#ad898319936905e7bcbd56dd12455c5ae" title=" " alt="" coords="274,5,458,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,43,258,38,259,44,227,48"/>
-<area shape="rect" id="Node000003" href="$interface_game_client_1_1_services_1_1_i_game_service.html#ab0eff4d18f750e3bc684b07937501b00" title=" " alt="" coords="274,72,458,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="227,72,259,76,258,82,226,77"/>
-</map>

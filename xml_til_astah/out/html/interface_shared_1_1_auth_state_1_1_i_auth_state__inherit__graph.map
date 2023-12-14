@@ -1,7 +1,0 @@
-<map id="Shared.AuthState.IAuthState" name="Shared.AuthState.IAuthState">
-<area shape="rect" id="Node000001" title=" " alt="" coords="128,5,324,149"/>
-<area shape="rect" id="Node000002" href="$class_shared_1_1_auth_state_1_1_auth_state_in_memory.html" title=" " alt="" coords="5,224,215,400"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="186,164,156,225,151,223,182,161"/>
-<area shape="rect" id="Node000003" href="$class_shared_1_1_auth_state_1_1_auth_state_session_storage.html" title=" " alt="" coords="239,197,448,427"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="271,161,288,196,284,199,266,164"/>
-</map>

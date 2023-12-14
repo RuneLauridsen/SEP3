@@ -1,9 +1,0 @@
-<map id="Shared.Data.ServiceSocket.SendMessageAsync" name="Shared.Data.ServiceSocket.SendMessageAsync">
-<area shape="rect" id="Node000001" title=" " alt="" coords="457,39,641,81"/>
-<area shape="rect" id="Node000002" href="$class_game_client_1_1_services_1_1_live_service.html#ac90a03d1ee99f1963ac3a43ce9b5b20f" title=" " alt="" coords="231,5,400,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="441,47,399,41,400,36,442,42"/>
-<area shape="rect" id="Node000004" href="$class_shared_1_1_data_1_1_service_socket.html#a48943a8611e55daffe34de5d6898a852" title=" " alt="" coords="222,72,409,115"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="442,78,410,83,409,77,441,73"/>
-<area shape="rect" id="Node000003" href="$class_game_client_1_1_services_1_1_live_service.html#a0a884ff2ed3a47b4f3e43f014691b9d4" title=" " alt="" coords="5,5,174,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="216,29,174,29,174,24,216,24"/>
-</map>
