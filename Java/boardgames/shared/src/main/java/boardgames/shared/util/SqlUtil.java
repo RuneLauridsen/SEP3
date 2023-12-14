@@ -13,6 +13,7 @@ public class SqlUtil {
             Connection conn = DriverManager.getConnection(connString);
             return conn;
         } catch (SQLException e) {
+            Log.error(e);
             Log.error("Could not open connection to SQL database.");
             return null;
         }

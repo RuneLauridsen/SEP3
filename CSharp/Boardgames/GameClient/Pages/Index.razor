@@ -142,7 +142,7 @@
 
 @code {
     private string _errorReason = "";
-    private IEnumerable<Participant> _pendingInvites = Empty.Enumerable<Participant>();
+    private List<Participant> _pendingInvites = Empty.List<Participant>();
     private List<DTO.Match> _matches = Empty.List<DTO.Match>();
     private Dictionary<int, Game> gameDicPic;
     private int isLoggedIn;
@@ -200,17 +200,10 @@
     }
 
     private async Task OnMatchLiveUpdatedAsync(int matchId) {
-        var req = new GetMatchRequest(matchId);
-        var res = await GameService.GetMatchAsync(req);
-        var m = res.match;
-
-        if (m.MatchId != 0) {
-            var i = _matches.FindIndex(x => x.MatchId == m.MatchId);
-            if (i == -1) {
-                _matches.Add(m);
-            } else {
-                _matches[i] = m;
-            }
+        if (matchId != 0) {
+            // TODO(rune): Spildt arbejde at genindlæse alle matches, da vi
+            // alligevel selv har relevante den matchId fra LiveUpdateNotification.
+            await Refresh();
         }
 
         StateHasChanged();

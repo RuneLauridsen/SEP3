@@ -1,7 +1,6 @@
 package boardgames.shared.util;
 
 import com.google.gson.*;
-import org.springframework.cglib.core.Local;
 
 import java.lang.reflect.Type;
 import java.time.Instant;
