@@ -1,9 +1,0 @@
-<map id="GameClient.Tests.GameClientTest.Test_AddParticipant_GetParticipants" name="GameClient.Tests.GameClientTest.Test_AddParticipant_GetParticipants">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,203,123"/>
-<area shape="rect" id="Node000002" href="$interface_game_client_1_1_services_1_1_i_game_service.html#a0b799b8dc3bfaa47d0c67409a051070c" title=" " alt="" coords="251,5,440,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,63,250,50,251,55,204,69"/>
-<area shape="rect" id="Node000003" href="$interface_game_client_1_1_services_1_1_i_game_service.html#ad898319936905e7bcbd56dd12455c5ae" title=" " alt="" coords="253,72,438,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,91,237,91,237,96,203,96"/>
-<area shape="rect" id="Node000004" href="$interface_game_client_1_1_services_1_1_i_game_service.html#ab0eff4d18f750e3bc684b07937501b00" title=" " alt="" coords="253,139,438,181"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="204,118,251,131,250,136,202,123"/>
-</map>

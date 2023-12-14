@@ -1,7 +1,0 @@
-<map id="GameClient.Tests.TestInvites.TestInvites" name="GameClient.Tests.TestInvites.TestInvites">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,200,48"/>
-<area shape="rect" id="Node000002" href="$class_shared_1_1_tets_1_1_test_util.html#aed0a2a8aa16d3ec0ce0170a8f719594c" title=" " alt="" coords="248,5,425,48"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,24,232,24,232,29,200,29"/>
-<area shape="rect" id="Node000003" href="$class_shared_1_1_tets_1_1_test_util.html#aa69266c40f9bf17d5c19f1811845c624" title=" " alt="" coords="473,13,683,40"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="425,24,457,24,457,29,425,29"/>
-</map>
